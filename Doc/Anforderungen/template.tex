@@ -1,10 +1,9 @@
-%
+ï»¿%
 % Main document
 % ===========================================================================
 % This is part of the document "Project documentation template".
 % Authors: brd3, kaa1
 %
-
 %---------------------------------------------------------------------------
 \documentclass[
 	a4paper,					% paper format
@@ -26,8 +25,9 @@
 
 \usepackage[ngerman]{babel}										% german hyphenation
 %\usepackage[latin1]{inputenc}  							% Unix/Linux - load extended character set (ISO 8859-1)
-\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
-\usepackage[T1]{fontenc}											% hyphenation of words with ä,ö and ü
+%\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
+\usepackage[T1]{fontenc}											% hyphenation of words with Ã¤,Ã¶ and Ã¼
+\usepackage[utf8x]{inputenc}
 \usepackage{textcomp}													% additional symbols
 \usepackage{ae}																% better resolution of Type1-Fonts 
 \usepackage{fancyhdr}													% simple manipulation of header and footer 
@@ -74,7 +74,7 @@
 	hypertexnames = {true},               % no failures "same page(i)"
 	bookmarksopen = {true},               % opens the bar on the left side
 	bookmarksopenlevel = {0},             % depth of opened bookmarks
-	pdftitle = {Template für Bachelor Thesis},	   	% PDF-property
+	pdftitle = {Template fÃ¼r Bachelor Thesis},	   	% PDF-property
 	pdfauthor = {brd3},        					  % PDF-property
 	pdfsubject = {LaTeX Template},        % PDF-property
 	linkcolor = {linkcolor},              % Color of Links
@@ -82,7 +82,6 @@
 	urlcolor = {linkcolor},               % Color of URLs
 ]{hyperref}
 %---------------------------------------------------------------------------
-
 % Set up page dimension
 %---------------------------------------------------------------------------
 \usepackage{geometry}
@@ -160,39 +159,29 @@
 \cleardoubleemptypage
 \setcounter{page}{1}
 \cleardoublepage
-\phantomsection 
-\addcontentsline{toc}{chapter}{Management Summary}
-\include{vorspann/management_summary}
-\cleardoubleemptypage
+%\phantomsection 
+%\addcontentsline{toc}{chapter}{Management Summary}
+%\include{vorspann/management_summary}
+%\cleardoubleemptypage
 %---------------------------------------------------------------------------
 
 % Table of contents
 %---------------------------------------------------------------------------
 \tableofcontents
-\cleardoublepage
+%\cleardoubleemptypage
+%\cleardoublepage
 %---------------------------------------------------------------------------
 
 % Main part:
 %---------------------------------------------------------------------------
 \pagenumbering{arabic}
-
 \include{kapitel/einleitung}
-\include{kapitel/anleitungen}
-\include{kapitel/satzspiegeltest}
-\include{kapitel/schlussfolgerungen}
-%---------------------------------------------------------------------------
-
-% Selbständigkeitserklärung
-%---------------------------------------------------------------------------
-\cleardoublepage
-\phantomsection 
-\addcontentsline{toc}{chapter}{Selbständigkeitserklärung}
-\include{vorspann/selbstaendigkeitserklaerung}
+\include{kapitel/technischeAnforderungen}
 %---------------------------------------------------------------------------
 
 % Glossary
 %---------------------------------------------------------------------------
-\cleardoublepage
+%\cleardoublepage
 \phantomsection 
 \addcontentsline{toc}{chapter}{Glossar}
 \renewcommand{\glossaryname}{Glossar}
@@ -201,7 +190,7 @@
 
 % Bibliography
 %---------------------------------------------------------------------------
-\cleardoublepage
+%\cleardoublepage
 \phantomsection 
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{IEEEtranS}
@@ -210,11 +199,11 @@
 
 % Listings
 %---------------------------------------------------------------------------
-\cleardoublepage
+%\cleardoublepage
 \phantomsection 
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
-\cleardoublepage
+%\cleardoublepage
 \phantomsection 
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \listoftables
@@ -222,7 +211,7 @@
 
 % Index
 %---------------------------------------------------------------------------
-\cleardoublepage
+%\cleardoublepage
 \phantomsection 
 \addcontentsline{toc}{chapter}{Stichwortverzeichnis}
 \renewcommand{\indexname}{Stichwortverzeichnis}
