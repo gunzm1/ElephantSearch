@@ -130,3 +130,12 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# Swap files (mostly VIM)
+*.swp
+
+# Ouput files
+Doc/Anforderungen/*.pdf
+
+# Windows thumbnail files
+Thumbs.db
