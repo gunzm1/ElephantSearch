@@ -1,4 +1,4 @@
-﻿\chapter{Technische Anforderungen}
+\chapter{Technische Anforderungen}
 \label{chap:technischeAnforderungen}
 
 Bei den Recherchen der Projektarbeit hat sich die Erkenntnis ergeben, das eine erfolgreiche Verarbeitung von Anfragen die folgenden Komponenten benötigt:
@@ -9,7 +9,7 @@ Bei den Recherchen der Projektarbeit hat sich die Erkenntnis ergeben, das eine e
 	\item Interne und Externe Schnittstellen zur Kommunikation
 \end{itemize}
 
-Die oben genannten Komponenten werden bereits im Ansatz durch die in der Projektarbeit evaluierte Lösung - Apache Stanbol - zur Verfügung gestellt. Allerdings hat sich gezeigt, dass diese grössere Erweiterungen benötigen um die gewünschten Ergebnisse zu liefern.
+Die oben genannten Komponenten werden bereits im Ansatz durch die in der Projektarbeit evaluierte Lösung --- Apache Stanbol --- zur Verfügung gestellt. Allerdings hat sich gezeigt, dass diese grössere Erweiterungen benötigen um die gewünschten Ergebnisse zu liefern.
 
 \section{Architektur}
 \label{sec:architektur}
@@ -35,7 +35,7 @@ Apache Stanbol unterstützt auf Prädikatenlogik basierende Regeln, welche inner
 Um einen Eingabesatz auszuwerten, muss dieser erst als solcher erkannt werden. Konkret müssen also, die einzelnen Wörter als Tokens identifiziert und einer Sprachkategorie zugeorndet werden. Dies geschieht mittels der Spracheerkennungskomponente OpenNLP (open natural language processing). Diese Spracherkennung wird für die Englische Sprache von Stanbol schon weitgehend angeboten. Nach unseren Erkenntinissen ist dies mit der Deutschen Sprache genau so möglich, jedoch nicht gegeben. Dies muss also noch erarbeitet werden. Nach ersten Recherchen wird dazu der Tokenizer sowie der Parser von OpenLNP verwendet.TODO (Link)
 
 \section{Interne und Externe Schnittstellen zur Kommunikation}
- \label{sec:architektur_schnittstellen}
+\label{sec:architektur_schnittstellen}
 Um die oben genannten Komponenten ansprechen und nutzen zu können, sind Schnittstellen zur Kommunikation unumgänglich.
 
 \subsection{Interne Kommunikation}
@@ -44,13 +44,13 @@ Intern nutzt Apache Stanbol, wie bereits beschrieben, die sogenannte Enhancement
 
 \subsection{Externe Kommunikation}
 \label{sec:architektur_schnittstellen_extern}
-Jede Komponente von Apache Stanbol, so z.B. auch die Enhancement Chain sowie deren Einzelkomponenten, verfügt über ein REST-Interface. Dies dient zur Kommunikation gegen aussen. Ein schematischer Ablauf der Kommunikation wird in Abbildung \ref{fig:kommunikationKomponenten} grob dargestellt.
+Jede Komponente von Apache Stanbol, so z.B. auch die Enhancement Chain sowie deren Einzelkomponenten, verfügt über ein REST-Interface. Dies dient zur Kommunikation gegen aussen. Ein schematischer Ablauf der Kommunikation wird in Abbildung~\ref{fig:kommunikationKomponenten} grob dargestellt.
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.7]{bilder/software_komponenten.png}
+	\includegraphics[scale=0.4]{bilder/software_komponenten.png}
 	\caption{Kommunikation im Überblick}
-	\label{fig:kommunikationKomponenten}
+\label{fig:kommunikationKomponenten}
 \end{figure}
 
 \chapter{Wissensdomäne}
