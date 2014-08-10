@@ -139,3 +139,5 @@ Doc/Anforderungen/*.pdf
 
 # Windows thumbnail files
 Thumbs.db
+
+*.tps
