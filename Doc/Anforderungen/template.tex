@@ -8,14 +8,14 @@
 \documentclass[
     a4paper,                    % paper format
     10pt,                           % fontsize
-    twoside,                    % double-sided
+    %twoside,                    % double-sided
     openright,              % begin new chapter on right side
     notitlepage,            % use no standard title page
     parskip=half,           % set paragraph skip to half of a line
 ]{scrreprt}                 % KOMA-script report
 %---------------------------------------------------------------------------
 \raggedbottom{}
-\KOMAoptions{cleardoublepage=plain}         % Add header and footer on blank pages
+%\KOMAoptions{cleardoublepage=plain}         % Add header and footer on blank pages
 
 
 % Load Standard Packages:
@@ -34,6 +34,8 @@
 \usepackage{caption}                                                    % for captions of figures and tables
 \usepackage{booktabs}                                                   % package for nicer tables
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
+%\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+%\addbibresource{./datenbanken/bibliography.bib}
 %---------------------------------------------------------------------------
 
 % Load Math Packages
@@ -153,9 +155,9 @@
 %\include{vorspann/titelseite_ohne_bild}        % activate for Titelseite ohne Bild
 \include{vorspann/titelseite_mit_bild}          % activate for Titelseite mit Bild
 \include{vorspann/versionen}
-\cleardoubleemptypage{}
+%\cleardoubleemptypage{}
 \setcounter{page}{1}
-\cleardoublepage{}
+%\cleardoublepage{}
 %\phantomsection{}
 %\addcontentsline{toc}{chapter}{Management Summary}
 %\include{vorspann/management_summary}
@@ -173,7 +175,9 @@
 %---------------------------------------------------------------------------
 \pagenumbering{arabic}
 \include{kapitel/einleitung}
-\include{kapitel/technischeAnforderungen}
+\include{kapitel/wissensdomaene}
+\include{kapitel/komponenten}
+\include{kapitel/ziel}
 %---------------------------------------------------------------------------
 
 % Glossary
@@ -188,9 +192,9 @@
 % Bibliography
 %---------------------------------------------------------------------------
 %\cleardoublepage
-\phantomsection{}
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
-\bibliographystyle{IEEEtranS}
+%\phantomsection{}
+%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliographystyle{unsrtdin}
 \bibliography{datenbanken/bibliography}{}
 %---------------------------------------------------------------------------
 
@@ -219,7 +223,7 @@
 %---------------------------------------------------------------------------
 \appendix
 \settocdepth{section}
-\include{anhang/beispielanhang}
+%\include{anhang/beispielanhang}
 %---------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------
