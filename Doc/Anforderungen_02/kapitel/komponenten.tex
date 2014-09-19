@@ -10,21 +10,19 @@ Bei den Recherchen der Projektarbeit hat sich die Erkenntnis ergeben, das eine e
 
 Die oben genannten Komponenten werden bereits durch die in der Projektarbeit evaluierten Lösung --- Apache Stanbol --- zur Verfügung gestellt. Allerdings hat sich gezeigt, dass diese keine dem Menschen leicht verständliche Möglichkeit bietet, um eine Fragestellung  in ein für den Menschen logisches Resultat zu überführen.
 
-So kann zum Beispiel die Frage "`Welches ist die Hauptstadt der Schweiz?"' nicht einfach so beantwortet werden. Die Lösung bietet Extraktion von Entitäten, deren Eigenschaften und Relationen sowie Abfragen dieser mittels einer speziellen Sprache (SPARQL). Die Überführung der extrahierten Entitäten in eine Abfrage, welche für den Menschen ein sinnvolles Resultat zurückliefert, ist nicht gegeben.
+So kann zum Beispiel die Frage `Welches ist die Hauptstadt der Schweiz?` nicht einfach so beantwortet werden. Die Lösung bietet Extraktion von Entitäten, deren Eigenschaften und Relationen sowie Abfragen dieser mittels einer speziellen Sprache (SPARQL). Die Überführung der extrahierten Entitäten in eine Abfrage, welche für den Menschen ein sinnvolles Resultat zurückliefert, ist nicht gegeben.
 
 \section{Architektur}
 \label{sec:architektur}
-Um die verschiedenen Teile zusammen zu nutzen, bietet Apache Stanbol eine frei konfigurierbare Verkettung dieser an. Dies geschieht mittels einer sogenannten Enhancement-Chain. Konkret heisst dies, dass eine beliebige Eingabe dieser Kette übergeben werden kann, worauf dann die erste Softwarekomponente der Kette die Eingabe verarbeitet und das Resultat an die nächste Komponente weiterreicht. Diese Vorgang wird durch sämtliche Komponenten der Kette fortgeführt bis schlussendlich das Endresultat an die anfragende Entität zurückgegeben wird.
-
-
-%enhancementstructure.png/ https://stanbol.apache.org/docs/trunk/components/enhancer/enhancementstructure.png
+Um die verschiedenen Teile zusammen zu nutzen, bietet Apache Stanbol eine frei konfigurierbare Verkettung dieser an. Dies geschieht mittels einer so genannten Enhancement-Chain. Konkret heisst dies, dass eine beliebige Eingabe dieser Kette übergeben werden kann, worauf dann die erste Softwarekomponente der Kette die Eingabe verarbeitet und das Resultat an die nächste Komponente weiterreicht. Diese Vorgang wird durch sämtliche Komponenten der Kette fortgeführt bis schlussendlich das Endresultat an die anfragende Entität zurückgegeben wird.
 
 \section{Abbildung der Umwelt mittels Wissensdatenbank}
 \label{sec:architektur_wissensdatenbank}
+
 \subsection{Objekte abbilden}
 \label{subsec:architektur_wissensdatenbank_Objekte}
-Die Abbildung der Umwelt geschieht in Apache Stanbol mittels dem sogenannten Entity Hub.
-Dieser stellt Informationen zu Entitäten und Objekten einer spezifischen Wissensdomäne zur Verfügung. Die Beziehungen werden in Apache Stanbol in Form von Relationen zwischen den Entitäten abgebildet, analog dazu werden die Eigenschaften als Attribute erfasst. 
+Die Abbildung der Umwelt geschieht in Apache Stanbol mittels dem so genannten Entity Hub.
+Dieser stellt Informationen zu Entitäten und Objekten einer spezifischen Wissensdomäne zur Verfügung. Die Beziehungen werden in Apache Stanbol in Form von Relationen zwischen den Entitäten abgebildet, analog dazu werden die Eigenschaften als Attribute erfasst.
 
 Die konkrete Arbeit mit dem Entity Hub besteht also darin Objekte, der für die Arbeit gewählten Domäne, als Entitäten abzubilden.
 
@@ -44,7 +42,7 @@ Um die oben genannten Komponenten ansprechen und nutzen zu können, sind Schnitt
 
 \subsection{Interne Kommunikation}
 \label{sec:architektur_schnittstellen_intern}
-Intern nutzt Apache Stanbol, wie bereits beschrieben, die sogenannte Enhancement Chain um von einem gegebenen Input, mittels verschiedenen Komponenten, zu einem Output zu gelangen~\cite{stanbol:enhancementchain}. Die Enhancement Chain basiert auf einer Graph-Struktur, welche sie zur Kommunikation nutzt.
+Intern nutzt Apache Stanbol, wie bereits beschrieben, die so genannte Enhancement Chain um von einem gegebenen Input, mittels verschiedenen Komponenten, zu einem Output zu gelangen~\cite{stanbol:enhancementchain}. Die Enhancement Chain basiert auf einer Graph-Struktur, welche sie zur Kommunikation nutzt.
 
 \begin{figure}[H]
 	\centering
