@@ -62,6 +62,12 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatEinsatzgebiet -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatEinsatzgebiet"/>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma">
@@ -123,14 +129,28 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Einsatzgebiet"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesProgramm -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesProgramm">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programm"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#verwendetProgrammiersprache"/>
                 <owl:hasValue rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatEinsatzgebiet"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -143,6 +163,12 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Einsatzgebiet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Einsatzgebiet"/>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Fakt -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Fakt"/>
@@ -152,6 +178,12 @@
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programm -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programm">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatEinsatzgebiet"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Einsatzgebiet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#verwendetProgrammiersprache"/>
@@ -175,20 +207,34 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesEinsatzgebiet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesEinsatzgebiet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Einsatzgebiet"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesProgramm -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesProgramm">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programm"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#bestehtAus"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Anweisung"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatEinsatzgebiet"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesEinsatzgebiet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#verwendetProgrammiersprache"/>
                 <owl:hasValue rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Prozedural"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#bestehtAus"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Anweisung"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -212,6 +258,28 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Buchhaltung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Buchhaltung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesEinsatzgebiet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Datenbank -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Datenbank">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Datenbanken -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Datenbanken"/>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ">
@@ -220,16 +288,50 @@
     
 
 
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Expertensuche -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Expertensuche"/>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Expertensysteme -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Expertensysteme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Haskell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Haskell">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programmiersprache"/>
+        <hatProgrammierparadigma rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Java -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Java">
         <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programmiersprache"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Prozedural"/>
-            </owl:Restriction>
-        </rdf:type>
+        <hatProgrammierparadigma rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Prozedural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Künstliche_Intelligenz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Künstliche_Intelligenz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Medizin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Medizin">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#DeklarativesEinsatzgebiet"/>
     </owl:NamedIndividual>
     
 
@@ -238,12 +340,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Prolog">
         <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programmiersprache"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#hatProgrammierparadigma"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ"/>
-            </owl:Restriction>
-        </rdf:type>
+        <hatProgrammierparadigma rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Deklarativ"/>
     </owl:NamedIndividual>
     
 
@@ -252,6 +349,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Prozedural">
         <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Programmierparadigma"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Raketensteuerung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#Raketensteuerung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/sosterwalder/ontologies/2014/9/programming#ProzeduralesEinsatzgebiet"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
