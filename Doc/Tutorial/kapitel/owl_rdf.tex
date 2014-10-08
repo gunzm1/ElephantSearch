@@ -1,7 +1,45 @@
 \chapter{OWL und RDF}
-\label{chap:owl_rdf}
+\label{chap:owl_Rdf}
 
-Lustige Sachen mit OWL und RDF.
+\section{RDF}
+\label{sec:owlRdf_rdf}
+
+%\section{RDF}
+%\label{sec:rdf}
+Das "`Resource Description Framework"' RDF ist ein Framework um Informationen aus Ressourcen zu formulieren. Ressourcen können Dokumente, Leute, Objekte aber auch abstrakter Inhalt darstellen. Mit RDF können Informationen im Web von Anwendungen verarbeitet werden, anstatt sie nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne Bedeutung zu verlieren. 
+
+Hauptsächlich wird RDF verwendet um Daten im Web zu veröffentlichen und zu verknüpfen. Zu einer Ressource können so mehr Informationen kombiniert werden, indem sie mit anderen Ressourcen verknüpft werden. 
+TODO weiter ausformulieren wenn ichs wieder verstehe
+
+%\subsection{Einsatzgebiete}
+%\label{sec:logischeProgrammierung_herkunft_einsatz}
+\subsection{RDF Data Model}
+\label{sec:owlRdf_rdf_dataModel}
+RDF ermöglicht es Aussagen über Ressourcen zu machen. Der Aufbau dieser Aussagen ist immer gleich und weist die folgende Struktur eines Tripels auf:
+
+\noindent\hspace*{15mm}<Subjekt><Prädikat><Objekt>
+
+Eine RDF Aussage bildet eine Beziehung zwischen zwei Ressourcen (Entitäten) ab. 
+Subjekt und Objekt stellen die zwei Ressourcen dar. Das Prädikat repräsentiert die Beziehung zwischen den zwei Ressourcen Subjekt und Objekt. Die Beziehung wird in RDF als Property abgebildet. 
+ 
+TODO: Beispiel von unserer Ontologie
+
+
+Eine Entität kann in mehreren Tripeln referenziert werden. Es ist zudem möglich eine Ressource in einer Aussage als Objekt und in einer Anderen als Subjekt zu verwenden. dies ermöglicht es, Verbindungen zwischen mehreren Tripeln herzustellen. Dies ist ein wichtiger Teil von RDF.
+
+Tripel können als Grafen dargestellt werden. Diese bestehen aus Knoten und Pfeilen. die Subjekte und die Objekte werden als Knoten, die Prädikate als Pfeile dargestellt.
+
+
+
+TODO Bildli von Unserer Ontologie
+
+Es gibt drei Typen von RDF Daten, welche in Tripeln auftreten, IRIs (oder Ressource Knoten) Literale und Blank Nodes.
+
+\subsubsection{IRIs (International Resource Identifier)}
+\label{sec:owlRdf_rdf_dataModel_iris}
+Wie der Name schon sagt, stellt ein IRI eine Ressource dar. Es gibt verschieden Formen von IRIs, so zum Beispiel die URLs welche als Web Adresse verwendet werden. Eine Andere Form der IRI bietet eine Kennung für eine Ressource ohne den Standort oder den Zugriff preiszugeben. IRIs sind im RFC 3987 spezifiziert.
+
+IRIs kann IRIs can appear in all three positions of a triple.
 w3c
 http://www.w3.org/TR/2012/REC-owl2-primer-20121211/
 http://www.w3.org/2001/sw/wiki/OWL
