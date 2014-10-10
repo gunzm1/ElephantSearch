@@ -2,6 +2,7 @@ all: clean build
 
 build:
 	pdflatex template.tex
+	bibtex template.aux
 	makeglossaries template.glo
 	pdflatex template.tex
 
