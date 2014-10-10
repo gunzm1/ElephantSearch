@@ -49,19 +49,57 @@ Die Prädikatenlogik erster Stufe bietet somit folgende Elemente:
     }
 \end{itemize}
 
+\newpage
+
 Um dies anhand eines Beispiels zu verdeutlichen:
 
-    \noindent\hspace*{12mm}\textit{``Eine kleine Eule fliegt gerne nachts''}
+    \noindent\hspace*{12mm}\textit{``Eine Programm verwendet eine Programmiersprache''}
 
 Angewendet auf die Prädikatenlogik erster Stufe ergibt sich Folgendes:
 
 \begin{itemize}
-    \item{kleine: Eigenschaft}
-    \item{Eule: Objekt}
-    \item{fliegt: Relation}
-    \item{nachts: Objekt}
+    \item{Objekt}
+    \begin{itemize}
+        \item{Programm}
+        \item{Programmiersprache}
+    \end{itemize}
+    \item{Relation}
+    \begin{itemize}
+        \item{verwendet}
+    \end{itemize}
 \end{itemize}
 
+\subsubsection{Syntax und Semantik}
+\label{subsubsec:syntax-und-semantik}
+
+\textbf{Terme} \textit{Konstanten, Variablen und Funktionen}
+
+In der Prädikatenlogik existieren sowohl Sätze, als auch Terme. Sätze repräsentieren einen Fakt, Terme räpresentieren Objekte. Dabei bestehen Terme aus Konstanten, Variablen und Funktionen, Sätze hingegen aus Quantoren und Prädikaten.
+
+
+\textbf{Konstanten} \textit{A, B, C, Programmiersprache etc.}
+
+Konstanten repräsentieren Objekte, wobei eine Konstante genau ein Objekt repräsentiert, aber nicht alle Objekte eine Konstante haben müssen. Es ist auch möglich, dass ein Objekt mehrere Konstanten haben.
+
+
+\textbf{Prädikate} \textit{Programmiersprache, Programmierparadigma etc.}
+
+Ein Prädikat definiert eine Relation im Modell (der Welt). So steht z.B. Programmiersprache dafür, dass ein Programm eine Programmiersprache verwendet. Es handelt sich dabei also um eine Relation zwischen einem Paar von Objekten. Diese Relation wird in der Regel durch \textit{Tupel} definiert.
+
+
+\textbf{Tupel} \textit{\{<Programm1, Prolog>, <Programm2, Java>\}}
+
+Bei Tupeln handelt es sich um eine Kollektion von Objekten mit einer definierten Ordnung.
+
+
+\textbf{Funktionen} \textit{VerwendetProgrammiersprache, VerwendetProgrammierparadigma}
+
+Es existieren Relationen, welche funktional sind. Dies bedeutet, dass ein gegebenes Objekt mit \textit{genau einem} anderen Objekt in Relation steht. Z.B. verwendet ein Programm nur genau eine Programmiersprache, also:
+
+\lstset{language=Prolog}
+\begin{lstlisting}
+    VerwendetProgrammiersprache (Programm1, Prolog)
+\end{lstlisting}
 
 
 % Russel \& Norvig
