@@ -1,8 +1,70 @@
 \chapter{Resolution}
 \label{chap:resolution}
 
-DIE Resolution.
-Russel \& Norvig
+Um das Konzept der Resolution aufzeigen zu können, ist es erst notwendig Logik einzuführen.
+
+\section{Logik}
+\label{sec:logik}
+
+Eine Logik besteht aus den folgenden Elementen:
+
+\begin{itemize}
+    \item{Ein formales System, welches Zustände beschreibt, bestehend aus}
+    \begin{itemize}
+        \item{Syntax einer Sprache
+
+        welche beschreibt, wie Sätze erstellt werden können}
+        \item{Semantik einer Sprache
+
+        welche die Bedeutung beschreibt, also wie Sätze im Zusammenhang mit Zuständen stehen}
+    \end{itemize}
+    \item{Beweistheorie
+
+        welche aus einem Satz von Regeln besteht und es somit erlaubt eine (logische) Ableitung zwischen Sätzen vorzunehmen
+    }
+\end{itemize}
+
+\subsection{Prädikatenlogik erster Stufe}
+\label{subsec:prädikatenlogik}
+
+Im Gegensatz zur Aussagenlogik, welche hier nicht explizit behandelt wird, bietet die Prädikatenlogik erster Stufe eine stärkere Bindung zu der Ontologie, also der Speicherung von Informationen, welche über logische Relationen verfügen.~\cite[S. 185]{russel}
+
+Die Prädikatenlogik erster Stufe bietet somit folgende Elemente:
+\begin{itemize}
+    \item{\textbf{\textit{Objekte}}
+
+        Individuelle Entitäten
+    }
+    \item{\textbf{\textit{Eigenschaften}}
+
+        welche die Entitäten voneinander unterscheiden
+    }
+    \item{\textbf{\textit{Relationen}}
+
+        welche die Beziehungen zwischen den Entitäten beschreiben
+    }
+    \item{\textbf{\textit{Funktionen}}
+
+        eine spezielle Form einer Relation, für welche nur eine bestimmte Ausgabe für eine bestimmte Eingabe existiert
+    }
+\end{itemize}
+
+Um dies anhand eines Beispiels zu verdeutlichen:
+
+    \noindent\hspace*{12mm}\textit{``Eine kleine Eule fliegt gerne nachts''}
+
+Angewendet auf die Prädikatenlogik erster Stufe ergibt sich Folgendes:
+
+\begin{itemize}
+    \item{kleine: Eigenschaft}
+    \item{Eule: Objekt}
+    \item{fliegt: Relation}
+    \item{nachts: Objekt}
+\end{itemize}
+
+
+
+% Russel \& Norvig
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
