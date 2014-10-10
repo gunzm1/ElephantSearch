@@ -8,14 +8,13 @@
 %\label{sec:rdf}
 Das "`Resource Description Framework"' RDF ist ein Framework um Informationen aus Ressourcen zu formulieren. Ressourcen können Dokumente, Leute, Objekte aber auch abstrakter Inhalt darstellen. Mit RDF können Informationen im Web von Anwendungen verarbeitet werden, anstatt sie nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne Bedeutung zu verlieren. 
 
-Hauptsächlich wird RDF verwendet um Daten im Web zu veröffentlichen und zu verknüpfen. Zu einer Ressource können so mehr Informationen kombiniert werden, indem sie mit anderen Ressourcen verknüpft werden. 
-TODO weiter ausformulieren wenn ichs wieder verstehe
+RDF ist die Grundlage für Sematic Web, welches seine flexibilität ausnützt. Alle Daten im Semantic Web werden in RDF abgebildet. Wichtig dabei ist, das RDF es ermöglicht Daten zu verknüpfen. Dies führt dazu, dass zu einer Ressource mehr Informationen zusammen getragen werden.
 
 %\subsection{Einsatzgebiete}
 %\label{sec:logischeProgrammierung_herkunft_einsatz}
 \subsection{RDF Data Model}
 \label{sec:owlRdf_rdf_dataModel}
-RDF ermöglicht es Aussagen über Ressourcen zu machen. Der Aufbau dieser Aussagen ist immer gleich und weist die folgende Struktur eines Tripels auf:
+Die Informationen werden in RDF als Aussagen abgebildet. Der Aufbau dieser  ist immer gleich und weist die folgende Struktur eines Tripels auf:
 
 \noindent\hspace*{15mm}<Subjekt><Prädikat><Objekt>
 
@@ -27,24 +26,54 @@ TODO: Beispiel von unserer Ontologie
 
 Eine Entität kann in mehreren Tripeln referenziert werden. Es ist zudem möglich eine Ressource in einer Aussage als Objekt und in einer Anderen als Subjekt zu verwenden. dies ermöglicht es, Verbindungen zwischen mehreren Tripeln herzustellen. Dies ist ein wichtiger Teil von RDF.
 
-Tripel können als Grafen dargestellt werden. Diese bestehen aus Knoten und Pfeilen. die Subjekte und die Objekte werden als Knoten, die Prädikate als Pfeile dargestellt.
+Tripel werden in sogenannte RDF Graphen abgebildet. Diese bestehen aus Knoten und Pfeilen. die Subjekte und die Objekte werden als Knoten, die Prädikate als Pfeile dargestellt.
 
 
 
 TODO Bildli von Unserer Ontologie
 
-Es gibt drei Typen von RDF Daten, welche in Tripeln auftreten, IRIs (oder Ressource Knoten) Literale und Blank Nodes.
+Es gibt drei Typen von RDF Daten, welche in Tripeln auftreten, IRIs (oder Ressource Knoten) Literale und Blank (Leere) Knoten.
 
 \subsubsection{IRIs (International Resource Identifier)}
 \label{sec:owlRdf_rdf_dataModel_iris}
-Wie der Name schon sagt, stellt ein IRI eine Ressource dar. Es gibt verschieden Formen von IRIs, so zum Beispiel die URLs welche als Web Adresse verwendet werden. Eine Andere Form der IRI bietet eine Kennung für eine Ressource ohne den Standort oder den Zugriff preiszugeben. IRIs sind im RFC 3987 spezifiziert.
+Wie der Name schon sagt, stellt ein IRI  eine Ressource dar. Dabei handelt es sich um einen globalen Identifier, IRIS können also von verschiedenen Nutzern wiederverwendet werden. Es gibt verschieden Formen von IRIs, so zum Beispiel die URLs welche als Web Adresse verwendet werden. Eine Andere Form der IRI bietet eine Kennung für eine Ressource ohne den Standort oder den Zugriff preiszugeben. IRIs sind im RFC 3987 spezifiziert.
 
-IRIs kann IRIs can appear in all three positions of a triple.
-w3c
-http://www.w3.org/TR/2012/REC-owl2-primer-20121211/
-http://www.w3.org/2001/sw/wiki/OWL
+\noindent\hspace*{15mm}IRIs kann in allen drei Positionen eines Tripels auftreten.
 
-http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/
+\subsubsection{Literale Knoten}
+\label{sec:owlRdf_rdf_dataModel_literal}
+Der Begriff Literal wird als Synonym für Wert verwendet. Es handelt sich bei Literalen also um Basicwerte die nicht IRIS sind. Literale können Strings, Datumswerte oder auch Nummern sein. Um die Werte richtig zu interpretieren, haben Literale einen Datentyp zugeordnet. Ein String kann zusätzlich eine Sprache zugewiesen haben.
+
+Literale können in einem Tripel nur als Objekt verwendet werden.
+
+\subsubsection{Blank Nodes}
+\label{sec:owlRdf_rdf_dataModel_blankNodes}
+Ein leerer Knoten stellt eine Ressource ohne URI dar. Der Vorteil dieser Knoten ist, dass es keinen globalen Identier braucht. Leere Knoten können mit einer einfachen Variable in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert zweitrangig ist. 
+
+\noindent\hspace*{15mm} Leere Knoten können in einem Tripel in der Subjekt oder der Objekt Position stehen.
+
+
+\subsubsection{Multiple Graphs}
+\label{sec:owlRdf_rdf_dataModel_multipleGraphs}
+
+TODO: brauchts das?
+
+\subsection{RDF Vokabular}
+\label{sec:owlRdf_rdf_voca}
+RDF wird typischerweise in kombination mit Vokabular und Konventionen verwendet, welche Semantische Daten zu Ressourcen zur Verfügung stellen.
+
+Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstützt. Diese ermöglicht semantische Eigenschaften der RDF Daten zu definieren. Es kann damit festgelegt werden, welche Ressoucen an welcher Position verwendet werden.
+
+so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategoriesieren. Die Beziehungen zwischen Instantzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.
+
+TODO Tabelle mit den wichtigsten Schema Konstrukten
+
+
+%w3c
+%http://www.w3.org/TR/2012/REC-owl2-primer-20121211/
+%http://www.w3.org/2001/sw/wiki/OWL
+
+%http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
