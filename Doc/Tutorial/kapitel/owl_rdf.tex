@@ -1,4 +1,4 @@
-\chapter{OWL und RDF}
+\chapter{RDF und OWL}
 \label{chap:owl_Rdf}
 
 \section{RDF}
@@ -21,7 +21,7 @@ Die Informationen werden in RDF als Aussagen abgebildet. Der Aufbau dieser  ist 
 Eine RDF Aussage bildet eine Beziehung zwischen zwei Ressourcen (Entitäten) ab. 
 Subjekt und Objekt stellen die zwei Ressourcen dar. Das Prädikat repräsentiert die Beziehung zwischen den zwei Ressourcen Subjekt und Objekt. Die Beziehung wird in RDF als Property abgebildet. 
  
-TODO: Beispiel von unserer Ontologie
+\noindent\hspace*{15mm} <Eine Programmiersprache> <hat> <ein Programmierparadigma>
 
 
 Eine Entität kann in mehreren Tripeln referenziert werden. Es ist zudem möglich eine Ressource in einer Aussage als Objekt und in einer Anderen als Subjekt zu verwenden. dies ermöglicht es, Verbindungen zwischen mehreren Tripeln herzustellen. Dies ist ein wichtiger Teil von RDF.
@@ -66,7 +66,28 @@ Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstüt
 
 so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategoriesieren. Die Beziehungen zwischen Instantzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.
 
-TODO Tabelle mit den wichtigsten Schema Konstrukten
+\begin{center}
+	\begin{table}[H]
+	 \centering
+		\caption{Schematische Konstrukte}	
+			\begin{tabular}{|l|l|l|} \toprule
+			\textbf{Konstrukt}  & \textbf{Syntaktische Form} & \textbf{Beschreibung} \\ \midrule
+				Class (eine Klasse) & C rdf:type; rdfs:Class& C (eine Ressource) ist eine RDF Klasse \\  \midrule		
+				Property (Eine Klasse) & P rdf:type rdf:Property & P (eine Ressource) ist eine RDF Property\\  \midrule		
+				type (eine Eigenschaft) & I rdf:type C &I (eine Ressource) ist eine Istanz von C (einer Klasse)\\  \midrule
+subClassOf (eine Eigenschaft) & C1 rdfs:subClassOf C2 & C1 (eine Klasse) ist Subklasse von C2 \\  \midrule
+subProptertyOf (eine Eigenschaft) & P1 rdfs:subProptertyOf P2 & P1 (eine Eigenschaft) ist Sub-Property von P2 \\  \midrule
+domain (eine Eigenschaft) & P rdfs:domain C & Domäne von P (einer Eigenschaft) ist C (eine Klasse) \\  \midrule			
+range (eine Eigenschaft) & P rdfs:range C & Bereich von P (einer Eigenschaft) ist C (eine Klasse) \\  \bottomrule
+			\end{tabular}
+		\label{tab:SchematischeKonstrukte}
+	\end{table}
+\end{center}
+
+TODO: Writing RDF graphs wird hier noch ausführlich beschrieben. Nach dem Kapital Graphen Modellierung entscheiden was davon noch nötig ist und einfügen.
+
+\section{OWL}
+\label{sec:owlRdf_owl}
 
 
 %w3c
