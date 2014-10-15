@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY untitled-ontology-7 "http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:untitled-ontology-7="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#">
+    <Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#bestehtAus -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;bestehtAus"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#hatSyntaxElement -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;hatSyntaxElement">
+        <rdfs:domain rdf:resource="&untitled-ontology-7;Prolog"/>
+        <rdfs:range rdf:resource="&untitled-ontology-7;Token"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#nutzt -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;nutzt"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#setztGleich -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;setztGleich"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#substituiert -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;substituiert">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#substituiertMit -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;substituiertMit"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#verwendet -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;verwendet"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#wirdAbgebildet -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;wirdAbgebildet"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#wirdAngewendetAuf -->
+
+    <ObjectProperty rdf:about="&untitled-ontology-7;wirdAngewendetAuf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#EinfachesToken -->
+
+    <Class rdf:about="&untitled-ontology-7;EinfachesToken">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;SprachElement"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Hornklausel -->
+
+    <Class rdf:about="&untitled-ontology-7;Hornklausel">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;Klausel"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;bestehtAus"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;HornklauselElement"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#HornklauselElement -->
+
+    <Class rdf:about="&untitled-ontology-7;HornklauselElement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Klausel -->
+
+    <Class rdf:about="&untitled-ontology-7;Klausel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Kopf -->
+
+    <Class rdf:about="&untitled-ontology-7;Kopf">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;HornklauselElement"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Körper -->
+
+    <Class rdf:about="&untitled-ontology-7;Körper">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;HornklauselElement"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#LogischesElement -->
+
+    <Class rdf:about="&untitled-ontology-7;LogischesElement">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;Token"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Programmiersprache -->
+
+    <Class rdf:about="&untitled-ontology-7;Programmiersprache"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Prolog -->
+
+    <Class rdf:about="&untitled-ontology-7;Prolog">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;Programmiersprache"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;hatSyntaxElement"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;Token"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;verwendet"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;Unifikation"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#SprachElement -->
+
+    <Class rdf:about="&untitled-ontology-7;SprachElement">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;Token"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Substitution -->
+
+    <Class rdf:about="&untitled-ontology-7;Substitution">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;substituiertMit"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Atom"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;substituiert"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Variable"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Token -->
+
+    <Class rdf:about="&untitled-ontology-7;Token"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Unifikation -->
+
+    <Class rdf:about="&untitled-ontology-7;Unifikation">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;wirdAngewendetAuf"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Anfrage"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;setztGleich"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Fakt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;setztGleich"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Regel"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&untitled-ontology-7;nutzt"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;Substitution"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#ZusammengesetztesToken -->
+
+    <Class rdf:about="&untitled-ontology-7;ZusammengesetztesToken">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-7;SprachElement"/>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Anfrage -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Anfrage">
+        <rdf:type rdf:resource="&untitled-ontology-7;LogischesElement"/>
+        <untitled-ontology-7:wirdAbgebildet rdf:resource="&untitled-ontology-7;ZielKlausel"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Atom -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Atom">
+        <rdf:type rdf:resource="&untitled-ontology-7;EinfachesToken"/>
+        <rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#DefiniteKlausel -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;DefiniteKlausel">
+        <rdf:type rdf:resource="&untitled-ontology-7;Hornklausel"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;VariablerKopf"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;VariablerKörper"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Fakt -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Fakt">
+        <rdf:type rdf:resource="&untitled-ontology-7;LogischesElement"/>
+        <untitled-ontology-7:wirdAbgebildet rdf:resource="&untitled-ontology-7;FaktenKlausel"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#FaktenKlausel -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;FaktenKlausel">
+        <rdf:type rdf:resource="&untitled-ontology-7;Hornklausel"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;KonstanterKörper"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;VariablerKopf"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#KonstanterKopf -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;KonstanterKopf">
+        <rdf:type rdf:resource="&untitled-ontology-7;Kopf"/>
+        <rdfs:comment>Kopf ist leer und deshalb  wahr</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#KonstanterKörper -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;KonstanterKörper">
+        <rdf:type rdf:resource="&untitled-ontology-7;Körper"/>
+        <rdfs:comment>Körper  ist leer und deshalb  wahr</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Liste -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Liste">
+        <rdf:type rdf:resource="&untitled-ontology-7;ZusammengesetztesToken"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Regel -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Regel">
+        <rdf:type rdf:resource="&untitled-ontology-7;LogischesElement"/>
+        <untitled-ontology-7:wirdAbgebildet rdf:resource="&untitled-ontology-7;DefiniteKlausel"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Variable -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Variable">
+        <rdf:type rdf:resource="&untitled-ontology-7;EinfachesToken"/>
+        <rdfs:comment>beginnt mit Grossbuchstaben</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#VariablerKopf -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;VariablerKopf">
+        <rdf:type rdf:resource="&untitled-ontology-7;Kopf"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#VariablerKörper -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;VariablerKörper">
+        <rdf:type rdf:resource="&untitled-ontology-7;Körper"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#Zahl -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;Zahl">
+        <rdf:type rdf:resource="&untitled-ontology-7;EinfachesToken"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#ZielKlausel -->
+
+    <NamedIndividual rdf:about="&untitled-ontology-7;ZielKlausel">
+        <rdf:type rdf:resource="&untitled-ontology-7;Hornklausel"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;KonstanterKopf"/>
+        <untitled-ontology-7:bestehtAus rdf:resource="&untitled-ontology-7;VariablerKörper"/>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
