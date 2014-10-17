@@ -114,8 +114,9 @@
 % for futher informations go to http://ewus.de/tipp-1029.html
 %---------------------------------------------------------------------------
 \usepackage[nonumberlist]{glossaries}
+%\usepackage[xindy,nonumberlist]{glossaries}
+\input{./datenbanken/glossar.tex}
 \makeglossaries{}
-\include{datenbanken/glossar}
 %---------------------------------------------------------------------------
 
 % Intro:
@@ -157,11 +158,11 @@
 \include{vorspann/versionen}
 %\cleardoubleemptypage{}
 \setcounter{page}{1}
-%\cleardoublepage{}
-%\phantomsection{}
-%\addcontentsline{toc}{chapter}{Management Summary}
-%\include{vorspann/management_summary}
-%\cleardoubleemptypage
+\cleardoublepage{}
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Management Summary}
+\include{vorspann/management_summary}
+\cleardoubleemptypage
 %---------------------------------------------------------------------------
 
 % Table of contents
@@ -175,10 +176,20 @@
 %---------------------------------------------------------------------------
 \pagenumbering{arabic}
 \include{kapitel/einleitung}
-\include{kapitel/wissensdomaene}
-\include{kapitel/komponenten}
-\include{kapitel/technischeUmsetzung}
-\include{kapitel/ziel}
+\include{kapitel/aufgabenstellung}
+\include{kapitel/vorgehen}
+\include{kapitel/loesungsansatz}
+\include{kapitel/implementation}
+\include{kapitel/fazit}
+\include{kapitel/schlussbemerkung}
+%---------------------------------------------------------------------------
+
+% Selbständigkeitserklärung
+%---------------------------------------------------------------------------
+\cleardoublepage{}
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Selbständigkeitserklärung}
+\include{vorspann/selbstaendigkeitserklaerung}
 %---------------------------------------------------------------------------
 
 % Glossary
@@ -224,7 +235,7 @@
 %---------------------------------------------------------------------------
 \appendix
 \settocdepth{section}
-%\include{anhang/beispielanhang}
+\include{anhang/anhang}
 %---------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------
