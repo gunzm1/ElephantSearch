@@ -142,3 +142,4 @@ Thumbs.db
 
 *.tps
 *.tcp
+*catalog-*.xml
