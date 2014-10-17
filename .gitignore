@@ -141,3 +141,4 @@ Doc/Anforderungen/*.pdf
 Thumbs.db
 
 *.tps
+*.tcp
