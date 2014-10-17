@@ -7,12 +7,12 @@
 Das RDF Kapitel basiert auf der Spezifikation von w3 \cite{w3rdf}.\\
 Das "`Resource Description Framework"' RDF ist ein Framework um Informationen aus Ressourcen zu formulieren. Ressourcen können Dokumente, Leute, Objekte aber auch abstrakter Inhalt darstellen. Mit RDF können Informationen im Web von Anwendungen verarbeitet werden, anstatt sie nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne Bedeutung zu verlieren. 
 
-RDF ist die Grundlage für Sematic Web, welches seine flexibilität ausnützt. Alle Daten im Semantic Web werden in RDF abgebildet. Wichtig dabei ist, das RDF es ermöglicht Daten zu verknüpfen. Dies führt dazu, dass zu einer Ressource mehr Informationen zusammen getragen werden.\cite{cambSemRDF}
+RDF ist die Grundlage für Sematic Web, welches seine flexibilität ausnützt. Alle Daten im Semantic Web werden in RDF abgebildet. Wichtig dabei ist, dass RDF es ermöglicht Daten zu verknüpfen. Dies führt dazu, dass zu einer Ressource mehr Informationen zusammen getragen werden.\cite{cambSemRDF}
 
 %\subsection{Einsatzgebiete}
 %\label{sec:logischeProgrammierung_herkunft_einsatz}
 \subsection{RDF Data Model}
-\label{sec:owlRdf_rdf_dataModel}
+\label{subsec:owlRdf_rdf_dataModel}
 Die Informationen werden in RDF als Aussagen abgebildet. Der Aufbau dieser  ist immer gleich und weist die folgende Struktur eines Tripels auf:
 
 \noindent\hspace*{15mm}<Subjekt><Prädikat><Objekt>
@@ -25,7 +25,7 @@ Subjekt und Objekt stellen die zwei Ressourcen dar. Das Prädikat repräsentiert
 
 Eine Entität kann in mehreren Tripeln referenziert werden. Es ist zudem möglich eine Ressource in einer Aussage als Objekt und in einer Anderen als Subjekt zu verwenden. dies ermöglicht es, Verbindungen zwischen mehreren Tripeln herzustellen. Dies ist ein wichtiger Teil von RDF.
 
-Tripel werden in sogenannte RDF Graphen abgebildet. Diese bestehen aus Knoten und Pfeilen. die Subjekte und die Objekte werden als Knoten, die Prädikate als Pfeile dargestellt.
+Tripel werden in sogenannte RDF Graphen abgebildet. Diese bestehen aus Knoten und Pfeilen. die Subjekte und die Objekte werden als Knoten, die Prädikate als Pfeile dargestellt. Genaueres dazu findet sich im Kapitel \nameref{chap:graph_data}
 
 
 
@@ -35,7 +35,7 @@ Es gibt drei Typen von RDF Daten, welche in Tripeln auftreten, IRIs (oder Ressou
 
 \subsubsection{IRIs (International Resource Identifier)}
 \label{sec:owlRdf_rdf_dataModel_iris}
-Wie der Name schon sagt, stellt ein IRI  eine Ressource dar. Dabei handelt es sich um einen globalen Identifier, IRIS können also von verschiedenen Nutzern wiederverwendet werden. Es gibt verschieden Formen von IRIs, so zum Beispiel die URLs welche als Web Adresse verwendet werden. Eine Andere Form der IRI bietet eine Kennung für eine Ressource ohne den Standort oder den Zugriff preiszugeben. IRIs sind im RFC 3987 spezifiziert.
+Wie der Name schon sagt, stellt ein IRI  eine Ressource dar. Dabei handelt es sich um einen globalen Identifier, IRIS können also von verschiedenen Nutzern wiederverwendet werden. Es gibt verschieden Formen von IRIs, so zum Beispiel die URLs welche als Web Adresse verwendet werden. Eine Andere Form der IRI bietet eine Kennung für eine Ressource ohne den Standort oder den Zugriff preiszugeben.% IRIs sind im RFC 3987 spezifiziert.
 
 \noindent\hspace*{15mm}IRIs kann in allen drei Positionen eines Tripels auftreten.
 
@@ -47,7 +47,7 @@ Literale können in einem Tripel nur als Objekt verwendet werden.
 
 \subsubsection{Blank Nodes}
 \label{sec:owlRdf_rdf_dataModel_blankNodes}
-Ein leerer Knoten stellt eine Ressource ohne URI dar. Der Vorteil dieser Knoten ist, dass es keinen globalen Identier braucht. Leere Knoten können mit einer einfachen Variable in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert zweitrangig ist. 
+Ein leerer Knoten stellt eine Ressource ohne URI dar. Der Vorteil dieser Knoten ist, dass es keinen globalen Identifier braucht. Leere Knoten können mit einer einfachen Variable in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert zweitrangig ist. 
 
 \noindent\hspace*{15mm} Leere Knoten können in einem Tripel in der Subjekt oder der Objekt Position stehen.
 
@@ -59,11 +59,11 @@ TODO: brauchts das?
 
 \subsection{RDF Vokabular}
 \label{sec:owlRdf_rdf_voca}
-RDF wird typischerweise in kombination mit Vokabular und Konventionen verwendet, welche Semantische Daten zu Ressourcen zur Verfügung stellen.
+RDF wird typischerweise in Kombination mit Vokabular und Konventionen verwendet, welche Semantische Daten zu Ressourcen zur Verfügung stellen.
 
-Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstützt. Diese ermöglicht semantische Eigenschaften der RDF Daten zu definieren. Es kann damit festgelegt werden, welche Ressoucen an welcher Position verwendet werden.
+Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstützt. Diese ermöglicht semantische Eigenschaften der RDF Daten zu definieren. Es kann damit festgelegt werden, welche Ressourcen an welcher Position verwendet werden.
 
-so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategoriesieren. Die Beziehungen zwischen Instantzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.
+so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategorisieren. Die Beziehungen zwischen Instanzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.
 
 \begin{center}
 	\begin{table}[H]
@@ -88,16 +88,59 @@ TODO: Writing RDF graphs wird hier noch ausführlich beschrieben. Nach dem Kapit
 \section{OWL}
 \label{sec:owlRdf_owl}
 
-Bei OWL (Web Ontology Language) handelt es sich um die Ontologie Sprache für das Semantische Web. (http://www.cambridgesemantics.com/semantic-university/owl-101) Also um eine Sprache um Ontologien auszudrücken. Wie bei RDF wurde OWL Entwickelt um Informationen nicht nur anzuzeigen sondern auch zu verarbeiten. Durch zusätzliches Vokabular wie zum Beispiel Beziehungen zwischen Klassen und erweiterte formale Semantik hat der Benutzer mehr Möglichkeiten als bei RDF oder auch XML. OWL basiert aber technische gesehen auf der RDF Syntax. Die Verknüpfung und Darstellung von Termen in Vokabularien und deren Verknüpfungen wird in OWL als Ontologie bezeichnet. Ausserdem kann OWL maschineninterpretierbare Inhalt im Web repräsentieren.  
+Bei OWL (Web Ontology Language) und OWL2 handelt es sich um die Ontologie Sprache für das Semantische Web.\cite{cambSemOWL} Also um eine Sprache um Ontologien auszudrücken. Wie bei RDF wurde OWL Entwickelt um Informationen nicht nur anzuzeigen sondern auch zu verarbeiten. Durch zusätzliches Vokabular wie zum Beispiel Beziehungen zwischen Klassen und erweiterte formale Semantik hat der Benutzer mehr Möglichkeiten als bei RDF oder auch XML. \\OWL basiert aber technische gesehen auf der RDF Syntax. %Die Verknüpfung und Darstellung von Termen in Vokabularien und deren Verknüpfungen wird in OWL als Ontologie bezeichnet. Besonders an OWL ist ausserdem, dass es maschineninterpretierbare Inhalt im Web repräsentieren.  
 
-OWL 2 ist eine Wissensbasiert repräsentationssprache. 
+\subsection{OWL Syntax}
+\label{subsec:owlRdf_owl_syntax}
+Für OWl stehen verschiedene Schreibweisen zur Verfügung, welche für verschieden Anwendungszwecke gedacht sind:
+\begin{itemize}
+	\item RDF/XML Syntax für OWL: entspricht RDF/XML Syntax mit einer speziellen Übersetzen für OWL Konstrukte. Dabei handelt es sich um die einzige Syntax, welche von allen OWL 2 Tools unterstützt werden soll.
+	\item OWL/XML Syntax: XML Syntax für OWL
+	\item Functional-Style Syntax: Zur Vereinfachung von Spezifikationszweck; Unterstützt Grundlagen zur Implementation von OWL 2 wie APIs und Reasoners
+	\item Turtle Syntax: TODO 
+	\item Manchester Syntax: Vereinfacht das lesen für nicht logik affine Leser.
+\end{itemize}
+es gibt Werkzeuge, welche die Übersetzung zwischen den verschiedenen Schreibweisen vornimmt.
 
-\subsection{OWL Lite, OWL DL und OWL Full}
-\label{sec:owlRdf_owl_Untersprachen}
-OWL ist in drei Untersprachen gegliedert. Jede dieser Sprachen wurde für Verwendung durch verschiedene Gruppen entwickelt.
+Bei OWL2 handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschreibt OWL nicht wie ein Dokument aufgebaut sein muss. So kann auch nicht vorgeschrieben werden, das ein bestimmtes Element vorhanden sein muss.
 
-\subsubsection{OWL Lite}
-\label{sec:owlRdf_owl_Untersprachen_OWLLite}
+
+\subsection{Wissen modellieren}
+\label{subsec:owlRdf_owl_wissenModellieren}
+OWL bildet Wissen einer Domaine ab. Es handelt sich also um eine Wissensbasierte Repräsentationssprache.
+
+Um das Abbilden von Wissen zu erklähren sollen hier
+
+Grund Notationen:
+- Axion Basis Statement 
+- Entitäten: Elemente für Real world Obejkte
+- Expressions: Kombination aus Entitäten um komplexe Beschreibungen zu machen
+
+
+Keine Möglichkeit das sämtliche Aspekte des Menschlichen Wissen abzubilden. starke modellierungssprache. -> Ergebnis Ontologie.
+Basic Propositione wie "`Prolog verwendet Unifikation"' -> Stücke des Wissens -> Aussagen werden Axiome genant.
+
+OWL Aussage je nach Sachlage wahr oder falsch. -> Unterschied zu Entitäten und Expressions.
+
+Ein Mensch kann Schlussfolgern. Wenn eine Aussage war ist, ist die andere Auch war. A für zu B
+
+-> OWL Tools: Reasoners: Kann Konsequenzen ermitteln. Der weg wie Axiome interagieren kann schwer zu versthen sein. so ist es eine Stärke und eine Schwäche von OWL. -> kann Infos aufdecken welche ein Mensch nicht sieht. Schwäche -> schwierig für den Mensche die unmittelbar wirkung vorherzusehen
+
+Entitäten:
+ wesentliche Bestanteile einer Aussage wie zb Prolog, die Relation verwendet werden Entitäten genannt. Konkrete objekte als Individuals; Categorien als Klassen; Beziehunge als Properties; ObjektProperties (wert zu objekt: Person zu einem Ehegatten) und Datatypproperty ( Datenwert zu Objekt: alter zu einer Person); AnnotationPropertie: Information zu konkrete Ontologie (Autor und erzeugungsdatum eines Axioms)
+
+Expression: 
+enitäten könen mithilfe eines Construktors kombiniert werden. Bsp Klasse Prolog + Klasse Unifikation.
+-> kann als neue Entität angesehen werden
+Expressionsprache für Klassen ist sehr mächtig; Expressionsprache für Properties ist schwächer. TODO: Wenden wir das richtig an?
+
+ab hier weiter: 4 Classes, Properties, and Individuals – And Basic Modeling With Them
+
+
+
+\subsection{OWL Untersprachen}
+\label{subsec:owlRdf_owl_Untersprachen}
+TODO: OWL ist in drei Untersprachen gegliedert. Jede dieser Sprachen wurde für Verwendung durch verschiedene Gruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich in OWL2 QL, OWL2 EL und OWL2 RL. Dabei handelt es sich um weitere Unterklassen von OWL2 DL welche wiederum eine Untersprache von OWL2 Full ist.
 
 
 %w3c
