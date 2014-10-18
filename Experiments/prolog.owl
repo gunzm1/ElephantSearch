@@ -17,7 +17,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:untitled-ontology-7="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7#">
-    <Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-7"/>
+    <Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog_Ontology"/>
     
 
 
@@ -172,14 +172,14 @@
         <rdfs:subClassOf rdf:resource="&untitled-ontology-7;Programmiersprache"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&untitled-ontology-7;hatSyntaxElement"/>
-                <someValuesFrom rdf:resource="&untitled-ontology-7;Token"/>
+                <onProperty rdf:resource="&untitled-ontology-7;verwendet"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;Unifikation"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&untitled-ontology-7;verwendet"/>
-                <someValuesFrom rdf:resource="&untitled-ontology-7;Unifikation"/>
+                <onProperty rdf:resource="&untitled-ontology-7;hatSyntaxElement"/>
+                <someValuesFrom rdf:resource="&untitled-ontology-7;Token"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -199,14 +199,14 @@
     <Class rdf:about="&untitled-ontology-7;Substitution">
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&untitled-ontology-7;substituiertMit"/>
-                <hasValue rdf:resource="&untitled-ontology-7;Atom"/>
+                <onProperty rdf:resource="&untitled-ontology-7;substituiert"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Variable"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&untitled-ontology-7;substituiert"/>
-                <hasValue rdf:resource="&untitled-ontology-7;Variable"/>
+                <onProperty rdf:resource="&untitled-ontology-7;substituiertMit"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Atom"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -231,13 +231,13 @@
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&untitled-ontology-7;setztGleich"/>
-                <hasValue rdf:resource="&untitled-ontology-7;Fakt"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Regel"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&untitled-ontology-7;setztGleich"/>
-                <hasValue rdf:resource="&untitled-ontology-7;Regel"/>
+                <hasValue rdf:resource="&untitled-ontology-7;Fakt"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
