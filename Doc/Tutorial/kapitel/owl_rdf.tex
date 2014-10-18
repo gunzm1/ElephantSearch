@@ -88,7 +88,7 @@ TODO: Writing RDF graphs wird hier noch ausführlich beschrieben. Nach dem Kapit
 \section{OWL}
 \label{sec:owlRdf_owl}
 
-Bei OWL (Web Ontology Language) und OWL2 handelt es sich um die Ontologie Sprache für das Semantische Web.\cite{cambSemOWL} Also um eine Sprache um Ontologien auszudrücken. Wie bei RDF wurde OWL Entwickelt um Informationen nicht nur anzuzeigen sondern auch zu verarbeiten. Durch zusätzliches Vokabular wie zum Beispiel Beziehungen zwischen Klassen und erweiterte formale Semantik hat der Benutzer mehr Möglichkeiten als bei RDF oder auch XML. \\OWL basiert aber technische gesehen auf der RDF Syntax. %Die Verknüpfung und Darstellung von Termen in Vokabularien und deren Verknüpfungen wird in OWL als Ontologie bezeichnet. Besonders an OWL ist ausserdem, dass es maschineninterpretierbare Inhalt im Web repräsentieren.  
+Das folgende Kapitel Basiert auf der w3.org Spezifikation.\cite{w3owl} Bei OWL (Web Ontology Language) und OWL2 handelt es sich um die Ontologie Sprache für das Semantische Web.\cite{cambSemOWL} Also um eine Sprache um Ontologien auszudrücken. Wie bei RDF wurde OWL Entwickelt um Informationen nicht nur anzuzeigen sondern auch zu verarbeiten. Durch zusätzliches Vokabular wie zum Beispiel Beziehungen zwischen Klassen und erweiterte formale Semantik hat der Benutzer mehr Möglichkeiten als bei RDF oder auch XML. \\OWL basiert aber technische gesehen auf der RDF Syntax. %Die Verknüpfung und Darstellung von Termen in Vokabularien und deren Verknüpfungen wird in OWL als Ontologie bezeichnet. Besonders an OWL ist ausserdem, dass es maschineninterpretierbare Inhalt im Web repräsentieren.  
 
 \subsection{OWL Syntax}
 \label{subsec:owlRdf_owl_syntax}
@@ -107,35 +107,117 @@ Bei OWL2 handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschr
 
 \subsection{Wissen modellieren}
 \label{subsec:owlRdf_owl_wissenModellieren}
-OWL bildet Wissen einer Domaine ab. Es handelt sich also um eine Wissensbasierte Repräsentationssprache.
+bei OWL handelt sich also um eine Wissensbasierte Repräsentationssprache. Sie bildet Wissen einer Domäne ab. Es wird also versucht, eine Domäne in OWL so abzubilden, dass das menschliche Wissen wiederspiegelt wird. Dabei gibt es keine Möglichkeit, sämtliche Aspekte des menschlichen Wissens abzubilden. OWL kann aber als mächtige Modellierungssprache bezeichnet wird. Das Ergebnis einer Modellierung nennt man Ontologie.
 
-Um das Abbilden von Wissen zu erklähren sollen hier
-
-Grund Notationen:
-- Axion Basis Statement 
-- Entitäten: Elemente für Real world Obejkte
-- Expressions: Kombination aus Entitäten um komplexe Beschreibungen zu machen
+Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der Grundsätzliche Aufbau von OWL beschrieben. Die Grundlegenden Elemente werden als Axiome, Entitäten und Expressions (Ausdrücke) bezeichnet.
 
 
-Keine Möglichkeit das sämtliche Aspekte des Menschlichen Wissen abzubilden. starke modellierungssprache. -> Ergebnis Ontologie.
-Basic Propositione wie "`Prolog verwendet Unifikation"' -> Stücke des Wissens -> Aussagen werden Axiome genant.
+\begin{itemize}
+	\item Axiom: Basis Statements;\\ Grundaussagen  oder Basispropositionen wie "`Prolog verwendet Unifikation"' werden in OWL Axiome genannt. Es handelt sich  um "`Stücke des Wissens "` welche je nach Sachlage wahr oder falsch sein können. Dies unterscheidet Axiome grundlegend von Entitäten und Expression.
+	\item Entitäten; Elemente welche konkrete Objekte aus der realen Welt abbilden:\\Grundbestandteile einer Aussage wie zum Beispiel die Objekte Prolog und Unifikation oder die Beziehung verwendet, werden allgemein Entitäten genannt. Konkrete Objekte werden dabei als Individuals, Kategorien als Klassen und  Beziehungen als Properties bezeichnet. Beziehungen werden Unterteilt in ObjectProperties (Wert zu Objekt), DataTypProperties (Datenwert zu Ojbekt) und AnnotationProperties (Information zu der Ontologie selber).
+	\item Expression (Ausdruck); kombinationen aus Enitiäten um komplexe Beschreibungen aufzubauen:\\ Entitäten können mithilfe eines Konstruktors kombiniert werden. Zum Beispiele Prolog und die Klasse Unifikation. Diese Vereinigung wird als Class Expression abgebildet und könnte als neue Entität angesehen werden. (todo Beispiel). Die Expressionsprache für Klassen ist sehr mächtig; Expressionsprache für Properties hingegen ist schwächer. 
+\end{itemize}
+Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, das es Situationen gibt, bei welcher aus einer Tatsache eine nächste Folgt. Wenn also eine Aussage wahr ist, folgt daraus, dass eine andere auch zutrifft. Dies wird in OWL Tools, sogenannten Reasoners, umgesetzt. Ein Reasoner kann also Konsequenzen ermitteln. Es kann schwierig zu verstehen sein, wie Axiome miteinander interagieren. Dieser Zusammenhang kann als Stärke und als Schwäche von OWL angeschaut werden. Eine Stärke, weil er Reasoner informationen aufdeckt, welche ein Mensch nicht erkennen würde. Eine Schwäche weil es schwer ist, die unmittelbare Wirkung vorherzusehen.
 
-OWL Aussage je nach Sachlage wahr oder falsch. -> Unterschied zu Entitäten und Expressions.
+\subsection{Die wichtigsten Elemente von OWL}
+\label{subsec:owlRdf_owl_wichtigsteElemente}
 
-Ein Mensch kann Schlussfolgern. Wenn eine Aussage war ist, ist die andere Auch war. A für zu B
+\subsubsection{Classes, Subclasses und Individuals }
+\label{subsubsec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Classen}
 
--> OWL Tools: Reasoners: Kann Konsequenzen ermitteln. Der weg wie Axiome interagieren kann schwer zu versthen sein. so ist es eine Stärke und eine Schwäche von OWL. -> kann Infos aufdecken welche ein Mensch nicht sieht. Schwäche -> schwierig für den Mensche die unmittelbar wirkung vorherzusehen
 
-Entitäten:
- wesentliche Bestanteile einer Aussage wie zb Prolog, die Relation verwendet werden Entitäten genannt. Konkrete objekte als Individuals; Categorien als Klassen; Beziehunge als Properties; ObjektProperties (wert zu objekt: Person zu einem Ehegatten) und Datatypproperty ( Datenwert zu Objekt: alter zu einer Person); AnnotationPropertie: Information zu konkrete Ontologie (Autor und erzeugungsdatum eines Axioms)
+Klassen: EinfachesToken ist eine Klasse \\
+\noindent\hspace*{15mm} <Class rdf:about="'\&Prolog\_Ontology;EinfachesToken"'> \\ 
 
-Expression: 
-enitäten könen mithilfe eines Construktors kombiniert werden. Bsp Klasse Prolog + Klasse Unifikation.
--> kann als neue Entität angesehen werden
-Expressionsprache für Klassen ist sehr mächtig; Expressionsprache für Properties ist schwächer. TODO: Wenden wir das richtig an?
 
-ab hier weiter: 4 Classes, Properties, and Individuals – And Basic Modeling With Them
+Subklassen: EinfachesToken ist Subklass von SprachElement \\
+\noindent\hspace*{15mm}     <Class rdf:about="'\&Prolog\_Ontology;EinfachesToken"'>\\
+\noindent\hspace*{25mm}       <rdfs:subClassOf rdf:resource="'\&Prolog\_Ontology;SprachElement"'/>\\
+\noindent\hspace*{15mm}  </Class> \\
+Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen sondern auch um Klassen Hierarchien zu modellieren. Also ein Abbilden der allgemeinen Beziehung der Klassen. Zum Beispiel die Relation:  Prolog ist eine Programmiersprache.\\
 
+		
+Individuum:Es gibt ein NamedIndividual der Klasse einfaches Token mit der Bezeichnung Atom. Individuals können auch von mehreren Klassen gleichzeitig sein\\
+\noindent\hspace*{15mm}      <NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
+\noindent\hspace*{25mm}         <rdf:type rdf:resource="\&Prolog\_Ontology;EinfachesToken"/>\\
+\noindent\hspace*{25mm}         <rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
+\noindent\hspace*{15mm}      </NamedIndividual>\\                                                       
+		
+
+Klassen könne gleichgestellt werden: Die Klasse Person und die Klasse Human entsprechen sich. TODO Bsp aus unserer Hirachie sobald wirs haben.\\
+\noindent\hspace*{15mm} <owl:Class rdf:about="Person"'>\\
+\noindent\hspace*{25mm}  <owl:equivalentClass rdf:resource="Human"/>\\
+\noindent\hspace*{15mm}</owl:Class>\\
+
+
+Klassen gegenseitig Ausschliessen: Idividuals dürfen nur von der Klasse Woman oder der Klasse Man sein (TODO Beispiel sobald wir eins haben)\\
+\noindent\hspace*{15mm}<owl:AllDisjointClasses>\\
+\noindent\hspace*{25mm}   <owl:members rdf:parseType="Collection"'>\\
+\noindent\hspace*{35mm}     <owl:Class rdf:about="Woman"/>\\
+\noindent\hspace*{35mm}     <owl:Class rdf:about="Man"/>\\
+\noindent\hspace*{25mm}   </owl:members>\\
+\noindent\hspace*{15mm} </owl:AllDisjointClasses> \\
+
+
+\label{subsubsec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Propertys}
+
+
+Objekt Eigenschaft: Es gibt eine Beziehung verwendet zwischen zwei Klassen\\
+\noindent\hspace*{15mm} ObjectProperty -  <ObjectProperty rdf:about="\&Prolog\_Ontology;verwendet"/>\\
+
+\noindent\hspace*{15mm}<rdf:Description rdf:about="John"'>\\
+\noindent\hspace*{25mm}   <hasWife rdf:resource="Mary"/> \\
+\noindent\hspace*{15mm} </rdf:Description>\\
+TODO: ds gibts bei uns niergens, ich glaub wir haben da noch was falsch!\\
+
+%Restriciton:             <Restriction>
+%                <onProperty rdf:resource="\&Prolog\_Ontology;hatSyntaxElement"/>
+%                <someValuesFrom rdf:resource="\&Prolog\_Ontology;Token"/>
+%</Restriction> - Prolog verwendet Token
+						
+Subeigenschaft: Eigenschaft hasWife ist Subeigenschaft von Eigenschaft hasSpouse	(TODO: beispiel aus unserer Ontology sobald wir diese Form nutzten)\\										
+\noindent\hspace*{15mm}subPropertyOf:  <owl:ObjectProperty rdf:about="hasWife"'>\\
+\noindent\hspace*{25mm}  <rdfs:subPropertyOf rdf:resource="hasSpouse"'/>\\
+\noindent\hspace*{15mm}</owl:ObjectProperty  - Property A ist supProperty von B\\
+
+
+Es kann eingeschränkt werden auf welche und mit welcher Klasse einer Domäne eine Objekteigenschaft angewendet werden darf: die Beziehung hatSyntaxElement darf auf Prolog mit Token angewendet werden.\\
+\noindent\hspace*{15mm}    <ObjectProperty rdf:about="\&Prolog\_Ontology;hatSyntaxElement"'>\\
+\noindent\hspace*{25mm}       <rdfs:domain rdf:resource="\&Prolog\_Ontology;Prolog"/>\\
+\noindent\hspace*{25mm}       <rdfs:range rdf:resource="\&Prolog\_Ontology;Token"/>\\
+\noindent\hspace*{15mm}    </ObjectProperty>\\
+		
+		
+Verschiedenheit von Individuen festlegen:  Atom und Variablen sind unterschiedliche Individuen.\\
+\noindent\hspace*{15mm}<rdf:Description rdf:about="Konstante"'>\\
+\noindent\hspace*{25mm}  <owl:differentFrom rdf:resource="Variable"/>\\
+\noindent\hspace*{15mm} </rdf:Description>\\
+
+
+ Verschiedenheit kann so festgelegt werden:\\
+\noindent\hspace*{15mm}   <rdf:Description>\\
+\noindent\hspace*{25mm}       <rdf:type rdf:resource="\&owl;AllDifferent"'/>\\
+\noindent\hspace*{35mm}       <distinctMembers rdf:parseType="Collection"'>\\
+\noindent\hspace*{45mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Konstante"'/>\\
+\noindent\hspace*{45mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Variable"'/>\\
+\noindent\hspace*{35mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Zahl"/>\\
+\noindent\hspace*{25mm}        </distinctMembers>\\
+\noindent\hspace*{15mm}   </rdf:Description>\\
+
+
+Individuen miteinander gleich setzten: Atom und Konstante sind das gleiche Individuum.\\
+\noindent\hspace*{15mm}    <NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
+\noindent\hspace*{25mm}        <rdf:type rdf:resource="'\&Prolog\_Ontology;EinfachesToken"'/>\\
+\noindent\hspace*{25mm}        <rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
+\noindent\hspace*{25mm}        <sameAs rdf:resource="'\&Prolog\_Ontology;Konstante"'/>\\
+\noindent\hspace*{15mm}    </NamedIndividual>\\
+
+
+
+Datentypen Eigenschaft: TODO: bei uns anwenden.\\
+\noindent\hspace*{15mm} <Person rdf:about="'John"'>\\
+\noindent\hspace*{25mm}   <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema\#integer"'>51</hasAge>\\
+\noindent\hspace*{15mm} </Person>\\
 
 
 \subsection{OWL Untersprachen}
