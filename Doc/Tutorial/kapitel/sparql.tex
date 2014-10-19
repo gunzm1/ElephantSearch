@@ -1,8 +1,159 @@
 \chapter{SPARQL}
 \label{chap:sparql}
 
+Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF, welche es erlaubt datenquellenübergreifende Abfragen vorzunehmen. Dabei werden Anfragen in Graphen vollzogen, auch entlang derer Konjunktionen und Dijunktionen. SPARQL unterstützt zudem Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF Graphen (vgl.~\cite[Abstract]{w3sparql_querylang}).
 
-Das folgende Kapitel basiert auf~\cite{w3sparql}.
+Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
+\begin{itemize}
+    \item Einem oder mehreren Namespaces
+    \item Variablen
+    \item Einem (Teil-) Graphen
+    \item Einer Menge von Gruppierungen und Aggregationen
+    \item Einer Menge von Modifikatoren
+\end{itemize}
+(vgl.~\cite[18.1.10 SPARQL Query]{w3sparql_querylang})
+
+Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.
+
+\section{Beispiel einer SPARQL Abfrage}
+\label{sec:sparql_beispiel}
+
+Gegeben sei die folgende Datenbasis:
+\lstset{caption={Einfache Datenbasis direkt in SPARQL\protect\footnotemark}}
+\lstset{language=XML}
+\begin{lstlisting}
+    <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> "SPARQL Tutorial".
+\end{lstlisting}
+\footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
+
+Die Datenbasis beinhaltet das Objekt \textit{book1} mit dem Attribut \textit{title}, welches den Wert \textit{``SPARQL Tutorial''} enthält.
+
+Möchte man nun den Titel des Buches abfragen, so kann dies mit folgender Abfrage vorgenommen werden:
+\lstset{caption={Beispiel einer einfachen SPARQL Abfrage\protect\footnotemark}}
+\begin{lstlisting}
+    SELECT ?title
+    WHERE
+    {
+      <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> ?title .
+    }
+\end{lstlisting}
+\footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
+
+Die obige Abfrage ergibt folgendes Resultat:
+\noindent\hspace*{15mm}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{title}} \\ \hline
+        ``SPARQL Tutorial''                    \\ \hline
+    \end{tabular}
+    \caption{Resultat einer einfachen SPARQL Abfrage\protect\footnotemark}
+\end{table}
+\footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
+
+\section{Namespaces}
+\label{sec:sparql_namespaces}
+
+Da es sich bei SPARQL um eine Abfragesprache für RDF handelt und dieses auf XML basiert, sind XML Namespaces auch in SPARQL verfügbar. Bei Namespaces handelt es sich im Prinzip um Module, in Form anderer XML basierter Dokumente, welche referenziert und genutzt werden können. Ein (XML-) Namespace besteht aus einem Kürzel (welches auch leer sein kann), sowie der kompletten Adresse der Ressource (vgl.~\cite[2.1 Introduction]{w3rdf_syntax}).
+
+\lstset{language=XML,
+  caption={Beispiel von Namespaces in RDF\protect\footnotemark},
+  frame=L,
+  basicstyle=\small\normalfont\sffamily,  % the size of the fonts that are used for the code
+  stepnumber=1,                           % the step between two line-numbers.
+                                          % If it is 1 each line will be numbered
+  numbersep=10pt,                         % how far the line-numbers are from the code
+  tabsize=2,                              % tab size in blank spaces
+  extendedchars=true,                     %
+  breaklines=true,                        % sets automatic line breaking
+  captionpos=b,                           % sets the caption-position to bottom
+  mathescape=true,
+  showspaces=false,                       % Leerzeichen anzeigen ?
+  showtabs=false,                         % Tabs anzeigen ?
+  xleftmargin=17pt,
+  framexleftmargin=17pt,
+  framexrightmargin=17pt,
+  framexbottommargin=5pt,
+  framextopmargin=5pt,
+  showstringspaces=false                  % Leerzeichen in Strings anzeigen ?
+  belowcaptionskip=5em,
+  belowskip=3em,
+  aboveskip=3em
+ }
+\begin{lstlisting}
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  % chktex 1
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:ex="http://example.org/stuff/1.0/">
+\end{lstlisting}
+\footnotetext{\cite[2.6 Completing the Document: Document Element and XML Declaration]{w3rdf_syntax}}
+
+\section{(Teil-) Graphen}
+\label{sec:sparql_graph}
+
+SPARQL basiert auf dem Matching eine (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Trippeln.
+
+Es wird zwischen den folgenden Arten von Teilgraphen unterschieden:
+\begin{itemize}
+    \item Grundlegende Teilgraphen
+    Hier muss eine Menge von Trippeln denen in dem gegebenen Graphen entsprechen
+    \item Gruppierende Teilgraphen
+    Hier müssen alle Elemente einer Menge von grundlegenden Teilgraphen denen in dem gegebenen Graphen entsprechen
+    \item Optionale Teilgraphen
+    Zusätzliche Teilgraphen können die Lösungsmenge erweitern
+    \item Alternative Teilgraphen
+    Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gegebenen Graphen entsprechen
+    \item Teilgraphen in namensbasierten Graphen
+    Es wird versucht Teilgraphen denen in dem gegebenen, namensbasierten Graphen zu entsprechen
+\end{itemize}
+
+Ein grundlegender Teilgraph ist also eine Menge von Trippeln, wobei ein Trippel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
+
+\lstset{caption={Beispiel eines grundlegen Teilgraphen in SPARQL}}
+\lstset{language=XML}
+\begin{lstlisting}
+    ?subject ?predicate ?object.
+\end{lstlisting}
+
+Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
+
+In einem SPARQL-Abfragestring wird ein gruppierender Teilgraph immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppe zu Filtern, dazu wird das \textit{FILTER} Schlüsselwort eingesetzt. Dieses bezieht sich immer auf die Gruppe, in welcher es angwendet wird.
+
+\lstset{caption={Beispiel eines gruppierenden Teilgraphen mit \textit{FILTER} Schlüsselwort\protect\footnotemark}}
+\lstset{language=XML}
+\begin{lstlisting}
+    {
+        ?x foaf:name ?name.
+        ?x foaf:mbox ?mbox.
+        FILTER regex(?name, "Smith")
+    }
+\end{lstlisting}
+\footnotetext{\cite[5.2.2 Scope of Filters]{w3sparql_querylang}}
+
+In obigem Beispiel werden alle Objekte sowie die Werte derer Attribute \textit{name} und \textit{mbox} des Namespaces \textit{foaf} abgefragt. Dabei kann eine komplette leere Menge --- wenn keine Objekte vorhanden sind --- oder aber eine leere Teilmenge --- wenn ein Objekt z.B. nicht über beide Attribute verfügt --- zurückgegeben werden. Die resultierende Menge wird anschliessend gefiltert, so dass nur Objekte zurückbleiben, welche über ein Attribut \textit{foaf:name} verfügen und dessen Inhalt \textit{``Smith''} ist.
+
+\section{Gruppierungen und Aggregationen}
+\label{sec:sparql_gruppierungenaggregationen}
+
+Aggregationen wenden Ausdrücke auf eine Lösungsmenge an, wobei eine Lösung normalerweise eine einzelne Gruppe mit allen Lösungen darin enthält. Gruppierungen werden mittels \textit{GROUP BY} angegeben.
+SPARQL unterstützt aktuell die Aggregationen \textit{COUNT}, \textit{SUM}, \textit{MIN}, \textit{MAX}, \textit{AVG}, \textit{GROUP\_CONCAT} und \textit{SAMPLE}. Eine Aggregation kommt dann zum Einsatz, wenn ein Resultat über eine Gruppe von Lösungen berechnet werden soll, wie zum Beispiel den maximalen Wert einer bestimmten Variable (vgl.~\cite[11 Aggregates]{w3sparql_querylang}).
+
+\lstset{caption={Beispiel einer Abfrage mit Gruppierung und Aggregation\protect\footnotemark}}
+\lstset{language=SQL}
+\begin{lstlisting}
+    PREFIX books: <http://books.example/>
+    SELECT (
+        SUM(?lprice) AS ?totalPrice
+    )
+    WHERE {
+      ?org books:affiliates ?auth .
+      ?auth books:writesBook ?book .
+      ?book books:price ?lprice .
+    }
+    GROUP BY ?org
+    HAVING (SUM(?lprice) > 10)
+\end{lstlisting}
+\footnotetext{\cite[11.1 Aggregate Example]{w3sparql_querylang}}
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
