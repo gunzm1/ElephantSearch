@@ -4,9 +4,9 @@ Version=4
 
 [ProjectInfo]
 MainFile=template.tex
-UseBibTeX=1
-UseMakeIndex=1
+UseBibTeX=0
+UseMakeIndex=0
 ActiveProfile=LaTeX ⇨ PDF
-ProjectLanguage=de
-ProjectDialect=DE
+ProjectLanguage=en
+ProjectDialect=US
 
