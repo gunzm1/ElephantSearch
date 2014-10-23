@@ -1,11 +1,57 @@
-\chapter{Semantische Netze}
-\label{chap:semantische_netze}
-
-Netze die semantisch sind. Und auch Wissensnetze genannt werden.
+\chapter{Wissensrepräsentationsformen}
+\label{chap:wissensrepFormen}
 
 
-Mira
-Russel \& Norvig
+In der Wissenmodellierung ( Knowledge Engineering) gibt es verschieden Wissenrepräsentationsformen um die Wissen in wissenbasierten Systemen formal abzubilden. Die so gesammelten Informationen werden als Wissenbank respektive Wissensbasis bezeichnet.~\cite{wikiWissensrep}
+
+Das folgende Kapitel basiert auf dem Buch Künstliche Intelligenz\cite{laemmel} es beschreibt einige der klassischen Wissensrepräsentationsformen.
+
+Semantische Netze, Wissensnetze und Frames gehören zu den üblichen Wissensrepräsentationsformen. Dabei stehen die konkreten Objekte im Vordergrund. Und nicht wie, wie zum Beispiel bei Regeln die Zusammenhänge und die logischen Abhängigkeiten.\\
+
+Semantische Netze und Frames versuchen das menschliche Gedächnis in adäquater Form abzubilden. Ursprünglich wurden Sie vorallem zur Analyse von Wörtern und Sätzen verwendent. Ein weiterer Punkt ist die einfach verstäntliche Darstellung von Klassen und deren Beziehungen. Des Weiteren haben die Konzepte der semantischen Netze und Frames die Enwicklung der objektorientierten Programmierung beeinflusst.
+
+
+
+\section{Semantische Netze}
+\label{sec:wissensrepFormen_semantischeNetze}
+
+Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnent. Ein einzelnes Objekt nennt sich auch Individuum. Zwischen den Objekten untereinander oder zu Klassen, oder zwischen Klassen untereinander gibt es Beziehungen. Es kann zwischen folgenden Beziehungen unterschieden werden:\\
+
+"`ist eine"' Relation: \\
+\noindent\hspace*{15mm} Es handelt sich also um Ober und Unterklassen.\\ 
+\noindent\hspace*{15mm} Beispiel: Ein Baum ist eine Pflanze.\\
+
+"`Instanz von"' Relation:\\
+\noindent\hspace*{15mm} Die Relation beschreibt die Beziehung einer konkreten Instanz zu ihrer Klasse.\\
+\noindent\hspace*{15mm} Beispiel: Birke ist eine Instanz der Klasse Baum\\
+
+Eigenschaft:\\
+\noindent\hspace*{15mm} Klassen und Objekte haben Eigenschaften\\
+\noindent\hspace*{15mm} Pflanzen erzeugen Sauerstoff\\
+Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen ist auch ein Hund ein Lebewesen. Ausserdem halten sich Eigenschaften an das Gesetzt der Vererbung. Braucht also ein Tier Sauerstoff, braucht auch ein Hund Sauerstoff.
+
+In Semantischen Netzen werden Objekte und Klassen als Knoten abgebildet. Beziehungen und Eigenschaften werden als Kanten dargestellt.
+Einige Aussdrucksformen wie Existenzaussagen und Oder Aussagen können mit Semantischen Netzten nicht abgebildet werden. Obwohl sich aber nur zweistellige Beziehungen abbilden lassen sind komplexe Abbildungen wie zum Beispiel das modellieren einer Aktion möglich:
+
+\section{Frames}
+\label{sec:wissensrepFormen_frames}
+
+In Frames werden die wesentlichen Charakterisitkas eines Objekts als Eigenschaften abgebildet und zusammengefasst. Dabei unterstützten Frames die Konzepte der Hierarchie und der Vererbung. Zudem können Frames auch generische Informationen wie Defaults, also Standartwerte und Wertebeschränkungen (Listen) enthalten.
+
+TODO: Beispiel
+
+\section{Wissensnetze}
+\label{sec:wissensrepFormen_Wissensnetze}
+Bei Wissennetzen handelt es sich um eine Art der Wissensrepräsentation, welche die Konzepte der semantischen Netzte verwenden. Dabei wird eine objektorientierte oder Frame-Darstellung des Wissens integriert. Zusätzlich erfolgt eine grafische Darstellung mittels Topic Maps. Diese wird auch Wissenlandkarte genannt. 
+
+- Die Entfernung zweier Begriffe in der Wissenslandkarte bilden deren inhaltliche Nähe ab. Es werden also die semantischen Beziehung der Begriffe verwaltet. Dies ist eine grosse Unterstützt der Semantische Suche.
+
+wie in den Semantischen Netzen werden Instanzen und Klassen in den Knoten abgebildet. Zusätzlich wird das Problem der Mehrfachvererbung umgangen indem das Konzept der Rollen eingeführt wird. Klassen werden so ausgebaut, das eine Instanz eine Bestimmte Rolle annehmen kann.
+	
+Wissensnetzte haben sämtliche vorraussetztunge um effektives Wissensmanagement zu erreichen. Dafür muss das Wissen aber immer aktuell und entsprechen Umfangreich sein.
+
+
+TODO: evt noch erweitern durch RUssel und Norvig
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
