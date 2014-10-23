@@ -219,10 +219,41 @@ Datentypen Eigenschaft: TODO: bei uns anwenden.\\
 \noindent\hspace*{25mm}   <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema\#integer"'>51</hasAge>\\
 \noindent\hspace*{15mm} </Person>\\
 
+\subsection{Ontologien}
+\label{subsec:owlRdf_owl_Ontologien}
+
+Die gesamten Informationen zu einem Thema werden in Ontologien gesamelt. Diese können von verschiedenen Anwendungen genutzt werden.
+
+\noindent\hspace*{15mm}<rdf:RDF ...>
+\noindent\hspace*{25mm}  <owl:Ontology rdf:about="http://example.com/owl/families"/>
+\noindent\hspace*{25mm}  ...
+\noindent\hspace*{15mm} </rdf:RDF>
+
+Ontologien werden in OWL Dokumenten abgespeichert. Diese werden auf localen Dateisystemen oder im World Wide Web hinterlegt.\\
+Beim Schreiben einer Ontologie können zusätzliche Namespaces verwendet werden. Wie zum Beispiel http://www.w3.org/2001/XMLSchema\#. Dabei ist zu berücksichtigen, dass diese Namespaces kontrolierbar sein sollten. ? So e schwachsin das isch jo logisch.\\
+
+Ausserdem können Informationen aus einer Ontologie in einer anderen verwendet werden. Dies muss dazu importiert werden.\\
+ \noindent\hspace*{15mm}<owl:Ontology rdf:about="http://example.com/owl/families\">\\
+ \noindent\hspace*{25mm}  <owl:imports rdf:resource="http://example.org/otherOntologies/families.owl" />\\
+ \noindent\hspace*{15mm}</owl:Ontology>\\
+
+Um bei der verwendung von Objekten aus anderen Ontologien eine Umbenennung zu umgehen, kann auf das entsprechende Objekt referenziert werden.\\
+
+ \noindent\hspace*{15mm}<owl:DatatypeProperty rdf:about="hasAge">\\
+ \noindent\hspace*{25mm}  <owl:equivalentProperty rdf:resource="\&otherOnt;age"/>\\
+ \noindent\hspace*{15mm}</owl:DatatypeProperty>\\
+
+\subsection{OWL Tools}
+\label{subsec:owlRdf_owl_OwlTools}
+
+
+Es wird typischerweise zwischen zwei Arten von Ontologiewerkzeugen unterschieden. Der Editor (Bearbeiter) welcher fürs erzeugen und ändern von Ontologien zuständig ist. Und der Reasoner welcher fähig ist logische folgerungen aus dem bestehenden Wissen abzuleiten.
+
 
 \subsection{OWL Untersprachen}
 \label{subsec:owlRdf_owl_Untersprachen}
-TODO: OWL ist in drei Untersprachen gegliedert. Jede dieser Sprachen wurde für Verwendung durch verschiedene Gruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich in OWL2 QL, OWL2 EL und OWL2 RL. Dabei handelt es sich um weitere Unterklassen von OWL2 DL welche wiederum eine Untersprache von OWL2 Full ist.
+OWL ist in drei Untersprachen gegliedert. Jede dieser Sprachen wurde für Verwendung durch verschiedene Gruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich in OWL2 QL, OWL2 EL und OWL2 RL. Dabei handelt es sich um weitere Unterklassen von OWL2 DL welche wiederum eine Untersprache von OWL2 Full ist.
+
 
 
 %w3c

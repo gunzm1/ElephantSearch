@@ -1,0 +1,75 @@
+Weiteres zu OWL:
+
+Complexte klassen:
+
+Durchschnitt zweier klassen.
+ <owl:Class rdf:about="Mother">
+   <owl:equivalentClass>
+     <owl:Class>
+       <owl:intersectionOf rdf:parseType="Collection">
+         <owl:Class rdf:about="Woman"/>
+         <owl:Class rdf:about="Parent"/>
+       </owl:intersectionOf>
+     </owl:Class>
+   </owl:equivalentClass>
+ </owl:Class>
+ 
+ -> Inferenz, alle Mütter sind auch Eltern
+ 
+ Vereinigung zweier klassen
+  <owl:Class rdf:about="Parent">
+   <owl:equivalentClass>
+     <owl:Class>
+       <owl:unionOf rdf:parseType="Collection">
+         <owl:Class rdf:about="Mother"/>
+         <owl:Class rdf:about="Father"/>
+       </owl:unionOf>
+     </owl:Class>
+   </owl:equivalentClass>
+ </owl:Class>
+ 
+ -> Elternklasse ist der zusammenschluss von Mutter und Vater
+ 
+ 
+ Ergänzung
+  <owl:Class rdf:about="ChildlessPerson">
+   <owl:equivalentClass>
+     <owl:Class>
+       <owl:intersectionOf rdf:parseType="Collection">
+         <owl:Class rdf:about="Person"/>
+         <owl:Class>
+           <owl:complementOf rdf:resource="Parent"/>
+         </owl:Class>
+       </owl:intersectionOf>
+     </owl:Class>
+   </owl:equivalentClass>
+ </owl:Class>
+ 
+ -> Kinderlose Personen können nicht Eltern sein.
+ 
+ 
+
+ Erweiterte Propertie Anwendung:
+ 
+ Inverse zweier Eigenschaften
+  <owl:ObjectProperty rdf:about="hasParent">
+   <owl:inverseOf rdf:resource="hasChild"/>
+ </owl:ObjectProperty>
+ 
+ -> Die inverse Eigenschaften von hasParent ist hasChild
+ 
+ symentrische Eigenschaften
+ <owl:SymmetricProperty rdf:about="hasSpouse"/>
+ 
+ -> wenn die eigenschaft auf klasse A mit B zutrifft, trifft sie auch auf klasse b mit a zu
+ 
+....
+
+ 
+ 
+ 
+ 
+ 
+
+
+
