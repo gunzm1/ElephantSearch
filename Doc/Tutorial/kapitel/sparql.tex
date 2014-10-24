@@ -19,7 +19,7 @@ Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, e
 \label{sec:sparql_beispiel}
 
 Gegeben sei die folgende Datenbasis:
-\lstset{caption={Einfache Datenbasis direkt in SPARQL\protect\footnotemark}}
+\lstset{caption={Einfache Datenbasis direkt in SPARQL\protect\footnotemark},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> "SPARQL Tutorial".
@@ -29,7 +29,7 @@ Gegeben sei die folgende Datenbasis:
 Die Datenbasis beinhaltet das Objekt \textit{book1} mit dem Attribut \textit{title}, welches den Wert \textit{``SPARQL Tutorial''} enthält.
 
 Möchte man nun den Titel des Buches abfragen, so kann dies mit folgender Abfrage vorgenommen werden:
-\lstset{caption={Beispiel einer einfachen SPARQL Abfrage\protect\footnotemark}}
+\lstset{caption={Beispiel einer einfachen SPARQL Abfrage\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
     SELECT ?title
     WHERE
@@ -88,23 +88,72 @@ Da es sich bei SPARQL um eine Abfragesprache für RDF handelt und dieses auf XML
 \end{lstlisting}
 \footnotetext{\cite[2.6 Completing the Document: Document Element and XML Declaration]{w3rdf_syntax}}
 
+\section{Variablen}
+\label{sec:sparql_variablen}
+
+SPARQL unterstützt die Verwendung von Variablen bei Abfragen, diese können dabei an einer beliebigen Stelle --- also bei (Teil-) Graphen, Gruppierungen, Aggregationen und Modifikatoren --- eingesetzt werden.
+Sie dienen als Plathalter für abzufragende Objekte, Subjekte oder Prädikate. Variablen beginnen entweder mit einem Dollarzeichen \textit{\$} oder einem Fragezeichen \textit{?}, welche aber nicht Teil der Variable sind.
+
+\lstset{caption={Beispiel einer SPARQL Abfrage mit den Variablen \textit{?object}, \textit{?predicate} und \textit{?subject}.},captionpos=b}
+\begin{lstlisting}
+    SELECT DISTINCT
+        *
+    WHERE {
+      ?object ?predicate ?subject
+    }
+    LIMIT
+        10
+\end{lstlisting}
+
+Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.org/}, angewendet, so ergibt dies das folgende Resultat:
+\noindent\hspace*{15mm}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l|l|}
+        \hline
+        \multicolumn{1}{c|}{\textbf{object}}                                & \textbf{predicate}                               & \textbf{subject}                                  \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/acceleration}      & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/torqueOutput}      & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/birthDate}         & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/birthYear}         & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/deathDate}         & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/deathYear}         & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/diameter}          & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/displacement}      & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/height}            & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+        \multicolumn{1}{|l|}{http://dbpedia.org/ontology/latestReleaseDate} & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
+    \end{tabular}
+    \caption{Resultat einer Abfrage des DBPedia-Endpunktes limitiert auf 10 Ergebnisse.}
+\end{table}
+
+
+
 \section{(Teil-) Graphen}
 \label{sec:sparql_graph}
 
-SPARQL basiert auf dem Matching eine (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Trippeln.
+SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Trippeln.
 
 Es wird zwischen den folgenden Arten von Teilgraphen unterschieden:
 \begin{itemize}
-    \item Grundlegende Teilgraphen
-    Hier muss eine Menge von Trippeln denen in dem gegebenen Graphen entsprechen
-    \item Gruppierende Teilgraphen
-    Hier müssen alle Elemente einer Menge von grundlegenden Teilgraphen denen in dem gegebenen Graphen entsprechen
-    \item Optionale Teilgraphen
-    Zusätzliche Teilgraphen können die Lösungsmenge erweitern
-    \item Alternative Teilgraphen
-    Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gegebenen Graphen entsprechen
-    \item Teilgraphen in namensbasierten Graphen
-    Es wird versucht Teilgraphen denen in dem gegebenen, namensbasierten Graphen zu entsprechen
+\item \textit{Grundlegende Teilgraphen}
+
+Hier muss eine Menge von Trippeln denen in dem gegebenen Graphen entsprechen
+
+\item \textit{Gruppierende Teilgraphen}
+
+Hier müssen alle Elemente einer Menge von grundlegenden Teilgraphen denen in dem gegebenen Graphen entsprechen
+
+\item \textit{Optionale Teilgraphen}
+
+Zusätzliche Teilgraphen können die Lösungsmenge erweitern
+
+\item \textit{Alternative Teilgraphen}
+
+Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gegebenen Graphen entsprechen
+
+\item \textit{Teilgraphen in namensbasierten Graphen}
+
+Es wird versucht Teilgraphen denen in dem gegebenen, namensbasierten Graphen zu entsprechen
 \end{itemize}
 
 Ein grundlegender Teilgraph ist also eine Menge von Trippeln, wobei ein Trippel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
@@ -154,6 +203,43 @@ SPARQL unterstützt aktuell die Aggregationen \textit{COUNT}, \textit{SUM}, \tex
     HAVING (SUM(?lprice) > 10)
 \end{lstlisting}
 \footnotetext{\cite[11.1 Aggregate Example]{w3sparql_querylang}}
+
+\section{Modifikatoren}
+\label{sec:sparql_modifikatoren}
+
+Abfragen mittels SPARQL generieren eine ungeordnete Menge von Lösungen, wobei jede dieser Lösungen eine Funktion von Variablen zu RDF-Termen darstellt. Solche Lösungen werden als Sequenz von Lösungen behandelt, initial allerdings ohne spezifische Ordnung.~\cite[15 Solution Sequences and Modifiers]{w3sparql_querylang}
+
+Um eine Sequenz von Lösungen zu ordnen, können Modifikatoren verwendet werden. Man unterscheidet dabei zwischen folgenden Modifikatoren:
+
+\begin{itemize}
+\item \textit{Order}
+
+Sortiert die Lösungen nach einer gewissen Variable, entweder ab- oder aufsteigend
+
+\item \textit{Projection}
+
+Erlaubt die Auswahl von spezifischen Variablen mittels der \textit{Select}-Klausel
+
+\item \textit{Distinct}
+
+Stellt sicher, dass die Lösungen in der Lösungsmenge einmalig sind
+
+\item \textit{Reduced}
+
+Verhindert die Elimination von Duplikaten in der Lösungsmenge
+
+\item \textit{Offset}
+
+Definiert ab welcher Lösung die gefundenen Lösungen ausgegeben werden sollen
+
+\item \textit{Limit}
+
+Definiert die maximale Anzahl der gefunden Lösungen, welche ausgegeben werden sollen
+
+\end{itemize}
+
+Die Modifikatoren werden in der Reihenfolge der obigen Liste angewendet.~\cite[vgl. 15 Solution Sequences and Modifiers]{w3sparql_querylang}
+
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
