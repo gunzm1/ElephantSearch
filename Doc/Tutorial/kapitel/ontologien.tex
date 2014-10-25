@@ -1,11 +1,58 @@
-\chapter{Ontologien}
+\chapter{Wissen abbilden mittels Ontologien}
 \label{chap:ontologien}
 
-Ontos.
-Russel \& Norvig
-Informatik Spektrum
+\section{Wissen}
+\label{sec:ontologien_wissen}
+TODO Blabla: ich weiss nicht ob das hier hing gehört. aber ich denke irgendwo muss das noch rein.
 
-Mira
+Was ist wissen?
+
+wie wird wissen genutzt?
+
+wiviel wissen braucht es wofür?
+
+\section{Ontologie}
+\label{sec:ontologien_onto}
+Das Folgende Kapitel basiert auf dem Artikel "`Was bedeutet eigentlich Ontologie?"'\cite{IspekOntoBedeutung} sowie dem Artikel "`Eine kurze Geschichte der Ontologie"' \cite{ISpekOntoGeschichte}.
+Der Begriff Ontologie wird in verschiedenen wissenschaftlichen Bereichen verwendet, so zum Beispiel in der Philosophie, der Psychologie und der Informatik. In diesem Dokumente soll nur der Aspekt der Informatik erklärt werden. \\
+In der Informatik steht Ontologie für "`eine formale Beschreibung des Wissens in einer Domäne in der Form von Konzepten der Domäne, deren Beziehung untereinander und der Eigenschaft dieser Konzepte und Beziehungen, sowie der in der Domäne güligen Axiome und Prinzipien."'\cite[S.310]{ISpekOntoGeschichte}.\\
+Zum besseren Verstäntnis, wird diese Definition im folgenden Abschnitt kurz untersucht:
+
+Domäne: Unter einer Domäne versteht man einen Ausschnitt der Welt, dessen Grenzen klar definiert sind. Die Domäne und ihre Grenzen werden durch den Anwendungsfall festgelegt.
+
+Konzepte: Diese werden in anderen Teilen dieses Dokument als Objekte beziehungsweise Klassen bezeichnet. Dabei kann es sich um materielle Konzepte wie zum Beispiel Teile eines Wagens, oder um immaterielle Konzepte wie zum Beispiel die Lösungssuche handeln.
+
+Beziehungen: Objekte stehen in Beziehungen zueinander. Es werden die "`ist ein"' und die "`Instanz von "`Beziehungen unterschieden. So ist Prolog zum Beispiel eine Programmiersprache. Die Eigenschaften eines Objektes werden auch als Beziehungen dargestellt (Eine Klausel besteht aus einem Klauselkopf).
+
+Axiome und Prinzipien: Damit sind die in der Domäne vorhandenen Regeln gemeint.
+
+Mit diesen Elementen, sind alle wichtigen Punkte einer Ontologie ab gedeckt. Dabei ist es, wie in der Definition festgelegt, wichtig, dass die gesamte Abbildung in einer formalen Sprache beschrieben wird.
+
+
+\subsection{Anwendung von Ontologien}
+\label{subsec:ontologien_onto_anwendung}
+Wie aus dem Zusammenhang vermuten lässt, werden Ontologien für wissensbasierte Anwendungen verwendet. Konkret werden sie überall dort verwendet wo Semantik zur Formulierung von Informationen genutzt werden. Eines der bekanntesten Beispielen ist das Semantische Web. Das Semantische Web versucht im Gegensatz zum Syntaktischen Web, die Zeichen nicht nur stur Abzugleichen, sondern ein Verständnis mit einzubauen und Schlussfolgerungen zu ziehen. (TODO: sollte man hier ein beispiel machen; zb Hotel? ich finde nicht, wir können ja schon davon ausgehen, das der leser gewisse kenntnisse hat.)\\
+
+Die Aufgabe von Ontologien ist die Verbesserte und Ermöglichung Kommunikation zwischen Computeranwendungen untereinander und zwischen den Anwendungen und Menschen. Wichtig dabei ist, dass es sich immer um eine bestimmte Wissensdomäne (Domain Ontologies) handelt. So haben einige Berufsgruppen begonnen, ihr Wissen mit Hilfe von standardisierten Sprachen abzubilden. Diese Sprache, wie die im Kapitel "`\nameref{sec:owlRdf_owl}"' vorgestellt OWL Sprache, wurden von dem World Wide Web Consortium standardisiert.
+
+
+
+\subsection{Semantic-Web-Anwendung}
+\label{subsec:ontologien_onto_SemantikWebAnwendung}
+Eine Anwendung für das Semantic Web besteht aus einer Wissensbasis und einer Inferenzmaschine. Ein Ontologieschema legt in der Wissensbasis fest, welche Arten von Aussagen möglich sind. Die Aussagen enthalten das konkrete Wissen. Sowohl das Schema, wie auch die Wissensabbildung werden in einer formalen Sprache wie OWL\ref{sec:owlRdf_owl} oder RDFS abgebildet.
+
+Beispiel:\\
+\noindent\hspace*{15mm} Prolog ist eine Wissensrepräsentationssprache\\
+
+In der einfachsten Anwendung kann das Wissen, das abgelegt ist, direkt abgefragt werden. Bei komplexeren Anfragen sind die Funktionalitäten der Inferenzmaschine notwendig. Diese ist fähig, mittels Inferenzregeln Schlussfolgerungen zu ziehen und so neue, komplexe Aussagen zu generieren. Eine der simpelsten, von der Inferenzmaschine verwendeten Regeln, ist die Transitivitätsregel. 
+Zu den vorhandenen Regeln ist es dem Entwickler möglich, wissensdomänenspezifische Regeln zu spezifizieren. Diese werden von der Inferenzmaschine bei ihrer auswertung berücksichtigt.
+
+Beispiel:\\
+\noindent\hspace*{15mm} Wenn eine Klausel einen leeren Körper und einen vollen Kopf hat, handelt es sich um einen Fakt.\\
+
+Damit die Inferenzmaschine ihre Arbeit machen kann, muss die Wissensbasis in einer formalen Sprache vorliegen und darf keine syntaktischen Fehler enthalten. Das Schema und die Aussagen werden von der Maschine geladen und intern als Graphen gespeichert.(siehe Kapitel \nameref{chap:wissensrepFormen}). Mittels eines Algorithmus wird eine Abfrage zum Abgleich von Graphen implementiert (TODO fast kopiert). Durch wiederholtes Anwednen der Regeln können Schlussfolgerungen gezogen werden. Auch dies geschieht mittels eines Algorithmus zum Abgleichen von Graphen. Die daraus entstandenen Aussagen werden der Wissensbasis hinzugefügt.
+
+
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
