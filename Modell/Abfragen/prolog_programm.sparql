@@ -1,0 +1,13 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix : <http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#>
+
+SELECT DISTINCT
+	*
+WHERE {
+	?programInstance a :PrologProgramm;
+    	:enthält ?objects.
+  	?objects a ?what.
+}
