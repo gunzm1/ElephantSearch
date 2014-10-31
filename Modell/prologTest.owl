@@ -9,20 +9,18 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY Prolog "http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#" >
-    <!ENTITY untitled-ontology-23 "http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#"
-     xml:base="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23"
+<rdf:RDF xmlns="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#"
+     xml:base="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:Prolog="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:untitled-ontology-23="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#">
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog"/>
     
 
@@ -53,7 +51,6 @@
     <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#enthält -->
 
     <owl:ObjectProperty rdf:about="&Prolog;enthält">
-        <rdfs:domain rdf:resource="&Prolog;PrologProgramm"/>
         <rdfs:range rdf:resource="&Prolog;Wissen"/>
     </owl:ObjectProperty>
     
@@ -63,7 +60,7 @@
 
     <owl:ObjectProperty rdf:about="&Prolog;geschriebenIn">
         <rdfs:domain rdf:resource="&Prolog;Programm"/>
-        <rdfs:range rdf:resource="&untitled-ontology-23;Programmiersprache"/>
+        <rdfs:range rdf:resource="&Prolog;Programmiersprache"/>
     </owl:ObjectProperty>
     
 
@@ -99,9 +96,21 @@
     
 
 
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Logik -->
+
+    <owl:Class rdf:about="&Prolog;Logik"/>
+    
+
+
     <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Programm -->
 
     <owl:Class rdf:about="&Prolog;Programm"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Programmiersprache -->
+
+    <owl:Class rdf:about="&Prolog;Programmiersprache"/>
     
 
 
@@ -119,21 +128,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Logik -->
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Wissensrepräsentationssprache -->
 
-    <owl:Class rdf:about="&untitled-ontology-23;Logik"/>
-    
-
-
-    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Programmiersprache -->
-
-    <owl:Class rdf:about="&untitled-ontology-23;Programmiersprache"/>
-    
-
-
-    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Wissensrepräsentationssprache -->
-
-    <owl:Class rdf:about="&untitled-ontology-23;Wissensrepräsentationssprache"/>
+    <owl:Class rdf:about="&Prolog;Wissensrepräsentationssprache"/>
     
 
 
@@ -161,7 +158,7 @@
 
     <owl:NamedIndividual rdf:about="&Prolog;fakt">
         <rdf:type rdf:resource="&Prolog;Klausel"/>
-        <Prolog:bestehtAus rdf:resource="&Prolog;folgerung"/>
+        <bestehtAus rdf:resource="&Prolog;folgerung"/>
     </owl:NamedIndividual>
     
 
@@ -199,30 +196,41 @@
     
 
 
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#prolog -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;prolog">
+        <rdf:type rdf:resource="&Prolog;Programmiersprache"/>
+        <beschreibt rdf:resource="&Prolog;logischerZusammenhang"/>
+        <hatGrundlage rdf:resource="&Prolog;prädikatenlogik"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#prologProgramm -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;prologProgramm">
+        <rdf:type rdf:resource="&Prolog;Programm"/>
+        <enthält rdf:resource="&Prolog;fakt"/>
+        <geschriebenIn rdf:resource="&Prolog;prolog"/>
+        <enthält rdf:resource="&Prolog;regel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#prädikatenlogik -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;prädikatenlogik">
+        <rdf:type rdf:resource="&Prolog;Logik"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#regel -->
 
     <owl:NamedIndividual rdf:about="&Prolog;regel">
         <rdf:type rdf:resource="&Prolog;Klausel"/>
-        <Prolog:bestehtAus rdf:resource="&Prolog;bedingung"/>
-        <Prolog:bestehtAus rdf:resource="&Prolog;folgerung"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#prolog -->
-
-    <owl:NamedIndividual rdf:about="&untitled-ontology-23;prolog">
-        <rdf:type rdf:resource="&untitled-ontology-23;Programmiersprache"/>
-        <Prolog:beschreibt rdf:resource="&Prolog;logischerZusammenhang"/>
-        <Prolog:hatGrundlage rdf:resource="&untitled-ontology-23;prädikatenlogik"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#prädikatenlogik -->
-
-    <owl:NamedIndividual rdf:about="&untitled-ontology-23;prädikatenlogik">
-        <rdf:type rdf:resource="&untitled-ontology-23;Logik"/>
+        <bestehtAus rdf:resource="&Prolog;bedingung"/>
+        <bestehtAus rdf:resource="&Prolog;folgerung"/>
     </owl:NamedIndividual>
     
 
@@ -258,7 +266,7 @@
                         <rdf:first>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&untitled-ontology-23;Programmiersprache"/>
+                                <swrl:classPredicate rdf:resource="&Prolog;Programmiersprache"/>
                                 <swrl:argument1 rdf:resource="urn:swrl#x"/>
                             </rdf:Description>
                         </rdf:first>
@@ -273,7 +281,7 @@
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&untitled-ontology-23;Wissensrepräsentationssprache"/>
+                        <swrl:classPredicate rdf:resource="&Prolog;Wissensrepräsentationssprache"/>
                         <swrl:argument1 rdf:resource="urn:swrl#x"/>
                     </rdf:Description>
                 </rdf:first>
@@ -288,15 +296,41 @@
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
                         <rdf:first>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
                                 <swrl:propertyPredicate rdf:resource="&Prolog;geschriebenIn"/>
-                                <swrl:argument2 rdf:resource="&untitled-ontology-23;prolog"/>
+                                <swrl:argument2 rdf:resource="&Prolog;prolog"/>
                                 <swrl:argument1 rdf:resource="urn:swrl#x"/>
                             </rdf:Description>
                         </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&Prolog;enthält"/>
+                                                <swrl:argument2 rdf:resource="&Prolog;regel"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&Prolog;enthält"/>
+                                        <swrl:argument2 rdf:resource="&Prolog;fakt"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
                     </rdf:Description>
                 </rdf:rest>
                 <rdf:first>
