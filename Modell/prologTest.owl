@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Prolog "http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#" >
+    <!ENTITY untitled-ontology-23 "http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#"
+     xml:base="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:Prolog="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:untitled-ontology-23="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/Prolog"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#beschreibt -->
+
+    <owl:ObjectProperty rdf:about="&Prolog;beschreibt"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#hat -->
+
+    <owl:ObjectProperty rdf:about="&Prolog;hat"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#hatGrundlage -->
+
+    <owl:ObjectProperty rdf:about="&Prolog;hatGrundlage"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#zustand -->
+
+    <owl:DatatypeProperty rdf:about="&Prolog;zustand">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>leer</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>voll</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Fakt -->
+
+    <owl:Class rdf:about="&Prolog;Fakt">
+        <rdfs:subClassOf rdf:resource="&Prolog;Klausel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Klausel -->
+
+    <owl:Class rdf:about="&Prolog;Klausel">
+        <owl:equivalentClass rdf:resource="&Prolog;Wissen"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#KlauselElement -->
+
+    <owl:Class rdf:about="&Prolog;KlauselElement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Koerper -->
+
+    <owl:Class rdf:about="&Prolog;Koerper">
+        <rdfs:subClassOf rdf:resource="&Prolog;KlauselElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Kopf -->
+
+    <owl:Class rdf:about="&Prolog;Kopf">
+        <rdfs:subClassOf rdf:resource="&Prolog;KlauselElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Programm -->
+
+    <owl:Class rdf:about="&Prolog;Programm"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Regel -->
+
+    <owl:Class rdf:about="&Prolog;Regel">
+        <rdfs:subClassOf rdf:resource="&Prolog;Klausel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#Wissen -->
+
+    <owl:Class rdf:about="&Prolog;Wissen"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Logik -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Logik"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Programmiersprache -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Programmiersprache"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Wissenspräsentationssprache -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Wissenspräsentationssprache"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#fakt -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;fakt">
+        <rdf:type rdf:resource="&Prolog;Klausel"/>
+        <Prolog:hat rdf:resource="&Prolog;leererKopf"/>
+        <Prolog:hat rdf:resource="&Prolog;vollerKoerper"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#leererKoerper -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;leererKoerper">
+        <rdf:type rdf:resource="&Prolog;Koerper"/>
+        <Prolog:zustand rdf:datatype="&xsd;string">leer</Prolog:zustand>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#leererKopf -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;leererKopf">
+        <rdf:type rdf:resource="&Prolog;Kopf"/>
+        <Prolog:zustand rdf:datatype="&xsd;string">leer</Prolog:zustand>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#logischerZusammenhang -->
+
+    <owl:Thing rdf:about="&Prolog;logischerZusammenhang">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#prologProgramm -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;prologProgramm">
+        <rdf:type rdf:resource="&Prolog;Programm"/>
+        <Prolog:beschreibt rdf:resource="&Prolog;wissen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#regel -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;regel">
+        <rdf:type rdf:resource="&Prolog;Klausel"/>
+        <Prolog:hat rdf:resource="&Prolog;vollerKoerper"/>
+        <Prolog:hat rdf:resource="&Prolog;vollerKopf"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#vollerKoerper -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;vollerKoerper">
+        <rdf:type rdf:resource="&Prolog;Koerper"/>
+        <Prolog:zustand rdf:datatype="&xsd;string">voll</Prolog:zustand>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#vollerKopf -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;vollerKopf">
+        <rdf:type rdf:resource="&Prolog;Kopf"/>
+        <Prolog:zustand rdf:datatype="&xsd;string">voll</Prolog:zustand>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/Prolog#wissen -->
+
+    <owl:NamedIndividual rdf:about="&Prolog;wissen">
+        <rdf:type rdf:resource="&Prolog;Wissen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#prolog -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-23;prolog">
+        <rdf:type rdf:resource="&untitled-ontology-23;Programmiersprache"/>
+        <Prolog:beschreibt rdf:resource="&Prolog;logischerZusammenhang"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#prädikatenlogik -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-23;prädikatenlogik">
+        <rdf:type rdf:resource="&untitled-ontology-23;Logik"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl#x">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&untitled-ontology-23;Wissenspräsentationssprache"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&untitled-ontology-23;Programmiersprache"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&Prolog;beschreibt"/>
+                                <swrl:argument2 rdf:resource="&Prolog;logischerZusammenhang"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&Prolog;Fakt"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&Prolog;hat"/>
+                                <swrl:argument2 rdf:resource="&Prolog;leererKopf"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&Prolog;hat"/>
+                                        <swrl:argument2 rdf:resource="&Prolog;vollerKoerper"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&Prolog;Klausel"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&Prolog;Regel"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&Prolog;hat"/>
+                                        <swrl:argument2 rdf:resource="&Prolog;vollerKopf"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&Prolog;hat"/>
+                                <swrl:argument2 rdf:resource="&Prolog;vollerKoerper"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&Prolog;Klausel"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
