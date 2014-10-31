@@ -138,11 +138,13 @@ Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen sondern au
 
 		
 Individuum:Es gibt ein NamedIndividual der Klasse einfaches Token mit der Bezeichnung Atom. Individuals können auch von mehreren Klassen gleichzeitig sein\\
-\noindent\hspace*{15mm}      <NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
-\noindent\hspace*{25mm}         <rdf:type rdf:resource="\&Prolog\_Ontology;EinfachesToken"/>\\
-\noindent\hspace*{25mm}         <rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
-\noindent\hspace*{15mm}      </NamedIndividual>\\                                                       
-		
+\begin{lstlisting}
+<NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
+	<rdf:type rdf:resource="\&Prolog\_Ontology;EinfachesToken"/>\\
+	<rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
+</NamedIndividual>\\
+\end{lstlisting}
+                                                      		
 
 Klassen könne gleichgestellt werden: Die Klasse Person und die Klasse Human entsprechen sich. TODO Bsp aus unserer Hirachie sobald wirs haben.\\
 \noindent\hspace*{15mm} <owl:Class rdf:about="Person"'>\\
