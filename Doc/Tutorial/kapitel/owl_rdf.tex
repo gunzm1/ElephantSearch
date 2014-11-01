@@ -1,5 +1,6 @@
 \chapter{RDF und OWL}
 \label{chap:owl_Rdf}
+Jetzt haben wir einen Überblick über die verschiedenen Methoden und Herangehensweisen zur Generierung von Knowledge Engineering. Auch die wichtigsten theoretischen Grundlagen haben wir mit den vorigen Kapiteln abgedeckt. Im Kapitel \nameref{chap:ontologien} haben wir gelernt, dass für die Darstellung von Ontologien verschiedene Sprachen entwickelt wurden. In Diesem Beispiel wird eine der bekanntesten Ontologie Sprachen OWL (Web Ontology Language) verwendet. OWL basiert auf der RDF Syntax. Folglich scheint es uns wichtig diese zwei Sprachen kurz vorzustellen.
 
 \section{RDF}
 \label{sec:owlRdf_rdf}
@@ -63,25 +64,28 @@ RDF wird typischerweise in Kombination mit Vokabular und Konventionen verwendet,
 
 Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstützt. Diese ermöglicht semantische Eigenschaften der RDF Daten zu definieren. Es kann damit festgelegt werden, welche Ressourcen an welcher Position verwendet werden.
 
-so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategorisieren. Die Beziehungen zwischen Instanzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.
+so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategorisieren. Die Beziehungen zwischen Instanzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden. In der Tabelle\ref{tab:SchematischeKonstrukte} findet sich eine kurze Übersicht der wichtigsten Konstrukte.
 
+TODO: Soll das anderst dargestellt werden? wieso geht mein footnote nicht??
 \begin{center}
 	\begin{table}[H]
 	 \centering
-		\caption{Schematische Konstrukte}	
+		%\caption{Schematische Konstrukte}	\footnote{\cite{w3rdf}}
+				\caption[\cite{w3rdf}]{Schematische Konstrukte \footnotemark}
 			\begin{tabular}{|l|l|l|} \toprule
 			\textbf{Konstrukt}  & \textbf{Syntaktische Form} & \textbf{Beschreibung} \\ \midrule
-				Class (eine Klasse) & C rdf:type; rdfs:Class& C (eine Ressource) ist eine RDF Klasse \\  \midrule		
-				Property (Eine Klasse) & P rdf:type rdf:Property & P (eine Ressource) ist eine RDF Property\\  \midrule		
-				type (eine Eigenschaft) & I rdf:type C &I (eine Ressource) ist eine Istanz von C (einer Klasse)\\  \midrule
-subClassOf (eine Eigenschaft) & C1 rdfs:subClassOf C2 & C1 (eine Klasse) ist Subklasse von C2 \\  \midrule
-subProptertyOf (eine Eigenschaft) & P1 rdfs:subProptertyOf P2 & P1 (eine Eigenschaft) ist Sub-Property von P2 \\  \midrule
-domain (eine Eigenschaft) & P rdfs:domain C & Domäne von P (einer Eigenschaft) ist C (eine Klasse) \\  \midrule			
-range (eine Eigenschaft) & P rdfs:range C & Bereich von P (einer Eigenschaft) ist C (eine Klasse) \\  \bottomrule
+				Class (eine Klasse) & C rdf:type; rdfs:Class& C (eine Ressource) \\&&ist eine RDF Klasse \\  \midrule		
+				Property (Eine Klasse) & P rdf:type rdf:Property & P (eine Ressource)\\&& ist eine RDF Property\\  \midrule		
+				type (eine Eigenschaft) & I rdf:type C &I (eine Ressource)\\&& ist eine Instanz von C (einer Klasse)\\  \midrule
+subClassOf (eine Eigenschaft) & C1 rdfs:subClassOf C2 & C1 (eine Klasse)\\&& ist Subklasse von C2 \\  \midrule
+subProptertyOf (eine Eigenschaft) & P1 rdfs:subProptertyOf P2 & P1 (eine Eigenschaft)\\&& ist Sub-Property von P2 \\  \midrule
+domain (eine Eigenschaft) & P rdfs:domain C & Domäne von P \\&&(einer Eigenschaft) ist C (eine Klasse) \\  \midrule			
+range (eine Eigenschaft) & P rdfs:range C & Bereich von P \\&&(einer Eigenschaft) ist C (eine Klasse) \\  \bottomrule
 			\end{tabular}
 		\label{tab:SchematischeKonstrukte}
 	\end{table}
 \end{center}
+
 
 TODO: Writing RDF graphs wird hier noch ausführlich beschrieben. Nach dem Kapital Graphen Modellierung entscheiden was davon noch nötig ist und einfügen.
 
@@ -127,13 +131,16 @@ Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, das es Situationen gibt,
 
 
 Klassen: EinfachesToken ist eine Klasse \\
-\noindent\hspace*{15mm} <Class rdf:about="'\&Prolog\_Ontology;EinfachesToken"'> \\ 
-
+\begin{lstlisting}
+<owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto\#Father"/> \\ 
+\end{lstlisting}
 
 Subklassen: EinfachesToken ist Subklass von SprachElement \\
-\noindent\hspace*{15mm}     <Class rdf:about="'\&Prolog\_Ontology;EinfachesToken"'>\\
-\noindent\hspace*{25mm}       <rdfs:subClassOf rdf:resource="'\&Prolog\_Ontology;SprachElement"'/>\\
-\noindent\hspace*{15mm}  </Class> \\
+\begin{lstlisting}
+<owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto\#Father">
+	<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent"/>
+</owl:Class>
+\end{lstlisting}		
 Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen sondern auch um Klassen Hierarchien zu modellieren. Also ein Abbilden der allgemeinen Beziehung der Klassen. Zum Beispiel die Relation:  Prolog ist eine Programmiersprache.\\
 
 		

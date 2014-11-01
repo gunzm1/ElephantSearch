@@ -2,12 +2,29 @@
 \label{chap:einleitung}
 Wir kennen alle den klassischen Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welcher die relationale Datenspeicherung zugrunde liegt. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Mit dieser Technik sind Objekteigenschaften und -Verhalten aber schwer abbildbar. Was aber wenn man interessantere Fragestellungen als reine Relationen beantworten möchte? Dies ist mit dem genannten Ansatz praktisch unmöglich.  
 
-Aus diesem Grund möchten wir eine neue, eher unbekanntere Art der Wissensabbildung vorstellen, welche diese Probleme berücksichtigt. Es handelt sich dabei um die Wissensmodellierung (Knowledge Engineering) welche Teilgebiet der Künstlichen Intelligenz ist. \\
-Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten System abgebildet werden kann. Wir zeigen dies exemplarisch anhand der Programmiersprache Prolog auf.
+Aus diesem Grund möchten wir eine neue, eher unbekanntere Art der Wissensabbildung vorstellen, welche diese Probleme berücksichtigt. Es handelt sich dabei um die Wissensmodellierung (Knowledge Engineering) welche Teilgebiet der Künstlichen Intelligenz ist. Grundsätzlich geht es bei diesen Konzept darum nicht nur Informationen sondern Wissen abzubilden. Es handelt sich also um eine Wissensrepräsentation welche zusätzliche Verarbeitungsmöglichkeiten aufweist. Wie zum Beispiel  das logische Schlussfolgern oder Beweisführungen. Dabei ist ein sehr wichtiger Aspekt, das dies in einer Form dargestellt werden muss, welche von  Maschinen lesbar ist.\cite{ISpekOntoGeschichte}\\
+Ein wichtiges Einsatzgebiet dieser Form von Wissensabbildung ist das Semantische Web. Auch dort geht es in erster Linie darum Informationen mit ihrer Bedeutung, der sogenannten Semantik zu versehen. 
+
+
+Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten System abgebildet werden kann. Anhand des Beispiel xxx wollen wir veranschaulichen, welche Schritte eine solche Wissensmodellierung enthält. Ausserdem ist es uns aber auch wichtig die formalen Aspekte, wie zum Beispiel die verschiedenen Sprachen vorzustellen. Nicht zu vernachlässigen sind dabei auch praktische Umsetzungstipps, welche wir in eigener Erfahrung erlernt haben.
 
 \vspace{10pt}
 \begin{wrapfigure}{l}{0.1\textwidth}
     \vspace{-19pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Als Hilfe führen wir hier die Eule ein. Das Auftreten dieser, ist stets ein Hinweis, dass im folgenden Abschnitt ein praktischer Hinweis folgt.
+Als Hilfe führen wir hier die Eule ein. Das Auftreten dieser, ist stets ein Anhaltspunkt, dass im folgenden Abschnitt ein praktischer Hinweis folgt.
+
+
+\section{Wissen}
+\label{chap:einleitung_wissen}
+
+
+Sowie wir vom Knowledge Engineering sprechen, sprechen wir vom Knowledge Engineer. Dieser hat die Arbeit der Wissensakquise, welche er mithilfe der Experten aus der jeweiligen Fachwelt durchführt. Dazu werden Wissensbestände des Sachgebiets aufgebaut. \\
+Genau so wichtig wie das Vorhandensein der Wissensbestände ist aber, dass Wissen auch kommuniziert wird. Die Wissenkommunikation hängt stark mit der Anerkennung der Wissensmodellierung in der Fachwelt zusammen. Ohne diese ist eine solche sinnlos.
+ 
+Je Situation für welche das Wissen benötigt wird, ist eine andere Form der Wissensabbildung geeignet. Und auch wenn man sich für eine Wissensmodellierung entschieden hat, muss diese eine spezielle Aufgabe unterstützten. Dabei ist es wichtig, dass der Nutzen der Abbildung im Mittelpunkt steht. Eine Information kann für eine Problemstellung unumgänglich, für eine andere aber total nutzlos sein.
+
+\noindent\hspace*{15mm}Suche ich zum Beispiel nach einem Familienfreundliche Hotel, interessiert es mich nicht ob dieses früher dem Grafen von xy gehörte. (TODO beispiel anpassen)
+
+Es gibt nicht "`das Richtige"' vorgehen beim sammeln von Wissen. Grundsätzlich ist es aber sich sinnvoll, das Wissen von den groben Begriffen bis zur detaillierten Information zu sammeln. 
