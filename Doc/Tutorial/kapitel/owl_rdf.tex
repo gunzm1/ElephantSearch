@@ -64,30 +64,20 @@ RDF wird typischerweise in Kombination mit Vokabular und Konventionen verwendet,
 
 Um das Vokabular von RDF zu zu definieren wird die RDF Schema Sprache unterstützt. Diese ermöglicht semantische Eigenschaften der RDF Daten zu definieren. Es kann damit festgelegt werden, welche Ressourcen an welcher Position verwendet werden.
 
-so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategorisieren. Die Beziehungen zwischen Instanzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden. In der Tabelle\ref{tab:SchematischeKonstrukte} findet sich eine kurze Übersicht der wichtigsten Konstrukte.
+so verwendet RDF zum Beispiel die Bezeichnung der Klasse um zu kategorisieren. Die Beziehungen zwischen Instanzen werden in Propertys abgebildet. Mit RDF können auch Hierarchien im Bereich der Klassen aber auch der Eigenschaften gebildet werden. Ausserdem können auf Objekten und Subjekten Typeinschränkungen vorgenommen werden.\footnote{http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/\#section-rdfa\cite{w3rdf}}
 
-TODO: Soll das anderst dargestellt werden? wieso geht mein footnote nicht??
-\begin{center}
-	\begin{table}[H]
-	 \centering
-		%\caption{Schematische Konstrukte}	\footnote{\cite{w3rdf}}
-				\caption[\cite{w3rdf}]{Schematische Konstrukte \footnotemark}
-			\begin{tabular}{|l|l|l|} \toprule
-			\textbf{Konstrukt}  & \textbf{Syntaktische Form} & \textbf{Beschreibung} \\ \midrule
-				Class (eine Klasse) & C rdf:type; rdfs:Class& C (eine Ressource) \\&&ist eine RDF Klasse \\  \midrule		
-				Property (Eine Klasse) & P rdf:type rdf:Property & P (eine Ressource)\\&& ist eine RDF Property\\  \midrule		
-				type (eine Eigenschaft) & I rdf:type C &I (eine Ressource)\\&& ist eine Instanz von C (einer Klasse)\\  \midrule
-subClassOf (eine Eigenschaft) & C1 rdfs:subClassOf C2 & C1 (eine Klasse)\\&& ist Subklasse von C2 \\  \midrule
-subProptertyOf (eine Eigenschaft) & P1 rdfs:subProptertyOf P2 & P1 (eine Eigenschaft)\\&& ist Sub-Property von P2 \\  \midrule
-domain (eine Eigenschaft) & P rdfs:domain C & Domäne von P \\&&(einer Eigenschaft) ist C (eine Klasse) \\  \midrule			
-range (eine Eigenschaft) & P rdfs:range C & Bereich von P \\&&(einer Eigenschaft) ist C (eine Klasse) \\  \bottomrule
-			\end{tabular}
-		\label{tab:SchematischeKonstrukte}
-	\end{table}
-\end{center}
+\subsection{RDF Formen}
+\label{sec:owlRdf_rdf_formen}
 
+Es gibt verschiedene Formen um RDF niederzuschreiben. Diese führen alle zu den gleichen Tripels. Sie haben unterschiedliche Einsatzgebiete. So gibt es zum Beispiel die N-Tripel oder die Turtle Schreibweise. Im folgenden Kapitel soll aber das XML/RDF Format kurz vorgestellt werden, da wir es in unserem Beispiel verwenden.
 
-TODO: Writing RDF graphs wird hier noch ausführlich beschrieben. Nach dem Kapital Graphen Modellierung entscheiden was davon noch nötig ist und einfügen.
+\subsubsection{XML/RDF}
+\label{sec:owlRdf_rdf_formen_xmlRdf}
+Bei XML/RDF handelt es sich um eine Schreibweise von RDf, welche die XML Syntax verwendet um  RDF Grpahen abzubilden. Als RDF in den 1990er Jahren entwickelt wurde, war dies die einzige Schreibweise dafür.
+TODO: übersetzten, ich bekomms grad nicht hin.
+
+In RDF/XML RDF triples are specified within an XML element rdf:RDF (lines 2 and 20). The attributes of the rdf:RDF start tag (lines 3-6) provide a shorthand for writing down names of XML elements and attributes. The XML element rdf:Description (short for http://www.w3.org/1999/02/22-rdf-syntax-ns\#Description) is used to define sets of triples that have as subject the IRI specified by the about attribute. The first description block (line 7-12) has four sub-elements. The name of the subelement is an IRI representing an RDF property, e.g., rdf:type (line 8). Here, each subelement represents one triple. In cases where the object of the triple is also an IRI the property subelement has no content and the object IRI is specified using the rdf:resource attribute (lines 8, 10-11, 15 and 18).
+
 
 \section{OWL}
 \label{sec:owlRdf_owl}
@@ -121,7 +111,7 @@ Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der G
 	\item Entitäten; Elemente welche konkrete Objekte aus der realen Welt abbilden:\\Grundbestandteile einer Aussage wie zum Beispiel die Objekte Prolog und Unifikation oder die Beziehung verwendet, werden allgemein Entitäten genannt. Konkrete Objekte werden dabei als Individuals, Kategorien als Klassen und  Beziehungen als Properties bezeichnet. Beziehungen werden Unterteilt in ObjectProperties (Wert zu Objekt), DataTypProperties (Datenwert zu Ojbekt) und AnnotationProperties (Information zu der Ontologie selber).
 	\item Expression (Ausdruck); kombinationen aus Enitiäten um komplexe Beschreibungen aufzubauen:\\ Entitäten können mithilfe eines Konstruktors kombiniert werden. Zum Beispiele Prolog und die Klasse Unifikation. Diese Vereinigung wird als Class Expression abgebildet und könnte als neue Entität angesehen werden. (todo Beispiel). Die Expressionsprache für Klassen ist sehr mächtig; Expressionsprache für Properties hingegen ist schwächer. 
 \end{itemize}
-Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, das es Situationen gibt, bei welcher aus einer Tatsache eine nächste Folgt. Wenn also eine Aussage wahr ist, folgt daraus, dass eine andere auch zutrifft. Dies wird in OWL Tools, sogenannten Reasoners, umgesetzt. Ein Reasoner kann also Konsequenzen ermitteln. Es kann schwierig zu verstehen sein, wie Axiome miteinander interagieren. Dieser Zusammenhang kann als Stärke und als Schwäche von OWL angeschaut werden. Eine Stärke, weil er Reasoner informationen aufdeckt, welche ein Mensch nicht erkennen würde. Eine Schwäche weil es schwer ist, die unmittelbare Wirkung vorherzusehen.
+Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, das es Situationen gibt, bei welcher aus einer Tatsache eine nächste Folgt. Wenn also eine Aussage wahr ist, folgt daraus, dass eine andere auch zutrifft. Dies wird in OWL Tools, sogenannten Reasoners, umgesetzt. Ein Reasoner kann also Konsequenzen ermitteln. Es kann schwierig zu verstehen sein, wie Axiome miteinander interagieren. Dieser Zusammenhang kann als Stärke und als Schwäche von OWL angeschaut werden. Eine Stärke, weil er Reasoner Informationen aufdeckt, welche ein Mensch nicht erkennen würde. Eine Schwäche weil es schwer ist, die unmittelbare Wirkung vorherzusehen.
 
 \subsection{Die wichtigsten Elemente von OWL}
 \label{subsec:owlRdf_owl_wichtigsteElemente}
@@ -145,13 +135,13 @@ Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen sondern au
 
 		
 Individuum:Es gibt ein NamedIndividual der Klasse einfaches Token mit der Bezeichnung Atom. Individuals können auch von mehreren Klassen gleichzeitig sein\\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Beispiel OWL Individuum\protect\footnotemark}]
 <NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
 	<rdf:type rdf:resource="\&Prolog\_Ontology;EinfachesToken"/>\\
 	<rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
 </NamedIndividual>\\
 \end{lstlisting}
-                                                      		
+\footnotetext{Eigene Darstellung mittles xy}                                                   		
 
 Klassen könne gleichgestellt werden: Die Klasse Person und die Klasse Human entsprechen sich. TODO Bsp aus unserer Hirachie sobald wirs haben.\\
 \noindent\hspace*{15mm} <owl:Class rdf:about="Person"'>\\
