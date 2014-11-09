@@ -48,7 +48,7 @@ Der Mensch nutzt mehrere Arten um Wissen abzubilden:
 
 \subsection{Relationales Wissen}
 \label{subsec:relationales_wissen}
-Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten aber keine logischen Abhängigkeiten abgebildet werden können.
+Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten, aber keine logischen Abhängigkeiten abgebildet werden können.
 
 \begin{lstlisting}[caption={Einfaches Beispiel von relationalem Wissen.}]
     Hunde mögen Knochen.
@@ -58,7 +58,7 @@ Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein N
 
 \subsection{Vererbung von Eigenschaften}
 \label{subsec:vererbung_eigenschaft}
-Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Oberklasse an eine Unterklasse weitervererbt werden. Die logischen Programmiersprachen verwenden beispielsweise Regeln. Definiert man nun, dass Prolog eine solche logische Programmiersprache ist, ist es für den Menschen intuitiv klar, dass auch Prolog auch Regeln verwendet wird. Die Unterklasse Prolog erbt also die Eigenschaft der Verwendung von Regeln von deren Oberklasse, der logischen Programmiersprache.
+Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Oberklasse an eine Unterklasse weitervererbt werden. Die logischen Programmiersprachen verwenden beispielsweise Regeln. Definiert man nun, dass Prolog eine solche logische Programmiersprache ist, ist es für den Menschen intuitiv klar, dass Prolog auch Regeln verwendet. Die Unterklasse Prolog erbt also die Eigenschaft der Verwendung von Regeln von deren Oberklasse, der logischen Programmiersprache.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/experten_systeme_vererbung.png}}}
@@ -68,12 +68,7 @@ Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Ober
 
 \subsection{Prozedurales Wissen}
 \label{subsec:prozedurales_wissen}
-Bei prozeduralen Wissen handelt es sich um Wissen, welches in bestimmten Situationen bestimmte Aktionen vorschreibt. Dies kann auch als Folge von Aktionen verstanden werden. So zum Beispiel das Aufschliessen einer Türe: Man steckt den (passenden) Schlüssel in da Schlüsselloch, dreht diesen, entsichert das Schloss, drückt die Türfalle nach unten und öffent schliesslich die Türe.
-
-\subsection{Logisches Wissen}
-\label{subsec:logisches_wissen}
-
-Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Aus $A$ folgt $B$ bzw. $A \to B$, was so viel heisst wie ``Wenn $A$ gilt, kann geschlossen werden, dass auch $B$ gilt.''. Sei Ereignis $A$ das Öffnen einer Türe und $B$ die Tatsache, dass die Türe offen ist, kann gesagt werden, dass aus $A$, also dem Öffnen der Türe, $B$ folgt, nämlich dass die Türe danach geöffnet ist.
+Bei prozeduralem Wissen handelt es sich um Wissen, welches in bestimmten Situationen bestimmte Aktionen vorschreibt. Dies kann auch als Folge von Aktionen verstanden werden. So zum Beispiel das Aufschliessen einer Türe: Man steckt den (passenden) Schlüssel in da Schlüsselloch, dreht diesen, entsichert das Schloss, drückt die Türfalle nach unten und öffent schliesslich die Türe.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.34}[0.34]{\includegraphics{bilder/experten_systeme_prozedurales_wissen.png}}}
@@ -83,7 +78,13 @@ Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Au
 
 \newpage
 
-Formalisiert die unter~\ref{itm:wissensarten} genannten Arten des Wissens, so gelangt man zu den folgenden Wissenrepräsentationsformalismen:
+\subsection{Logisches Wissen}
+\label{subsec:logisches_wissen}
+
+Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Aus $A$ folgt $B$ bzw. $A \to B$, was so viel heisst wie ``Wenn $A$ gilt, kann geschlossen werden, dass auch $B$ gilt.''. Sei Ereignis $A$ das Öffnen einer Türe und $B$ die Tatsache, dass die Türe offen ist, kann gesagt werden, dass aus $A$, also dem Öffnen der Türe, $B$ folgt, nämlich, dass die Türe danach geöffnet ist.
+\\
+
+Formalisiert man die unter~\ref{itm:wissensarten} genannten Arten des Wissens, so gelangt man zu den folgenden Wissenrepräsentationsformalismen:
 \begin{itemize}
     \item Logik
         \begin{itemize}
