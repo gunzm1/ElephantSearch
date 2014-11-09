@@ -1,0 +1,160 @@
+\chapter{Regeln --- SWRL}
+\label{chap:swrl}
+
+Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{swrl}.
+
+Bei SWRL handelt es sich um eine auf OWL und RuleML~\footnote{www.ruleml.org} basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet so vielfältige Möglichkeiten zur Inferenz.
+
+\section{Aufbau}
+\label{sec:swrl_aufbau}
+Eine SWRL-Regel besteht aus einem Kopf und einem Körper. Wobei der Kopf immer auf den Körper folgt. Beide Teile bestehen aus positiven Konjunktionen von Atomen:
+\lstset{caption={Beispiel von positiven Konjunktionen von Atomen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ atom \wedge atom \cdots \rightarrow atom \wedge atom $
+\end{lstlisting}
+
+Informal ausgedrückt kann man also sagen: ``Wenn alle Teile des Körpers wahr sind, dann ist auch der Kopf wahr''. SWRL unterstützt keine negierten Atome oder Disjunktionen.
+
+Ein Atom ist einen Ausdruck der Form:
+\lstset{caption={Beispiel eines Atoms},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ p(\arg1, \arg2, \cdots argn) $
+\end{lstlisting}
+$p$ ist hierbei ein Prädikat und $\arg1$, $\arg2$ und $argn$ die Argumente bzw. Terme des Ausdrucks.
+
+Prädikate können in SWRL OWL-Klassen, -Eigenschaften oder -Datentypen sein, Argumente OWL-Individuen, -Werte oder darauf verweisende Variablen.
+
+\subsection{Atomare Typen}
+\label{subsec:swrl_aufbau_atomaretypen}
+SWRL unterscheidet zwischen den folgenden atomaren Typen:
+\begin{itemize}
+    \item Klassen
+    \item Eigenschaften von Individuen
+    \item Wertespezifische Eigenschaften
+    \item Unterscheidung von Individuen
+    \item Gleichsetzung von Individuen
+    \item Wertebereiche
+    \item Vordefinierte Atome
+\end{itemize}
+
+\subsubsection{Klassen}
+\label{ssubsec:swrl_aufbau_atomaretypen_klassen}
+Ein Klassenatom besteht aus einem Prädikat, sowie genau einem Argument. Das Prädikat ist eine OWL-Klasse, das Argument ein OWL-Individuum (welches dies auch in Form einer Variable sein kann).
+\lstset{caption={Beispiele von Klassen-Atomen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Person(?x) $
+    $ Man(Bob) $
+\end{lstlisting}
+
+Möchte man nun mittels SWRL z.B. Aussagen, dass alle Männer auch Personen sind, so geschieht dies mittels:
+\lstset{caption={Beispiel der einfachen SWRL-Regel, dass alle Männer auch Personen sind},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Person(?x) \rightarrow Man(?x) $
+\end{lstlisting}
+
+\subsubsection{Eigenschaften von Individuen}
+\label{ssubsec:swrl_aufbau_atomaretypen_eigenschaftenvonindividuen}
+Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist eine OWL-Eigenschaft bzw.\ Relation zwischen zwei Individuen, die Argumente sind also somit ein OWL-Individuum (welche dies auch in Form einer Variable sein können).
+\lstset{caption={Beispiele von Atomen zur Darstellung von Eigenschaften von Individuen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ hasParent(?x,?y) $
+    $ hasParent(?x,Bob) $
+\end{lstlisting}
+
+Möchte man nun zum Beispiel ausdrücken, dass die Relation $ isMother $ gilt, wenn ein OWL-Individum weiblich und Elternteil von einem anderen OWL-Individum ist, so geschieht dies mittels:
+\lstset{caption={Beispiel der einfachen SWRL-Regel, dass eine Person $p$ Mutter einer Person $x$ ist},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Person(?p) \wedge Female(?p) \wedge hasParent(?x,?p) \rightarrow isMother(?p,?x) $
+\end{lstlisting}
+
+\subsubsection{Wertespezifische Eigenschaften}
+\label{ssubsec:swrl_aufbau_atomaretypen_wertespezifischeeigenschaften}
+Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist eine wertespezifische Eigenschaft, das erste Argument ein OWL-Individuum, das zweite Argument ist ein OWL-Datenwert.
+\lstset{caption={Beispiele von Atomen zur Darstellung von wertespezifischen Eigenschaften von Individuen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ hasAge(?x,?age) $
+    $ hasHeight(?x,?height) $
+\end{lstlisting}
+
+Möchte man nun zum Beispiel ausdrücken, dass die alle Personen, welche einen Wagen besitzen auch Fahrer sind, so geschieht dies mittels:
+\lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass eine Person $p$, welche ein Auto besitzt, auch Fahrer ist},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Person(?p) \wedge hasCar(?p, true) \rightarrow isDriver(?p) $
+\end{lstlisting}
+
+\subsubsection{Unterscheidung von Individuen}
+\label{ssubsec:swrl_aufbau_atomaretypen_unterscheidungvonindividuen}
+Ein Atom, welches die Unterscheidung von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{differentFrom}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+\lstset{caption={Beispiele von Atomen zur Unterscheidung von zwei Individuen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ differentFrom(?x,?y) $
+    $ differentFrom(Bob,Fred) $
+\end{lstlisting}
+Eine genauere Beschreibung der Verwendung bzw.\ des Zwecks dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
+
+\subsubsection{Gleichsetzung von Individuen}
+\label{ssubsec:swrl_aufbau_atomaretypen_gleichsetzungvonindividuen}
+Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{sameAs}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+\lstset{caption={Beispiele von Atomen zur Gleichsetzung von zwei Individuen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ sameAs(?x,?y) $
+    $ sameAs(Bob,Bobby) $
+\end{lstlisting}
+
+\subsubsection{Wertebereiche}
+\label{ssubsec:swrl_aufbau_atomaretypen_wertebereiche}
+Ein Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge aus Literalen, sowie genau einem Argument. 
+\lstset{caption={Beispiele von Atomen Kennzeichnung eines Wertes},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ xsd:int(?x) $
+    $ [3, 4, 5](?x) $
+\end{lstlisting}
+Im ersten Beispiel ist das Objekt, welches durch die Variable $?x$ gekennzeichnet ist, eine ganze Zahl. Im zweiten Beispiel hat das Objekt den Wert 3, 4 oder 5.
+
+\subsubsection{Vordefinierte Atome}
+\label{ssubsec:swrl_aufbau_atomaretypen_vordefinierteatome}
+Bei den vordefinierten Atom handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen und den Wahrheitswert ``richtig'' zurückgeben, sofern alle Argumente dem Prädikat genügen. Dabei haben die vordefinierten Atome den Präfix $ swrldb: $. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{http://www.daml.org/2004/04/swrl/builtins}.
+
+Möchte man beispielsweise sagen, dass alle Objekte, welche eine Person sind, welche über ein Alter in Form eines Attributes verfügen und dieses grösser als 17 ist, erwachsen sind, so geschieht mit:
+\lstset{caption={Beispiele der Verwendung von vordefinierten Atomen},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Person(?p) \wedge hasAge(?p,?age) \wedge swrlb:greaterThan(?age, 17) \rightarrow Adult(?p) $
+\end{lstlisting}
+
+\section{Open world assumption}
+\label{sec:swrl_openworldassumption}
+SWRL geht, wie auch OWL von der so genannten \textit{``open world assumption''} aus. Diese sagt aus, dass der Wahrheitswert einer Aussage wahr sein kann, unabhängig davon ob bekannt ist, dass der Wert effektiv wahr ist.
+
+Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, da sie zusammen an einer Publikation arbeiten, ist folgende Regel naheliegend:
+
+\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Publication(?p) \wedge hasAuthor(?p,?y) \wedge hasAuthor(?p,?z) \rightarrow collaboratesWith(?y,?z) $
+\end{lstlisting}
+
+Bedingt durch die open world assumption von OWL ist es nicht möglich zu sagen, dass zwei OWL-Individuen automatisch unterschiedlich sind wenn sie sich durch den Namen unterscheiden. Um dieses Problem zu umgehen bietet SWRL die \textit{sameAs} und \textit{differentFrom} Relationen.
+
+Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, wenn sie Mitverfasser einer Arbeiter sind, so kann die \textit{differentFrom} Relation verwendet werden:
+
+\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Publication(?a) \wedge hasAuthor(?x,?y) \wedge hasAuthor(?x,?z) \wedge differentFrom(?y,?z) \rightarrow cooperatedWith(?y,?z) $
+\end{lstlisting}
+
+Dasselbe gilt für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit \textit{sameAs} gekennzeichnet werden.
+
+Weiter können z.B. Aufzählungen nicht ohne Weiteres ausgedrückt werden. Möchte man beispielweise sagen, dass es sich bei einer Publikation um eine Publikation mit nur einem Autor handelt, ist dies nicht möglich. Es mag sein, dass aktuell nur Wissen über einen Autor der Publikation vorhanden ist, diese aber noch über weitere --- aktuell unbekannte --- Autoren verfügt.
