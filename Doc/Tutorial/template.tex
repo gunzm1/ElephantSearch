@@ -192,6 +192,7 @@
 \begin{document}
 
 \lstset{language=XML,
+  caption={},
   frame=L,
   basicstyle=\small\normalfont\sffamily,  % the size of the fonts that are used for the code
   stepnumber=1,                           % the step between two line-numbers.
@@ -214,6 +215,18 @@
   belowskip=3em,
   aboveskip=3em
  }
+
+% Make sure Umlauts are getting displayed correctly.
+\lstset{literate=%
+    {Ö}{\textcolor{red}{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\textcolor{red}{\"o}}}1
+    {~}{{\textasciitilde}}1
+}
 
 % Title Page and Abstract
 %---------------------------------------------------------------------------
@@ -248,6 +261,7 @@
 \include{kapitel/inferenz_und_resolution}
 \include{kapitel/rdf}
 \include{kapitel/owl}
+\include{kapitel/swrl}
 \include{kapitel/sparql}
 \include{kapitel/schlusswort}
 %---------------------------------------------------------------------------
