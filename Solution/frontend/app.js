@@ -5,6 +5,8 @@ requirejs.config({
     'bootstrap': "lib/bootstrap/dist/js/bootstrap",
     'underscore': "lib/underscore/underscore-min",
     'backbone': "lib/backbone/backbone",
+    'text': "lib/text/text",
+    'stardog': "lib/stardog/js/stardog"
   },
   shim: {
     "backbone": {
@@ -20,6 +22,6 @@ requirejs.config({
 
 //requiring the scripts in the first argument and then passing the library namespaces into a callback
 //you should be able to console log all of the callback arguments
-require(['jquery', 'underscore', 'backbone', 'app/main'], function(jquery, _, Backbone, App){
+require(['jquery', 'underscore', 'text', 'backbone', 'stardog', 'app/main'], function(jquery, _, text, Backbone, Stardog, App){
     new App;
 });
