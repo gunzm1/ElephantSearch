@@ -62,6 +62,29 @@
 \definecolor{bfhgrey}{rgb}{0.41,0.49,0.57}      % BFH grey
 %\definecolor{linkcolor}{rgb}{0,0,0.8}              % Blue for the web- and cd-version!
 \definecolor{linkcolor}{rgb}{0,0,0}                 % Black for the print-version!
+
+%---------------------------------------------------------------------------
+
+% Load listings package
+% which provides source code formatting
+%---------------------------------------------------------------------------
+\usepackage{listings}                                                   % provides source code formatting
+% Define XML colors
+\lstdefinelanguage{XML}
+{
+  basicstyle=\ttfamily\footnotesize,
+  morestring=[b]",
+  moredelim=[s][\bfseries\color{maroon}]{<}{\ },
+  moredelim=[s][\bfseries\color{maroon}]{</}{>},
+  moredelim=[l][\bfseries\color{maroon}]{/>},
+  moredelim=[l][\bfseries\color{maroon}]{>},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s]{<!--}{-->},
+  commentstyle=\color{codecommentcolor},
+  stringstyle=\color{darkblue},
+  identifierstyle=\color{red}
+}
+
 %---------------------------------------------------------------------------
 
 % Hyperref Package (Create links in a pdf)

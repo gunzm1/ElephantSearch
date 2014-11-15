@@ -1,0 +1,7 @@
+<script type="text/template" id="mainViewTemplate">
+	<input type="button" id="buttonid" name="buttonname" value="los"></input>
+
+    <% _.each( objects, function( object_item ){ %>
+        <li>hallo</li>  
+    <% }); %>
+</script>
