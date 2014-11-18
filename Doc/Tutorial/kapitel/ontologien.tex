@@ -1,56 +1,63 @@
 \chapter{Wissen abbilden mittels Ontologien}
 \label{chap:ontologien}
 
-Nun haben wir eine groben Überblick über unsere Objekte und ihre Verwendung. Damit sie uns bei der Wissensmodellierung von Nutzen sind, müssen diese aber in eine geeignete Form gebracht werden. Wissen wird in Knowdgles Engineering meist in Form von Ontologien abgelegt. 
+Die bisherigen Kapiteln bieten eine groben Überblick über Objekte deren Verwendung. Damit sie bei der Wissensmodellierung von Nutzen sind, müssen diese aber in eine geeignete Form gebracht werden. Wissen wird in Knowdgles Engineering meist in Form von Ontologien abgelegt.
+
 Der Begriff Ontologie wird in verschiedenen wissenschaftlichen Bereichen verwendet, so zum Beispiel in der Philosophie, der Psychologie und der Informatik. In diesem Dokumente soll nur der Aspekt der Informatik erklärt werden. \\
-Das Folgende Kapitel basiert auf dem Artikel "`Was bedeutet eigentlich Ontologie?"'\cite{IspekOntoBedeutung} sowie dem Artikel "`Eine kurze Geschichte der Ontologie"' \cite{ISpekOntoGeschichte}.\\
-In der Informatik steht Ontologie für "`eine formale Beschreibung des Wissens in einer Domäne in der Form von Konzepten der Domäne, deren Beziehung untereinander und der Eigenschaft dieser Konzepte und Beziehungen, sowie der in der Domäne güligen Axiome und Prinzipien."'\cite[S.310]{ISpekOntoGeschichte}.\\
+Das Folgende Kapitel basiert auf dem Artikel ``Was bedeutet eigentlich Ontologie?''~\cite{IspekOntoBedeutung} sowie dem Artikel ``Eine kurze Geschichte der Ontologie''~\cite{ISpekOntoGeschichte}.
+
+In der Informatik steht Ontologie für ``..eine formale Beschreibung des Wissens in einer Domäne in der Form von Konzepten der Domäne, deren Beziehung untereinander und der Eigenschaft dieser Konzepte und Beziehungen, sowie der in der Domäne güligen Axiome und Prinzipien.''~\cite[S.310]{ISpekOntoGeschichte}.
+
 Zum besseren Verständnis, wird diese Definition im folgenden Abschnitt kurz untersucht:
+\begin{itemize}
+    \item \textit{Domäne}
 
-Domäne: Unter einer Domäne versteht man einen Ausschnitt der Welt, dessen Grenzen klar definiert sind. Die Domäne und ihre Grenzen werden durch den Anwendungsfall festgelegt.
+        Unter einer Domäne versteht man einen Ausschnitt der Welt, dessen Grenzen klar definiert sind. Die Domäne und ihre Grenzen werden durch den Anwendungsfall festgelegt.
 
-Konzepte: Diese werden in anderen Teilen dieses Dokument als Objekte beziehungsweise Klassen bezeichnet. Dabei kann es sich um materielle Konzepte wie zum Beispiel Teile eines Wagens, oder um immaterielle Konzepte wie zum Beispiel die Lösungssuche handeln.
+    \item \textit{Konzepte}
 
-Beziehungen: Objekte stehen in Beziehungen zueinander. Es werden die "`ist ein"' und die "`Instanz von "`Beziehungen unterschieden. So ist Prolog zum Beispiel eine Programmiersprache. Die Eigenschaften eines Objektes werden auch als Beziehungen dargestellt (Eine Klausel besteht aus einem Klauselkopf).
+        Konzepte werden in anderen Teilen dieses Dokumentes als Objekte beziehungsweise Klassen bezeichnet. Dabei kann es sich um materielle Konzepte, wie zum Beispiel Teile eines Wagens, oder um immaterielle Konzepte, wie zum Beispiel die Lösungssuche, handeln.
 
-Axiome und Prinzipien: Damit sind die in der Domäne vorhandenen Regeln gemeint.
+    \item \textit{Beziehungen}
 
-Mit diesen Elementen, sind alle wichtigen Punkte einer Ontologie ab gedeckt. Dabei ist es, wie in der Definition festgelegt, wichtig, dass die gesamte Abbildung in einer formalen Sprache beschrieben wird.
+        Objekte stehen in Beziehungen zueinander. Es werden die Beziehungen ``ist ein'' und ``Instanz von'' unterschieden. So ist eine Abenteuerreise zum Beispiel eine Reise. Die Eigenschaften eines Objektes werden auch als Beziehungen dargestellt (eine Reise hat eine/n Reiseführer/in).
 
+    \item \textit{Axiome und Prinzipien}
+
+        Damit sind die in der Domäne vorhandenen Regeln gemeint.
+\end{itemize}
+
+Mit diesen Elementen sind alle wichtigen Punkte einer Ontologie ab gedeckt. Dabei ist es, wie in der Definition festgelegt, wichtig, dass die gesamte Abbildung in einer formalen Sprache beschrieben wird.
 
 \subsection{Anwendung von Ontologien}
 \label{subsec:ontologien_onto_anwendung}
-Wie bereits festgestellt, werden Ontologien für wissensbasierte Anwendungen verwendet. Konkret werden sie überall dort verwendet wo Semantik zur Formulierung von Informationen genutzt werden. Eines der bekanntesten Beispielen ist das Semantische Web. Das Semantische Web versucht im Gegensatz zum Syntaktischen Web, die Zeichen nicht nur stur Abzugleichen, sondern ein Verständnis mit einzubauen und Schlussfolgerungen zu ziehen. (TODO: sollte man hier ein beispiel machen; zb Hotel? ich finde nicht, wir können ja schon davon ausgehen, das der leser gewisse kenntnisse hat.)\\
+Wie bereits festgestellt werden Ontologien für wissensbasierte Anwendungen verwendet. Konkret werden sie überall dort verwendet, wo Semantik zur Formulierung von Informationen genutzt wird. Eines der bekanntesten Beispiele ist das semantische Web. Dieses versucht, im Gegensatz zum syntaktischen Web, die Zeichen nicht nur abzugleichen, sondern ein Verständnis mit einzubauen und Schlussfolgerungen zu ziehen.
 
-Die Aufgabe von Ontologien ist die Verbesserte und Ermöglichung Kommunikation zwischen Computeranwendungen untereinander und zwischen den Anwendungen und Menschen. Wichtig dabei ist, dass es sich immer um eine bestimmte Wissensdomäne (Domain Ontologies) handelt. So haben einige Berufsgruppen begonnen, ihr Wissen mit Hilfe von standardisierten Sprachen abzubilden. Diese Sprache, wie die im Kapitel "`\nameref{sec:owlRdf_owl}"' vorgestellt OWL Sprache, wurden von dem World Wide Web Consortium standardisiert.
+Die Aufgabe von Ontologien ist die Verbesserung und Ermöglichung von Kommunikation zwischen Computeranwendungen untereinander und zwischen den Anwendungen und Menschen. Wichtig dabei ist, dass es sich immer um eine bestimmte Wissensdomäne (sog. Domain Ontologies) handelt. So haben einige Berufsgruppen begonnen, ihr Wissen mit Hilfe von standardisierten Sprachen abzubilden. Diese Sprachen, wie die im Kapitel~\ref{chap:owl}~\nameref{chap:owl} vorgestellte Sprache OWL, wurden von dem W3C Konsortium (World Wide Web Consortium) standardisiert.
 
-
-
-\subsection{Semantic-Web-Anwendung}
+\subsection{Anwendung des semantischen Webs}
 \label{subsec:ontologien_onto_SemantikWebAnwendung}
-Eine Anwendung für das Semantic Web besteht aus einer Wissensbasis und einer Inferenzmaschine. Ein Ontologieschema legt in der Wissensbasis fest, welche Arten von Aussagen möglich sind. Die Aussagen enthalten das konkrete Wissen. Sowohl das Schema, wie auch die Wissensabbildung werden in einer formalen Sprache wie OWL\ref{sec:owlRdf_owl} oder RDFS abgebildet.
+Eine Anwendung für das semantische Web besteht aus der Gewinnung von zusätzlichem Wissen, was anhand einer Wissensbasis in Form einer Wissensdatenbank und einer Inferenzmaschine geschieht. Ein Ontologieschema legt in der Wissensbasis fest, welche Arten von Aussagen möglich sind. Die Aussagen enthalten das konkrete Wissen. Sowohl das Schema, wie auch die Wissensabbildung werden in einer formalen Sprache, wie z.B. OWL\ref{chap:owl} oder RDFS, abgebildet.
 
-Beispiel:\\
-\noindent\hspace*{15mm} Prolog ist eine Wissensrepräsentationssprache\\
+\begin{lstlisting}[caption={Beispiel einer Aussage in einer Wissensbasis.}]
+Eine Abenteuerreise ist eine Reise.
+\end{lstlisting}
 
-In der einfachsten Anwendung kann das Wissen, das abgelegt ist, direkt abgefragt werden. Bei komplexeren Anfragen sind die Funktionalitäten der Inferenzmaschine notwendig. Diese ist fähig, mittels Inferenzregeln Schlussfolgerungen zu ziehen und so neue, komplexe Aussagen zu generieren. Eine der simpelsten, von der Inferenzmaschine verwendeten Regeln, ist die Transitivitätsregel. 
-Zu den vorhandenen Regeln ist es dem Entwickler möglich, wissensdomänenspezifische Regeln zu spezifizieren. Diese werden von der Inferenzmaschine bei ihrer Auswertung berücksichtigt.
+In der einfachsten Anwendung kann das Wissen, welches abgelegt ist, direkt abgefragt werden. Bei komplexeren Anfragen sind die Funktionalitäten der Inferenzmaschine notwendig. Diese ist fähig mittels Inferenzregeln Schlussfolgerungen zu ziehen und so neue, komplexe Aussagen zu generieren. Eine der simpelsten, von der Inferenzmaschine verwendeten Regeln, ist die Transitivitätsregel. Zu den vorhandenen Regeln ist es dem Entwickler möglich, wissensdomänenspezifische Regeln zu spezifizieren. Diese werden von der Inferenzmaschine bei ihrer Auswertung berücksichtigt.
 
-Beispiel:\\
-\noindent\hspace*{15mm} Wenn eine Klausel einen leeren Körper und einen vollen Kopf hat, handelt es sich um einen Fakt.\\
 
-Damit die Inferenzmaschine ihre Arbeit machen kann, muss die Wissensbasis in einer formalen Sprache vorliegen und darf keine syntaktischen Fehler enthalten. Das Schema und die Aussagen werden von der Maschine geladen und intern als Graphen gespeichert.(siehe Kapitel \nameref{chap:wissensrepFormen}). Mit Hilfe eines Algorithmus wird eine Abfrage implementiert. Diese wird zum Abgleichen von Graphen verwendet. Die Regeln werden wiederholt angewendet. Dadurch können Schlussfolgerungen gezogen werden. Auch dies geschieht mittels eines solchen Algorithmus. Die daraus entstandenen Aussagen werden der Wissensbasis hinzugefügt.
+\begin{lstlisting}[caption={Beispiel einer Regel in einer Wissensbasis.}]
+Handelt es sich bei einem Objekt um eine Reise, benötigt das Objekt mindestens vier Teilnehmer/innen und ist das Objekt teambildend, so handelt es sich bei dem Objekt auch um einen Teamevent.
+\end{lstlisting}
+
+Damit eine Inferenzmaschine Schlüsse ziehen kann, muss die Wissensbasis in einer formalen Sprache vorliegen und darf keine syntaktischen Fehler enthalten. Das Schema und die Aussagen werden von der Maschine geladen und intern als Graph gespeichert (siehe Kapitel~\nameref{chap:wissensrepFormen}). Mit Hilfe eines Algorithmus wird eine Abfrage implementiert. Diese wird zum Abgleichen von Graphen verwendet. Die Regeln werden wiederholt angewendet, wodurch Schlussfolgerungen gezogen werden können. Auch dies geschieht mittels eines solchen Algorithmus. Die daraus entstandenen Aussagen werden der Wissensbasis hinzugefügt und stehen für Abfragen zur Verfügung.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\vspace{0.1pt}
 \begin{wrapfigure}{l}{0.1\textwidth}
-    \vspace{-19pt}
+    \vspace{-2pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Wir brauchen also Ontologien. Dabei spielt die Wahl der Domäne eine grosse Rolle. Im Laufe der Umsetzung unserer Wissensmodellierung haben wir gelernt, das sich nicht jeder Themenbereich als Domäne eignet. So sind theoretische Grundlage schwierig umzusetzen. Diese erhalten auch keinen besonderen Mehrwert, wenn sie in Semantischer Form abgelegt sind. Die Mächtigkeit einer Ontologie und der damit verbundene Wissensmodellierung ist bei Themen mit konkreten Daten welche interpretiert und mit deren Hilfe Schlussfolgerungen gezogen werden können, viel sinnvoller.\\
-
+Wir brauchen also Ontologien. Dabei spielt die Wahl der Domäne eine grosse Rolle. Im Laufe der Umsetzung unserer Wissensmodellierung haben wir gelernt, das sich nicht jeder Themenbereich als Domäne eignet. So sind theoretische Grundlagen schwierig umzusetzen. Diese erhalten auch keinen besonderen Mehrwert, wenn sie in semantischer Form abgelegt sind. Die Mächtigkeit einer Ontologie und der damit verbundenen Wissensmodellierung ist bei Themen mit konkreten Daten, welche interpretiert und mit deren Hilfe Schlussfolgerungen gezogen werden können, viel sinnvoller.
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-
-% Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
-%\nocite{kopka:band1}
+Eine Erklärung, wie Inferenz und Resolution, welche zum Ziehen von Schlüssen verwendet werden, funktionieren, folgt im nachfolgenden Kapitel.

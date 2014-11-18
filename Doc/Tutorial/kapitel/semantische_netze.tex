@@ -1,78 +1,91 @@
 \chapter{Wissensrepräsentationsformen}
 \label{chap:wissensrepFormen}
 
-Nachdem wir im letzten Kapitel etwas über die Grundlage der Graphen sowie Graphdatenbanken erfahren haben, möchten wir hier auf konkrete Repräsentationsformen von Wissen eingehen.
-In der Wissensmodellierung ( Knowledge Engineering) gibt es verschieden Wissensrepräsentationsformen um die Wissen in wissensbasierten Systemen formal abzubilden. Die so gesammelten Informationen werden als Wissensbank respektive Wissensbasis bezeichnet.~\cite{wikiWissensrep}
+Nachdem im letzten Kapitel etwas über die Grundlage der Graphen sowie Graphdatenbanken aufgezeigt wurde, soll hier auf konkrete Repräsentationsformen von Wissen eingegangen werden.
+In der Wissensmodellierung (Knowledge Engineering) gibt es verschieden Wissensrepräsentationsformen um die Wissen in wissensbasierten Systemen formal abzubilden. Die so gesammelten Informationen werden als Wissensdatenbank respektive Wissensbasis bezeichnet.~\cite{wikiWissensrep}
 
-Das folgende Kapitel basiert auf dem Buch Künstliche Intelligenz\cite{laemmel}, es beschreibt einige der klassischen Wissensrepräsentationsformen.
+Das folgende Kapitel basiert auf~\cite{laemmel} und beschreibt einige der klassischen Wissensrepräsentationsformen.
 
-Semantische Netze, Wissensnetze und Frames gehören zu den üblichen Wissensrepräsentationsformen. Dabei stehen die konkreten Objekte im Vordergrund. Und nicht, wie zum Beispiel bei Regeln, die Zusammenhänge und die logischen Abhängigkeiten.\\
+Semantische Netze, Wissensnetze und Frames gehören zu den üblichen Wissensrepräsentationsformen. Dabei stehen die konkreten Objekte im Vordergrund und nicht, wie zum Beispiel bei Regeln, die Zusammenhänge und die logischen Abhängigkeiten.
 
-Semantische Netze und Frames versuchen das menschliche Gedächtnis in adäquater Form abzubilden. Ursprünglich wurden Sie vor allem zur Analyse von Wörtern und Sätzen verwendend. Ein weiterer Punkt ist die einfach verständliche Darstellung von Klassen und deren Beziehungen. Des Weiteren haben die Konzepte der semantischen Netze und Frames die Entwicklung der objektorientierten Programmierung beeinflusst.
+Semantische Netze und Frames versuchen das menschliche Gedächtnis in adäquater Form abzubilden. Ursprünglich wurden Sie vor allem zur Analyse von Wörtern und Sätzen verwendet. Ein weiterer Punkt ist die einfach verständliche Darstellung von Klassen und deren Beziehungen. Zudem haben die Konzepte der semantischen Netze und Frames die Entwicklung der objektorientierten Programmierung beeinflusst.
 
 \section{Semantische Netze}
 \label{sec:wissensrepFormen_semantischeNetze}
 
-Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnend. Ein einzelnes Objekt nennt sich auch Individuum. Zwischen den Objekten untereinander oder zu Klassen, oder zwischen Klassen untereinander gibt es Beziehungen. Es kann zwischen folgenden Beziehungen unterschieden werden:\\
+Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnend. Ein einzelnes Objekt nennt sich auch Individuum. Zwischen den Objekten untereinander, zwischen Objekten und Klassen oder zwischen Klassen untereinander gibt es Beziehungen. Es kann zwischen folgenden Beziehungen unterschieden werden:
 
+\begin{itemize}
+    \item "`ist eine"' Relation
 
-"`ist eine"' Relation: \\
-\noindent\hspace*{15mm} Es handelt sich also um Ober und Unterklassen.\\ 
-\noindent\hspace*{15mm} Beispiel: Ein Baum ist eine Pflanze.\\
+        Es handelt sich um Ober- und Unterklassen.
 
-"`Instanz von"' Relation:\\
-\noindent\hspace*{15mm} Die Relation beschreibt die Beziehung einer konkreten Instanz zu ihrer Klasse.\\
-\noindent\hspace*{15mm} Beispiel: Birke ist eine Instanz der Klasse Baum\\
+        Beispiel: \textit{Ein Baum ist eine Pflanze.}
 
-Eigenschaft:\\
-\noindent\hspace*{15mm} Klassen und Objekte haben Eigenschaften\\
-\noindent\hspace*{15mm} Pflanzen erzeugen Sauerstoff\\
+    \item "`Instanz von"' Relation
 
+        Die Relation beschreibt die Beziehung einer konkreten Instanz zu ihrer Klasse.
 
-Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen ist auch ein Hund ein Lebewesen. Ausserdem halten sich Eigenschaften an das Gesetzt der Vererbung. Braucht also ein Tier Sauerstoff, braucht auch ein Hund Sauerstoff.
+        Beispiel: \textit{Birke ist eine Instanz der Klasse Baum.}
 
-In Semantischen Netzen werden Objekte und Klassen als Knoten abgebildet. Beziehungen und Eigenschaften werden als Kanten dargestellt.
-Einige Ausdrucksformen wie Existenzaussagen und Oder Aussagen können mit Semantischen Netzen nicht abgebildet werden. Obwohl sich aber nur zweistellige Beziehungen abbilden lassen sind komplexe Abbildungen wie zum Beispiel das modellieren einer Aktion möglich.
+    \item Eigenschaft
+
+        Klassen und Objekte haben Eigenschaften.
+
+        Beispiel: \textit{Pflanzen erzeugen Sauerstoff.}
+\end{itemize}
+
+Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen, ist auch ein Hund ein Lebewesen. Ausserdem halten sich Eigenschaften an das Gesetz der Vererbung. Braucht also ein Tier Sauerstoff, braucht auch ein Hund Sauerstoff.
+
+In semantischen Netzen werden Objekte und Klassen als Knoten abgebildet. Beziehungen und Eigenschaften werden als Kanten dargestellt.
+Einige Ausdrucksformen wie Existenzaussagen und Oder-Aussagen können mit semantischen Netzen nicht abgebildet werden. Obwohl sich nur zweistellige Beziehungen abbilden lassen, sind komplexe Abbildungen, wie zum Beispiel das Modellieren einer Aktion, möglich.
 
 \section{Frames}
 \label{sec:wissensrepFormen_frames}
 
-In Frames werden die wesentlichen Charakteristika eines Objekts als Eigenschaften abgebildet und zusammengefasst. Dabei unterstützten Frames die Konzepte der Hierarchie und der Vererbung. Zudem können Frames auch generische Informationen wie Defaults, also Standartwerte und Wertebeschränkungen (Listen) enthalten.
+In Frames werden die wesentlichen Charakteristika eines Objekts als Eigenschaften abgebildet und zusammengefasst. Dabei unterstützten Frames die Konzepte der Hierarchie und der Vererbung. Zudem können Frames auch generische Informationen wie Defaults, also Standartwerte, und Wertebeschränkungen (Listen) enthalten.
 
-\begin{figure}[htbp]
-\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/framebsp.png}}}
-\caption{Abbildung von Wissens mittels Frame.\label{fig:frames}\protect\footnotemark}
-\end{figure}
-\footnotetext{Beispiel aus KI BUCH - TODO ändern}
+\begin{lstlisting}[caption={Beispiel eines Frames anhand einer Reise.}]
+    frame Abenteuerreise is a Reise :
+        default hatReiseleiter is true
+    instance `Dschungeltrip' is a kind of Abenteuerreise :
+        anbieter is dernettereiseanbieter
+        and typ is abenteuer
+        and kosten is 1000.
+    constraint preise
+        when the typ of an Abenteuerreise changes to X
+        then check that X is {dschungel or abenteuer or nevernkitzel or natur}
+        otherwise write( `Der Typ der Reise wurde nicht geändert' )
+        and nl.
+\end{lstlisting}
 
 \section{Wissensnetze}
 \label{sec:wissensrepFormen_Wissensnetze}
 Bei Wissensnetzen handelt es sich um eine Art der Wissensrepräsentation, welche die Konzepte der semantischen Netzte verwenden. Dabei wird eine objektorientierte oder Frame-Darstellung des Wissens integriert. Zusätzlich erfolgt eine grafische Darstellung mittels Topic Maps. Diese wird auch Wissenslandkarte genannt. 
 
-- Die Entfernung zweier Begriffe in der Wissenslandkarte bilden deren inhaltliche Nähe ab. Es werden also die semantischen Beziehung der Begriffe verwaltet. Dies ist eine grosse Unterstützt der Semantische Suche.
+Die Entfernung zweier Begriffe in der Wissenslandkarte bilden deren inhaltliche Nähe ab. Es werden also die semantischen Beziehungen der Begriffe verwaltet. Dies ist eine grosse Unterstützung der semantische Suche.
 
-wie in den Semantischen Netzen werden Instanzen und Klassen in den Knoten abgebildet. Zusätzlich wird das Problem der Mehrfachvererbung umgangen indem das Konzept der Rollen eingeführt wird. Klassen werden so ausgebaut, das eine Instanz eine Bestimmte Rolle annehmen kann.
-	
-Wissensnetze haben sämtliche Voraussetzungen um effektives Wissensmanagement zu erreichen. Dafür muss das Wissen aber immer aktuell und entsprechen Umfangreich sein.\\
-%\vspace{10pt}
+Wie in den semantischen Netzen werden Instanzen und Klassen in den Knoten abgebildet. Zusätzlich wird das Problem der Mehrfachvererbung umgangen, indem das Konzept der Rollen eingeführt wird. Klassen werden so ausgebaut, das eine Instanz eine bestimmte Rolle annehmen kann.
+
+Wissensnetze haben sämtliche Voraussetzungen um effektives Wissensmanagement zu erreichen. Dafür muss das Wissen aber immer aktuell und entsprechend umfangreich sein.
 
 \newpage
+
 \noindent\rule[1ex]{\textwidth}{1pt}
-\vspace{0.1pt}
 \begin{wrapfigure}{l}{0.1\textwidth}
-    \vspace{-19pt}
+    \vspace{-2pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}\\
-Ein sehr wichtiger und Zeitintensiver Teil des Knowledge Engineering ist die tatsächliche Modellierung. Sich also zu überlegen ob eine abzubildende Information ein Objekt, eine Instanz oder eine Eigenschaft ist. Oder ob sie gar als Regel abgebildet werden kann. Dazu später mehr. Uns scheint an dieser Stelle aber wichtig zu erwähnen, dass uns das Semantischen Netz ein sehr gutes Hilfsmittel war, einen Überblick über die Informationen und ihre Verwendbarkeit zu erhalten.
-An unserem konkreten Beispiel könnte dies folgendermassen aussehen: 
+Ein sehr wichtiger und zeitintensiver Teil des Knowledge Engineerings ist die tatsächliche Modellierung. Also die Überlegung ob eine abzubildende Information ein Objekt, eine Instanz oder eine Eigenschaft ist, oder, ob sie gar als Regel abgebildet werden kann. Regeln werden im Kapitel~\ref{chap:swrl}~\refname{chap:swrl} genauer erläutert. Uns scheint an dieser Stelle aber wichtig zu erwähnen, dass das semantischen Netz ein sehr gutes Hilfsmittel war, um einen Überblick über die Informationen und ihre Verwendbarkeit zu erhalten.
+An unserem konkreten Beispiel könnte dies folgendermassen aussehen:
 
 \begin{figure}[H]
-\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/familyEinfachesNezt.png}}}
-\caption{Abbildung von Wissens mittels Semantischen Netzen.\label{fig:semantischesNetz}\protect\footnotemark}
+\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/beispiel_semantisches_netz.png}}}
+\caption{Abbildung von Wissen mittels einem semantischen Netz.\label{fig:semantischesNetz}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd}
 
-Dies sieht hier ja alles ziemlich simpel aus. Wie aber bereits oben erwähnt, handelt es sich um einen Übersicht der Informationen. Würde man das Wissen direkt so in die Semantische Datenbank übertragen, wäre diese nicht viel mächtiger als eine traditionelle Wissensspeicherung. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.\\
+Die obige Abbildung mag auf den ersten Blick simpel erscheinen, wie aber bereits vorher erwähnt, handelt es sich um einen Übersicht der Informationen. Würde man das Wissen direkt so in die Semantische Datenbank übertragen, wäre diese nicht viel mächtiger als eine traditionelle Wissensspeicherung. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.\\
 
 \vspace{0.1pt}
 \noindent\rule[1ex]{\textwidth}{1pt}

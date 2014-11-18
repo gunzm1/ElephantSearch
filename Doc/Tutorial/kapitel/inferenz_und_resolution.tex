@@ -3,25 +3,31 @@
 
 \section{Inferenz}
 \label{sec:inferenz}
-Grundsätzlich geht es bei Inferenz um den Prozess Schlussfolgerungen mithilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.~\cite[S. 163]{russel}.
+Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mithilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.~\cite[S. 163]{russel}.
 
 \subsection{Inferenz in Computern}
 \label{subsec:inferenz-in-computer}
 
-Das grundsätzliche Problem bei Computern im Bezug auf Inferenz ist, dass ein Computer keine Interpretation vornehmen kann und nichts über die (Um-)Welt weiss, bzw.\ nur, was in seiner Wissensdatenbank gespeichert ist (vgl.~\citet[S. 164]{russel}).
+Das grundsätzliche Problem bei Computern im Bezug auf Inferenz ist, dass ein Computer keine Interpretation vornehmen kann und nichts über die (Um-) Welt weiss, bzw.\ nur, was in seiner Wissensdatenbank gespeichert ist (vgl.~\citet[S. 164]{russel}).
 
 
 Angenommen, man möchte einen Computer fragen
 
-    \noindent\hspace*{12mm}\textit{``Kann ein Vogel fliegen?''}
+\lstset{caption={Beispielanfrage an eine Wissensdatenbank eines Computers},captionpos=b}
+\begin{lstlisting}
+    ``Ist eine Abenteuerreise eine Reise?''
+\end{lstlisting}
 
-so weiss der Computer weder was ein Vogel ist, noch kennt er das Konzept des Fliegens. Das Einzige, was er tun kann, ist, in der Wissensdatenbank nach 
+so weiss der Computer weder was ein Abenteuerreise ist, noch kennt er das Konzept des Reisens an sich. Das Einzige, was er tun kann, ist, in der Wissensdatenbank nach 
 
-    \noindent\hspace*{12mm}\textit{``Ein Vogel kann fliegen''}
+\lstset{caption={Aussage in einer Wissensdatenbank eines Computers},captionpos=b}
+\begin{lstlisting}
+    ``Eine Abenteuerreise ist eine Reise.''
+\end{lstlisting}
 
-zu suchen. Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept des Fliegens oder Vögel nicht kennt. Die Schlussfolgerung, dass ein Vogel fliegen kann, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S.164]{russel}).
+zu suchen. Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S.164]{russel}).
 
-Zusammengefasst kann gesagt werden, dass die formale Inferenz in der Lage ist, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretation(en) des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
+Zusammengefasst kann gesagt werden, dass die formale Inferenz in der Lage ist, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
 
 \section{Resolution}
 \label{sec:resolution}
@@ -30,26 +36,24 @@ Resolution, aus dem Lateinischen ``resolutio'', zu Detsch ``Auflösung'', ist ei
 
 Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.~\cite[S. 278]{russel}
 
-\newpage
-
 \section{Praktische Umsetzung}
 \label{sec:inferenz_praktisch}
 
-Inferenz im semantischen Netz kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entiäten beschreiben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen generieren. Wie die neuen Beziehungen umgesetzt werden --- durch Hinzufügen zu den Daten oder durch eine einfach Rückgabe dieser --- ist eine Frage der Implementation (vgl.~\cite[Abschnitt 1]{w3inference}).
+Inferenz im semantischen Netz kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entiäten beschreiben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen generieren. Wie die neuen Beziehungen umgesetzt werden --- durch Hinzufügen zu den Daten oder durch eine einfach Rückgabe dieser --- ist eine Frage der Implementation (vgl.~\cite[Abschnitt 1]{w3inference}). Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet} Reasoners der Firma Clark \& Parsia, findet sich unter~\ref{THESIS-sec:komponenten}.
 
 \subsection{Beispiel}
 \label{subsec:inferenz_beispiel}
 
-Gegeben sei ein Datensatz, welcher die Beziehung
+Gegeben seien folgende Datensätze, welche Regeln definieren
 
-    \noindent\hspace*{12mm}\textit{``Prolog hatSyntaxElement Token''}
+\lstset{caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b}
+\begin{lstlisting}
+    ``Schweiz hatRegion Solothurn.''
+    ``Solothurn hatOrt Balmberg.''
+    ``Seilpark istUnterklasseVon Ausflug.''
+    ``Seilpark hatStandort Balmberg.''
+\end{lstlisting}
 
-definiert. Angenommen eine Ontologie definiert die Relation
+definiert.
 
-    \noindent\hspace*{12mm}\textit{``LogischesElement istUnterklasseVon SyntaxElement''}
-
-Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass Prolog aus logischen Elementen besteht (vgl.~\cite[Abschnitt 'Examples']{w3inference}).
-
-% Russel & Norvig
-% Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
-%\nocite{kopka:band1}
+Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).

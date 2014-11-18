@@ -134,13 +134,13 @@ Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.or
 \section{(Teil-) Graphen}
 \label{sec:sparql_graph}
 
-SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Trippeln.
+SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Tripeln.
 
 Es wird zwischen den folgenden Arten von Teilgraphen unterschieden:
 \begin{itemize}
 \item \textit{Grundlegende Teilgraphen}
 
-Hier muss eine Menge von Trippeln denen in dem gegebenen Graphen entsprechen
+Hier muss eine Menge von Tripeln denen in dem gegebenen Graphen entsprechen
 
 \item \textit{Gruppierende Teilgraphen}
 
@@ -159,7 +159,7 @@ Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gege
 Es wird versucht Teilgraphen denen in dem gegebenen, namensbasierten Graphen zu entsprechen
 \end{itemize}
 
-Ein grundlegender Teilgraph ist also eine Menge von Trippeln, wobei ein Trippel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
+Ein grundlegender Teilgraph ist also eine Menge von Tripeln, wobei ein Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
 
 \lstset{caption={Beispiel eines grundlegen Teilgraphen in SPARQL}}
 \lstset{language=XML}
@@ -254,10 +254,10 @@ SPARQL unterscheidet zwischen vier Abfragearten:
         Gibt alle bzw.\ eine Teilmenge der Variablen eines (Teil-) Graphen zurück
     \item \textit{CONSTRUCT}
 
-        Gibt einen RDF Graphen durch Substitution der Variablen in einer Menge von gegebenen Trippeln zurück
+        Gibt einen RDF Graphen durch Substitution der Variablen in einer Menge von gegebenen Tripeln zurück
     \item \textit{ASK}
 
-        Gibt einen Wahrheitswert (Boolean) zurück, welcher angibt, ob die Menge von angefragten Trippeln denen in dem gegebenen Graphen entsprechen oder nicht
+        Gibt einen Wahrheitswert (Boolean) zurück, welcher angibt, ob die Menge von angefragten Tripeln denen in dem gegebenen Graphen entsprechen oder nicht
     \item \textit{DESCRIBE}
 
         Gibt einen RDF Graphen zurück, welcher die gefundenen Ressourcen beschreibt
@@ -294,7 +294,7 @@ WHERE {
 
 \subsection{CONSTRUCT}
 \label{subsec:sparql_abfragearten_construct}
-Die \textit{CONSTRUCT}-Abfrageart gibt einen RDF Graphen durch Substitution der Variablen in einer Menge von gegebenen Trippeln zurück. Dabei wird jede Lösung der Abfrage in die Lösungssequenz, unter Substitution der Variablen in der gegebenen Vorlage des Graphen, überführt. Die Lösungsmenge wird schliesslich per Vereinigung auf einen einzigen RDF Graphen reduziert.
+Die \textit{CONSTRUCT}-Abfrageart gibt einen RDF Graphen durch Substitution der Variablen in einer Menge von gegebenen Tripeln zurück. Dabei wird jede Lösung der Abfrage in die Lösungssequenz, unter Substitution der Variablen in der gegebenen Vorlage des Graphen, überführt. Die Lösungsmenge wird schliesslich per Vereinigung auf einen einzigen RDF Graphen reduziert.
 
 \lstset{caption={Beispiel einer SPARQL Abfrage mit Nutzung der \textit{CONSTRUCT}-Abfrageart\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
@@ -314,7 +314,7 @@ Die obige Abfrage erzeugt folgende Ausgabe:
 \end{lstlisting}
 \footnotetext{\cite[16.2 CONSTRUCT]{w3sparql_querylang}}
 
-Wird bei diesem Vorgang ein ungültiges Trippel erzeugt, so wird dieses Trippel im Ausgabegraphen nicht angezeigt. Enthält die Vorlage eine Graphen Trippel ohne Variablen, erscheinen diese dennoch im Ausgabegraphen.
+Wird bei diesem Vorgang ein ungültiges Tripel erzeugt, so wird dieses Tripel im Ausgabegraphen nicht angezeigt. Enthält die Vorlage eine Graphen Tripel ohne Variablen, erscheinen diese dennoch im Ausgabegraphen.
 
 \lstset{caption={Beispiel einer SPARQL Abfrage mit Nutzung der \textit{CONSTRUCT}-Abfrageart unter Verwendung leerer Knoten\protect\footnotemark},captionpos=b}
 \begin{lstlisting}

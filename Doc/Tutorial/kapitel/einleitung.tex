@@ -1,15 +1,16 @@
 \chapter{Einleitung}
 \label{chap:einleitung}
-Wir kennen alle den klassischen Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welcher die relationale Datenspeicherung zugrunde liegt. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Experten aus einer Fachrichtung sind fähig diese Daten zu interpretieren und daraus Schlüsse zu ziehen. Im Zeitalter der Automatisierung reicht dies aber nicht mehr. Es ist nicht möglich Fragestellungen zu beantworten welche über reine Relationsverknüpfungen hinausgehen.
+Wir kennen alle den klassischen Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welchem die relationale Datenspeicherung zugrunde liegt. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Experten aus einer Fachrichtung sind fähig diese Daten zu interpretieren und daraus Schlüsse zu ziehen. Im Zeitalter der Automatisierung reicht dies aber nicht mehr aus, man möchte das Wissen auch ohne die Hilfe von Experten zugänglich machen. Es ist nicht möglich Fragestellungen zu beantworten, welche über reine Relationsverknüpfungen hinausgehen.
 
 
-Mit dieser Technik sind Objekteigenschaften und -Verhalten aber schwer abbildbar. Was aber wenn man interessantere Fragestellungen als reine Relationen beantworten möchte? Dies ist mit dem genannten Ansatz praktisch unmöglich.  
+Mit dieser Technik sind Objekteigenschaften und -Verhalten aber schwer abbildbar. Was aber, wenn man interessantere Fragestellungen als reine Relationen beantworten möchte? Dies ist mit dem genannten Ansatz sehr schwer möglich.
 
-Aus diesem Grund möchten wir eine neue, eher unbekanntere Art der Wissensabbildung vorstellen, welche das Abbilden von Objekteigenschaften und -Verhalten berücksichtig und mithilfe von Schlussfolgerungen die Rolle des Experten einnehmen kann. Es handelt sich dabei um die Wissensmodellierung (Knowledge Engineering) beziehungsweise Expertensysteme welche Teilgebiete der Künstlichen Intelligenz sind. Grundsätzlich geht es bei diesen Konzept darum nicht nur Informationen sondern Wissen abzubilden. Es handelt sich also um eine Wissensrepräsentation welche zusätzliche Verarbeitungsmöglichkeiten aufweist. Wie zum Beispiel  das logische Schlussfolgern oder Beweisführungen. Dabei ist ein sehr wichtiger Aspekt, das dies in einer Form dargestellt werden muss, welche von  Maschinen lesbar ist.\cite{ISpekOntoGeschichte}\\
-Ein wichtiges Einsatzgebiet dieser Form von Wissensabbildung ist das Semantische Web. Auch dort geht es in erster Linie darum Informationen mit ihrer Bedeutung, der sogenannten Semantik zu versehen. 
+Aus diesem Grund möchten wir eine neue, eher unbekanntere Art der Wissensabbildung vorstellen, welche das Abbilden von Objekteigenschaften und -Verhalten berücksichtig und mithilfe von Schlussfolgerungen die Rolle des Experten einnehmen kann. Es handelt sich dabei um die Wissensmodellierung (Knowledge Engineering) beziehungsweise Expertensysteme, welche Teilgebiete der künstlichen Intelligenz sind. Grundsätzlich geht es bei diesem Konzept darum, nicht nur Informationen, sondern auch Wissen abzubilden. Es handelt sich also um eine Wissensrepräsentation, welche zusätzliche Verarbeitungsmöglichkeiten aufweist. So zum Beispiel das logische Schlussfolgern oder Beweisführungen. Dabei ist ein sehr wichtiger Aspekt, das dies in einer Form dargestellt werden muss, welche von  Maschinen lesbar ist.\cite{ISpekOntoGeschichte}
+
+Ein wichtiges Einsatzgebiet dieser Form von Wissensabbildung ist das semantische Web. Auch dort geht es in erster Linie darum Informationen mit ihrer Bedeutung, der sogenannten Semantik, zu versehen.
 
 
-Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten System abgebildet werden kann. Anhand des Beispiel xxx wollen wir veranschaulichen, welche Schritte eine solche Wissensmodellierung enthält. Ausserdem ist es uns aber auch wichtig die formalen Aspekte, wie zum Beispiel die verschiedenen Sprachen vorzustellen. Nicht zu vernachlässigen sind dabei auch praktische Umsetzungstipps, welche wir in eigener Erfahrung erlernt haben.
+Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten System abgebildet und genutzt werden kann. Anhand des Beispiels eines Reiseplaners wollen wir veranschaulichen, welche Schritte eine solche Wissensmodellierung enthält. Ausserdem zeigen wir formale Aspekte, wie zum Beispiel verschiedene Sprachen zur Wissensmodellierung, auf. Nicht zu vernachlässigen sind dabei auch praktische Tipps zur direkten Umsetzung, welche wir in eigener Erfahrung erlernt haben.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \vspace{0.1pt}
@@ -17,7 +18,7 @@ Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten Syste
     \vspace{-19pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Als Hilfe führen wir hier die Eule ein. Das Auftreten dieser, ist stets ein Anhaltspunkt, dass im folgenden Abschnitt ein praktischer Hinweis folgt.\\
+Als Hilfe führen wir die Eule ein. Das Auftreten dieser ist stets ein Anhaltspunkt, dass im danebenstehenden Abschnitt ein praktischer Hinweis ist.\\
 \\
 
 \noindent\rule[1ex]{\textwidth}{1pt}
@@ -28,13 +29,13 @@ Als Hilfe führen wir hier die Eule ein. Das Auftreten dieser, ist stets ein Anh
 \label{chap:einleitung_wissen}
 
 
-Sowie wir vom Knowledge Engineering sprechen, sprechen wir vom Knowledge Engineer. Dieser hat die Arbeit der Wissensakquise, welche er mithilfe der Experten aus der jeweiligen Fachwelt durchführt. Dazu werden Wissensbestände des Sachgebiets aufgebaut. \\
+Knowledge Engineering wird durch Knowledge Engineers betrieben. Dieser betreibt, mithilfe von Experten aus der jeweiligen Fachwelt, Wissensakquise. Dazu werden Wissensbestände eines Sachgebietes aufgebaut. \\
 Genau so wichtig wie das Vorhandensein der Wissensbestände ist aber, dass Wissen auch kommuniziert wird. Die Wissenkommunikation hängt stark mit der Anerkennung der Wissensmodellierung in der Fachwelt zusammen. Ohne diese ist eine solche sinnlos.
- 
-Je Situation für welche das Wissen benötigt wird, ist eine andere Form der Wissensabbildung geeignet. Und auch wenn man sich für eine Wissensmodellierung entschieden hat, muss diese eine spezielle Aufgabe unterstützten. Dabei ist es wichtig, dass der Nutzen der Abbildung im Mittelpunkt steht. Eine Information kann für eine Problemstellung unumgänglich, für eine andere aber total nutzlos sein.
 
-\noindent\hspace*{15mm}Suche ich zum Beispiel nach einem Familienfreundliche Hotel, interessiert es mich nicht ob dieses früher dem Grafen von xy gehörte. (TODO beispiel anpassen)
+Je Situation, für welche das Wissen benötigt wird, ist eine andere Form der Wissensabbildung geeignet. Auch wenn man sich für eine Wissensmodellierung entschieden hat, muss diese eine spezielle Aufgabe unterstützten. Dabei ist es wichtig, dass der Nutzen der Abbildung im Mittelpunkt steht. Eine Information kann für eine Problemstellung unumgänglich, für eine andere aber total nutzlos sein.
 
-Es gibt nicht ``das Richtige'' Vorgehen beim Sammeln von Wissen. Grundsätzlich ist es aber sicher sinnvoll, das Wissen von den groben Begriffen bis zur detaillierten Information zu sammeln.
+Sucht jemand bei der Planung einer Reise zum Beispiel ein familienfreundliches Hotel zur übernachtung, so ist dessen historischer Besitzer dabei eher nicht relevant. Der Fakt, dass ein Hotel familienfreundlich ist, jedoch schon.
 
-Das nachfolgende Kapitel zeigt das Sammeln und Nutzen von Wissen in Form von Expertensystemen auf und soll die Möglichkeiten einer semantischen Datenbank und Suche aufzeigen.
+Es gibt nicht ``das Richtige'' Vorgehen beim Sammeln von Wissen. Grundsätzlich ist es aber sicher sinnvoll, das Wissen von den groben Begriffen bis hin zu detaillierten Informationen zu sammeln.
+
+Das nachfolgende Kapitel zeigt einen Formalismums zum Sammeln und Nutzen von Wissen in Form von Expertensystemen auf.

@@ -31,7 +31,7 @@ Um ein Problem zu lösen, wird typischerweise in den folgenden Schritten vorgega
     \item Interpretieren der Antworten
 \end{itemize}
 
-Für die symbolische Repräsentation der Objekte ist es notwendig eine geeignete Sprache zu wählen. Dies können beispielsweise mathematische Relationen, Logik oder auch eine Programmiersprache sein. In der Informatik wird üblicherweise das Wissen über ein Problem direkt Lösungsalgorithmen programmiert, bei der künstlichen Intelligenz jedoch, wird das Wissen getrennt von der Verarbeitungskomponente dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt werden kann, die Verarbeitungskomponente jedoch bestehen bleibt. Ein Programm kann somit also für unterschiedliche Anwendungen verwendet werden. (vgl.~\cite[S. 28 - 30]{laemmel})
+Für die symbolische Repräsentation der Objekte ist es notwendig eine geeignete Sprache zu wählen. Dies können beispielsweise mathematische Relationen, Logik oder auch eine Programmiersprache sein. In der Informatik wird üblicherweise das Wissen über ein Problem direkt mittels Lösungsalgorithmen programmiert, bei der künstlichen Intelligenz jedoch, wird das Wissen getrennt von der Verarbeitungskomponente dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt werden kann, die Verarbeitungskomponente jedoch bestehen bleibt. Ein Programm kann somit also für unterschiedliche Anwendungen verwendet werden. (vgl.~\cite[S. 28 - 30]{laemmel})
 
 Eine Problemlösung geht immer von dem vorhandenen, expliziten Wissen --- z.B. in Form von Fakten --- aus. Aus dem expliziten Wissen kann implizites Wissen gewonnen, es können also Aussagen impliziert werden. Die Aufgabe der Verarbeitungskomponente ist es nun, das implizite Wissen abzuleiten. (vgl.~\cite[S. 30 - 31]{laemmel}) Dabei muss die Sprache zur Wissensrepräsentation sowie die Verarbeitungskomponente gewissen Kriterien genügen, Details siehe~\cite[S. 31]{laemmel}.
 
@@ -51,20 +51,29 @@ Der Mensch nutzt mehrere Arten um Wissen abzubilden:
 Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten, aber keine logischen Abhängigkeiten abgebildet werden können.
 
 \begin{lstlisting}[caption={Einfaches Beispiel von relationalem Wissen.}]
-    Hunde mögen Knochen.
+     Abenteuerreisen sind Reisen.
 \end{lstlisting}
 
 \newpage
 
 \subsection{Vererbung von Eigenschaften}
 \label{subsec:vererbung_eigenschaft}
-Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Oberklasse an eine Unterklasse weitervererbt werden. Die logischen Programmiersprachen verwenden beispielsweise Regeln. Definiert man nun, dass Prolog eine solche logische Programmiersprache ist, ist es für den Menschen intuitiv klar, dass Prolog auch Regeln verwendet. Die Unterklasse Prolog erbt also die Eigenschaft der Verwendung von Regeln von deren Oberklasse, der logischen Programmiersprache.
+Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Oberklasse an eine Unterklasse weitervererbt werden.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/experten_systeme_vererbung.png}}}
 \caption{Einfaches Beispiel der Vererbung von Eigenschaften.\label{fig:experten_systeme_vererbung}\protect\footnotemark}
 \end{figure}
+
 \footnotetext{Eigene Darstellung mittels yEd.}
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}{l}{0.1\textwidth}
+    \vspace{-14pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Eine Reise hat zum Beispiel einen Reiseführer. Definiert man nun, dass eine Abenteuerreise auch eine Reise ist (was für den Menschen bereits klar ist, da das Wort ja bereits Reise beinhaltet), ist es für den Menschen intuitiv klar, dass eine Abenteuerreise auch einen Reiseführer haben kann. Die Unterklasse Abenteuerreise erbt also die Eigenschaft der Möglichkeit eines Reiseführers von deren Oberklasse, der Reise.\\
+\noindent\rule[1ex]{\textwidth}{1pt}
 
 \subsection{Prozedurales Wissen}
 \label{subsec:prozedurales_wissen}
@@ -81,8 +90,18 @@ Bei prozeduralem Wissen handelt es sich um Wissen, welches in bestimmten Situati
 \subsection{Logisches Wissen}
 \label{subsec:logisches_wissen}
 
-Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Aus $A$ folgt $B$ bzw. $A \to B$, was so viel heisst wie ``Wenn $A$ gilt, kann geschlossen werden, dass auch $B$ gilt.''. Sei Ereignis $A$ das Öffnen einer Türe und $B$ die Tatsache, dass die Türe offen ist, kann gesagt werden, dass aus $A$, also dem Öffnen der Türe, $B$ folgt, nämlich, dass die Türe danach geöffnet ist.
-\\
+Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Aus $A$ folgt $B$ bzw. $A \to B$, was so viel heisst wie ``Wenn $A$ gilt, kann geschlossen werden, dass auch $B$ gilt.''.
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}{l}{0.1\textwidth}
+    \vspace{-14pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Möchte man zum Beispiel abbilden, dass ein Ausflug teambildend ist, so könnte man dies tun, indem man sagt, dass dieser für eine gewisse Anzahl Teilnehmer geeignet sein muss und/oder teambildende Eigenschaften hat. Oder, formal ausgedrückt: $A \vee B \rightarrow C$. Wobei $A$ die Tatsache darstellt, dass der Ausflug für eine gewisse Anzahl an Teilnehmern geeignet ist und $B$ die Tatsache, dass der Ausflug teambildend ist.\\
+\noindent\rule[1ex]{\textwidth}{1pt}
+
+\section{Wissensrepräsentationsformalismen}
+\label{sec:wissensrepräsentationsformalismen}
 
 Formalisiert man die unter~\ref{itm:wissensarten} genannten Arten des Wissens, so gelangt man zu den folgenden Wissenrepräsentationsformalismen:
 \begin{itemize}
@@ -95,3 +114,4 @@ Formalisiert man die unter~\ref{itm:wissensarten} genannten Arten des Wissens, s
     \item Regelbasierte Sprachen
 \end{itemize}
 
+Wie unter~\ref{sec:experten_systeme_komponenten} beschrieben, bildet die Basis eines Expertensystemes unter Anderem eine Wissensdatenbank. Um solch eine Wissensdatenbank grafisch darzustellen und den Aufbau zu erleichtern, eignen sich Graphen besonders gut. Diese werden im nachfolgenden Kapitel ---~\ref{chap:graph_data}~\nameref{chap:graph_data} --- näher beschreiben.
