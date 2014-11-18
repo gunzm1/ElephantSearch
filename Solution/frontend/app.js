@@ -22,6 +22,6 @@ requirejs.config({
 
 //requiring the scripts in the first argument and then passing the library namespaces into a callback
 //you should be able to console log all of the callback arguments
-require(['jquery', 'underscore', 'text', 'backbone', 'stardog', 'app/main'], function(jquery, _, text, Backbone, Stardog, App){
+require(['jquery', 'underscore', 'text', 'backbone', 'stardog', 'test','app/main'], function(jquery, _, text, Backbone, Stardog, Test, App){
     new App;
 });

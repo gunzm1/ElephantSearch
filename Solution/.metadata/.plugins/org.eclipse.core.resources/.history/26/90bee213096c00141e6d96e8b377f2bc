@@ -1,0 +1,3 @@
+<script type="text/template" id="mainViewTemplate">
+	<input type="button" id="buttonid" name="buttonname" value="los"></input>
+</script>

@@ -1,0 +1,34 @@
+define(["backbone", "stardog","underscore","text!app/template/main.html"], function(Backbone, Stardog,_, MainView){
+  var App = Backbone.View.extend({
+	  el: $('#main'),
+	  
+    initialize: function(){
+      console.log("it's working!");
+      var conn = new Stardog.Connection();
+
+      conn.setEndpoint("http://elephantsearch.bfh.ch:5820/");
+      conn.setCredentials("admin", "admin");
+
+      this.render();
+      
+      
+      conn.query({ 
+              database: "reiseplaner", 
+              query: "select distinct ?s where { ?s ?p ?o }",  
+              limit: 10, 
+              offset: 0 
+          },
+          function (data) {
+              console.log(data.results.bindings);
+      });      
+      
+    },
+  render: function(){
+
+      var temp = _.template(MainView);
+      this.$el.html(temp);
+	  
+  }
+  });
+  return App;
+});
