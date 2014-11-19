@@ -1,7 +1,7 @@
 {
   "name": "travelling-owl",
   "dependencies": {
-    "backbone": "latest",
+    "emberjs": "latest",
     "underscore": "latest",
     "jquery": "^2.1.1",
     "jquery-ui": "^1.11.2",

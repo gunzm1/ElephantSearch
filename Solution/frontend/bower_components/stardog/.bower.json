@@ -1,0 +1,90 @@
+{
+  "name": "stardog",
+  "version": "0.1.5",
+  "description": "Stardog JavaScript Framework for node.js and the browser - Develop apps using the Stardog RDF Database & JS.",
+  "homepage": "http://clarkparsia.github.com/stardog.js",
+  "keywords": [
+    "stardog",
+    "rdf",
+    "sparql",
+    "library",
+    "semantic web",
+    "linked data"
+  ],
+  "main": "js/stardog.js",
+  "author": {
+    "name": "Clark & Parsia LLC",
+    "email": "inquiries@clarkparsia.com",
+    "url": "http://clarkparsia.com"
+  },
+  "contributors": [
+    {
+      "name": "Edgar Rodriguez",
+      "email": "edgar@clarkparsia.com"
+    },
+    {
+      "name": "Fernando Hernandez",
+      "email": "fernando@clarkparsia.com"
+    },
+    {
+      "name": "Maurice Rabb",
+      "email": "github@mauricerabb.com"
+    },
+    {
+      "name": "Laszlo"
+    },
+    {
+      "name": "Jonathan Abourbih",
+      "email": "jon.abourbih+github@gmail.com"
+    },
+    {
+      "name": "Andhika Nugraha",
+      "email": "andhika.nugraha@outlook.com"
+    },
+    {
+      "name": "BeArnis"
+    },
+    {
+      "name": "Ron Michael Zettlemoyer",
+      "email": "ron@zettlemoyer.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clarkparsia/stardog.js"
+  },
+  "bugs": {
+    "url": "https://github.com/clarkparsia/stardog.js/issues"
+  },
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "expect": "~0.3.1"
+  },
+  "licenses": [
+    {
+      "type": "Apache License, Version 2.0"
+    }
+  ],
+  "ignore": [
+    "**/.*",
+    "data",
+    "load_test_data.sh",
+    "package.json",
+    "test",
+    "node_modules",
+    "components"
+  ],
+  "_release": "0.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.5",
+    "commit": "4ddc6cdfe4a3cd5f4303856aaf1c5ba852d293c1"
+  },
+  "_source": "git://github.com/clarkparsia/stardog.js.git",
+  "_target": "*",
+  "_originalSource": "stardog"
+}

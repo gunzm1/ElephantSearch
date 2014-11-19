@@ -1,16 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>My Sample Project</title>
-        <!-- data-main attribute tells require.js to load
-             scripts/main.js after require.js loads. -->
-        <script data-main="app.js" src="lib/requirejs/require.js"></script>
-    </head>
-    <body>
-        <h1>My Sample Project</h1>
-        <div id="main">
-        
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+    <div class="navbar">
+      <div class="navbar-inner">
+        {{#link-to 'index' class='brand'}}Reiseplaner{{/link-to}}
+        <ul class="nav">
+          <li>{{#link-to 'step1'}}Step 1{{/link-to}}</li>
+          <li>{{#link-to 'step2'}}Step 2{{/link-to}}</li>
+        </ul>
+      </div>
+    </div>
+
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="step1">
+    <div class='step1'>
+		Das ist ein Reiseplaner, viel spass beim plannen deiner Reise...
+		<p>
+		<button class="btn" {{action 'goToStep2'}}>Weiter </button>
+	</div>
+  </script>
+
+  
+  <script type="text/x-handlebars" id="step2">
+    <div class='step2'>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <table class='table'>
+            <thead>
+              <tr><th>Was willst du für eine Ausflug machen?</th></tr>
+            </thead>
+            <tbody>
+              {{#each model}}
+                <tr>
+                  <td>
+                    {{s}} <small class='muted'>test</small>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
-    </body>
+        <div class="span9">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+    </div>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember-1.8.1.js"></script>
+  <script src="js/libs/stardog.js"></script>  
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>
