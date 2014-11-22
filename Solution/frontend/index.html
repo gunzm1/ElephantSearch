@@ -1,71 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <title>Traveling OWL</title>
+        <!-- link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css" -->
+        <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
 
-  <script type="text/x-handlebars">
-    <div class="navbar">
-      <div class="navbar-inner">
-        {{#link-to 'index' class='brand'}}Reiseplaner{{/link-to}}
-        <ul class="nav">
-          <li>{{#link-to 'step1'}}Step 1{{/link-to}}</li>
-          <li>{{#link-to 'step2'}}Step 2{{/link-to}}</li>
-        </ul>
-      </div>
-    </div>
+        <script type="text/x-handlebars">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            {{#link-to "index" classNames="navbar-brand"}}
+                                Traveling OWL
+                            {{/link-to}}
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                {{#link-to "welcome" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Home</a>{{/link-to}}
+                                {{#link-to "about" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>About</a>{{/link-to}}
+                                {{#link-to "contact" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Contact</a>{{/link-to}}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <section class="main-content">
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
 
-    {{outlet}}
-  </script>
+        <script type="text/x-handlebars" data-template-name="loading">
+            <div class="loading-pane">
+                <div class="loading-message">
+                    Loading stuff, please have a coffee or something.
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </script>
 
-  <script type="text/x-handlebars" id="step1">
-    <div class='step1'>
-		Das ist ein Reiseplaner, viel spass beim plannen deiner Reise...
-		<p>
-		<button class="btn" {{action 'goToStep2'}}>Weiter </button>
-	</div>
-  </script>
 
-  
-  <script type="text/x-handlebars" id="step2">
-    <div class='step2'>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <table class='table'>
-            <thead>
-              <tr><th>Was willst du für eine Ausflug machen?</th></tr>
-            </thead>
-            <tbody>
-              {{#each model}}
-                <tr>
-                  <td>
-                    {{s}} <small class='muted'>test</small>
-                  </td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        <div class="span9">
-          {{outlet}}
-        </div>
-      </div>
-    </div>
-    </div>
-  </script>
+        <script type="text/x-handlebars" data-template-name="welcome">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>Welcome to the traveling OWL travel planner!<h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>How about planning a adventorous jungle trip combined with a relaxing wellness-weekend in a hotel?</p>
+                    <p>
+                        <button class="btn btn-primary btn-lg" {{action "step1" "538"}}>Start now!</button>
+                    </p>
+                </div>
+            </div>
+        </script>
 
-  <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/handlebars-v1.3.0.js"></script>
-  <script src="js/libs/ember-1.8.1.js"></script>
-  <script src="js/libs/stardog.js"></script>  
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
-  <script src="js/app.js"></script>
-</body>
+        <script type="text/x-handlebars" data-template-name="about">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>About</h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>Teh owl!</p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="contact">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>Contact us</h2>
+                    <p>Feel free to contact us :)</p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="steps">
+            <div class="row">
+                <div class="col-md-12 column">
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step1">
+                <h2>Step 1</h2>
+                <p>Let the journey begin..</p>
+                <ul>
+                    {{#each item in model}}
+                      <li>{{item.haaas.type}}: {{item.haaas.value}}</li>
+                    {{/each}}
+                </ul>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+                </p>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step2">
+                <h2>Step 2</h2>
+                <p>Choose the foo you wanna do:</p>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                    <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+                </p>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step3">
+                <h2>Step 3</h2>
+                <p>Already finished?</p>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                </p>
+        </script>
+
+    </head>
+    <body>
+    </body>
 </html>
