@@ -1930,7 +1930,6 @@ küche(?r, "raffiniert")<y:LabelModel>
       </data>
     </edge>
     <edge id="e39" source="n33" target="n32">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1950,7 +1949,6 @@ küche(?r, "raffiniert")<y:LabelModel>
       </data>
     </edge>
     <edge id="e40" source="n31" target="n33">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1970,7 +1968,6 @@ küche(?r, "raffiniert")<y:LabelModel>
       </data>
     </edge>
     <edge id="e41" source="n31" target="n18">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1981,7 +1978,6 @@ küche(?r, "raffiniert")<y:LabelModel>
       </data>
     </edge>
     <edge id="e42" source="n31" target="n34">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2030,7 +2026,6 @@ abwechslungsreich<y:LabelModel>
       </data>
     </edge>
     <edge id="e44" source="n31" target="n29">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

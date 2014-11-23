@@ -3,7 +3,7 @@
         requirejs.config(config);
 
         require(['ember', 'stardog'], function(Ember, stardog) {
-            function performQuery() {
+            function performQuery(queryString) {
               return new Ember.RSVP.Promise(function(resolve, reject) {
                 var connection = new Stardog.Connection();
                 connection.setEndpoint(config.sparql.endpoint);
@@ -14,12 +14,7 @@
                 console.log("trying to connect..", connection);
                 connection.query({
                   database: config.sparql.database,
-                  query: '\
-                    select distinct\
-                      (strafter(str(?s), "#") AS ?haaas)\
-                    where\
-                      { ?s ?p ?o }\
-                  ',
+                  query: queryString,
                   limit: 10,
                   offset: 0
                 }, function(data) {
@@ -67,7 +62,13 @@
 
             App.Step1Route = Ember.Route.extend({
               model: function () {
-                return performQuery().then(function(data) {
+				var queryString = '\
+                    select distinct\
+                      (strafter(str(?s), "#") AS ?haaas)\
+                    where\
+                      { ?s ?p ?o }\
+                  ';
+                return performQuery(queryString).then(function(data) {
                   console.log("Query result ", data);
                   return data.results.bindings;
 
@@ -82,7 +83,13 @@
 
             App.Step2Route = Ember.Route.extend({
               model: function () {
-                return performQuery().then(function(data) {
+				var queryString = '\
+                    select distinct\
+                      (strafter(str(?s), "#") AS ?haaas)\
+                    where\
+                      { ?s ?p ?o }\
+                  ';
+                return performQuery(queryString).then(function(data) {
                   console.log("Query result ", data);
                   return data.results.bindings;
 
@@ -100,7 +107,13 @@
 
             App.Step3Route = Ember.Route.extend({
               model: function () {
-                return performQuery().then(function(data) {
+				var queryString = '\
+                    select distinct\
+                      (strafter(str(?s), "#") AS ?haaas)\
+                    where\
+                      { ?s ?p ?o }\
+                  ';
+                return performQuery(queryString).then(function(data) {
                   console.log("Query result ", data);
                   return data.results.bindings;
 
