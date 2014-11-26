@@ -1,8 +1,19 @@
 \chapter{SPARQL}
 \label{chap:sparql}
+Das letzte Kapitel ---~\ref{chap:swrl}~\nameref{chap:swrl}--- hat aufzeigt, wie Inferenz in einer Ontologie mittels der Regelsprache SWRL vollumfänglich genutzt werden kann. Nun stellt sich jedoch die Frage wie effektiv Informationen aus der Ontologie und den darauf basierenden Inferenzen abgefragt werden können. Hierfür kann die Abfragesprache SPARQL verwendet werden, welche in diesem Kapitel vorgestellt wird.
+
 Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{w3sparql_querylang}.
 
-Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF, welche es erlaubt datenquellenübergreifende Abfragen vorzunehmen. Dabei werden Anfragen in Graphen vollzogen, auch entlang derer Konjunktionen und Dijunktionen. SPARQL unterstützt zudem Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF Graphen (vgl.~\cite[Abstract]{w3sparql_querylang}).
+Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF, welche es erlaubt Abfragen über mehrere Datenquellen vorzunehmen. Dabei werden Anfragen in Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt zudem Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF Graphen (vgl.~\cite[Abstract]{w3sparql_querylang}).
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}{l}{0.1\textwidth}
+    \vspace{-12pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Kennt man die Abfragesprache SQL, so erscheint SPARQL auf den ersten Blick recht ähnlich --- der Name lässt dies ja bereits vermuten. Dies ist jedoch nicht ganz der Fall. So sind Klauseln wie \textit{SELECT} und \textit{WHERE} ähnlich, jedoch existiert in SPARQL keine \textit{FROM}-Klausel.
+Der markanteste Unterschied ist jedoch vielleicht die Verwendung von Variablen in SPARQL, diese werden dort für gewöhnlich bei praktisch jeder Abfrage verwendet. Abfragen ohne Variablen kommen in der Praxis --- gemäss unserer Erfahrung --- eher selten vor. In SQL verhält sich dies jedoch eher gegenteilig.
+\noindent\rule[1ex]{\textwidth}{1pt}
 
 Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
 \begin{itemize}
@@ -16,7 +27,13 @@ Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
 \end{itemize}
 (vgl.~\cite[18.1.10 SPARQL Query]{w3sparql_querylang})
 
-Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}{l}{0.1\textwidth}
+    \vspace{-16pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.\\\\\\\\
+\noindent\rule[1ex]{\textwidth}{1pt}
 
 \section{Beispiel einer SPARQL Abfrage}
 \label{sec:sparql_beispiel}
@@ -95,7 +112,7 @@ Da es sich bei SPARQL um eine Abfragesprache für RDF handelt und dieses auf XML
 \label{sec:sparql_variablen}
 
 SPARQL unterstützt die Verwendung von Variablen bei Abfragen, diese können dabei an einer beliebigen Stelle --- also bei (Teil-) Graphen, Gruppierungen, Aggregationen und Modifikatoren --- eingesetzt werden.
-Sie dienen als Plathalter für abzufragende Objekte, Subjekte oder Prädikate. Variablen beginnen entweder mit einem Dollarzeichen \textit{\$} oder einem Fragezeichen \textit{?}, welche aber nicht Teil der Variable sind.
+Sie dienen als Platzhalter für abzufragende Objekte, Subjekte oder Prädikate. Variablen beginnen entweder mit einem Dollarzeichen \textit{\$} oder einem Fragezeichen \textit{?}, welche aber nicht Teil der Variable sind.
 
 \lstset{caption={Beispiel einer SPARQL Abfrage mit den Variablen \textit{?object}, \textit{?predicate} und \textit{?subject}.},captionpos=b}
 \begin{lstlisting}
@@ -134,7 +151,7 @@ Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.or
 \section{(Teil-) Graphen}
 \label{sec:sparql_graph}
 
-SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Tripeln.
+SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Tripel.
 
 Es wird zwischen den folgenden Arten von Teilgraphen unterschieden:
 \begin{itemize}
@@ -156,20 +173,27 @@ Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gege
 
 \item \textit{Teilgraphen in namensbasierten Graphen}
 
-Es wird versucht Teilgraphen denen in dem gegebenen, namensbasierten Graphen zu entsprechen
+Es wird versucht Teilgraphen denen in dem gegebenen, namens basierten Graphen zu entsprechen
 \end{itemize}
 
 Ein grundlegender Teilgraph ist also eine Menge von Tripeln, wobei ein Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
 
-\lstset{caption={Beispiel eines grundlegen Teilgraphen in SPARQL}}
+\lstset{caption={Beispiel eines grundlegenden Teilgraphen in SPARQL}}
 \lstset{language=XML}
 \begin{lstlisting}
     ?subject ?predicate ?object.
 \end{lstlisting}
 
-Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}{l}{0.1\textwidth}
+    \vspace{-16pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.\\
+\\
+\noindent\rule[1ex]{\textwidth}{1pt}
 
-In einem SPARQL-Abfragestring wird ein gruppierender Teilgraph immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppe zu Filtern, dazu wird das \textit{FILTER} Schlüsselwort eingesetzt. Dieses bezieht sich immer auf die Gruppe, in welcher es angwendet wird.
+In einer SPARQL-Abfrage wird ein gruppierender Teilgraph immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppe zu Filtern, dazu wird das \textit{FILTER} Schlüsselwort eingesetzt. Dieses bezieht sich immer auf die Gruppe, in welcher es angewendet wird.
 
 \lstset{caption={Beispiel eines gruppierenden Teilgraphen mit \textit{FILTER} Schlüsselwort\protect\footnotemark}}
 \lstset{language=XML}
@@ -274,7 +298,7 @@ WHERE {
 ...
 \end{lstlisting}
 
-Die $ SELECT * $ Syntax ist dabei eine Kurzschreibweise und beduetet eigentlich die Verwendung bzw. Auflistung aller in der Abfrage verwendeten Variablen. Ausgenommen sind Variablen innerhalb von \textit{FILTER}-Anweisungen sowie Variablen, welche rechts des Minus-Operators stehen. Die Syntax darf nur verwendet werden, wenn die Abfrage keine \textit{GROUP BY} Aggregation verwendet.
+Die $ SELECT * $ Syntax ist dabei eine Kurzschreibweise und bedeutet eigentlich die Verwendung bzw. Auflistung aller in der Abfrage verwendeten Variablen. Ausgenommen sind Variablen innerhalb von \textit{FILTER}-Anweisungen sowie Variablen, welche rechts des Minus-Operators stehen. Die Syntax darf nur verwendet werden, wenn die Abfrage keine \textit{GROUP BY} Aggregation verwendet.
 \lstset{caption={Beispiel der \textit{SELECT *} Kurzschreibweise in SPARQL},captionpos=b,language=SQL}
 \begin{lstlisting}
 SELECT *
@@ -386,7 +410,7 @@ WHERE {
 ...
 \end{lstlisting}
 
-Die $ DESCRIBE * $ Syntax ist dabei eine Kurzschreibweise und beduetet eigentlich die Verwendung bzw. Auflistung aller in der Abfrage verwendeten Variablen. 
+Die $ DESCRIBE * $ Syntax ist dabei eine Kurzschreibweise und bedeutet eigentlich die Verwendung bzw. Auflistung aller in der Abfrage verwendeten Variablen. 
 \lstset{caption={Beispiel der \textit{DESCRIBE *} Kurzschreibweise in SPARQL},captionpos=b,language=SQL}
 \begin{lstlisting}
 DESCRIBE *
@@ -399,7 +423,7 @@ WHERE {
 
 Jede Abfrage in SPARQL kann mit einem so genannten Filter versehen werden. Dabei wird versucht ein gewisses Muster, gegeben durch Beschränkungen, auf (Teil-) Graphen anzuwenden um so die (Teil-) Graphen einzuschränken oder eben zu filtern.
 
-Jedes RDF-Literal kann durch einen bestimmten Datentyp definiert sein, so z.B. Wahrheitswerte (Boolean) oder Datum und Uhrzeit (DateTime). Der Filter in SPARQL erlaubt dabei den Wertevergleich auf typisierte RDF-Literale. Die dabei verwendeten Operanden und Datentypen finden sich unter~\footnote{http://www.w3.org/TR/xpath-functions/} und~\footnote{http://www.w3.org/TR/sparql11-query/\#operandDataTypes}.
+Jedes RDF-Literal kann durch einen bestimmten Datentyp definiert sein, so zum Beispiel Wahrheitswerte (Boolean) oder Datum und Uhrzeit (DateTime). Der Filter in SPARQL erlaubt dabei den Wertevergleich auf typisierte RDF-Literale. Die dabei verwendeten Operanden und Datentypen finden sich unter~\footnote{http://www.w3.org/TR/xpath-functions/} und~\footnote{http://www.w3.org/TR/sparql11-query/\#operandDataTypes}.
 
 Eine SPARQL-Abfrage unter Verwendung eines Filters kann zum Beispiel wie folgt aussehen:
 \lstset{caption={Beispiel einer einfachen SPARQL Abfrage unter Verwendung eines Filters},captionpos=b}
@@ -416,7 +440,7 @@ Eine SPARQL-Abfrage unter Verwendung eines Filters kann zum Beispiel wie folgt a
 Hier werden alle Bücher abgefragt, welche sich in der Bibliothek der Universität von Bern befinden und deren (allgemeines) Vorkommen grösser als 10 ist.
 
 Ist man in obigem Beispiel nicht sicher, welcher Datentyp die Variable $?amount$ entspricht, so kann man die Funktionalität zur Umwandlung (Casting) durch SPARQL nutzen:
-\lstset{caption={Beispiel einer einfachen SPARQL Abfrage unter Verwendung eines Filters mit Typumwandlung},captionpos=b}
+\lstset{caption={Beispiel einer einfachen SPARQL Abfrage unter Verwendung eines Filters mit Typenumwandlung},captionpos=b}
 \begin{lstlisting}
     ...
     SELECT ?book
@@ -483,7 +507,7 @@ Es wird also nur die Person \textit{``Bob''} gefunden, da nur diese Person gemä
 
 \subsubsection{IF}
 \label{subsec:sparql_ausdruecke_funktionen_if}
-Die \textit{IF}-Funktion benötigt drei Argumente als Parameter. Dabei fasst sie das erste Argument als Wahrheitswert zur Auswertung auf. Das zweite Argument wird zurückgegeben, wenn der Ausdruck des erten Argumentes wahr ist. Das dritte Argument wird zurückgegeben, wenn der Ausdruck des ersten Argumentes falsch ist.
+Die \textit{IF}-Funktion benötigt drei Argumente als Parameter. Dabei fasst sie das erste Argument als Wahrheitswert zur Auswertung auf. Das zweite Argument wird zurückgegeben, wenn der Ausdruck des ersten Argumentes wahr ist. Das dritte Argument wird zurückgegeben, wenn der Ausdruck des ersten Argumentes falsch ist.
 
 \lstset{caption={Beispiel der \textit{IF}-Funktion in SPARQL},captionpos=b,language=XML}
 \begin{lstlisting}
@@ -506,7 +530,7 @@ if (a == 2) {
 
 \subsubsection{IN}
 \label{subsec:sparql_ausdruecke_funktionen_in}
-Die \textit{IN}-Funktion teste, ob der Paramter, welcher direkt vor ihrem Aufruf folgt, in dem Listenausdruck vorkommt, welche direkt nach ihrem Aufruf folgt. Ist dies der Fall, so gibt die Funktion den Wahrheitswert wahr zurück, ansonsten falsch.
+Die \textit{IN}-Funktion teste, ob der Parameter, welcher direkt vor ihrem Aufruf folgt, in dem Listenausdruck vorkommt, welche direkt nach ihrem Aufruf folgt. Ist dies der Fall, so gibt die Funktion den Wahrheitswert wahr zurück, ansonsten falsch.
 
 \lstset{caption={Beispiel der \textit{IN}-Funktion in SPARQL},captionpos=b,language=SQL}
 \begin{lstlisting}
@@ -516,4 +540,4 @@ Die \textit{IN}-Funktion teste, ob der Paramter, welcher direkt vor ihrem Aufruf
 \footnotetext{\cite[17.4.1.9 IN]{w3sparql_querylang}}
 In den obigen Beispielen wäre der erste Ausdruck also wahr, da 2 in der gegebenen Liste von (1, 2, 3) vorkommt, der zweite Ausdruck falsch, da 2 nicht in der leeren Menge vorkommt.
 
-Analog zur \textit{IN}-Funktion exisiert die \textit{NOT IN}-Funktion. Es handelt sich dabei um die Negation der \textit{IN}-Funktion.
+Analog zur \textit{IN}-Funktion existiert die \textit{NOT IN}-Funktion. Es handelt sich dabei um die Negation der \textit{IN}-Funktion.
