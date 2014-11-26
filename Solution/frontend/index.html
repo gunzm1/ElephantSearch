@@ -1,16 +1,122 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>My Sample Project</title>
-        <!-- data-main attribute tells require.js to load
-             scripts/main.js after require.js loads. -->
-        <script data-main="app.js" src="lib/requirejs/require.js"></script>
+        <meta charset="utf-8">
+        <title>Traveling OWL</title>
+        <!-- link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css" -->
+        <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
+
+        <script type="text/x-handlebars">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            {{#link-to "index" classNames="navbar-brand"}}
+                                Traveling OWL
+                            {{/link-to}}
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                {{#link-to "welcome" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Home</a>{{/link-to}}
+                                {{#link-to "about" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>About</a>{{/link-to}}
+                                {{#link-to "contact" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Contact</a>{{/link-to}}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <section class="main-content">
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="loading">
+            <div class="loading-pane">
+                <div class="loading-message">
+                    Loading stuff, please have a coffee or something.
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </script>
+
+
+        <script type="text/x-handlebars" data-template-name="welcome">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>Welcome to the traveling OWL travel planner!<h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>How about planning a adventorous jungle trip combined with a relaxing wellness-weekend in a hotel?</p>
+                    <p>
+                        <button class="btn btn-primary btn-lg" {{action "step1" "538"}}>Start now!</button>
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="about">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>About</h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>Teh owl!</p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="contact">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>Contact us</h2>
+                    <p>Feel free to contact us :)</p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="steps">
+            <div class="row">
+                <div class="col-md-12 column">
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step1">
+                <h2>Step 1</h2>
+                <p>Let the journey begin..</p>
+                <ul>
+                    {{#each item in model}}
+                      <li>{{item.haaas.type}}: {{item.haaas.value}}</li>
+                    {{/each}}
+                </ul>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+                </p>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step2">
+                <h2>Step 2</h2>
+                <p>Choose the foo you wanna do:</p>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                    <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+                </p>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step3">
+                <h2>Step 3</h2>
+                <p>Already finished?</p>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                </p>
+        </script>
+
     </head>
     <body>
-        <h1>My Sample Project</h1>
-        <div id="main">
-        
-        </div>
     </body>
 </html>
