@@ -30,11 +30,11 @@ Prädikate können in SWRL OWL-Klassen, -Eigenschaften oder -Datentypen sein, Ar
 
 % UND-Verknüpfung in SWRL mittels Komma, ODER-Verknüpfung gibt es nicht
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
+\begin{wrapfigure}[4]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-In SRWL können Atome nur UND-verknüpft werden, eine ODER-Verknüpfung gibt es in diesem Sinne nicht. Die UND-Verknüpfung wird mittels einem Komma \textit{,} vorgenommen. Möchte man eine ODER-Verknüpfung abbilden, so tut man dies, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet.\\
+In SRWL können Atome nur UND-verknüpft werden, eine ODER-Verknüpfung gibt es in diesem Sinne nicht. Die UND-Verknüpfung wird mittels einem Komma \textit{,} vorgenommen. Möchte man eine ODER-Verknüpfung abbilden, so tut man dies, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
@@ -145,7 +145,7 @@ Möchte man nun zum Beispiel ausdrücken, dass die alle Objekte, die einen Durch
 \lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass ein Objekt die wertespezifische Eingenschaft \textit{preiswert} hat},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    durchschnittspreis(?r, ?preis), lessThanOrEqual(?preis, 30), greaterThan(?preis, 20) \rightarrow preissegment(?r, "preiswert")
+    durchschnittspreis(?r, ?preis), lessThanOrEqual(?preis, 30), greaterThan(?preis, 20) $\rightarrow$ preissegment(?r, "preiswert")
 \end{lstlisting}
 
 \newpage
@@ -175,3 +175,36 @@ Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure si
 Dasselbe gilt für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit \textit{sameAs} gekennzeichnet werden.
 
 Weiter können z.B. Aufzählungen nicht ohne Weiteres ausgedrückt werden. Möchte man beispielweise sagen, dass es sich bei einer Publikation um eine Publikation mit nur einem Autor handelt, ist dies nicht möglich. Es mag sein, dass aktuell nur Wissen über einen Autor der Publikation vorhanden ist, diese aber noch über weitere --- aktuell unbekannte --- Autoren verfügt.
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[5]{l}{0.1\textwidth}
+    \vspace{-14pt}
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
+\end{wrapfigure}
+Mit den in diesem Kapitel eingeführten Regeln ist es nun möglich, die unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Dabei ist zu beachten, dass diese jedoch zuvor als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) zu definieren sind.
+
+Wir haben die Definition wie folgt gewählt:
+
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{familienfreundlich}},captionpos=b,language=XML]
+    alter(?a, ?alter), swrldb:greaterThanOrEqual(?alter, 2) $\Rightarrow$ familienfreundlich(?a, true)
+\end{lstlisting}
+
+Ein Objekt muss also über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, dann erhält ein Objekt automatisch das Attribut familienfreundlich mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
+
+\begin{lstlisting}[caption={Beispiel der SWRL-regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
+    hatStandort(?ausflug, ?ort), hatRegion(?land, ?region), hatOrt(?region, ?ort), distanzZuAusgangspunkt(?region, ?distanz), swrldb:lessThanOrEqual(?distanz, 50) $\Rightarrow$ regional(?ausflug, true)
+\end{lstlisting}
+
+Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist, dieses Objekt dann das Attribut \textit{regional} erhält.
+
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{actionreich}},captionpos=b,language=XML]
+    erfordert(?a, "mut") $\Rightarrow$ actionreich(?a, true)
+    nervenkitzel(?a, true) $\Rightarrow$ actionreich(?a, true)
+    erfordert(?a, "geschicklichkeit") $\Rightarrow$ actionreich(?a, true)
+\end{lstlisting}
+
+Wie unter~\nameref{sec:swrl_aufbau} beschrieben, kann eine Regel in SWRL keine ODER-Verknüpfungen enthalten. Diese werden abgebildet, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet. Genau dies ist hier der Fall. Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel mit sich bringt. Die Eigenschaft \textit{nervenkitzel} ist selbst wiederum eine Folgerung, aus der Bedingung, dass sie Mut erfordert. Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
+
+Somit sind nun alle Komponenten vorhanden, um Ausflüge abbilden zu können, welche den unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} genannten Kriterien entsprechen. Doch wie findet man nun effektiv solche Ausflüge? Hierzu benötigt man eine Abfragesprache um Abfragen in der Ontologie vornehmen zu können. Dies wird im kommenden Kapitel erläutert.
+
+\noindent\rule[1ex]{\textwidth}{1pt}

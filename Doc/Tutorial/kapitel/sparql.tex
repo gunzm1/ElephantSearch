@@ -7,7 +7,7 @@ Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{w3sparql_q
 Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF, welche es erlaubt Abfragen über mehrere Datenquellen vorzunehmen. Dabei werden Anfragen in Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt zudem Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF Graphen (vgl.~\cite[Abstract]{w3sparql_querylang}).
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
+\begin{wrapfigure}[6]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
@@ -28,11 +28,12 @@ Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
 (vgl.~\cite[18.1.10 SPARQL Query]{w3sparql_querylang})
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
-    \vspace{-16pt}
+\begin{wrapfigure}[2]{l}{0.1\textwidth}
+    \vspace{-21pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.\\\\\\\\
+Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.
+
 \noindent\rule[1ex]{\textwidth}{1pt}
 
 \section{Beispiel einer SPARQL Abfrage}
@@ -185,12 +186,12 @@ Ein grundlegender Teilgraph ist also eine Menge von Tripeln, wobei ein Tripel ge
 \end{lstlisting}
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
+\begin{wrapfigure}[3]{l}{0.1\textwidth}
     \vspace{-16pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.\\
-\\
+Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
+
 \noindent\rule[1ex]{\textwidth}{1pt}
 
 In einer SPARQL-Abfrage wird ein gruppierender Teilgraph immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppe zu Filtern, dazu wird das \textit{FILTER} Schlüsselwort eingesetzt. Dieses bezieht sich immer auf die Gruppe, in welcher es angewendet wird.
@@ -541,3 +542,25 @@ Die \textit{IN}-Funktion teste, ob der Parameter, welcher direkt vor ihrem Aufru
 In den obigen Beispielen wäre der erste Ausdruck also wahr, da 2 in der gegebenen Liste von (1, 2, 3) vorkommt, der zweite Ausdruck falsch, da 2 nicht in der leeren Menge vorkommt.
 
 Analog zur \textit{IN}-Funktion existiert die \textit{NOT IN}-Funktion. Es handelt sich dabei um die Negation der \textit{IN}-Funktion.
+
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[7]{l}{0.1\textwidth}
+    \vspace{-12pt}
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
+\end{wrapfigure}
+Wie bereits beschrieben, sind alle Komponenten vorhanden, um Ausflüge abbilden zu können, welche den unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} genannten Kriterien entsprechen. Mit diesem Kapitel ist nun auch noch die fehlende Abfragesprache um Abfragen in der Ontologie vornehmen zu können eingeführt worden.
+
+Möchte man nun, um auf das beschriebene Beispiel der Familie, welche einen Ausflug planen möchte, zurückzukommen, alle Ausflüge der Ontologie ausgeben, welche den Kriterien  \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} entsprechen, so gelingt dies mit der nacholgenden Abfrage.
+
+\begin{lstlisting}[caption={Beispiel einer Abfrage um alle familiengerechten, actionreichen und regionalen Ausflüge der Ontologie auszugeben},captionpos=b,language=SQL]
+    SELECT
+        *
+    WHERE {
+        ?object :familiengerecht true;
+            :regional true;
+            :action true.
+    }
+\end{lstlisting}
+
+\noindent\rule[1ex]{\textwidth}{1pt}

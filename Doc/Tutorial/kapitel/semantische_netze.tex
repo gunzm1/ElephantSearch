@@ -72,12 +72,35 @@ Wissensnetze haben sämtliche Voraussetzungen um effektives Wissensmanagement zu
 \newpage
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}[11]{l}{0.1\textwidth}
+\begin{wrapfigure}[9]{l}{0.1\textwidth}
     \vspace{-2pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}\\
-Ein sehr wichtiger und zeitintensiver Teil des Knowledge Engineerings ist die tatsächliche Modellierung. Also die Überlegung ob eine abzubildende Information ein Objekt, eine Instanz oder eine Eigenschaft ist, oder, ob sie gar als Regel abgebildet werden kann. Regeln werden im Kapitel~\ref{chap:swrl}~\refname{chap:swrl} genauer erläutert. Uns scheint an dieser Stelle aber wichtig zu erwähnen, dass das semantischen Netz ein sehr gutes Hilfsmittel war, um einen Überblick über die Informationen und ihre Verwendbarkeit zu erhalten.
-An unserem konkreten Beispiel könnte dies folgendermassen aussehen:
+Ein sehr wichtiger und zeitintensiver Teil des Knowledge Engineerings ist die tatsächliche Modellierung. Also die Überlegung ob eine abzubildende Information ein Objekt, eine Instanz oder eine Eigenschaft ist, oder, ob sie gar als Regel abgebildet werden kann. Regeln werden im Kapitel~\ref{chap:swrl} \nameref{chap:swrl} genauer erläutert. Uns scheint an dieser Stelle aber wichtig zu erwähnen, dass das semantischen Netz ein sehr gutes Hilfsmittel war, um einen Überblick über die Informationen und ihre Verwendbarkeit zu erhalten. Würde man das Wissen direkt in die semantische Datenbank übertragen, wäre diese nicht viel mächtiger als eine traditionelle Wissensspeicherung. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[6]{l}{0.1\textwidth}
+    \vspace{-12pt}
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
+\end{wrapfigure}
+Möchte man nun ein semantisches Netz als Hilfsmittel zur Aufbau der Ontologie für einen Reiseplaner nutzen, so ist das Vorgehen dem der Graphdatenbank sehr ähnlich. 
+
+Gegeben sind nach wie vor die zuvor gemachten Überlegungen zum Aufbau, also auch die Klassen, Individuen und deren Relationen. Aktuell sind dies die Klassen \textit{Ausflug}, \textit{Land}, \textit{Region} und \textit{Ort}, die Individuen \textit{Schweiz}, \textit{Solothurn}, \textit{Bern} und \textit{Seilpark Balmberg} sowie die Relationen \textit{hatRegion} und \textit{hatOrt}.
+
+Doch wie geht man nun weiter vor? Was unterscheidet denn ein semantisches Netz eigentlich von einer Graphdatenbank? Nun, im Kapitel zu den Graphdatenbanken wurde bereits eine wichtige Entität vorweggenommen, welche einer Hauptunterschiede zwischen einem semantischen Netz und einer Graphdatenbank darstellt: die Individuen. Diese lassen sich in Graphdatenbanken zwar abbilden, aber viel weniger intuitiv und sinngemäss.
+
+An diese Stelle läuft man jedoch schnell in Gefahr, eine ähnliche Modellierung wie bei der Graphdatenbank zu erhalten. Wir haben uns daher bei der Modellierung an den Aufbau der letztendlich verwendeten Ontologiesprache OWL 2 bzw. deren Anwendung im Editor Protégé der Universität Stanford gehalten, da wir das Gefühl haben, dass dies einen guten Rahmen vorgibt.
+
+Schlussendlich ist ja das Ziel, die bereits formulierten Kriterien, \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}, abzubilden, um letztendlich entsprechende Abfragen stellen zu können. Unter den gegebenen Entitäten scheint sich aktuell nur das Kriterium \textit{regional} abzubilden lassen, doch wie setzt man dies nun um? Davon ausgehend, dass der Standort bzw. die Region der Familie bekannt ist --- diese sei der Einfachheit halber Solothurn ---, sollte es also möglich sein, zu Folgern, dass die Region des Seilparks Balmberg dieselbe wie die der Familie ist.
+
+Man kann nun also mittels der Relation \textit{hatOrt} definieren, dass die \textit{Region} \textit{Solothurn} den \textit{Ort} \textit{Balmberg} hat. Dies lässt jedoch noch keinen Schluss zu, dass sich der Seilpark Balmberg im selben \textit{Ort}, ja, sogar in derselben \textit{Region} befindet. Es scheint eine Relation zu fehlen. Dies führt zur Einführung der neuen Relation \textit{hatStandort}, welche das Individium \textit{Seilpark Balmberg} mit dem Ort \textit{Balmberg} verbindet.
+
+\newpage
+
+Das oben Genannte könnte folgendermassen aussehen:
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/beispiel_semantisches_netz.png}}}
@@ -85,10 +108,12 @@ An unserem konkreten Beispiel könnte dies folgendermassen aussehen:
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd}
 
-Die obige Abbildung mag auf den ersten Blick simpel erscheinen, wie aber bereits vorher erwähnt, handelt es sich um einen Übersicht der Informationen. Würde man das Wissen direkt so in die Semantische Datenbank übertragen, wäre diese nicht viel mächtiger als eine traditionelle Wissensspeicherung. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
+Die obige Abbildung mag auf den ersten Blick simpel erscheinen, wie aber bereits vorher erwähnt, handelt es sich um einen Übersicht der Informationen. 
 
+Wie gelangt man nun aber zum Schluss, dass das Individuum \textit{Seilpark Balmberg} die \textit{Region} \textit{Solothurn} hat? Dies scheint sich aus dem gegebenen semantischen Netz nicht folgern zu lassen. Wir stellen fest, dass die Möglichkeit der Folgerung aktuell fehlt.
+
+\vspace{0.1pt}
 \noindent\rule[1ex]{\textwidth}{1pt}
-
 
 % Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
 %\nocite{kopka:band1}
