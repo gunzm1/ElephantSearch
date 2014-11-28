@@ -46,8 +46,7 @@ Inferenz im semantischen Netz kann grundsätzlich als das Entdecken von neuen Be
 
 Gegeben seien folgende Datensätze, welche Regeln definieren
 
-\lstset{caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b,label=lst:reasoning_seilpark]
     ``Schweiz hatRegion Solothurn.''
     ``Solothurn hatOrt Balmberg.''
     ``Seilpark istUnterklasseVon Ausflug.''
@@ -57,3 +56,28 @@ Gegeben seien folgende Datensätze, welche Regeln definieren
 definiert.
 
 Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).
+
+\newpage
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[14]{l}{0.1\textwidth}
+    \vspace{-12pt}
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
+\end{wrapfigure}
+Das unter~\ref{lst:reasoning_seilpark} genannte Beispiel beantwortet genau die unter~\ref{sec:wissensrepFormen_Wissensnetze} gestellte Frage, wie man zum Schluss gelangt, dass das Individuum \textit{Seilpark Balmberg} in der \textit{Region} \textit{Solothurn} ist.
+
+Wie wendet man dies jedoch an? Wie gelangt man effektiv zu dieser Information? Kann dies effektiv durch reine Folgerung erreicht werden?
+
+Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielsweise in Protégé und nutzt den Pellet-Reasoner zum Ziehen von Schlüssen, so würde man annehmen, dass dies der Fall ist. Rein von den Möglichkeiten her sollte der Reasoner genau dies bieten. Dies ist jedoch nicht ganz der Fall, wie in der nachfolgenden Grafik ersichtlich ist.
+
+\begin{figure}[H]
+\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/inferenz_protege.png}}}
+\caption{Darstellung des Individuums \textit{Seilpark Balmberg} in Protégé.\label{fig:inferenz_protege}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels Stanford Protégé Version 5.0.0 beta 15}
+
+Eine solche Folgerung ist durchaus möglich, man muss den Relationen die entsprechenden Eigenschaften, wie Symmetrie oder Transivität, geben. Wir haben dies in unserem Fall jedoch bewusst nicht getan, da sonst Folgerungen auftreten, welche irreführend sind, so wäre dann z.B. ein Ort auch ein Land und umgekehrt.
+
+Wir haben die eigentliche Folgerung mittels einer Regel in der Ontologie vorgenommen. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
+
+\noindent\rule[1ex]{\textwidth}{1pt}

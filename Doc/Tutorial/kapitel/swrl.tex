@@ -1,6 +1,8 @@
 \chapter{Regeln --- SWRL}
 \label{chap:swrl}
 
+Das letzte Kapitel ---~\ref{chap:owl}~\nameref{chap:owl}--- hat aufgzeigt, wie mittels der Ontologiesprache OWL bzw. OWL2 eine Ontologie erstellt werden kann und innerhalb dieser Klassen, Individuen und Beziehungen aufgebaut werden können. Erstellt man solch eine Ontologie, fällt auf, dass der Nutzen der Inferenz mit den beschriebenen Entitäten nicht voll ausgenutzt werden kann. Damit eine Reasoner die Inferenz vollumfänglich nutzen kann, wurden schliesslich Regeln in Form der Regelsprache \textit{SWRL} eingeführt.
+
 Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{swrl}.
 
 Bei SWRL handelt es sich um eine auf OWL und RuleML~\footnote{www.ruleml.org} basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet so vielfältige Möglichkeiten zur Inferenz.
@@ -26,6 +28,16 @@ $p$ ist hierbei ein Prädikat und $\arg1$, $\arg2$ und $argn$ die Argumente bzw.
 
 Prädikate können in SWRL OWL-Klassen, -Eigenschaften oder -Datentypen sein, Argumente OWL-Individuen, -Werte oder darauf verweisende Variablen.
 
+% UND-Verknüpfung in SWRL mittels Komma, ODER-Verknüpfung gibt es nicht
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[4]{l}{0.1\textwidth}
+    \vspace{-12pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+In SRWL können Atome nur UND-verknüpft werden, eine ODER-Verknüpfung gibt es in diesem Sinne nicht. Die UND-Verknüpfung wird mittels einem Komma \textit{,} vorgenommen. Möchte man eine ODER-Verknüpfung abbilden, so tut man dies, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet.
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+
 \subsection{Atomare Typen}
 \label{subsec:swrl_aufbau_atomaretypen}
 SWRL unterscheidet zwischen den folgenden atomaren Typen:
@@ -45,15 +57,15 @@ Ein Klassenatom besteht aus einem Prädikat, sowie genau einem Argument. Das Pr�
 \lstset{caption={Beispiele von Klassen-Atomen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Person(?x) $
-    $ Man(Bob) $
+    Abenteuerreise(?x)
+    Ausflug(Seilpark_Balmberg)
 \end{lstlisting}
 
-Möchte man nun mittels SWRL z.B. Aussagen, dass alle Männer auch Personen sind, so geschieht dies mittels:
-\lstset{caption={Beispiel der einfachen SWRL-Regel, dass alle Männer auch Personen sind},captionpos=b}
+Möchte man nun mittels SWRL z.B. Aussagen, dass alle Abenteuerreisen auch Reisen sind, so geschieht dies mittels:
+\lstset{caption={Beispiel der einfachen SWRL-Regel, dass alle Abenteuerreisen auch Reisen sind},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Person(?x) \rightarrow Man(?x) $
+    Abenteuerreise(?x) $\rightarrow$ Reise(?x)
 \end{lstlisting}
 
 \subsubsection{Eigenschaften von Individuen}
@@ -62,15 +74,17 @@ Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prä
 \lstset{caption={Beispiele von Atomen zur Darstellung von Eigenschaften von Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ hasParent(?x,?y) $
-    $ hasParent(?x,Bob) $
+    anzahlTeilnehmer(?a, ?anzahl)
+    erfordert(?a, "mut")
 \end{lstlisting}
 
-Möchte man nun zum Beispiel ausdrücken, dass die Relation $ isMother $ gilt, wenn ein OWL-Individum weiblich und Elternteil von einem anderen OWL-Individum ist, so geschieht dies mittels:
-\lstset{caption={Beispiel der einfachen SWRL-Regel, dass eine Person $p$ Mutter einer Person $x$ ist},captionpos=b}
+\newpage
+
+Möchte man nun zum Beispiel ausdrücken, dass die Datentypen-Eigenschaft $ teamevent $ gilt, wenn ein OWL-Individuum über die Relation $ anzahlTeilnehmer $ verfügt, diese grösser oder gleich 4, aber kleiner gleich 20 ist und die Eigenschaft \textit{teambildung} bietet, so geschieht dies mittels:
+\lstset{caption={Beispiel der SWRL-Regel um ein Objekt, \textit{?a}, als Teamevent zu definieren},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Person(?p) \wedge Female(?p) \wedge hasParent(?x,?p) \rightarrow isMother(?p,?x) $
+    anzahlTeilnehmer(?a, ?anzahl), greaterThanOrEqual(?anzahl, 4), lessThanOrEqual(?anzahl, 20), bietet(?a, "teambildung") $\rightarrow$ teamevent(?a, true)
 \end{lstlisting}
 
 \subsubsection{Wertespezifische Eigenschaften}
@@ -79,15 +93,16 @@ Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Pr
 \lstset{caption={Beispiele von Atomen zur Darstellung von wertespezifischen Eigenschaften von Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ hasAge(?x,?age) $
-    $ hasHeight(?x,?height) $
+    erfordert(?a, "mut")
+    durchschnittspreis(?r, ?preis)
 \end{lstlisting}
 
-Möchte man nun zum Beispiel ausdrücken, dass die alle Personen, welche einen Wagen besitzen auch Fahrer sind, so geschieht dies mittels:
-\lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass eine Person $p$, welche ein Auto besitzt, auch Fahrer ist},captionpos=b}
+HERE!
+Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend) gilt, wenn es Mut erfordert, so kann man dies mittels folgender Regel tun:
+\lstset{caption={Beispiel einer Regel, welche ausdrückt, dass ein Objekt actionreich ist, wenn es Mut erfordert},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Person(?p) \wedge hasCar(?p, true) \rightarrow isDriver(?p) $
+    erfordert(?a, "mut") -> action(?a, true)
 \end{lstlisting}
 
 \subsubsection{Unterscheidung von Individuen}
@@ -96,8 +111,8 @@ Ein Atom, welches die Unterscheidung von Individuen kennzeichnet, besteht aus ei
 \lstset{caption={Beispiele von Atomen zur Unterscheidung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ differentFrom(?x,?y) $
-    $ differentFrom(Bob,Fred) $
+    differentFrom(?x,?y)
+    differentFrom(Seilpark_Balmberg,Seilpark_Pilatus)
 \end{lstlisting}
 Eine genauere Beschreibung der Verwendung bzw.\ des Zwecks dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
 
@@ -107,35 +122,37 @@ Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem 
 \lstset{caption={Beispiele von Atomen zur Gleichsetzung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ sameAs(?x,?y) $
-    $ sameAs(Bob,Bobby) $
+    sameAs(?x,?y)
+    sameAs(Seilpark, Seilpark_Balmberg)
 \end{lstlisting}
 
 \subsubsection{Wertebereiche}
 \label{ssubsec:swrl_aufbau_atomaretypen_wertebereiche}
-Ein Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge aus Literalen, sowie genau einem Argument. 
+Ein Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge aus Literalen, sowie genau einem Argument.
 \lstset{caption={Beispiele von Atomen Kennzeichnung eines Wertes},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ xsd:int(?x) $
-    $ [3, 4, 5](?x) $
+    xsd:int(?x)
+    [3, 4, 5](?x)
 \end{lstlisting}
 Im ersten Beispiel ist das Objekt, welches durch die Variable $?x$ gekennzeichnet ist, eine ganze Zahl. Im zweiten Beispiel hat das Objekt den Wert 3, 4 oder 5.
 
 \subsubsection{Vordefinierte Atome}
 \label{ssubsec:swrl_aufbau_atomaretypen_vordefinierteatome}
-Bei den vordefinierten Atom handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen und den Wahrheitswert ``richtig'' zurückgeben, sofern alle Argumente dem Prädikat genügen. Dabei haben die vordefinierten Atome den Präfix $ swrldb: $. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{http://www.daml.org/2004/04/swrl/builtins}.
+Bei den vordefinierten Atom handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen und den Wahrheitswert ``richtig'' zurückgeben, sofern alle Argumente dem Prädikat genügen. Dabei haben die vordefinierten Atome den Präfix $ swrldb: $. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{\url{http://www.daml.org/2004/04/swrl/builtins}}.
 
-Möchte man beispielsweise sagen, dass alle Objekte, welche eine Person sind, welche über ein Alter in Form eines Attributes verfügen und dieses grösser als 17 ist, erwachsen sind, so geschieht mit:
-\lstset{caption={Beispiele der Verwendung von vordefinierten Atomen},captionpos=b}
+Möchte man nun zum Beispiel ausdrücken, dass die alle Objekte, die einen Durchschnittspreis haben und dieser zwischen 20 und 30 ist, die wertespezifische Eigenschaft \textit{preissegment} mit dem Wert ``preiswert'' haben, so geschieht dies mittels:
+\lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass ein Objekt die wertespezifische Eingenschaft \textit{preiswert} hat},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Person(?p) \wedge hasAge(?p,?age) \wedge swrlb:greaterThan(?age, 17) \rightarrow Adult(?p) $
+    durchschnittspreis(?r, ?preis), lessThanOrEqual(?preis, 30), greaterThan(?preis, 20) $\rightarrow$ preissegment(?r, "preiswert")
 \end{lstlisting}
+
+\newpage
 
 \section{Open world assumption}
 \label{sec:swrl_openworldassumption}
-SWRL geht, wie auch OWL von der so genannten \textit{``open world assumption''} aus. Diese sagt aus, dass der Wahrheitswert einer Aussage wahr sein kann, unabhängig davon ob bekannt ist, dass der Wert effektiv wahr ist.
+SWRL geht, wie auch OWL, von der so genannten \textit{``open world assumption''} aus. Diese sagt aus, dass der Wahrheitswert einer Aussage wahr sein kann, unabhängig davon, ob bekannt ist, dass der Wert effektiv wahr ist.
 
 Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, da sie zusammen an einer Publikation arbeiten, ist folgende Regel naheliegend:
 
@@ -158,3 +175,36 @@ Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure si
 Dasselbe gilt für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit \textit{sameAs} gekennzeichnet werden.
 
 Weiter können z.B. Aufzählungen nicht ohne Weiteres ausgedrückt werden. Möchte man beispielweise sagen, dass es sich bei einer Publikation um eine Publikation mit nur einem Autor handelt, ist dies nicht möglich. Es mag sein, dass aktuell nur Wissen über einen Autor der Publikation vorhanden ist, diese aber noch über weitere --- aktuell unbekannte --- Autoren verfügt.
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[5]{l}{0.1\textwidth}
+    \vspace{-14pt}
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
+\end{wrapfigure}
+Mit den in diesem Kapitel eingeführten Regeln ist es nun möglich, die unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Dabei ist zu beachten, dass diese jedoch zuvor als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) zu definieren sind.
+
+Wir haben die Definition wie folgt gewählt:
+
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{familienfreundlich}},captionpos=b,language=XML]
+    alter(?a, ?alter), swrldb:greaterThanOrEqual(?alter, 2) $\Rightarrow$ familienfreundlich(?a, true)
+\end{lstlisting}
+
+Ein Objekt muss also über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, dann erhält ein Objekt automatisch das Attribut familienfreundlich mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
+
+\begin{lstlisting}[caption={Beispiel der SWRL-regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
+    hatStandort(?ausflug, ?ort), hatRegion(?land, ?region), hatOrt(?region, ?ort), distanzZuAusgangspunkt(?region, ?distanz), swrldb:lessThanOrEqual(?distanz, 50) $\Rightarrow$ regional(?ausflug, true)
+\end{lstlisting}
+
+Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist, dieses Objekt dann das Attribut \textit{regional} erhält.
+
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{actionreich}},captionpos=b,language=XML]
+    erfordert(?a, "mut") $\Rightarrow$ actionreich(?a, true)
+    nervenkitzel(?a, true) $\Rightarrow$ actionreich(?a, true)
+    erfordert(?a, "geschicklichkeit") $\Rightarrow$ actionreich(?a, true)
+\end{lstlisting}
+
+Wie unter~\nameref{sec:swrl_aufbau} beschrieben, kann eine Regel in SWRL keine ODER-Verknüpfungen enthalten. Diese werden abgebildet, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet. Genau dies ist hier der Fall. Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel mit sich bringt. Die Eigenschaft \textit{nervenkitzel} ist selbst wiederum eine Folgerung, aus der Bedingung, dass sie Mut erfordert. Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
+
+Somit sind nun alle Komponenten vorhanden, um Ausflüge abbilden zu können, welche den unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} genannten Kriterien entsprechen. Doch wie findet man nun effektiv solche Ausflüge? Hierzu benötigt man eine Abfragesprache um Abfragen in der Ontologie vornehmen zu können. Dies wird im kommenden Kapitel erläutert.
+
+\noindent\rule[1ex]{\textwidth}{1pt}

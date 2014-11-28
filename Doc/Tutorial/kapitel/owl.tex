@@ -9,7 +9,7 @@ Auch für OWL stehen verschiedene Schreibweisen zur Verfügung, welche für vers
 \begin{itemize}
 	\item \textit{RDF/XML Syntax für OWL}
 
-        Entspricht RDF/XML Syntax mit einer speziellen Übersetzung für OWL-Konstrukte. Dabei handelt es sich um die einzige Syntax, welche von allen OWL2-Tools unterstützt werden soll. % TODO: Wieso soll?
+        Entspricht RDF/XML Syntax mit einer speziellen Übersetzung für OWL-Konstrukte. Dabei handelt es sich um die einzige Syntax, welche von allen OWL2-Tools unterstützt wird.
 	\item \textit{OWL/XML Syntax}
 
         XML Syntax für OWL.
@@ -18,7 +18,15 @@ Auch für OWL stehen verschiedene Schreibweisen zur Verfügung, welche für vers
         Zur Vereinfachung der ursprünglichen Spezifikation; Unterstützt Grundlagen zur Implementation von OWL2 mittels APIs und Reasoners
 	\item \textit{Turtle Syntax}
 
-        TODO
+        Bei der Tutrtle Syntax handelt es sich um eine textuelle Syntax, welche die Beschreibung eines RDF-Graphen in kompakter und natürlicher Form erlaubt.
+
+        \begin{lstlisting}[caption={Beispiel der Turtle Syntax\protected\footnotemark}]
+            <#green-goblin>
+                rel:enemyOf <#spiderman> ;
+                a foaf:Person ;    # in the context of the Marvel universe
+                foaf:name "Green Goblin".
+        \end{lstlisting}
+        \footnotetext{Beispiel von \url{http://www.w3.org/TR/turtle/\#sec-intro}}
 	\item \textit{Manchester Syntax}
 
         Vereinfacht das Lesen für nicht logikaffine Leser.
@@ -45,7 +53,7 @@ Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der g
 
         Elemente, welche konkrete Objekte aus der realen Welt abbilden.
 
-        Grundbestandteile einer Aussage, wie zum Beispiel die Objekte \textit{Abenteuerreise} und \textit{Reise} oder die Beziehung \textit{sind}, werden allgemein Entitäten genannt. Konkrete Objekte werden dabei als Individuen (Individuals), Kategorien als Klassen und Beziehungen als Eigenschaften (Properties) bezeichnet. Beziehungen werden in ObjectProperties (Relation zwischen zwei Individuen), DataTypeProperties (spezifischer Datenwert eines Objektes) und AnnotationProperties (zusätzliche Information zu einem Objekt) unterteilt.
+        Grundbestandteile einer Aussage, wie zum Beispiel die Objekte \textit{Abenteuerreise} und \textit{Reise} oder die Beziehung \textit{sind}, werden allgemein Entitäten genannt. Konkrete Objekte werden dabei als Individuen (Individuals), Kategorien als Klassen und Beziehungen als Eigenschaften (Properties) bezeichnet. Beziehungen werden in ObjectProperties (Relation zwischen zwei Individuen), DataProperties (spezifischer Datenwert eines Objektes) und AnnotationProperties (zusätzliche Information zu einem Objekt) unterteilt.
 
 	\item \textit{Expression (Ausdruck)}
 
@@ -53,7 +61,12 @@ Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der g
 
         Entitäten können mithilfe eines Konstruktors kombiniert werden. Zum Beispiel \textit{Abenteuerreise} und die Klasse \textit{Reise}. Diese Vereinigung wird als so genannte Class Expression abgebildet und kann als neue Entität angesehen werden.
 
-        TODO: Beispiel
+        \begin{lstlisting}[caption={Beispiel eines Ausdrucks}]
+            EquivalentClasses(
+                :Restaurant
+                :Gaststätte
+            )
+        \end{lstlisting}
 
         Ausdrücke für Klassen sind sehr mächtig, Ausdrücke für Eigenschaften sind hingegen schwächer.
 \end{itemize}
@@ -103,8 +116,32 @@ Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen, sondern a
     </owl:NamedIndividual>
 \end{lstlisting}
 
-Klassen können gleichgestellt werden. TODO: Beispiel.
-Klassen können sich gegenseitig Ausschliessen: TODO: Beispiel
+\newpage
+
+Individuen können gleichgestellt werden oder sich auch gegenseitig ausschliessen.
+
+\begin{lstlisting}[caption={Beispiel einer Gleichstellung von Individuen}]
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Seilpark -->
+    <owl:NamedIndividual rdf:about="&reiseplaner;Seilpark">
+        <rdf:type rdf:resource="&reiseplaner;Ausflug"/>
+        ...
+        <owl:sameAs rdf:resource="&reiseplaner;Seilpark_Balmberg"/>
+    </owl:NamedIndividual>
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Beispiel einer Differenzierung von Individuen}]
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&reiseplaner;Seilpark"/>
+            <rdf:Description rdf:about="&reiseplaner;Seilpark_Balmberg"/>
+            <rdf:Description rdf:about="&reiseplaner;Seilpark_Pilatus"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+
+\end{lstlisting}
+
+
 
 \subsubsection{Eigenschaften}
 \label{subsubsec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Propertys}
@@ -128,47 +165,51 @@ Hierbei handelt es sich um eine Beziehung zwischen zwei Individuen.
     </owl:Thing>
 \end{lstlisting}
 
-\textbf{Subeigenschaft}
-Es besteht die Möglichkeit Untereigenschaften zu definieren.
-
-TODO: Beispiel.
-
-
 Dabei kann eingeschränkt werden auf welche und mit welcher Klasse einer Domäne eine Objekteigenschaft angewendet werden darf.
 
-TODO: Beispiel.
+\begin{lstlisting}[caption={Beispiel von Einschränkungen der Objekteigenschaft \textit{hatRegion}}]
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#hatRegion -->
+    <owl:ObjectProperty rdf:about="&reiseplaner;hatRegion">
+        <rdfs:domain rdf:resource="&reiseplaner;Land"/>
+        <rdfs:range rdf:resource="&reiseplaner;Region"/>
+    </owl:ObjectProperty>
+\end{lstlisting}
 
-% TODO:
-% Verschiedenheit von Individuen festlegen:  Atom und Variablen sind unterschiedliche Individuen.\\
-% \noindent\hspace*{15mm}<rdf:Description rdf:about="Konstante"'>\\
-% \noindent\hspace*{25mm}  <owl:differentFrom rdf:resource="Variable"/>\\
-% \noindent\hspace*{15mm} </rdf:Description>\\
-% 
-% 
-%  Verschiedenheit kann so festgelegt werden:\\
-% \noindent\hspace*{15mm}   <rdf:Description>\\
-% \noindent\hspace*{25mm}       <rdf:type rdf:resource="\&owl;AllDifferent"'/>\\
-% \noindent\hspace*{35mm}       <distinctMembers rdf:parseType="Collection"'>\\
-% \noindent\hspace*{45mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Konstante"'/>\\
-% \noindent\hspace*{45mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Variable"'/>\\
-% \noindent\hspace*{35mm}           <rdf:Description rdf:about="\&Prolog\_Ontology;Zahl"/>\\
-% \noindent\hspace*{25mm}        </distinctMembers>\\
-% \noindent\hspace*{15mm}   </rdf:Description>\\
-% 
-% 
-% Individuen miteinander gleich setzten: Atom und Konstante sind das gleiche Individuum.\\
-% \noindent\hspace*{15mm}    <NamedIndividual rdf:about="'\&Prolog\_Ontology;Atom"'>\\
-% \noindent\hspace*{25mm}        <rdf:type rdf:resource="'\&Prolog\_Ontology;EinfachesToken"'/>\\
-% \noindent\hspace*{25mm}        <rdfs:comment>beginnt mit Kleinbuchstaben oder mit Apostroph</rdfs:comment>\\
-% \noindent\hspace*{25mm}        <sameAs rdf:resource="'\&Prolog\_Ontology;Konstante"'/>\\
-% \noindent\hspace*{15mm}    </NamedIndividual>\\
-% 
-% 
-% 
+\textbf{Subeigenschaften}
+Es besteht die Möglichkeit Untereigenschaften zu definieren.
+
+\begin{lstlisting}[caption={Beispiel der Objekteigenschaft \textit{hatGemeinde} als Subeigenschaft von \textit{hatRegion}}]
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#hatGemeinde -->
+    <owl:ObjectProperty rdf:about="&reiseplaner;hatGemeinde">
+        <rdfs:subPropertyOf rdf:resource="&reiseplaner;hatRegion"/>
+    </owl:ObjectProperty>
+\end{lstlisting}
+
+\textbf{Datentypen-Eigenschaften (DataProperties)}
+
+Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert eines Individuums. Dies kann beispielsweise das Alter oder die Grösse einer Person sein. Datentypen-Eigenschaft können frei definiert werden und, bei Bedarf, an vordefinierte Wertetypen gebunden werden. Eine Auflistung dieser befindet sich unter~\footnote{\url{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}}.
+
 % Datentypen Eigenschaft: TODO: bei uns anwenden.\\
 % \noindent\hspace*{15mm} <Person rdf:about="'John"'>\\
 % \noindent\hspace*{25mm}   <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema\#integer"'>51</hasAge>\\
 % \noindent\hspace*{15mm} </Person>\\
+
+\begin{lstlisting}[caption={Beispiel der Datentypen-Eigenschaft \textit{anzahlTeilnehmer} und deren Anwendung bei einem Individuum}]
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#anzahlTeilnehmer -->
+    <owl:DatatypeProperty rdf:about="&reiseplaner;anzahlTeilnehmer">
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    ...
+    <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#AdventureRooms -->
+    <owl:NamedIndividual rdf:about="&reiseplaner;AdventureRooms">
+        ...
+        <reiseplaner:anzahlTeilnehmer rdf:datatype="&xsd;integer">12</reiseplaner:anzahlTeilnehmer>
+        ...
+    </owl:NamedIndividual>
+\end{lstlisting}
+
+\newpage
 
 \section{Ontologien}
 \label{sec:owl_owl_Ontologien}
@@ -180,55 +221,49 @@ Die gesamten Informationen zu einem Thema werden in Ontologien abgebildet. Diese
 \end{lstlisting}
 
 Ontologien werden in bzw.\ als OWL-Dokumente abgespeichert. Diese können entweder rein lokal, oder aber im Internet zur Verfügung gestellt werden.
-Beim Schreiben einer Ontologie können zusätzliche Namespaces verwendet werden, so zum Beispiel \textit{http://www.w3.org/2001/XMLSchema\#}. Dabei ist zu berücksichtigen, dass diese Namespaces kontrolierbar sein sollten. % TODO: Was ist hier mit kontrollierbar gemeint?
+Beim Schreiben einer Ontologie können zusätzliche Namespaces verwendet werden, so zum Beispiel \textit{http://www.w3.org/2001/XMLSchema\#}. Ist ein Namespace z.B. nur per Internet verfügbar, so kann dieser beispielsweise bei einem Ausfall der Internetverbindung nicht genutzt werden. Daher sollte berücksichtigt werden, dass Namespaces kontrollierbar im Sinne der Verfügbarkeit sein sollten.
 
-Ausserdem können Informationen aus einer Ontologie in einer anderen verwendet werden. Dies muss dazu importiert werden.\\
- \noindent\hspace*{15mm}<owl:Ontology rdf:about="http://example.com/owl/families\">\\
- \noindent\hspace*{25mm}  <owl:imports rdf:resource="http://example.org/otherOntologies/families.owl" />\\
- \noindent\hspace*{15mm}</owl:Ontology>\\
+Informationen aus einer Ontologie können in einer anderen verwendet werden. Dazu muss diese allerdings importiert werden.
 
-Um bei der verwendung von Objekten aus anderen Ontologien eine Umbenennung zu umgehen, kann auf das entsprechende Objekt referenziert werden.\\
+\begin{lstlisting}[caption={Beispiel eines Importes einer Ontologie}]
+    <owl:Ontology rdf:about="http://example.com/owl/families\">
+      <owl:imports rdf:resource="http://example.org/otherOntologies/families.owl" />
+    </owl:Ontology>
+\end{lstlisting}
 
- \noindent\hspace*{15mm}<owl:DatatypeProperty rdf:about="hasAge">\\
- \noindent\hspace*{25mm}  <owl:equivalentProperty rdf:resource="\&otherOnt;age"/>\\
- \noindent\hspace*{15mm}</owl:DatatypeProperty>\\
+
+Um bei der Verwendung von Objekten aus anderen Ontologien eine Umbenennung zu umgehen, kann direkt auf das entsprechende Objekt referenziert werden.
+
+\begin{lstlisting}[caption={Beispiel einer Referenzierung auf ein Objekt einer externen Ontologie}]
+    <owl:DatatypeProperty rdf:about="hasAge">
+      <owl:equivalentProperty rdf:resource="\&otherOnt;age"/>
+    </owl:DatatypeProperty>
+\end{lstlisting}
 
 \section{OWL Untersprachen}
 \label{sec:owl_owl_Untersprachen}
-OWL ist in drei Untersprachen gegliedert. Jede dieser Sprachen wurde für Verwendung durch verschiedene Gruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich in OWL2 QL, OWL2 EL und OWL2 RL. Dabei handelt es sich um weitere Unterklassen von OWL2 DL welche wiederum eine Untersprache von OWL2 Full ist. Diese sollen hier nicht weiter analysiert werden.
+OWL ist in drei Untersprachen aufgeteilt. Jede dieser Sprachen wurde für die Verwendung durch verschiedene Anwendergruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich zwischen OWL2 QL, OWL2 EL und OWL2 RL.\ Dabei handelt es sich um weitere Unterklassen von OWL2 DL, welche wiederum eine Untersprache von OWL2 Full ist. Diese sollen hier nicht weiter analysiert werden. Genauere Informationen zu den einzelnen Untersprachen finden sich unter~\footnote{\url{http://www.w3.org/TR/2004/REC-owl-features-20040210/\#s1.3}}, genauere Informationen zu den OWL2 Profilen finden sich unter~\footnote{\url{http://www.w3.org/TR/owl2-profiles/}}.
 
-\section{OWL Tools}
+\section{OWL-Werkzeuge}
 \label{sec:owl_owl_OwlTools}
-
-
-Es wird typischerweise zwischen zwei Arten von Ontologiewerkzeugen unterschieden. Der Editor (Bearbeiter) welcher fürs erzeugen und ändern von Ontologien zuständig ist. Und der Reasoner welcher fähig ist logische Folgerungen aus dem bestehenden Wissen abzuleiten.
+Es wird typischerweise zwischen zwei Arten von Ontologiewerkzeugen unterschieden. Der Editor, welcher für das Erzeugen und Ändern von Ontologien zuständig ist, und der Reasoner, welcher fähig ist logische Folgerungen aus dem bestehenden Wissen abzuleiten.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\vspace{0.1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
+\begin{wrapfigure}[5]{l}{0.1\textwidth}
     \vspace{-19pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Diese Sprachen mögen nützlich sein um Ontologien zu modellieren. Sie sind aber umständlich in der Formulierung und vorallem zum lesen. An diesem Punkt kommen der Editor ins Spiel. Mittels mehr oder weniger freundlichen Ontologiewerkzeugen lässt sich eine Ontologie intuitiv und übersichtlich abbilden. Wir haben in unserem Beispiel, das in der Fachwelt weitverbreitete Protégé von Stranford verwendet.
-
+Diese Sprachen mögen nützlich sein um Ontologien zu modellieren, sie sind aber in der Formulierung und vorallem zum Lesen eher umständlich. An diesem Punkt kommt der Editor ins Spiel. Mittels mehr oder weniger freundlichen Ontologiewerkzeugen lässt sich eine Ontologie intuitiv und übersichtlich abbilden. Wir haben in unserem Beispiel das in der Fachwelt weitverbreitete Werkzeug Protégé der Universität Stanford verwendet.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/protege.png}}}
-\caption{Protégé Abbildung\label{fig:protege}\protect\footnotemark}
+\caption{Übersichtsfenster der Anwendung Protégé\label{fig:protege}\protect\footnotemark}
 \end{figure}
-\footnotetext{Screenshot Protege}
-
-
-\vspace{0.1pt}
+\footnotetext{Eigens erstellter Screenshot von Protégé}
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-
-
-%w3c
-%http://www.w3.org/TR/2012/REC-owl2-primer-20121211/
-%http://www.w3.org/2001/sw/wiki/OWL
-
-%http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/
-
-% Einträge im Verzeichnis erscheinen lassen ohne hier eine Referenz einzufügen
-%\nocite{kopka:band1}
+% Quellen
+% w3c
+% http://www.w3.org/TR/2012/REC-owl2-primer-20121211/
+% http://www.w3.org/2001/sw/wiki/OWL
+% http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/

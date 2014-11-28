@@ -1,7 +1,7 @@
 \chapter{Wissen abbilden mittels Ontologien}
 \label{chap:ontologien}
 
-Die bisherigen Kapiteln bieten eine groben Überblick über Objekte deren Verwendung. Damit sie bei der Wissensmodellierung von Nutzen sind, müssen diese aber in eine geeignete Form gebracht werden. Wissen wird in Knowdgles Engineering meist in Form von Ontologien abgelegt.
+Die bisherigen Kapiteln bieten eine groben Überblick über Objekte deren Verwendung. Damit sie bei der Wissensmodellierung von Nutzen sind, müssen diese aber in eine geeignete Form gebracht werden. Wissen wird im Knowledge Engineering meist in Form von Ontologien abgelegt.
 
 Der Begriff Ontologie wird in verschiedenen wissenschaftlichen Bereichen verwendet, so zum Beispiel in der Philosophie, der Psychologie und der Informatik. In diesem Dokumente soll nur der Aspekt der Informatik erklärt werden. \\
 Das Folgende Kapitel basiert auf dem Artikel ``Was bedeutet eigentlich Ontologie?''~\cite{IspekOntoBedeutung} sowie dem Artikel ``Eine kurze Geschichte der Ontologie''~\cite{ISpekOntoGeschichte}.
@@ -53,8 +53,8 @@ Handelt es sich bei einem Objekt um eine Reise, benötigt das Objekt mindestens 
 Damit eine Inferenzmaschine Schlüsse ziehen kann, muss die Wissensbasis in einer formalen Sprache vorliegen und darf keine syntaktischen Fehler enthalten. Das Schema und die Aussagen werden von der Maschine geladen und intern als Graph gespeichert (siehe Kapitel~\nameref{chap:wissensrepFormen}). Mit Hilfe eines Algorithmus wird eine Abfrage implementiert. Diese wird zum Abgleichen von Graphen verwendet. Die Regeln werden wiederholt angewendet, wodurch Schlussfolgerungen gezogen werden können. Auch dies geschieht mittels eines solchen Algorithmus. Die daraus entstandenen Aussagen werden der Wissensbasis hinzugefügt und stehen für Abfragen zur Verfügung.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}{l}{0.1\textwidth}
-    \vspace{-2pt}
+\begin{wrapfigure}[7]{l}{0.1\textwidth}
+    \vspace{-14pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
 Wir brauchen also Ontologien. Dabei spielt die Wahl der Domäne eine grosse Rolle. Im Laufe der Umsetzung unserer Wissensmodellierung haben wir gelernt, das sich nicht jeder Themenbereich als Domäne eignet. So sind theoretische Grundlagen schwierig umzusetzen. Diese erhalten auch keinen besonderen Mehrwert, wenn sie in semantischer Form abgelegt sind. Die Mächtigkeit einer Ontologie und der damit verbundenen Wissensmodellierung ist bei Themen mit konkreten Daten, welche interpretiert und mit deren Hilfe Schlussfolgerungen gezogen werden können, viel sinnvoller.

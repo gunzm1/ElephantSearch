@@ -36,6 +36,7 @@
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
 \usepackage[square,sort,comma,numbers]{natbib}                          % provides various citation styles
 \usepackage{wrapfig}                                                    % provides floating of text around images
+\usepackage{nameref}                                                    % provides printing names of references
 %---------------------------------------------------------------------------
 
 % Definition of Colors
@@ -228,9 +229,10 @@
     {Ü}{{\"U}}1
     {ß}{{\ss}}1
     {ü}{{\"u}}1
-    {ä}{{\"a}}1
+    {ä}{{\textcolor{red}{\"a}}}1
     {ö}{{\textcolor{red}{\"o}}}1
     {~}{{\textasciitilde}}1
+    {?}{{\textcolor{red}{?}}}1
 }
 
 % Title Page and Abstract
