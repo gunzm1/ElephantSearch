@@ -87,20 +87,27 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="step1">
-                <h2>Step 1</h2>
-                <p>Let the journey begin..</p>
-                <ul>
-                    {{#each item in model}}
-                      <li>{{item.haaas.type}}: {{item.haaas.value}}</li>
-                    {{/each}}
-                </ul>
+                <h2>Schritt 1</h2>
+                <p>Lass uns die Plannung beginnen...</p>
+				{{#each item in model}}
+					{{input type="checkbox" name=item.haaas.value}} 
+					<label {{bind-attr for="item.haaas.value"}}>
+					  {{item.haaas.value}}
+					</label><br>
+				{{/each}}
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
                 </p>
         </script>
 
         <script type="text/x-handlebars" data-template-name="step2">
-                <h2>Step 2</h2>
+                <h2>Schritt 2</h2>
+				{{#each item in model}}
+					{{input type="checkbox" name=item.property.value}} 
+					<label {{bind-attr for="item.property.value"}}>
+					  {{item.property.value}}
+					</label><br>
+				{{/each}}				
                 <p>Choose the foo you wanna do:</p>
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>

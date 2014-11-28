@@ -2,7 +2,8 @@
   "name": "travelling-owl",
   "dependencies": {
     "domReady": "requirejs/domReady",
-    "ember": "latest",
+    "ember": "^1.8.1",
+	"ember-data": "~1.0.0",
     "jquery": "^2.1.1",
     "jquery-ui": "^1.11.2",
     "jqueryuibootstrap": "jquery-ui-bootstrap/jquery-ui-bootstrap#masterbs3",

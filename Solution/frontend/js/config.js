@@ -12,6 +12,7 @@ define({
     'bootstrap': 'lib/bootstrap/dist/js/bootstrap',
     'domReady': 'lib/domReady/domready',
     'ember': 'lib/ember/ember',
+	'ember-data': 'lib/ember-data/ember-data',
     'hbs': 'lib/handlebars/handlebars',
     'jquery': 'lib/jquery/dist/jquery',
     'lodash': 'lib/lodash/dist/lodash',
@@ -23,6 +24,10 @@ define({
       deps: ["hbs", "jquery"],
       exports: "Ember"
     },
+	"ember-data":{
+		deps:["ember"],
+		exports: "DS"
+	},
     "stardog": {
       deps: ["lodash"]
     }
