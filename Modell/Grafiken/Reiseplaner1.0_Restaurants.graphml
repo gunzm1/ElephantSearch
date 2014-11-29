@@ -372,15 +372,15 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="730.1252128079194" width="590.9463380615125" x="1971.2802734375" y="396.0766601562501"/>
+              <y:Geometry height="730.1252128079194" width="629.5581470580996" x="1932.6684644409129" y="396.0766601562501"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="590.9463380615125" x="0.0" y="0.0">Regeln</y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="629.5581470580996" x="0.0" y="0.0">Regeln</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:NodeBounds considerNodeLabelSize="true"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="7" leftF="7.41358162841243" right="32" rightF="32.165088061512506" top="14" topF="13.86279105110168"/>
+              <y:BorderInsets bottom="14" bottomF="13.798127035830476" left="1" leftF="0.587394934087115" right="18" rightF="18.366259936512506" top="14" topF="13.86279105110168"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -557,11 +557,12 @@ küche(?r, "raffiniert")<y:LabelModel>
         <node id="n10::n8">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.relationship">
-              <y:Geometry height="62.403745928338935" width="230.123046875" x="2284.9384765625" y="826.2981270358305"/>
+              <y:Geometry height="82.19999999999993" width="303.48828125" x="1948.255859375" y="816.4000000000001"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="220.123046875" x="5.0" y="14.500701089169524">hatStandort(?r,?s1), hatStandort(?a,?s2)
-hatOrt(?r,s1), hatOrt(?r,s2)<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="293.48828125" x="5.0" y="17.04824218749991">hatStandort(?restaurant, ?standort1),
+ hatStandort(?ausflug, ?standort2),
+ hatOrt(?region,?standort1),hatOrt(?region,?standort2)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -577,7 +578,7 @@ hatOrt(?r,s1), hatOrt(?r,s2)<y:LabelModel>
         <node id="n10::n9">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.relationship">
-              <y:Geometry height="72.40374592833894" width="216.775390625" x="2291.6123046875" y="997.4518729641695"/>
+              <y:Geometry height="72.40374592833894" width="216.775390625" x="1991.0249097534129" y="983.7981270358305"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="206.775390625" x="5.0" y="26.851287026669524">hatStandort(?r,?s), hatStandort(?a,?s)<y:LabelModel>
@@ -595,10 +596,9 @@ hatOrt(?r,s1), hatOrt(?r,s2)<y:LabelModel>
         </node>
         <node id="n10::n10">
           <data key="d4"/>
-          <data key="d5"/>
           <data key="d6">
             <y:UMLNoteNode>
-              <y:Geometry height="62.403745928338935" width="137.720703125" x="2121.1396484375" y="868.7981270358305"/>
+              <y:Geometry height="62.403745928338935" width="137.720703125" x="2391.1396484375" y="868.7981270358306"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="127.720703125" x="5.0" y="14.500701089169524">domain(r) = Restaurant
@@ -614,10 +614,9 @@ range(a) = Ausflug<y:LabelModel>
         </node>
         <node id="n10::n11">
           <data key="d4"/>
-          <data key="d5"/>
           <data key="d6">
             <y:UMLNoteNode>
-              <y:Geometry height="62.403745928338935" width="137.720703125" x="2103.6396484375" y="1048.7981270358305"/>
+              <y:Geometry height="62.403745928338935" width="137.720703125" x="2391.1396484375" y="1035.0"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="127.720703125" x="5.0" y="14.500701089169524">domain(r) = Restaurant
@@ -633,12 +632,11 @@ range(a) = Ausflug<y:LabelModel>
         </node>
         <node id="n10::n12">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.relationship">
-              <y:Geometry height="62.403745928338935" width="128.732421875" x="2035.6337890625" y="826.2981270358305"/>
-              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+            <y:GenericNode configuration="com.yworks.entityRelationship.attribute">
+              <y:Geometry height="46.834032573289846" width="125.3984375" x="2307.30078125" y="834.0829837133551"/>
+              <y:Fill color="#FFFF99" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="118.732421875" x="5.0" y="21.851287026669524"> gleicheRegion(?r,a?)
-<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="115.3984375" x="5.0" y="14.066430349144866">gleicheRegion(?r,?a)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -653,12 +651,11 @@ range(a) = Ausflug<y:LabelModel>
         </node>
         <node id="n10::n13">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.relationship">
-              <y:Geometry height="58.55375610749138" width="107.369140625" x="2035.6337890625" y="1004.3768678745934"/>
-              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+            <y:GenericNode configuration="com.yworks.entityRelationship.attribute">
+              <y:Geometry height="46.834032573289846" width="108.03125" x="2315.984375" y="996.582983713355"/>
+              <y:Fill color="#FFFF99" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="97.369140625" x="5.0" y="19.92629211624569"> gleicheOrt(?r,a?)
-<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="98.03125" x="5.0" y="14.066430349144866">gleicherOrt(?r,?a)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1203,6 +1200,24 @@ range(a) = Ausflug<y:LabelModel>
             <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
           </y:StyleProperties>
         </y:GenericNode>
+      </data>
+    </node>
+    <node id="n39">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="27.34765625" x="1846.326171875" y="1005.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="17.34765625" x="5.0" y="5.6494140625">62<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
       </data>
     </node>
     <edge id="n1::e0" source="n1::n2" target="n1::n0">
@@ -2218,30 +2233,7 @@ abwechslungsreich<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n10::e4" source="n10::n12" target="n10::n8">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n10::e5" source="n10::n13" target="n10::n9">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
     <edge id="e45" source="n36" target="n37">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2261,7 +2253,6 @@ abwechslungsreich<y:LabelModel>
       </data>
     </edge>
     <edge id="e46" source="n37" target="n13">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="14.990234375">
@@ -2283,7 +2274,6 @@ abwechslungsreich<y:LabelModel>
       </data>
     </edge>
     <edge id="e47" source="n36" target="n18">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2304,6 +2294,45 @@ abwechslungsreich<y:LabelModel>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="left" ratio="1.0" segment="-1"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n10::e4" source="n10::n8" target="n10::n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="plain"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="25.746337890625" y="28.0">
+            <y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n10::e5" source="n10::n9" target="n10::n13">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="plain"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="52.105960736081215" y="28.0">
+            <y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
