@@ -89,12 +89,15 @@
         <script type="text/x-handlebars" data-template-name="step1">
                 <h2>Schritt 1</h2>
                 <p>Lass uns die Plannung beginnen...</p>
+				<p>Ausflug: </p>	
+				<div id="routeElements">
 				{{#each item in model}}
-					{{input type="checkbox" name=item.haaas.value}} 
+					{{input class="routeElements" type="checkbox" name=item.haaas.value}} 
 					<label {{bind-attr for="item.haaas.value"}}>
 					  {{item.haaas.value}}
 					</label><br>
 				{{/each}}
+				</div>
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
                 </p>
@@ -108,7 +111,7 @@
 					  {{item.property.value}}
 					</label><br>
 				{{/each}}				
-                <p>Choose the foo you wanna do:</p>
+                <p>Welche Kriterien soll dein Ausflug erfüllen:</p>
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
                     <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
