@@ -20,14 +20,13 @@
 
 % Load Standard Packages:
 %---------------------------------------------------------------------------
+\usepackage{scrpage2}
 \usepackage[standard-baselineskips]{cmbright}
-
 \usepackage[ngerman]{babel}                                             % german hyphenation
 \usepackage[utf8]{inputenc}                                             % UTF-8 input encoding
 \usepackage[T1]{fontenc}                                                % hyphenation of words with ä,ö and ü
 \usepackage{textcomp}                                                   % additional symbols
 \usepackage{ae}                                                         % better resolution of Type1-Fonts 
-\usepackage{fancyhdr}                                                   % simple manipulation of header and footer 
 \usepackage{etoolbox}                                                   % color manipulation of header and footer
 \usepackage{graphicx}                                                   % integration of images
 \usepackage{float}                                                      % floating objects
@@ -53,7 +52,7 @@
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{1mm}
 %---------------------------------------------------------------------------                    
-            
+
 % Definition of Colors
 %---------------------------------------------------------------------------
 \RequirePackage{color}                          % Color (not xcolor!)
@@ -154,22 +153,23 @@
 
 % Set up header and footer
 %---------------------------------------------------------------------------
-\makeatletter
-\patchcmd{\fancyhead}{\rlap}{\color{bfhgrey}\rlap}{}{}     % new color of header
-\patchcmd{\fancyfoot}{\rlap}{\color{bfhgrey}\rlap}{}{}     % new color of footer
-\makeatother
 
-\fancyhf{}                                                                      % clean all fields
-\fancypagestyle{plain}{% new definition of plain style 
-    \fancyfoot[OR,EL]{\footnotesize \thepage}   % footer right part --> page number
-    \fancyfoot[OL,ER]{\footnotesize \titel, Version \versionnumber, \versiondate}   % footer even page left part 
-}
+\deftripstyle{newlayout}
+  [0pt] % no header line
+  [0pt] % no footer line
+  {}
+  {}
+  {}
+  {\color{bfhgrey} \footnotesize \titel, Version \versionnumber, \versiondate}
+  {}
+  {\color{bfhgrey} \thepage}
 
+\pagestyle{newlayout}
+% use "pagestyle" also on chapter starting pages 
+\renewcommand{\chapterpagestyle}{newlayout}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.  #1}{}}
-\renewcommand{\headrulewidth}{0pt}              % no header stripline
-\renewcommand{\footrulewidth}{0pt}              % no bottom stripline
-
-\pagestyle{plain}
+\renewcommand*{\headfont}{\normalfont}
+\renewcommand*{\footfont}{\normalfont}
 %---------------------------------------------------------------------------
 
 \begin{document}
