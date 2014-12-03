@@ -24,7 +24,7 @@ Protégé unterstützt sowohl die Modellierung der OWL Ontologie, wie auch das R
 
 Protégé unterstützt die Entwicklung von OWL Ontologien. Die Ontologien können in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML oder RDF/XML abgespeichert werden. Protégé erlaubt den Import und Export solcher OWL Dateien. Dabei können in einem Workspace mehrere Ontologien Verwendet werden. Die Entwicklungsumgebung bietet verschiedene Ansichten von der gleichen Ontologie an. \\
 Neben dem Anlegen und bearbeiten einer Ontologie können in Protégé  swrl Regeln hinzugefügt werden. Diese werden von Protégé direkt in das owl File eingearbeitet. \\
-Protégé bietet die Möglichkeit Anfragen mittels der Anfragesprache SPARQL abzusetzten. Ist einer der Reasoner gestartet unterstützt die Umgebung zusätzlich das Reasoning. Es können verschieden Reasoner wie zum Bespiel FACT ++ oder Pellet (siehe: \ref{ssubsec:reasoner}) eingesetzt werden.\cite{protegeFeatures} 
+Protégé bietet die Möglichkeit Anfragen mittels der Abfragesprache SPARQL abzusetzten. Ist einer der Reasoner gestartet unterstützt die Umgebung zusätzlich das Reasoning. Es können verschieden Reasoner wie zum Bespiel FACT ++ oder Pellet (siehe:~\ref{ssubsec:reasoner}) eingesetzt werden.\cite{protegeFeatures} 
 
 
 \subsubsection{View}
@@ -49,9 +49,9 @@ Stardog kann auch als Graphische Datenbank bezeichnet werden. Dabei unterstützt
 	\item RDF Daten Modelle
 	\item SPARQL\footnote{\url{http://www.w3.org/TR/sparql11-query/}} als Abfragesprache
 	\item HTTP und SNARL Protokolle als remote Zugriff und Kontrolle
-	\item OWL 2 zur modellierung der Ontologien
+	\item OWL 2 zur Modellierung der Ontologien
 	\item Regeln für Inferenz und Datenanalyse
-	\item Java, JavaScript, Ruby, .NET und weitere Programmiersprachen
+	\item Java, JavaScript, Ruby, \.NET und weitere Programmiersprachen
 \end{itemize}
 \cite{stardogDocu}
 
@@ -62,19 +62,19 @@ Der folgende Abschnitt basiert auf der offiziellen Stardog Dokumentation.\cite{s
 Querying:\\
 Anfragen können auf einer RDF Datenbank mittel der SPARQL Abfragesprache gestellt werden. Mit dem folgenden Befehlt kann eine Afrage abgesetzt werden.\\
 \begin{lstlisting}
-		\$ stardog query <Datenbankname> "`<SPARQLAnfrage>"'
+		\$ stardog query <Datenbankname> ``<SPARQLAnfrage>''
 \end{lstlisting}	
-Neben sämtlichen SPARQL Funktionen Unterstützt Stardog weitere von XPath und SQRL. Einige dieser Funktionen können für Anfragen oder Regeln verwendet werden.
+Neben sämtlichen SPARQL Funktionen Unterstützt Stardog weitere von XPath und SQRL.\ Einige dieser Funktionen können für Anfragen oder Regeln verwendet werden.
 
 Updating:\\
 Es gibt verschiedene Arten um in Stardog die Datenbank zu aktualisieren. Die üblichste Art ist das Updaten mittels CLI und SPARQL Queries. Diese Funktion wird in diesem Projekt nicht genutzt, da die Daten in Protégé aufbereitet werden.
 
 Versioning:\\
-Stardog unterstützt Versionierung mittels "`graph change management capability"', welche es dem Benutzer erlaubt Änderungen zu verfolgen.\\
+Stardog unterstützt Versionierung mittels ``graph change management capability'', welche es dem Benutzer erlaubt Änderungen zu verfolgen.\\
 Die Versionierung für eine Datenbank standarmässig deaktiviert und muss bei bedarf aktiviert werden.
 
 Exportieren:\\
-Es ist möglich die in der Stardog Datenbank enthaltenen Daten nach RDF zu exportieren. Insbesondere können auch nur einzelne "`named graph"' exportiert werden.
+Es ist möglich die in der Stardog Datenbank enthaltenen Daten nach RDF zu exportieren. Insbesondere können auch nur einzelne ``named graph'' exportiert werden.
 
 Searching:\\
 Stardog includes an RDF-aware semantic search capability: it will index RDF literals and supports information retrieval-style queries over indexed data
@@ -82,7 +82,7 @@ Stardog includes an RDF-aware semantic search capability: it will index RDF lite
 Obfuscating:\\
 When sharing sensitive RDF data with others, you might want to (selectively) obfuscate it so that sensitive bits are not present, but non-sensitive bits remain. For example, this feature can be used to submit Stardog bug reports using sensitive data.
 
-TODO: Frage: soll ich die ganzen Usings beschreiben? Ich bin insgesammt ein bisschen verwirrt. Herr Eckerle hat ja gesagt er will nur so blabla drin. Aber irgendwie hab ich das gefühl solche sachen müssen doch schon irgendwo rein?!
+% TODO: Frage: soll ich die ganzen Usings beschreiben? Ich bin insgesammt ein bisschen verwirrt. Herr Eckerle hat ja gesagt er will nur so blabla drin. Aber irgendwie hab ich das gefühl solche sachen müssen doch schon irgendwo rein?!
 und was ist mit der ganzen Technik hinter Stardog? 
 \subsubsection{Reasoner}
 \label{ssubsec:reasoner}

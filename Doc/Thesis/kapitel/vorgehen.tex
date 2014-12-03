@@ -5,7 +5,7 @@
 \section{Projektphasen}
 \label{sec:projektphasen}
 
-Um bei der Arbeit strukturiert vorzugehen, wurden folgende Projektphasen gewählt:
+Um bei der Arbeit ein möglichst strukturiertes Vorgehen zu verfolgen, wurden folgende Projektphasen gewählt:
 \begin{itemize}
 \item Erarbeitung und Festhaltung der Anforderungen
 \item Erarbeitung der formalen und technischen Grundlagen
@@ -19,12 +19,17 @@ Dabei ist zu sagen, dass die Phasen der Modellierung der Ontologie sowie der Ers
 
 \subsection{Anforderungen}
 \label{subsec:anforderungen}
-In der Projektphase der Anforderungen wurden die Anforderungen an die Arbeit erarbeitet. Ergebniss dieser Phase ist ein Anforderungsdokument mit den wichtigsten Eckpunkten, siehe~\autoref{sec:anhang:anforderungen}. Es wurde ursprünglich festgehalten, dass der praktische Teil der Arbeit --- die Erarbeitung einer Ontologie anhand einer Wissensdomäne --- mittels eines konkreten Anwendungsproblems, der Erlernung der Programmiersprache Prolog, umgesetzt werden soll. 
+In der Projektphase der Anforderungen wurden die Anforderungen an die Arbeit erarbeitet. Ergebnis dieser Phase ist ein Anforderungsdokument mit den wichtigsten Eckpunkten, siehe~\autoref{sec:anhang:anforderungen}. Es wurde ursprünglich festgehalten, dass der praktische Teil der Arbeit --- die Erarbeitung einer Ontologie anhand einer Wissensdomäne --- mittels eines konkreten Anwendungsproblems, der Erlernung der Programmiersprache Prolog, umgesetzt werden soll. 
 
 Im Laufe der Arbeit hat sich jedoch gezeigt, dass semantische Netze bzw. Ontologien nicht ein geeignetes Mittel sind um Logiksprachen wie z.B. Prolog abzubilden. Dies wird Kapitel~\autoref{sub:modellierung_der_ontologie} genauer beschrieben.
 
 \subsection{Formale und technische Grundlagen}
 \label{sub:formale_und_technische_grundlagen}
+Die formalen Grundlagen zur Modellierung der Ontologie sowie zur Erstellung der Dokumentation zur Wissensmodellierung waren teilweise bereits aufgrund des Vorprojektes --- BTI7302 -- Projekt 2, Details siehe~\autoref{sec:anhang:projekt2} --- vorhanden. Die restlichen formalen Grundlagen wurden anhand von~\cite{IspekOntoBedeutung},~\cite{ISpekOntoGeschichte},~\cite{w3sparql_querylang},~\cite{w3sparql_overview},~\cite{w3rdf_syntax},~\cite{w3rdf},~\cite{w3owl} und~\cite{swrl} erarbeitet.
+
+Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umsetzung bereits gegeben. Es sollte aus zwei Komponenten, einem Backend --- in Form einer semantischen Datenbank, zur Verarbeitung von Anfragen an diese --- sowie einem Frontend --- zur einfachen Handhabung von Abfragen und der Ausgabe von Resultaten --- bestehen.
+
+Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\url{http://stanbol.apache.org}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht da geeignete Produkt für die geplante Umsetzung ist, Details siehe~\autoref{sec:komponenten}.
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
@@ -80,9 +85,11 @@ Daher wurde eine andere Wissensdomäne --- die Planung von Reisen --- gewählt. 
 
 \subsection{Erstellung der Dokumentation zur Wissensmodellierung}
 \label{subsec:dokumentation_wissensmodellierung}
+Parallel zur Modellierung der Ontologie entstand eine Dokumentation des Vorgehens zur Wissensmodellierung. Diese zeigt exemplarisch auf, wie ein Knowledge Engineer vorgeht, um eine Problemdomäne systematisch zu modellieren und formalisieren. Wie bereits zuvor erwähnt, wurde als Problemdomäne die Planung von Reisen gewählt. Die Dokumentation findet sich unter~\autoref{sec:anhang:tutorial_dokument}.
 
 \subsection{Erarbeitung der praktischen Grundlagen}
 \label{subsec:praktische_grundlagen}
 
 \subsection{Erstellung der abschliessenden Dokumentation}
 \label{subsec:abschliessende_dokumentation}
+Mit der Erstellung der abschliessenden Dokumentation ist das hier vorliegende Dokument gemeint.
