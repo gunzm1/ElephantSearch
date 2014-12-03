@@ -105,15 +105,31 @@
               },
 			  fillModelList : function(){
 				console.log(this.store);
+				console.log("routeElements: "+ document.querySelectorAll(".routeElements"));
+				var routeElements = document.querySelectorAll(".routeElements");
+				nodes = Array.prototype.slice.call(routeElements,0);
+				nodes.forEach(function(r) {
+					if (r.checked) {
+						console.log("checked: " + r.name);
+						// TODO: das funktioniert hier nicht!
+						//this.store.createRecord('reiseModel',{
+						//	routeName: r.name
+						// });					
+					} else{
+						console.log("not checked: " + r.name);
+					}
+				});
 				this.store.createRecord('reiseModel',{
 					routeName: 'Ausflug'
-				});
-				//var temp = this.store.find('reiseModel',{ routeName:'Ausflug'});
+				});			
+				// alle Models in liste füllen
 				var temp = this.store.all('reiseModel');
 				temp.forEach(function(r) {
 					console.log("Temp: ", r);
+					App.routeList.push(r);
 				});
-				//App.routeList.addObject(this.store.find('reiseModel',{ routeName:'Ausflug'}));
+				
+				console.log("Listenelement: " + App.routeList[0].get('routeName'));
 			  },			  
               actions: {
                 step2: function() {	
@@ -123,15 +139,16 @@
               }
 			  
             });
-
             App.Step2Route = Ember.Route.extend({
+				// TODO: sehr fiies, überlegen wie man das query zusammenbaut wenns mehreres häckchen hat
+				// zuerst Ausflug, dann Restaurant in einzelnem step?
+				// oder untereinander?
               model: function () {
 				var queryString = '\
                     select distinct\
-                      (strafter(str(?s), "#") AS ?propterty)\
+                      (strafter(str(?s), "#") AS ?property)\
                     where\
-                      { ?s rdfs:domain :Ausflug  }\
-                  '; //  + App.routeList.find('routeName','Ausflug').routeName +
+                      { ?s rdfs:domain :' + App.routeList[0].get('routeName') + '  }';
                 return performQuery(queryString).then(function(data) {
                   console.log("Query result ", data);
                   return data.results.bindings;
