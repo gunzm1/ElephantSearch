@@ -122,21 +122,37 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="step3">
-                <h2>Schritt 3</h2>
-                <p>Ergebnis: </p>
-				<div id="routeElements">
-				{{#each item in model}}
-					<table class="table table-striped"
-						<tr>
-							<!-- TODO: url als link -->
-							<td width=30%>{{item.object.value}}</td>
-							<td width=20%>{{item.url.value}}</td> 
-							<td width=30%>{{item.ort.value}}</td>
-						</tr>
-					</table>
-				{{/each}}
-                    <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
-                </p>
+            <h2>Schritt 3</h2>
+            <p>Ergebnis: </p>
+            <div id="routeElements">
+                {{#if model}}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Link</th>
+                            <th>Ort</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each item in model}}
+                        <tr>
+                            <td width=30%>{{item.object.value}}</td>
+                            <td width=20%>
+                                <a target="_blank" href="{{unbound item.url.value}}">
+                                    {{item.url.value}}
+                                </a>
+                            </td>
+                            <td width=30%>{{item.ort.value}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{else}}
+                <p>Keine Daten vorhanden</p>
+                {{/if}}
+                <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+            </div>
         </script>
 
     </head>
