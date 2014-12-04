@@ -123,8 +123,12 @@
 
         <script type="text/x-handlebars" data-template-name="step3">
                 <h2>Step 3</h2>
-                <p>Already finished?</p>
-                <p>
+                <p>Ergebnis: </p>
+				<div id="routeElements">
+				{{#each item in model}}
+					<pr>{{item.object.value}}</pr>
+					<br>
+				{{/each}}
                     <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
                 </p>
         </script>

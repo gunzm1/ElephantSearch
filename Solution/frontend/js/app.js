@@ -3,7 +3,7 @@
         requirejs.config(config);
 		
         require(['ember', 'stardog','ember-data'], function(Ember, stardog,DS) {
-            function performQuery(modelName, queryString) {
+            function performQuery(modelName, queryString,type) {
               return new Ember.RSVP.Promise(function(resolve, reject) {
                 var connection = new Stardog.Connection();
                 connection.setEndpoint(config.sparql.endpoint);
@@ -23,6 +23,7 @@
 						reject("Fehler");
 					} else {
 						var result = {
+							type: type,
 							modelName: modelName,
 							data: data
 						};
@@ -38,12 +39,11 @@
 			App.ApplicationStore = DS.Store.extend();
 			App.ReiseModel = DS.Model.extend({
 				routeName: DS.attr('string'),
-				//propertyList: DS.hasMany('App.PropertyModel')	
+				dataPropertyList: DS.attr('array')
 			});
-			//App.PropertyModel = DS.Model.extend({
+			//App.DataPropertyModel = DS.Model.extend({
 			//	propertyName: DS.attr('string')	
 			//});
-			App.routeList = [];
 		
             App.Router.map(function() {
               this.route('welcome');
@@ -53,7 +53,8 @@
               this.route('step2');
               this.route('step3');
 			  this.resource('reiseModels');
-			  this.resource('reiseModel', { path: ':reisemodel_id' });
+			  this.resource('reiseModel', { path: ' /reiseModel/:routeName' });
+			   //this.resource('reiseModel', { path: ':reisemodel_id' });
             });
 
             App.IndexRoute = Ember.Route.extend({
@@ -75,23 +76,20 @@
 			});
 			App.ReiseModelRoute = Ember.Route.extend({
 				model: function(params) {
-					console.log("Hallo from ReiseModel");
+					return this.store.find('ReiseModel', {routeName: params});
 				}
 			});
 			
             App.WelcomeRoute = Ember.Route.extend({
-			beforeModel: function(){
-				//this.store.unloadAll("reiseModel");					
-			},
-              afterModel: function() {
-                $(document).attr('title', 'Traveling OWL - Welcome!');
-              },
-              actions: {
-                step1: function(id) {
-                  console.log(id);
-                  this.transitionTo('step1');
-                }
-              }
+				  afterModel: function() {
+					$(document).attr('title', 'Traveling OWL - Welcome!');
+				  },
+				  actions: {
+					step1: function(id) {
+					  console.log(id);
+					  this.transitionTo('step1');
+					}
+				  }
             });
 
             App.AboutRoute = Ember.Route.extend({
@@ -111,7 +109,7 @@
                     where\
                       { ?s :reise true }\
                   ';
-                return performQuery(null, queryString).then(function(result) {
+                return performQuery(null, queryString, 'route').then(function(result) {
                   console.log("step1 Query result ", result);
                   return result.data.results.bindings;
 
@@ -131,6 +129,7 @@
 						var name = r.name;
 						var tempModel = this.store.createRecord('reiseModel',{
 							routeName: name
+							
 						 });
 						//App.routeList.push(tempModel);
 					} else{
@@ -157,8 +156,8 @@
 						  (strafter(str(?s), "#") AS ?property)\
 						where\
 						  { ?s rdfs:domain :' + reiseModel.get('routeName') + '  }';
-					querys.push(performQuery(reiseModel.get('routeName'), queryString));					  
-					  if (reiseModel.get('routeName') == 'Ausflug'){
+					querys.push(performQuery(reiseModel.get('routeName'), queryString, 'dataproperty'));					  
+					 if (reiseModel.get('routeName') == 'Ausflug'){
 						console.log('if abfrage funktioniert');
 						
 						queryString = '\
@@ -166,14 +165,14 @@
 							  (strafter(str(?j), "#") AS ?property)\
 							where\
 							  { ?j  rdfs:subClassOf :Jahreszeit   }';
-						querys.push(performQuery('Jahreszeit abhängig?:', queryString));
+						querys.push(performQuery('Jahreszeit abhängig?:', queryString, 'subClassOf'));
 						 
 						queryString = '\
 							select distinct\
 							  (strafter(str(?r), "#") AS ?property)\
 							where\
 							  { ?r  rdf:type :Region}';
-						querys.push(performQuery('Wähle eine Region aus', queryString));						
+						querys.push(performQuery('Wähle eine Region aus', queryString, 'individuum'));						
 					  };
 					  if (reiseModel.get('routeName') == 'Restaurant'){
 						queryString = '\
@@ -181,7 +180,7 @@
 							  (strafter(str(?r), "#") AS ?property)\
 							where\
 							  { ?r  rdfs:subClassOf :Restaurant}';
-						querys.push(performQuery('Welcher Restaurant', queryString));					  
+						querys.push(performQuery('Welcher Restaurant', queryString, 'subClassOf'));					  
 					  };					  				  
 				});
 				return Ember.RSVP.allSettled(querys).then(function (data) {
@@ -190,22 +189,47 @@
 				});
               },
 			  fillModelList: function() {
-				console.log(this.store);
-				console.log("routeElements: "+ document.querySelectorAll(".routeElements"));
-				var routeElements = document.querySelectorAll(".routeElements");
-				nodes = Array.prototype.slice.call(routeElements,0);
+				
+				this.store.all('reiseModel').get('content').forEach(function(reiseModel) {
+					this.propertyList = [];				
+					var dataproperty = document.querySelectorAll(".dataproperty");
+					nodes = Array.prototype.slice.call(dataproperty,0);					
+					nodes.forEach((function(r) {
+						if (r.checked) {
+							console.log("checked: " + r.name);
+							var name = r.name;
+							this.propertyList.push(name);
+						} else{
+							console.log("not checked: " + r.name);
+						}
+					}).bind(this));
+					reiseModel.set('dataPropertyList', this.propertyList);
+					console.log('fillModelList durchlaufen');				
+					});		
+				},
+/*				//console.log(this.store);
+				console.log("dataproperty: "+ document.querySelectorAll(".dataproperty"));
+				//console.log("subClassOf: "+ document.querySelectorAll(".subClassOf"));		
+				//console.log("individuum: "+ document.querySelectorAll(".individuum"));						
+				var dataproperty = document.querySelectorAll(".dataproperty");
+				//var tempModel = this.store.find('ReiseModel', {routeName: 'Ausflug'});	
+				var tempModel = this.store.find('ReiseModel', {routeName: 'Ausflug'});	
+				console.log("tempModel: ", tempModel);
+				nodes = Array.prototype.slice.call(dataproperty,0);
+				console.log('nodes dataprops: ', nodes);
+				this.propertyList = [];
 				nodes.forEach((function(r) {
 					if (r.checked) {
 						console.log("checked: " + r.name);
 						var name = r.name;
-						var tempModel = this.store.createRecord('propertyName',{
-							routeName: name
-						});
+						this.propertyList.push(name);
 					} else{
 						console.log("not checked: " + r.name);
 					}
 				}).bind(this));
-			  },
+				tempModel.set('dataPropertyList', this.propertyList);
+				console.log('fillModelList durchlaufen');
+			  },*/
               actions: {
                 step1: function() {
 				  console.log("function: step1")
@@ -219,18 +243,44 @@
             });
 
             App.Step3Route = Ember.Route.extend({
+			beforeModel: function() {
+				console.log("step 3 before Model");
+			},
               model: function () {
-				var queryString = '\
-                    select distinct\
-                      (strafter(str(?s), "#") AS ?haaas)\
-                    where\
-                      { ?s ?p ?x  }\
-                  ';
-                return performQuery(null, queryString).then(function(data) {
-                  console.log("Query result ", data);
-                  return data.results.bindings;
+				this.where;
+				this.select;
+				console.log("step3 for Modelschleife");
+				this.store.all('reiseModel').get('content').forEach(function(route) {
+					console.log("step3 for Propschleife");
+					//this.select = "Select ?object ";
+					this.where = '\
+							select distinct \
+								(strafter(str(?o), "#") AS ?object) \
+								?uri \
+								(strafter(str(?or), "#") AS ?ort) \
+							    where { ';
+					//this.where = " Select * where { "
+					route.get("dataPropertyList").forEach(function(property) {
+						this.where += "?o :" + property + " true. "
+						console.log("where in schleife: ", this.where);
+					});
+					this.where += " ?o :hatStandort ?or.  "
+					this.where += " ?o :url ?uri. } "
+					console.log("where am ende schleife: ", this.where);					
+				});
+				console.log("where: ", where);
+				console.log("for performQuery: ");
+				
+				return performQuery("Ergebnis: ", where, 'output').then(function(result) {
+                  console.log("output Query result ", result);
+                  return result.data.results.bindings;
 
-                });
+                }).catch(function(data){
+					// TODO Fehlerhandling
+					console.log("catch: ", data);
+				});
+
+
               },
               actions: {
                 step2: function() {
