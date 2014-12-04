@@ -108,7 +108,7 @@
 				{{#each route in model}}
 					<p><b>{{route.value.modelName}}</b></p>
 					{{#each item in route.value.data.results.bindings}}
-						{{input class="routeElements" type="checkbox" name=item.property.value}} &nbsp;
+						{{input class=route.value.type type="checkbox" name=item.property.value}} &nbsp;
 						<label {{bind-attr for="item.property.value"}}>
 							{{item.property.value}}
 						</label><br>
@@ -126,6 +126,7 @@
                 <p>Ergebnis: </p>
 				<div id="routeElements">
 				{{#each item in model}}
+					
 					<pr>{{item.object.value}}</pr>
 					<br>
 				{{/each}}

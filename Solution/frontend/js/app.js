@@ -157,7 +157,7 @@
 						where\
 						  { ?s rdfs:domain :' + reiseModel.get('routeName') + '  }';
 					querys.push(performQuery(reiseModel.get('routeName'), queryString, 'dataproperty'));					  
-					 if (reiseModel.get('routeName') == 'Ausflug'){
+					 /*if (reiseModel.get('routeName') == 'Ausflug'){
 						console.log('if abfrage funktioniert');
 						
 						queryString = '\
@@ -173,7 +173,7 @@
 							where\
 							  { ?r  rdf:type :Region}';
 						querys.push(performQuery('Wähle eine Region aus', queryString, 'individuum'));						
-					  };
+					  };*/
 					  if (reiseModel.get('routeName') == 'Restaurant'){
 						queryString = '\
 							select distinct\
@@ -191,9 +191,9 @@
 			  fillModelList: function() {
 				
 				this.store.all('reiseModel').get('content').forEach(function(reiseModel) {
-					this.propertyList = [];				
+					this.propertyList = [];
 					var dataproperty = document.querySelectorAll(".dataproperty");
-					nodes = Array.prototype.slice.call(dataproperty,0);					
+					nodes = Array.prototype.slice.call(dataproperty,0);		
 					nodes.forEach((function(r) {
 						if (r.checked) {
 							console.log("checked: " + r.name);
@@ -203,33 +203,9 @@
 							console.log("not checked: " + r.name);
 						}
 					}).bind(this));
-					reiseModel.set('dataPropertyList', this.propertyList);
-					console.log('fillModelList durchlaufen');				
+					reiseModel.set('dataPropertyList', this.propertyList);			
 					});		
 				},
-/*				//console.log(this.store);
-				console.log("dataproperty: "+ document.querySelectorAll(".dataproperty"));
-				//console.log("subClassOf: "+ document.querySelectorAll(".subClassOf"));		
-				//console.log("individuum: "+ document.querySelectorAll(".individuum"));						
-				var dataproperty = document.querySelectorAll(".dataproperty");
-				//var tempModel = this.store.find('ReiseModel', {routeName: 'Ausflug'});	
-				var tempModel = this.store.find('ReiseModel', {routeName: 'Ausflug'});	
-				console.log("tempModel: ", tempModel);
-				nodes = Array.prototype.slice.call(dataproperty,0);
-				console.log('nodes dataprops: ', nodes);
-				this.propertyList = [];
-				nodes.forEach((function(r) {
-					if (r.checked) {
-						console.log("checked: " + r.name);
-						var name = r.name;
-						this.propertyList.push(name);
-					} else{
-						console.log("not checked: " + r.name);
-					}
-				}).bind(this));
-				tempModel.set('dataPropertyList', this.propertyList);
-				console.log('fillModelList durchlaufen');
-			  },*/
               actions: {
                 step1: function() {
 				  console.log("function: step1")
@@ -248,28 +224,23 @@
 			},
               model: function () {
 				this.where;
-				this.select;
-				console.log("step3 for Modelschleife");
 				this.store.all('reiseModel').get('content').forEach(function(route) {
 					console.log("step3 for Propschleife");
-					//this.select = "Select ?object ";
 					this.where = '\
 							select distinct \
 								(strafter(str(?o), "#") AS ?object) \
 								?uri \
 								(strafter(str(?or), "#") AS ?ort) \
 							    where { ';
-					//this.where = " Select * where { "
 					route.get("dataPropertyList").forEach(function(property) {
 						this.where += "?o :" + property + " true. "
-						console.log("where in schleife: ", this.where);
+						//console.log("where in schleife: ", this.where);
 					});
 					this.where += " ?o :hatStandort ?or.  "
 					this.where += " ?o :url ?uri. } "
-					console.log("where am ende schleife: ", this.where);					
+					//console.log("where am ende schleife: ", this.where);					
 				});
 				console.log("where: ", where);
-				console.log("for performQuery: ");
 				
 				return performQuery("Ergebnis: ", where, 'output').then(function(result) {
                   console.log("output Query result ", result);
