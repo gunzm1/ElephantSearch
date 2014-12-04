@@ -35,7 +35,7 @@
         <script type="text/x-handlebars" data-template-name="loading">
             <div class="loading-pane">
                 <div class="loading-message">
-                    Loading stuff, please have a coffee or something.
+					...Daten werden geladen...
                     <div class="spinner"></div>
                 </div>
             </div>
@@ -122,13 +122,18 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="step3">
-                <h2>Step 3</h2>
+                <h2>Schritt 3</h2>
                 <p>Ergebnis: </p>
 				<div id="routeElements">
 				{{#each item in model}}
-					
-					<pr>{{item.object.value}}</pr>
-					<br>
+					<table class="table table-striped"
+						<tr>
+							<!-- TODO: url als link -->
+							<td width=30%>{{item.object.value}}</td>
+							<td width=20%>{{item.url.value}}</td> 
+							<td width=30%>{{item.ort.value}}</td>
+						</tr>
+					</table>
 				{{/each}}
                     <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
                 </p>

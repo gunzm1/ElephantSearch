@@ -151,11 +151,13 @@
               model: function () {
 				var querys =[];
 				this.store.all('reiseModel').get('content').forEach(function(reiseModel) {
+				// TODO: diese komischen propertys sauber entfernen und nich so hässlich ausgefiltert
 					var queryString = '\
 						select distinct\
 						  (strafter(str(?s), "#") AS ?property)\
 						where\
-						  { ?s rdfs:domain :' + reiseModel.get('routeName') + '  }';
+						  { ?s rdfs:domain :' + reiseModel.get('routeName') + ' Filter(!regex(str(?s),"bottomDataProperty","i")) \
+						   Filter(!regex(str(?s),"bottomObjectProperty","i"))}';
 					querys.push(performQuery(reiseModel.get('routeName'), queryString, 'dataproperty'));					  
 					 /*if (reiseModel.get('routeName') == 'Ausflug'){
 						console.log('if abfrage funktioniert');
@@ -173,7 +175,7 @@
 							where\
 							  { ?r  rdf:type :Region}';
 						querys.push(performQuery('Wähle eine Region aus', queryString, 'individuum'));						
-					  };*/
+					  };
 					  if (reiseModel.get('routeName') == 'Restaurant'){
 						queryString = '\
 							select distinct\
@@ -181,7 +183,7 @@
 							where\
 							  { ?r  rdfs:subClassOf :Restaurant}';
 						querys.push(performQuery('Welcher Restaurant', queryString, 'subClassOf'));					  
-					  };					  				  
+					  };	*/			  				  
 				});
 				return Ember.RSVP.allSettled(querys).then(function (data) {
 					console.log("promise all ", data);
@@ -229,7 +231,7 @@
 					this.where = '\
 							select distinct \
 								(strafter(str(?o), "#") AS ?object) \
-								?uri \
+								?url \
 								(strafter(str(?or), "#") AS ?ort) \
 							    where { ';
 					route.get("dataPropertyList").forEach(function(property) {
@@ -237,7 +239,7 @@
 						//console.log("where in schleife: ", this.where);
 					});
 					this.where += " ?o :hatStandort ?or.  "
-					this.where += " ?o :url ?uri. } "
+					this.where += " ?o :url ?url. } "
 					//console.log("where am ende schleife: ", this.where);					
 				});
 				console.log("where: ", where);
