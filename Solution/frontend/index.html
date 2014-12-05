@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
         <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
+        <script type="text/javascript" src="js/blacklist.json"></script>
 
         <script type="text/x-handlebars">
             <div class="container">
@@ -135,6 +136,7 @@
                     <div {{bind-attr id="route.value.modelName"}} class="panel-collapse collapse in" role="tabpanel" {{bind-attr aria-labelledby="route.value.modelName"}}>
                       <div class="panel-body">
                         {{#each item in route.value.data.results.bindings}}
+                            {{item.relation.value}}<br>
                             {{input class=route.value.type type="checkbox" name=item.property.value}} &nbsp;
                             <label {{bind-attr for="item.property.value"}}>
                                 {{item.property.value}}

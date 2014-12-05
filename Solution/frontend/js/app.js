@@ -16,7 +16,6 @@
           connection.query({
             database: config.sparql.database,
             query: queryString,
-            limit: 10,
             offset: 0
           }, function(data) {
             if(! data) {
@@ -34,6 +33,11 @@
       }
 
       var appName = config.appName || "App";
+      var dataPropertyBlackList = blacklist.dataProperty;
+      console.log(dataPropertyBlackList);
+      var objectPropertyBlackList = blacklist.objectProperty;
+
+      
 
       App = Ember.Application.create();
       App.ApplicationStore = DS.Store.extend();
@@ -107,7 +111,7 @@
         model: function () {
           var queryString = '\
             select distinct\
-              (strafter(str(?s), "#") AS ?haaas)\
+              (strafter(str(?s), "#") AS ?route)\
             where\
               { ?s :reise true }\
           ';
@@ -156,44 +160,49 @@
 
           this.store.all('reiseModel').get('content').forEach(function(reiseModel) {
             // TODO: diese komischen propertys sauber entfernen und nich so hässlich ausgefiltert
+            var filter = "";
+            // dataProperty select
+            dataPropertyBlackList.forEach(function(item){
+                filter += ' filter(!regex(str(?s), "' + item + '", "i")) ';
+            });
+            console.log("filter: ", filter);
             var queryString = '\
               select distinct\
                 (strafter(str(?s), "#") AS ?property)\
               where {\
                 ?s rdfs:domain :' + reiseModel.get('routeName') + ' \
-                filter(!regex(str(?s), "bottomDataProperty", "i")) \
-                filter(!regex(str(?s), "bottomObjectProperty","i")) \
-              }';
-
+                ' + filter + '\
+				      }';
             queries.push(performQuery(reiseModel.get('routeName'), queryString, 'dataproperty'));
 
-            /*
-               if (reiseModel.get('routeName') == 'Ausflug') {
-               console.log('if abfrage funktioniert');
-
-               queryString = '\
-               select distinct\
-               (strafter(str(?j), "#") AS ?property)\
-               where\
-               { ?j  rdfs:subClassOf :Jahreszeit   }';
-               queries.push(performQuery('Jahreszeit abhängig?:', queryString, 'subClassOf'));
-
-               queryString = '\
-               select distinct\
-               (strafter(str(?r), "#") AS ?property)\
-               where\
-               { ?r  rdf:type :Region}';
-               queries.push(performQuery('Wähle eine Region aus', queryString, 'individuum'));
-               };
-               if (reiseModel.get('routeName') == 'Restaurant'){
-               queryString = '\
-               select distinct\
-               (strafter(str(?r), "#") AS ?property)\
-               where\
-               { ?r  rdfs:subClassOf :Restaurant}';
-               queries.push(performQuery('Welcher Restaurant', queryString, 'subClassOf'));
-               };
-            */
+            filter = "";
+            objectPropertyBlackList.forEach(function(item){
+                filter += ' filter(!regex(str(?rel), "' + item + '", "i")) ';
+            });
+            console.log("filter: ", filter);
+            /*var queryString = '\
+              select distinct\
+                (strafter(str(?rel), "#") AS ?relation) \
+                (strafter(str(?ziel), "#") AS ?property) \
+              where {\
+                ?ind ?rel ?ziel.  \
+                ?ind a :' + reiseModel.get('routeName') + '. \
+                ?rel a owl:ObjectProperty. \
+                ' + filter + '\
+              }';*/
+            
+            var queryString = '\
+              select distinct
+                (strafter(str(?rel), "#") AS ?relation)\
+              where {\
+                ?ind ?rel ?ziel.  \
+                ?ind a :' + reiseModel.get('routeName') + '. \
+                ?rel a owl:ObjectProperty. \
+                ' + filter + '\
+              }';
+            queries.push(performQuery(reiseModel.get('routeName'), queryString, 'objectproperty'));
+            
+            
           });
           return Ember.RSVP.allSettled(queries).then(function (data) {
             console.log("promise all ", data);

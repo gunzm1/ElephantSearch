@@ -1,0 +1,10 @@
+blacklist = {
+	"dataProperty": [
+		"bottomObjectProperty",
+		"bottomDataProperty"
+	 ],
+	 "objectProperty": [
+	 	"gleicherOrt",
+	 	"gleicheRegion"
+	 ]
+};
