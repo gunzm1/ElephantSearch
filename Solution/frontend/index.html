@@ -35,7 +35,8 @@
         <script type="text/x-handlebars" data-template-name="loading">
             <div class="loading-pane">
                 <div class="loading-message">
-					...Daten werden geladen...
+                    <h2>Bitte warten..</h2>
+                    <p>...Daten werden geladen...</p>
                     <div class="spinner"></div>
                 </div>
             </div>
@@ -89,36 +90,64 @@
         <script type="text/x-handlebars" data-template-name="step1">
                 <h2>Schritt 1</h2>
                 <p>Lass uns die Plannung beginnen...</p>
-				<div id="routeElements">
-				{{#each item in model}}
-					{{input class="routeElements" type="checkbox" name=item.haaas.value}} 
-					<label {{bind-attr for="item.haaas.value"}}>
-					  {{item.haaas.value}}
-					</label><br>
-				{{/each}}
-				</div>
+                <div id="routeElements">
+                {{#each item in model}}
+                    {{input class="routeElements" type="checkbox" name=item.route.value}} 
+                    <label {{bind-attr for="item.route.value"}}>
+                      {{item.route.value}}
+                    </label><br>
+                {{/each}}
+                </div>
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
                 </p>
         </script>
 
         <script type="text/x-handlebars" data-template-name="step2">
-                <h2>Schritt 2</h2>
-				 <p>Welche Kriterien soll dein Ausflug erfüllen:</p>
-				{{#each route in model}}
-					<p><b>{{route.value.modelName}}</b></p>
-					{{#each item in route.value.data.results.bindings}}
-						{{input class=route.value.type type="checkbox" name=item.property.value}} &nbsp;
-						<label {{bind-attr for="item.property.value"}}>
-							{{item.property.value}}
-						</label><br>
-					{{/each}}	
-						<br>
-				{{/each}}				
-                <p>
-                    <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
-                    <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
-                </p>
+            <h2>Schritt 2</h2>
+            <p>Welche Kriterien soll dein Ausflug erfüllen?</p>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Collapsible Group Item #2
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{#each route in model}}
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" {{bind-attr href="#route.value.modelName"}} aria-expanded="true" aria-{{bind-attr controls="route.value.modelName"}}>
+                          {{route.value.modelName}}
+                        </a>
+                      </h4>
+                    </div>
+                    <div {{bind-attr id="route.value.modelName"}} class="panel-collapse collapse in" role="tabpanel" {{bind-attr aria-labelledby="route.value.modelName"}}>
+                      <div class="panel-body">
+                        {{#each item in route.value.data.results.bindings}}
+                            {{input class=route.value.type type="checkbox" name=item.property.value}} &nbsp;
+                            <label {{bind-attr for="item.property.value"}}>
+                                {{item.property.value}}
+                            </label><br>
+                        {{/each}}
+                      </div>
+                    </div>
+                  </div>
+            {{/each}}
+            <p>
+                <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+            </p>
         </script>
 
         <script type="text/x-handlebars" data-template-name="step3">
