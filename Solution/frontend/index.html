@@ -15,19 +15,22 @@
                     <div class="container-fluid">
                         <div class="navbar-header">
                             {{#link-to "index" classNames="navbar-brand"}}
-                                Traveling OWL
+                                OWL Reiseplaner
                             {{/link-to}}
                         </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                {{#link-to "welcome" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Home</a>{{/link-to}}
-                                {{#link-to "about" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>About</a>{{/link-to}}
-                                {{#link-to "contact" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Contact</a>{{/link-to}}
+                                {{#link-to "welcome" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Start</a>{{/link-to}}
+                                {{#link-to "about" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>&Uuml;ber</a>{{/link-to}}
+                                {{#link-to "contact" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Impressum</a>{{/link-to}}
                             </ul>
                         </div>
                     </div>
                 </nav>
                 <section class="main-content">
+                    {{#if errors}}
+                        {{view "error"}}
+                    {{/if}}
                     {{outlet}}
                 </div>
             </div>
@@ -47,13 +50,13 @@
         <script type="text/x-handlebars" data-template-name="welcome">
             <div class="jumbotron">
                 <div class="container-fluid">
-                    <h2>Welcome to the traveling OWL travel planner!<h2>
+                    <h2>OWL Reiseplaner<h2>
                     <p>
                         <img src="images/owl.png" height="100px" alt="Owl">
                     </p>
-                    <p>How about planning a adventorous jungle trip combined with a relaxing wellness-weekend in a hotel?</p>
+                    <p>Wie w&auml;re es mit einer abenteuerlichen Jungelreise kombiniert mit einem entspannenden Wochenende in einem Wellness-Hotel?</p>
                     <p>
-                        <button class="btn btn-primary btn-lg" {{action "step1" "538"}}>Start now!</button>
+                        <button class="btn btn-primary btn-lg" {{action "step1" "538"}}>Jetzt loslegen!</button>
                     </p>
                 </div>
             </div>
@@ -62,11 +65,11 @@
         <script type="text/x-handlebars" data-template-name="about">
             <div class="jumbotron">
                 <div class="container-fluid">
-                    <h2>About</h2>
+                    <h2>&Uuml;ber..</h2>
                     <p>
                         <img src="images/owl.png" height="100px" alt="Owl">
                     </p>
-                    <p>Teh owl!</p>
+                    <p>Die Eule!</p>
                 </div>
             </div>
         </script>
@@ -74,8 +77,8 @@
         <script type="text/x-handlebars" data-template-name="contact">
             <div class="jumbotron">
                 <div class="container-fluid">
-                    <h2>Contact us</h2>
-                    <p>Feel free to contact us :)</p>
+                    <h2>Impressum</h2>
+                    <p>:)</p>
                 </div>
             </div>
         </script>
@@ -92,12 +95,18 @@
                 <h2>Schritt 1</h2>
                 <p>Lass uns die Plannung beginnen...</p>
                 <div id="routeElements">
-                {{#each item in model}}
-                    {{input class="routeElements" type="checkbox" name=item.route.value}} 
-                    <label {{bind-attr for="item.route.value"}}>
-                      {{item.route.value}}
-                    </label><br>
-                {{/each}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ausflugsm&ouml;glichkeiten</h3>
+                        </div>
+                        <div class="panel-body">
+                        {{#each item in model itemController="reiseModel"}}
+                            <p>
+                                {{input type="checkbox" name=item.model.routeName checked=item.model.isSelected class="toggle"}}
+                                <label>{{item.model.routeName}}</label>
+                            </p>
+                        {{/each}}
+                    </div>
                 </div>
                 <p>
                     <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
@@ -106,50 +115,74 @@
 
         <script type="text/x-handlebars" data-template-name="step2">
             <h2>Schritt 2</h2>
-            <p>Welche Kriterien soll dein Ausflug erfüllen?</p>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Collapsible Group Item #2
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            {{#each route in model}}
+            {{#if model}}
+            <p>Welche Kriterien soll dein Ausflug erfüllen?</p>
+            {{#each travel in model}}
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                   <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                       <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" {{bind-attr href="#route.value.modelName"}} aria-expanded="true" aria-{{bind-attr controls="route.value.modelName"}}>
-                          {{route.value.modelName}}
+                          {{travel.routeName}}
                         </a>
                       </h4>
                     </div>
-                    <div {{bind-attr id="route.value.modelName"}} class="panel-collapse collapse in" role="tabpanel" {{bind-attr aria-labelledby="route.value.modelName"}}>
+                    <div {{bind-attr id="travel.routeName"}} class="panel-collapse collapse in" role="tabpanel" {{bind-attr aria-labelledby="travel.routeName"}}>
                       <div class="panel-body">
-                        {{#each item in route.value.data.results.bindings}}
-                            {{item.relation.value}}<br>
-                            {{input class=route.value.type type="checkbox" name=item.property.value}} &nbsp;
-                            <label {{bind-attr for="item.property.value"}}>
-                                {{item.property.value}}
-                            </label><br>
-                        {{/each}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Eigenschaften</h3>
+                            </div>
+                            <div class="panel-body">
+                                {{#each dataProperty in travel.dataProperties}}
+                                    <div class="input-group">
+                                        {{input type="checkbox" name=dataProperty.propertyName checked=dataProperty.isSelected class="toggle"}}
+                                        &nbsp;
+                                        <label {{bind-attr for="dataProperty.propertyName"}}>
+                                            {{dataProperty.propertyName}}
+                                        </label>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Relationen</h3>
+                            </div>
+                            <div class="panel-body">
+                                {{#each objectAssociation in travel.objectAssociations}}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{objectAssociation.propertyName}}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        {{#each prop in objectAssociation.objectProperties}}
+                                            <div class="input-group">
+                                                {{input type="checkbox" name=prop.propertyName checked=prop.isSelected class="toggle"}}
+                                                &nbsp;
+                                                <label {{bind-attr for="prop.propertyName"}}>
+                                                    {{prop.propertyName}}
+                                                </label>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                {{/each}}
+                                </div>
+                            </div>
+                        </div>
                       </div>
                     </div>
                   </div>
             {{/each}}
+            {{else}}
+                {{render "error"}}
+            {{/if}}
             <p>
                 <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
                 <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
             </p>
+
         </script>
 
         <script type="text/x-handlebars" data-template-name="step3">
@@ -166,23 +199,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each item in model}}
-                        <tr>
-                            <td width=30%>{{item.object.value}}</td>
-                            <td width=20%>
-                                <a target="_blank" href="{{unbound item.url.value}}">
-                                    {{item.url.value}}
-                                </a>
-                            </td>
-                            <td width=30%>{{item.ort.value}}</td>
-                        </tr>
+                        {{#each travelType in model}}
+                            {{#each item in travelType.data}}
+                                <tr>
+                                    <td width=30%>{{item.travel.value}}</td>
+                                    <td width=20%>
+                                        <a target="_blank" href="{{unbound item.url.value}}">
+                                            {{item.url.value}}
+                                        </a>
+                                    </td>
+                                    <td width=30%>{{item.location.value}}</td>
+                                </tr>
+                            {{/each}}
                         {{/each}}
                     </tbody>
                 </table>
                 {{else}}
-                <p>Keine Daten vorhanden</p>
+                    {{render "error"}}
                 {{/if}}
                 <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="error">
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Fehler:</span>
+                Es ist ein Fehler aufgetreten:
+                {{log view}}
+                <ul>
+                {{#each error in view.errors}}
+                    <li>{{error}}</li>
+                {{/each}}
+                </ul>
             </div>
         </script>
 
