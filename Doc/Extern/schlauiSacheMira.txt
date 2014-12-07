@@ -1,0 +1,8 @@
+stardog anfragen über console:
+zuerst auf server mittels ssh gunzm1@elephantsearch.bfh.ch (siehe blatt)
+
+cd /op/stardog
+
+anfragen: ./bin/stardog query "reiseplaner;reasoning=SL" "select * where { ?a a :Ausflug}"
+
+TODO als nächstes: abfragen wieso restis auch plötzlich Ausflüge sind. irgendwie kann man den reasoning vorgang abfragen
