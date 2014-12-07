@@ -190,6 +190,8 @@
             <p>Ergebnis: </p>
             <div id="routeElements">
                 {{#if model}}
+                {{#each travelType in model}}
+                <h3>{{travelType.type}}</h3>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -199,21 +201,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each travelType in model}}
-                            {{#each item in travelType.data}}
-                                <tr>
-                                    <td width=30%>{{item.travel.value}}</td>
-                                    <td width=20%>
-                                        <a target="_blank" href="{{unbound item.url.value}}">
-                                            {{item.url.value}}
-                                        </a>
-                                    </td>
-                                    <td width=30%>{{item.location.value}}</td>
-                                </tr>
-                            {{/each}}
+                        {{#each item in travelType.data}}
+                            <tr>
+                                <td width=30%>{{item.travel.value}}</td>
+                                <td width=20%>
+                                    <a target="_blank" href="{{unbound item.url.value}}">
+                                        {{item.url.value}}
+                                    </a>
+                                </td>
+                                <td width=30%>{{item.location.value}}</td>
+                            </tr>
                         {{/each}}
                     </tbody>
                 </table>
+                {{/each}}
                 {{else}}
                     {{render "error"}}
                 {{/if}}

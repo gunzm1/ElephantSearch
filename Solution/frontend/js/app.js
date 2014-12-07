@@ -303,7 +303,7 @@
 
               queryString += '}';
               console.log("Step3 query: ", queryString.replace('\t', '').replace(/\s+/g, ' ').trim());
-              travelQueries.push(performQuery('travels', queryString, 'travels'));
+              travelQueries.push(performQuery('travels', queryString, travel.get('routeName')));
             });
             return Ember.RSVP.all(travelQueries).then(function(foundTravels) {
               console.log("Got res: ", foundTravels);
