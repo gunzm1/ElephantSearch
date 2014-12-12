@@ -189,6 +189,19 @@
 \cleardoubleemptypage
 %---------------------------------------------------------------------------
 
+% Make sure Umlauts are getting displayed correctly.
+\lstset{literate=%
+    {Ö}{\textcolor{red}{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\textcolor{red}{\"a}}}1
+    {ö}{{\textcolor{red}{\"o}}}1
+    {~}{{\textasciitilde}}1
+    {?}{{\textcolor{red}{?}}}1
+}
+
 % Table of contents
 %---------------------------------------------------------------------------
 \tableofcontents
