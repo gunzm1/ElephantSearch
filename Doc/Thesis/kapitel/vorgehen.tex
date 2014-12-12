@@ -7,7 +7,7 @@
 
 Um bei der Arbeit ein möglichst strukturiertes Vorgehen zu verfolgen, wurden folgende Projektphasen gewählt:
 \begin{itemize}
-\item Erarbeitung und Festhaltung der Anforderungen
+\item Erarbeitung und Festhalten der Anforderungen
 \item Erarbeitung der formalen und technischen Grundlagen
 \item Modellierung der Ontologie
 \item Erstellung der Dokumentation zur Wissensmodellierung
@@ -29,7 +29,7 @@ Die formalen Grundlagen zur Modellierung der Ontologie sowie zur Erstellung der 
 
 Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umsetzung bereits gegeben. Es sollte aus zwei Komponenten, einem Backend --- in Form einer semantischen Datenbank, zur Verarbeitung von Anfragen an diese --- sowie einem Frontend --- zur einfachen Handhabung von Abfragen und der Ausgabe von Resultaten --- bestehen.
 
-Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\url{http://stanbol.apache.org}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht da geeignete Produkt für die geplante Umsetzung ist, Details siehe~\autoref{sec:komponenten}.
+Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht da geeignete Produkt für die geplante Umsetzung ist, Details siehe~\autoref{sec:komponenten}.
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
@@ -70,7 +70,6 @@ Schnell wurde klar, dass solch eine Modellierung ins Uferlose gehen kann, worauf
 
 Dies erlaubte jedoch nach wie vor keinen zusätzlichen Gewinn von Mehrwert in Form von Inferenz. Nach diversen Gesprächen mit dem Betreuer der Arbeit, Herrn Dr.\ Eckerle, stellte sich heraus, dass der Ontologie Regeln fehlen. Es wurde dann versucht mithilfe von Prolog das Konzept von Prolog abzubilden. Die Idee dahinter war, von der objektorientierten Denkweise loszukommen. Für die Autoren war es einfach nachzuvollziehen, dass und wie in Prolog Regeln verwendet werden. In Prolog wird auch schnell deutlich, dass eine Abfrage auf Fakten (ohne Regeln) keinen Mehrwert bringt.
 
-
 Nach diversen, erfolglosen Versuchen Regeln zu finden, wurde dies zuerst anhand einfacher Modelle, des klassisches des Familienstammbaums, versucht, was schlussendlich auch gelang. Mit diesem simplen Beispiel wurde der Mehrwert einer Wissensmodellierung sogleich erkannt.
 
 \begin{figure}[H]
@@ -87,33 +86,37 @@ Jedoch gelang es auch nach dieser Erfahrung nicht, Regeln für die eigentliche W
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Nach eingehender Analyse kamen die Autoren zum Schluss das sich die gewählte Domäne nicht eignet um die Mächtigkeit einer Ontologie und dem damit Verbundenen Reasoning abzubilden. Die Wissensmodellierung, besser bekannt als Expertensystemen scheinen sich für Wissensdomänen zu eignen, welche Probleme mit konkreten Objekten Abbilden. Im Gegensatz dazu war die gewählte Domäne Programmiersprache Prolog auf einer zu hohen Abstraktionsebene, als dass der Nutzen sichtbar wird. 
+Nach eingehender Analyse kamen die Autoren zum Schluss, dass sich die gewählte Domäne nicht eignet, um die Mächtigkeit einer Ontologie und dem damit verbundenen Reasoning abzubilden. Für die Wissensmodellierung bzw. Expertensysteme, eignen sich also eher Wissensdomänen, welche Probleme mit konkreten Objekten abbilden. Im Gegensatz dazu befindet sich die ursprünglich gewählte Domäne, Erlernung der Programmierung anhand Prolog, auf einer zu hohen Abstraktionsebene. Daher ist dort der konkrete Nutzen, in Form von Inferenz, nicht direkt sichtbar.
 
-Wie der Name Expertensystem schon andeutet können diese in Fällen verwendet werden,  bei denen zur heutigen Zeit ein Fachexperte notwendig ist, welcher Schlüsse zieht und so die Planung vervollständigt.
+Wie der Name Expertensystem schon andeutet, werden diese in Fällen verwendet, bei denen ein Fachexperte notwendig ist. Dieser kann mit seinem Fachwissen Schlüsse ziehen und so zusätzliches Wissen generieren.
 
 Daher wurde eine andere Wissensdomäne --- die Planung von Reisen --- gewählt. Dies geht bereits eher in die Richtung von Expertensystemen, wofür semantische Netze am ehesten geeignet scheinen.
 
 \subsubsection{Modellierung der tatsächlichen Ontologie}
 \label{sub:modellierung_der_ontologie_tatsaechliche}
 
-Nach dieser Entscheidung wurde mit der Modellierung also noch einmal beim Punkt null angefangen. Es konnte aber glücklicherweise auf den Erkenntnissen der vorigen Versuchen aufgebaut werden.  
+Nach dieser Entscheidung wurde mit der Modellierung also noch einmal beim Punkt null angefangen. Es konnte aber glücklicherweise auf den Erkenntnissen der vorigen Versuchen aufgebaut werden.
 
-Die Autoren haben mit dem gewonnen Wissen als grundlage entschieden, mithilfe von konkreten Bespielen vorzugehen. Anhand dieser wurde die Ontologie erzeugt und stetig erweitert. Zur Veranschaulichung dazu ein konkretes Beispiel:
+Die Autoren haben, mit dem gewonnen Wissen als Grundlage, entschieden, anhand von konkreten Bespielen vorzugehen. Basierend auf diesen wurde die Ontologie erzeugt und stetig erweitert. Zur Veranschaulichung dazu ein konkretes Beispiel:
 
-\texttt{ Familie Muster plant einen eintägige Ausflug. Die Kinder sind in einem Alter in dem Sie immer beschäftigt sein müssen.}\\
+\begin{lstlisting}[caption={Konkretes Beispiel einer Reiseplanung.},captionpos=b]
+    Familie Muster plant einen eintägige Ausflug. Die Kinder sind in einem Alter in dem Sie immer beschäftigt sein müssen.
+\end{lstlisting}
+
+\newpage
 
 Dies ergab eine noch sehr simple Ontologie, welche mit diesem semantischen Netz abgebildet werden kann:
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/famMuster.png}}}
-\caption{semantisches Netz für den Tagesausflug von Familie Muster.\label{fig:famMuster}\protect\footnotemark}
+\caption{Semantisches Netz für den Tagesausflug von Familie Muster.\label{fig:famMuster}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
 Mit der neue gewählten Wissensdomäne wurde auch der Sinn hinter der Verwendung von Regeln deutlich:
 \begin{figure}[H]
-\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/famMusterRegeln.png}}}
-\caption{Regeln zum semantischen Netz für den Tagesausflug von Familie Muster.\label{fig:famMusterRegeln}\protect\footnotemark}
+    \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/famMusterRegeln.png}}}
+    \caption{Regeln zum semantischen Netz für den Tagesausflug von Familie Muster.\label{fig:famMusterRegeln}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
@@ -125,16 +128,17 @@ Aus der Modellierung konnten die folgenden Kriterien für die Abfrage abgeleitet
 		\item regional
 \end{itemize}
 
-Mit der richtigen Sparql abfrage wird der Familie Muster der Seilpark in Balmberg vorgeschlagen.
+Mit der richtigen SPARQL-Abfrage wird der Familie Muster schliesslich der Seilpark in Balmberg vorgeschlagen.
 
-\begin{lstlisting}
-Select * where
-	{
-		?object :familiengerecht true;
-						:regional true;
-						:action true.
-		}
-\end{lstlisting}	
+\begin{lstlisting}[caption={SPARQL-Abfrage um familiengerechte, regionale und actionreiche Ausflüge zu finden.},captionpos=b,language=SQL]
+    SELECT
+        *
+    WHERE {
+        ?object :familiengerecht true;
+            :regional true;
+            :action true.
+        }
+\end{lstlisting}
 
 
 \begin{figure}[H]
@@ -143,38 +147,38 @@ Select * where
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-In diesem ersten sehr einfach gehaltenen Anwendungsfall wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispiel wurde die Ontologie erweitert und umgebaut. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde also noch so umgebaut, dass die Property Subpropertys beinhaltet, welche unterscheidet in welchem alter die Kinder sind. Die gesamte Ontologie wird im Kapitel TODO genauer erläutert.
+In diesem ersten, bewusst sehr einfach gehaltenen Anwendungsfall, wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispielen wurde die Ontologie stetig erweitert. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde also dahingehend geändert, dass die Eigenschaft Untereigenschaften beinhaltet, welche unterscheiden in welchem Alter die Kinder sind. Die gesamte Ontologie wird im Kapitel {\color{red} TODO} genauer erläutert.
 
-
-\subsection{Erstellung der Dokumentation zur Wissensmodellierung }
+\subsection{Erstellung der Dokumentation zur Wissensmodellierung}
 \label{subsec:dokumentation_wissensmodellierung}
-Parallel zur Modellierung der Ontologie entstand eine Dokumentation des Vorgehens zur Wissensmodellierung mit Tutorialcharakter. Diese zeigt exemplarisch auf, wie ein Knowledge Engineer vorgeht, um eine Problemdomäne systematisch zu modellieren und formalisieren. Wie bereits zuvor erwähnt, wurde als Problemdomäne die Planung von Reisen gewählt. Die Dokumentation findet sich unter~\autoref{sec:anhang:tutorial_dokument}.
+Parallel zur Modellierung der Ontologie entstand eine Dokumentation des Vorgehens zur Wissensmodellierung. Diese zeigt exemplarisch auf, wie ein Knowledge-Engineer vorgeht, um eine Problemdomäne systematisch zu modellieren und formalisieren. Wie bereits zuvor erwähnt, wurde als Problemdomäne die Planung von Reisen gewählt. Die Dokumentation findet sich unter~\autoref{sec:anhang:tutorial_dokument}.
 
 \subsubsection{Aufbau des Tutorials}
 \label{subsec:dokumentation_wissensmodellierung_aufbau}
-Im Gegensatz zu herkömmlichen Tutorials enthält das in dieser Arbeit erstellte einen grossen Theorieanteil. Aus diesem Grund wurde das Dokument in drei Teile aufgeteilt. 
+Im Gegensatz zu herkömmlichen Tutorials enthält das in dieser Arbeit erstellte einen grossen Theorieanteil. Aus diesem Grund wurde das Dokument in drei Aspekte aufgeteilt.
 
-Da es sich hierbei um eine wissenschaftliche Arbeit handelt, haben die Autoren entschieden in einem erste Teil  theoretischen Hintergrundwissen zur Wissensmodellierung bereitzustellen. So wird zum Beispiel erläutert was Expertensysteme sind, wie diese graphisch dargestellt werden können und welche Schreibweisen respektive Sprachen verwendet werden um eine Ontologie abzubilden und darauf Abfragen zu stellen.
-
-
-\noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}[2]{l}{0.1\textwidth}
-    \vspace{-12pt}
-    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
-\end{wrapfigure}
-Durch diese Eule wird die zweite Herangehensweise im Dokument eingeleitet. In diesem Teil steht der Fokus auf praktischen Tipps der Autoren. Auf Erfahrungen welche gemacht wurden und mit Mehrwissen hätten vermieden werden können. Die Autoren versuchen dem Leser so die Arbeit zu vereinfachen.
+Da es sich hierbei um eine wissenschaftliche Arbeit handelt, haben die Autoren entschieden in einem erste Teil theoretischen Hintergrundwissen zur Wissensmodellierung bereitzustellen. So wird zum Beispiel erläutert, was Expertensysteme sind, wie diese graphisch dargestellt werden können und welche Schreibweisen respektive Sprachen verwendet werden um eine Ontologie abzubilden und darauf Abfragen zu stellen.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[4]{l}{0.1\textwidth}
-    \vspace{-12pt}
+    \vspace{-18pt}
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}
+\end{wrapfigure}
+Durch diese Eule wird die zweite Herangehensweise im Dokument eingeleitet. In diesem Teil liegt der Fokus auf praktischen Tipps der Autoren, auf Erfahrungen, welche gemacht wurden und welche mit Mehrwissen hätten vermieden werden können. Die Autoren versuchen dem Leser so die Arbeit zu vereinfachen.\\
+\noindent\rule[1ex]{\textwidth}{1pt}
+
+\noindent\rule[1ex]{\textwidth}{1pt}
+\begin{wrapfigure}[4]{l}{0.1\textwidth}
+    \vspace{-18pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Der letzte Teil des Dokuments, welcher durch den Elefanten gekennzeichnet ist, verkörpert das klassische Tutorial. Einem pragmatisch veranlagten Lesen ist es möglich durch folgen der Eule innerhalb von kurzer Zeit ein simples Beispielexpertensystem aufzubauen.
+Der letzte Teil des Dokuments, welcher durch den Elefanten gekennzeichnet ist, verkörpert ein Tutorial im klassischen Sinne. Einem pragmatisch veranlagten Leser ist es so möglich, durch Folgen des Elefanten, innerhalb von kurzer Zeit ein simples Beispiel eines Expertensystems aufzubauen.\\
+\noindent\rule[1ex]{\textwidth}{1pt}
 
 \subsection{Erarbeitung der praktischen Grundlagen}
 \label{subsec:praktische_grundlagen}
 
-Die Erarbeitung der praktischen Grundlage war die Vorarbeit für die Erstellung des Tutorialdokuemnts. Dem entsprechend wurden die gewonnen Erkenntnisse darin eingeflochten.
+Die Erarbeitung der praktischen Grundlagen war die Vorarbeit für die Erstellung des Tutorial-Dokuments. Dementsprechend wurden die gewonnen Erkenntnisse darin eingearbeitet.
 
 \subsection{Erstellung der abschliessenden Dokumentation}
 \label{subsec:abschliessende_dokumentation}
