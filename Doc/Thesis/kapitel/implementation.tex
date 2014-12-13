@@ -3,93 +3,20 @@
 
 % In diesem Kapitel beschreiben Sie Ihre Lösung des Problems. Geben Sie dem Leser genügend Einblick in die Lösung, so dass er Ihre Arbeit entsprechend würdigen kann. Verwenden Sie aber Anhänge für Dinge, die hier nicht unbedingt bis ins letzte Detail verstanden werden müssen.
 
-\section{Komponenten/ Technologien}
-\label{sec:komponenten}
-Wie in der Aufgabenstellung erwähnt, sollte die Wissensmodellierung ursprünglich mit Hilfe von Apache Stanbol umgesetzt werden. Während der Arbeit wurde erkannt, dass diese Technologie, für die vorgesehene Aufgabe, nur bedingt nutzbar  ist. In Apache Stanbol ist es möglich die modellierte Wissensdomäne zu importieren. Das Modell wird als Ontologie in Form von Tripeln gespeichert. Die Objekte, deren Eigenschaften sowie Relationen lassen sich allerdings nicht direkt ansehen.
+Aufgabenstellung und Milestones analysieren und auswerten:
 
-Um Fragen an die Wissensdatenbank stellen zu können, ist eine entsprechende Schnittstelle notwendig. Diese wird von Stanbol in Form eines SPARQL-Endpoints zur Verfügung gestellt. Der SPARQL-Endpoint nutzt jedoch die ContentHub-Komponente von Stanbol als Datenbasis und diese stellt nur gewonnenes Wissen durch angereicherte Inhalte, aufgrund von Ontologien und Regeln, zur Verfügung.
-
-Nach einiger Recherche stellt sich heraus, dass es zwar möglich wäre mehr Datenquellen für den SPARQL-Endpoint zu nutzen, dies würde jedoch erheblichen Mehraufwand in Form einer eigenen Implementation bedeuten. Somit ist Stanbol für diese Arbeit nicht das geeignete Produkt. Nach einigen Recherchen wurden zwei Werkzeuge gefunden, welche als Ersatz für Stanbol genutzt werden können. Mit einer Kombination der im nächsten Abschnitt beschriebenen Werkzeuge können alle Notwendigen Feauters abgedeckt werden.
-
-
-\subsection{Stanford Protégé}
-\label{subsec:protege}
-
-Protégé ist eine Entwicklungsumgebung von OWL Ontologien. Es wurde von der Standford University entwickelt. Heute handelt es sich um  eines der bekanntesten OWL Editoren im Bereich der OWL Modellierung.
-Protégé unterstützt sowohl die Modellierung der OWL Ontologie, wie auch das Reasoning mittels verschiedener Reasoner.
+ - modelleriung der Ontologie
+ - generieren von Abfragen (sqarql)
+ - Benutzeroberfläche
+ - exemplarisch aufzeigen wie ein Knowledge Engineer vorgeht
+\section{Modellierung}
+\label{sec:modellierung}
+Ontologie beschreiben: aber wie ausführlich? 
+TODO: Sollen wir die Fehler die wir gefunden haben erwähnen; ich würde schon, aber wo?
 
 
-\subsubsection{Features}
-\label{subsubsec:protege_features}
-
-In Protégé können die Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML oder RDF/XML abgespeichert werden. Protégé erlaubt den Import und Export solcher OWL Dateien. Dabei können in einem Workspace mehrere Ontologien Verwendet werden. Die Entwicklungsumgebung bietet verschiedene Ansichten von der gleichen Ontologie an. \\
-Neben dem Anlegen und bearbeiten einer Ontologie können in Protégé 5.0.0 beta 16 swrl Regeln hinzugefügt werden. Diese werden von Protégé direkt in das owl File eingearbeitet. \\
-Protégé bietet die Möglichkeit Anfragen mittels der Abfragesprache SPARQL abzusetzen. Ist einer der Reasoner gestartet unterstützt die Umgebung zusätzlich das Reasoning. Es können verschieden Reasoner wie zum Bespiel FACT ++ oder Pellet (siehe:~\ref{ssubsec:reasoner}) eingesetzt werden.\cite{protegeFeatures} 
+\section{Benutzeroberfläche}
+\label{sec:gui}
 
 
-\subsubsection{View}
-\label{subsubsec:protege_view}
-
-Die Benutzerfreundlichkeit von Protégé wird dadurch erreicht, dass eine Ontologie in verschiedenen Views dargestellt werden. So gibt es neben der Entity-View, welche sämtliche Elemente einer Ontologie enthält für jedes Elementtyp wie Klassen/ Dateneigenschaften oder Individuen eine eigene Ansicht.\\
-Alle Ansichten sind als Baumstruktur organisiert. Dies bietet eine klare Übersicht und ermöglicht eine hierarchie getreue -Abbildung des dahinterliegenden XML Dokuments.\\ 
-Neben der Darstellung der im XML Dokument abgespeicherten Informationen bietet Protégé noch andere Ansichten. So kann der, aus der Ontologie entstehenden, Graphen in der View OntoGraf angesehen werden.\cite{protegeView}
-
-Eine Nützliche Eigenschaft der Views ist, dass nach dem Starten eines Reasoners, die abgeleiteten Schlüsse direkt in der Hirarchie angezeigt werden.
-
-\subsection{Clark \& Parsia Stardog}
-\label{subsec:stardog}
-
-Im Laufe der Arbeit wurde festgestellt, dass das Reasoning unter Protégé nicht einwandfrei funktioniert, also sparql Anfragen nicht erwartungsgemäss beantwortet. Ausserdem exisitert in Protégé keine, mit einem sinnvollen Zeit und Arbeitsaufwand zu verwendende, http Schnittstelle. Aus diesen Gründen wird zur Weiterverarbeitung, der in Protégé erzeugten Ontologie Stardog hinzugezogen.\\
-Konkret wird unter Stardog eine Datenbank erstellt, in welche die vorbereitete Ontologie im RDF/XML Format eingespielt wird. Stardog bietet dann die Möglichkeit per http Anfragen über REST Anfragen zu stellen. Dabei ist ein komplettes und zuverlässiges Reasoning gewährleistet.
-
-Bei Stardog handelt es sich um ein führendes Entwicklung und Anwendungssystem von Wissenmodellierung mit Suchen, Anfragen und Reasonings für Java Systeme. Stardog bietet unterschiedliche Formate an. Neben der kostenpflichtigen Enterprise Version, gibt es glücklicherweise eine Community Version. Diese bietet eine eingeschränkte Vielfalt von Datenbanken, Benutzern und Verbindungen, ist aber frei verfügbar.\cite{stardog}
-
-Stardog kann auch als Graphische Datenbank bezeichnet werden. Dabei unterstützt es viele nützliche Verwendungsformen:
-\begin{itemize}
-	\item RDF Daten Modelle
-	\item SPARQL\footnote{\url{http://www.w3.org/TR/sparql11-query/}} als Abfragesprache
-	\item HTTP und SNARL Protokolle als remote Zugriff und Kontrolle
-	\item OWL 2 zur Modellierung der Ontologien
-	\item Regeln für Inferenz und Datenanalyse
-	\item Java, JavaScript, Ruby, \.NET und weitere Programmiersprachen
-\end{itemize}
-\cite{stardogDocu}
-
-\subsubsection{Features}
-\label{ssubsec:features}
-Der folgende Abschnitt basiert auf der offiziellen Stardog Dokumentation.\cite{stardogDocuUsing}\\
-
-Querying:\\
-Anfragen können auf einer RDF Datenbank mittel der SPARQL Abfragesprache gestellt werden. Mit dem folgenden Befehlt kann eine Afrage abgesetzt werden.\\
-\begin{lstlisting}
-		\$ stardog query <Datenbankname> ``<SPARQLAnfrage>''
-\end{lstlisting}	
-Neben sämtlichen SPARQL Funktionen Unterstützt Stardog weitere von XPath und SQRL.\ Einige dieser Funktionen können für Anfragen oder Regeln verwendet werden.
-
-Updating:\\
-Es gibt verschiedene Arten um in Stardog die Datenbank zu aktualisieren. Die üblichste Art ist das Updaten mittels CLI und SPARQL Queries. Diese Funktion wird in diesem Projekt nicht genutzt, da die Daten in Protégé aufbereitet werden.
-
-Versioning:\\
-Stardog unterstützt Versionierung mittels ``graph change management capability'', welche es dem Benutzer erlaubt Änderungen zu verfolgen.\\
-Die Versionierung für eine Datenbank standarmässig deaktiviert und muss bei bedarf aktiviert werden.
-
-Exportieren:\\
-Es ist möglich die in der Stardog Datenbank enthaltenen Daten nach RDF zu exportieren. Insbesondere können auch nur einzelne ``named graph'' exportiert werden.
-
-Searching:\\
-Stardog includes an RDF-aware semantic search capability: it will index RDF literals and supports information retrieval-style queries over indexed data
-
-Obfuscating:\\
-When sharing sensitive RDF data with others, you might want to (selectively) obfuscate it so that sensitive bits are not present, but non-sensitive bits remain. For example, this feature can be used to submit Stardog bug reports using sensitive data.
-
-
-
-\subsubsection{Reasoner}
-\label{ssubsec:reasoner}
-
-Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt es sich um eine Art ``Verstehen'' durch Maschinen. Man möchte also implizite Fakten finden, welche durch explizite Fakten in einer Ontologie definiert sind. 
-Als Reasoner kommt Pellet zum Einsatz. Dieser wird im Tutorialdokument TODO (link) ausführlich beschrieben, da die dort erarbeiteten Grundlagen zum besseren Verständnis beitragen.
-
-\subsection{TODO bla }
-\label{subsec:protege}
 
