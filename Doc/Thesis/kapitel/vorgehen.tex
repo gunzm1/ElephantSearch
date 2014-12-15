@@ -19,25 +19,45 @@ Dabei ist zu sagen, dass die Phasen der Modellierung der Ontologie sowie der Ers
 
 \subsection{Anforderungen}
 \label{subsec:anforderungen}
-In der Projektphase der Anforderungen wurden die Requirments an die Arbeit erarbeitet. Ergebnis dieser Phase ist ein Anforderungsdokument mit den wichtigsten Eckpunkten, siehe~\autoref{sec:anhang:anforderungen}. Es wurde ursprünglich festgehalten, dass der praktische Teil der Arbeit --- die Erarbeitung einer Ontologie anhand einer Wissensdomäne --- mittels eines konkreten Anwendungsproblems, der Erlernung der Programmiersprache Prolog, umgesetzt werden soll. 
+In diese Phase wurden die Anforderungen an die Arbeit erarbeitet. Ergebnis dieser Phase ist ein Anforderungsdokument mit den wichtigsten Eckpunkten, siehe~\autoref{sec:anhang:anforderungen}.
 
-Im Laufe der Arbeit hat sich jedoch gezeigt, dass semantische Netze bzw. Ontologien nicht ein geeignetes Mittel sind um Logiksprachen wie z.B. Prolog abzubilden. Dies wird Kapitel~\autoref{sub:modellierung_der_ontologie} genauer beschrieben.
-TODO: Anpassen Siehe Fragen
+Es war ursprünglich angedacht, eine Einführung in die Programmierung anhand der Programmiersprache Prolog zu geben. Es hat sich dann aus den unten genannten Gründen gezeigt, dass dies kein geeignetes Beispiel zur Anwendung ist. Deshalb wurde als Wissensdomäne schliesslich die Planung von Reisen und Ausflügen gewählt.
+
+Dieser Entscheidung gingen diverse Diskussionen und Versuche zur Wahl einer geeigneten Domäne voraus. So wurde zum Beispiel auch die Planung von Hochzeiten und medizinische sowie pharmazeutische Themengebiete in Betracht gezogen. Von diesen wurde jedoch abgesehen, da die Autoren in den Gebieten über zu wenig Fachwissen verfügen.
+
+\newpage
 
 \subsection{Formale und technische Grundlagen}
 \label{sub:formale_und_technische_grundlagen}
-Die formalen Grundlagen zur Modellierung der Ontologie sowie zur Erstellung der Dokumentation zur Wissensmodellierung waren teilweise bereits aufgrund des Vorprojektes --- BTI7302 -- Projekt 2, Details siehe~\autoref{sec:anhang:projekt2} --- vorhanden. Die restlichen formalen Grundlagen wurden anhand von~\cite{IspekOntoBedeutung},~\cite{ISpekOntoGeschichte},~\cite{w3sparql_querylang},~\cite{w3sparql_overview},~\cite{w3rdf_syntax},~\cite{w3rdf},~\cite{w3owl} und~\cite{swrl} erarbeitet.
+In dem Vorprojekt zu dieser Bachelor Thesis --- BTI7302, Projekt 2 --- wurden teilweise die Grundlagen für die Erstellung und Modellierung von Ontologien erarbeitet. Die Grundlagen zu den Technologie nwurden während dieser Bachelor Thesis erarbeitet.
 
-Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umsetzung bereits gegeben. Es sollte aus zwei Komponenten, einem Backend --- in Form einer semantischen Datenbank, zur Verarbeitung von Anfragen an diese --- sowie einem Frontend --- zur einfachen Handhabung von Abfragen und der Ausgabe von Resultaten --- bestehen.
+Als formale Grundlagen dienen:
+\begin{itemize}
+    \item Aufbau und Modellierung von Ontologien~\cite{IspekOntoBedeutung} sowie~\cite{ISpekOntoGeschichte}
+    \item RDF-Syntax~\cite{w3rdf} und~\cite{w3rdf_syntax}
+    \item Ontologie-Sprache OWL~\cite{w3owl}
+    \item Regel-Sprache SWRL~\cite{swrl}
+    \item SPARQL-Abfragesprache~\cite{w3sparql_querylang},~\cite{w3sparql_overview}
+\end{itemize}
 
-Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht da geeignete Produkt für die geplante Umsetzung ist, Details siehe~\autoref{sec:komponenten}.
+Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umsetzung bereits gegeben. Es besteht aus zwei Komponenten:
+\begin{itemize}
+    \item einem Backend\\
+        in Form einer semantischen Datenbank, zur Verarbeitung von (Such-) Anfragen
+    \item einem Frontend\\
+        zur einfachen Handhabung von Abfragen und Ausgabe von Resultaten für Anwender
+\end{itemize}
+
+Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Die Details dazu werden im~\autoref{chap:komponenten} genauer beschrieben.
+
+\newpage
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
 
 \subsubsection{Vorarbeit fürs Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie_vorarbeit}
-Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog zu erstellen. Zuerst geschah dies mittels dem klassischen Ansatz der Modellierung mittels der Modellierungssprache UML, da die Autoren über einen Hintergrund der objektorientierten Programmiersprachen verfügen. Es wurde jedoch schnell klar, dass es nicht ausreicht nur Klassen zu definieren, da eine Ontologie nur Beziehungen zwischen Individuen abbilden kann. Daher muss sie immer über Instanzen bzw. Individuen verfügen.
+Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog zu erstellen. Zuerst geschah dies mittels der Modellierungssprache UML, da die Autoren über einen Hintergrund der objektorientierten Programmiersprachen verfügen. Es wurde jedoch schnell klar, dass es nicht ausreicht nur Klassen zu definieren, da eine Ontologie direkte Beziehungen nur zwischen Individuen abbilden kann. Daher muss sie immer über Instanzen der Klassen, also Individuen verfügen.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/formel_baum.png}}}
@@ -45,15 +65,17 @@ Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog z
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Um auch Relationen abbilden zu können wurde die Modellierung schliesslich mit Individuen erweitert. Dies erlaubte die Definition von Relationen zwischen diesen, was sich als Schritt in die richtige Richtung erweisen sollte.
+\newpage
+
+Um auch Relationen abbilden zu können, wurde die Modellierung schliesslich mit Individuen erweitert. Dies erlaubte die Definition von Relationen zwischen diesen, was sich als Schritt in die richtige Richtung erweisen sollte.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/loesungsprozess_baum.png}}}
-\caption{Vereinfachte Darstellung eines Teils des Lösungsprozesses von Prolog, mittels Klassen, Individuen und Relation.\label{fig:prolog_loesungsprozess}\protect\footnotemark}
+\caption{Vereinfachte Darstellung eines Teils des Lösungsprozesses von Prolog, mittels Klassen, Individuen und Relationen.\label{fig:prolog_loesungsprozess}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Es wurde dann jeweils versucht konkrete Fragen aufgrund der erstellten Ontologie zu beantworten, wodurch Mängel in der Ontologie relativ gut sichtbar wurden. Dies konnten dann schrittweise korrigiert werden, so dass die gewünschten Abfragen doch umgesetzt werden konnten. Details zu den gemachten Abfragen finden sich unter~\autoref{sec:anhang:sparql_beispiele}.
+Es wurde dann jeweils versucht konkrete Fragen aufgrund der erstellten Ontologie zu beantworten, wodurch Mängel in der Modellierung der Ontologie relativ gut sichtbar wurden. Dies konnten dann schrittweise korrigiert werden, so dass die gewünschten Abfragen doch umgesetzt werden konnten. Details zu den gemachten Abfragen finden sich unter~\autoref{sec:anhang:sparql_beispiele}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.6}[0.6]{\includegraphics{bilder/sparql_beispiel.png}}}
