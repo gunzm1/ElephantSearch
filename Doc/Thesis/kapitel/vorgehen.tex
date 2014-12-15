@@ -29,7 +29,7 @@ Dieser Entscheidung gingen diverse Diskussionen und Versuche zur Wahl einer geei
 
 \subsection{Formale und technische Grundlagen}
 \label{sub:formale_und_technische_grundlagen}
-In dem Vorprojekt zu dieser Bachelor Thesis --- BTI7302, Projekt 2 --- wurden teilweise die Grundlagen für die Erstellung und Modellierung von Ontologien erarbeitet. Die Grundlagen zu den Technologie nwurden während dieser Bachelor Thesis erarbeitet.
+In dem Vorprojekt zu dieser Bachelor Thesis --- BTI7302, Projekt 2 --- wurden teilweise die Grundlagen für die Erstellung und Modellierung von Ontologien erarbeitet. Die Grundlagen zu den Technologien wurden während dieser Bachelor Thesis erarbeitet.
 
 Als formale Grundlagen dienen:
 \begin{itemize}
@@ -48,16 +48,17 @@ Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umse
         zur einfachen Handhabung von Abfragen und Ausgabe von Resultaten für Anwender
 \end{itemize}
 
-Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Die Details dazu werden im~\autoref{chap:komponenten} genauer beschrieben.
+Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Die Details dazu werden in~\autoref{chap:komponenten} genauer beschrieben.
 
 \newpage
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
+Bereits durch die Erarbeitung der Grundlagen war klar, dass die Modellierung der Ontologie mit der Ontologie-Sprache OWL vorgenommen werden sollte. Eine Datei im OWL-Format, welche solch eine Ontologie beinhaltet, wächst mit zunehmendem Umfang der Ontologie sehr schnell an. Zudem ist die Ontologie-Sprache OWL in einer XML-Syntax gehalten. Durch diese beiden Faktoren waren sich die Autoren relativ schnell einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL mit einem Hilfsmittel vorgenommen werden sollte. Nach einiger Recherche stelle sich die Anwendung Protégé der Universität Stanford als am ehesten geeignet heraus. Diese erlaubt eine Modellierung einer Ontologie in Form von Baumstrukturen, sowie den Export dieser in diverse Formate. Zudem bietet die Anwendung die Möglichkeit eine Ontologie mittels der SPARQL-Abfragesprache abzufragen und erlaubt das Ziehen von Schlüssen mittels einem konfigurierbaren Reasoner.
 
-\subsubsection{Vorarbeit fürs Modellierung der Ontologie}
+\subsubsection{Vorarbeit für die Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie_vorarbeit}
-Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog zu erstellen. Zuerst geschah dies mittels der Modellierungssprache UML, da die Autoren über einen Hintergrund der objektorientierten Programmiersprachen verfügen. Es wurde jedoch schnell klar, dass es nicht ausreicht nur Klassen zu definieren, da eine Ontologie direkte Beziehungen nur zwischen Individuen abbilden kann. Daher muss sie immer über Instanzen der Klassen, also Individuen verfügen.
+Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog zu erstellen. Zuerst geschah dies mittels der Modellierungssprache UML, da die Autoren über einen Hintergrund der objektorientierten Programmiersprachen verfügen und dies dort ein gängiges Werkzeug ist. Es wurde jedoch schnell klar, dass es nicht ausreicht nur Klassen zu definieren, da eine Ontologie direkte Beziehungen nur zwischen Individuen abbilden kann. Daher muss sie immer über Instanzen der Klassen, also Individuen verfügen.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/formel_baum.png}}}
@@ -75,7 +76,7 @@ Um auch Relationen abbilden zu können, wurde die Modellierung schliesslich mit 
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Es wurde dann jeweils versucht konkrete Fragen aufgrund der erstellten Ontologie zu beantworten, wodurch Mängel in der Modellierung der Ontologie relativ gut sichtbar wurden. Dies konnten dann schrittweise korrigiert werden, so dass die gewünschten Abfragen doch umgesetzt werden konnten. Details zu den gemachten Abfragen finden sich unter~\autoref{sec:anhang:sparql_beispiele}.
+Es wurde dann jeweils versucht konkrete Fragen aufgrund der erstellten Ontologie zu beantworten, wodurch Mängel in der Modellierung der Ontologie relativ gut sichtbar wurden. Diese zeigten sich zum Beispiel in Form von sehr umständlichen Abfragen um einfache Fakten abzufragen. Dies konnten dann schrittweise korrigiert werden, so dass die gewünschten Abfragen doch umgesetzt werden konnten. Details zu den gemachten Abfragen finden sich unter~\autoref{sec:anhang:sparql_beispiele}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.6}[0.6]{\includegraphics{bilder/sparql_beispiel.png}}}
@@ -83,7 +84,7 @@ Es wurde dann jeweils versucht konkrete Fragen aufgrund der erstellten Ontologie
 \end{figure}
 \footnotetext{Eigene Darstellung mittels Stanford Protégé und Google Docs.}
 
-Schnell wurde klar, dass solch eine Modellierung ins Uferlose gehen kann, woraufhin der Betreuer der Arbeit, Herr Dr.\ Eckerle, empfahl Literatur über Prolog als Grundlage bzw.\ Rahmen zu verwenden. Hierbei wurde auf das Buch \textit{Künstliche Intelligenz} von \textit{U. Lämmel} und \textit{J. Cleeve} zurückgegriffen~\cite{laemmel}. Daraus resultierte eine verbesserte Modellierung der Ontologie von Prolog, mit Klassen, Relationen und Individuen.
+Bei den genannten Mängeln handelte es sich nicht immer um solche, sondern es war schwierig abzugrenzen bei welchem Detaillierungsgrad die Modellierung aufhören soll. Es stellte sich also die Frage bei welcher Erklärungsgranulität aufgehört werden soll. So wurde schliesslich klar, dass eine zu feine Granularität solch einer Modellierung ins Uferlose gehen kann. Doch dies war nicht das Ziel, das Ziel war ein System zu schaffen und damit Erfahrungen zu gewinnen. Daraufhin empfahl der Betreuer der Arbeit, Herr Dr.\ Eckerle, Literatur über Prolog als Grundlage bzw.\ Rahmen zu verwenden. Hierbei wurde auf das Buch \textit{Künstliche Intelligenz} von \textit{U. Lämmel} und \textit{J. Cleeve} zurückgegriffen~\cite{laemmel}. Herr Dr.\ Eckerle empfahl sich dabei nur auf die Programmiersprache und deren Kernkonzepte zu beschränken, so wie sie auch im Buch beschrieben werden. Daraus resultierte eine verbesserte Modellierung der Ontologie von Prolog, mit Klassen, Relationen und Individuen.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.15}[0.15]{\includegraphics{bilder/prolog_baum.png}}}
@@ -91,9 +92,9 @@ Schnell wurde klar, dass solch eine Modellierung ins Uferlose gehen kann, worauf
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Dies erlaubte jedoch nach wie vor keinen zusätzlichen Gewinn von Mehrwert in Form von Inferenz. Nach diversen Gesprächen mit dem Betreuer der Arbeit, Herrn Dr.\ Eckerle, stellte sich heraus, dass der Ontologie Regeln fehlen. Es wurde dann versucht mithilfe von Prolog das Konzept von Prolog abzubilden. Die Idee dahinter war, von der objektorientierten Denkweise loszukommen. Für die Autoren war es einfach nachzuvollziehen, dass und wie in Prolog Regeln verwendet werden. In Prolog wird auch schnell deutlich, dass eine Abfrage auf Fakten (ohne Regeln) keinen Mehrwert bringt.
+Dies erlaubte jedoch nach wie vor keinen zusätzlichen Gewinn von Mehrwert in Form von Inferenz. Nach diversen Gesprächen mit Herrn Dr.\ Eckerle, stellte sich heraus, dass der Ontologie Regeln fehlen. Es wurde dann versucht mithilfe von Prolog das Konzept von Prolog abzubilden. Die Idee dahinter war, von der objektorientierten Denkweise loszukommen. Für die Autoren war es einfach nachzuvollziehen, dass und wie in Prolog Regeln verwendet werden. In Prolog wurde auch schnell deutlich, dass eine Abfrage auf Fakten (ohne Regeln) keinen Mehrwert bringt.
 
-Nach diversen, erfolglosen Versuchen Regeln zu finden, wurde dies zuerst anhand einfacher Modelle, des klassisches des Familienstammbaums, versucht, was schlussendlich auch gelang. Mit diesem simplen Beispiel wurde der Mehrwert einer Wissensmodellierung sogleich erkannt.
+Nach diversen, erfolglosen Versuchen Regeln zu finden, wurde dies zuerst anhand einfacher Modelle versucht. So zum Beispiel anhand des klassischen Beispiels des Familienstammbaums. Mit diesem simplen Beispiel wurde der Mehrwert einer Wissensmodellierung sogleich erkannt.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.15}[0.15]{\includegraphics{bilder/familien_netz.png}}}
@@ -101,7 +102,14 @@ Nach diversen, erfolglosen Versuchen Regeln zu finden, wurde dies zuerst anhand 
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Jedoch gelang es auch nach dieser Erfahrung nicht, Regeln für die eigentliche Wissensdomäne zu finden. Die Erkenntnis aus diesem Prozess ist schlussendlich, dass die Abbildung von Prolog in einer Ontologie zwar möglich ist, jedoch eher in lexikalischer Form, was den Vorteil der Inferenz zunichtemacht. So kann beispielsweise gesagt werden, dass Prolog Unfikikation auf Anfragen anwendet und dabei Regeln mit Fakten gleichsetzt. Dabei wird Substitution genutzt, welche Variablen mit Variablen und/oder Atomen substituiert. Dies wurde aber Grösstenteils in Form von Fakten abgebildet. Einige wenige Regeln konnten erzeugt werden. Das damit abgebildete Wissen könnte aber auf eine einfachere und intuitivere Art mit Fakten abgebildet werden. Somit ist der Mehrwert der Regel nichtig.
+Jedoch gelang es auch nach dieser Erfahrung nicht, Regeln für die eigentliche Wissensdomäne zu finden. Die Erkenntnis aus diesem Prozess ist schlussendlich, dass die Abbildung von Prolog in einer Ontologie zwar möglich ist, jedoch eher in lexikalischer Form, was den Vorteil der Inferenz zunichtemacht. So kann beispielsweise gesagt werden, dass Prolog Unfikikation auf Anfragen anwendet und dabei Regeln mit Fakten gleichsetzt. Dabei wird Substitution genutzt, welche Variablen mit Variablen und/oder Atomen substituiert. Dies wurde aber Grösstenteils in Form von Fakten abgebildet. Einige wenige Regeln konnten erzeugt werden. Das damit abgebildete Wissen könnte aber auf eine einfachere und intuitivere Art mit Fakten abgebildet werden. Somit ist der Mehrwert der Regel nichtig. Die Regeln wurden dabei im Modul zur Erstellung von Regeln in der eingesetzten Anwendung zur Modellierung der Ontologie erfasst. Es handelt sich dabei um die Anwendung der Regelsprache SWRL, welche unter~\autoref{subsec:komponenten_protege_features} genauer beschrieben ist.
+
+An dieser Stelle wurden  die Unterschiede der eingesetzten Anwendung zum Ziehen von Schlüssen (Pellet) bzw. der Mächtigkeit der Regeln gegenüber Prolog ersichtlich. Prolog ist hinsichtlich dieser Faktoren sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, wobei diese beliebig viele Fakten und Prädikate enthalten können.
+
+Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert sein. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw. die Argumente selbst definiert. 
+
+%[TODO: Reasoner Constraint Satisfaction]
+
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.2}[0.2]{\includegraphics{bilder/prolog_netz.png}}}
@@ -109,7 +117,7 @@ Jedoch gelang es auch nach dieser Erfahrung nicht, Regeln für die eigentliche W
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Nach eingehender Analyse kamen die Autoren zum Schluss, dass sich die gewählte Domäne nicht eignet, um die Mächtigkeit einer Ontologie und dem damit verbundenen Reasoning abzubilden. Für die Wissensmodellierung bzw. Expertensysteme, eignen sich also eher Wissensdomänen, welche Probleme mit konkreten Objekten abbilden. Im Gegensatz dazu befindet sich die ursprünglich gewählte Domäne, Erlernung der Programmierung anhand Prolog, auf einer zu hohen Abstraktionsebene. Daher ist dort der konkrete Nutzen, in Form von Inferenz, nicht direkt sichtbar.
+Nach eingehender Analyse kamen die Autoren zum Schluss, dass sich die gewählte Domäne nicht eignet, um die Mächtigkeit einer Ontologie und dem damit verbundenen Reasoning abzubilden. Für die Wissensmodellierung bzw. Expertensysteme eignen sich also eher Wissensdomänen, welche Probleme mit konkreten Objekten abbilden. Im Gegensatz dazu befindet sich die ursprünglich gewählte Domäne auf einer zu hohen Abstraktionsebene. Daher ist dort der konkrete Nutzen, in Form von Inferenz, nicht direkt sichtbar.
 
 Wie der Name Expertensystem schon andeutet, werden diese in Fällen verwendet, bei denen ein Fachexperte notwendig ist. Dieser kann mit seinem Fachwissen Schlüsse ziehen und so zusätzliches Wissen generieren.
 
@@ -118,9 +126,9 @@ Daher wurde eine andere Wissensdomäne --- die Planung von Reisen --- gewählt. 
 \subsubsection{Modellierung der tatsächlichen Ontologie}
 \label{sub:modellierung_der_ontologie_tatsaechliche}
 
-Nach dieser Entscheidung wurde mit der Modellierung also noch einmal beim Punkt null angefangen. Es konnte aber glücklicherweise auf den Erkenntnissen der vorigen Versuchen aufgebaut werden.
+Nach dieser Entscheidung wurde mit der Modellierung also noch einmal beim Punkt null begonnen. Es konnte aber glücklicherweise auf den Erkenntnissen der vorigen Versuche aufgebaut werden.
 
-Die Autoren haben, mit dem gewonnen Wissen als Grundlage, entschieden, anhand von konkreten Bespielen vorzugehen. Basierend auf diesen wurde die Ontologie erzeugt und stetig erweitert. Zur Veranschaulichung dazu ein konkretes Beispiel:
+Die Autoren entschieden sich anhand des gewonnen Wissens die Modellierung mittels konkreten Bespielen vorzunehmen. Basierend auf diesen wurde die Ontologie erzeugt und stetig erweitert. Zur Veranschaulichung ein konkretes Beispiel:
 
 \begin{lstlisting}[caption={Konkretes Beispiel einer Reiseplanung.},captionpos=b]
     Familie Muster plant einen eintägige Ausflug. Die Kinder sind in einem Alter in dem Sie immer beschäftigt sein müssen.
@@ -136,7 +144,7 @@ Dies ergab eine noch sehr simple Ontologie, welche mit diesem semantischen Netz 
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Mit der neue gewählten Wissensdomäne wurde auch der Sinn hinter der Verwendung von Regeln deutlich:
+Mit der neu gewählten Wissensdomäne wurde auch der Sinn hinter der Verwendung von Regeln deutlich:
 \begin{figure}[H]
     \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/famMusterRegeln.png}}}
     \caption{Regeln zum semantischen Netz für den Tagesausflug von Familie Muster.\label{fig:famMusterRegeln}\protect\footnotemark}
@@ -151,7 +159,7 @@ Aus der Modellierung konnten die folgenden Kriterien für die Abfrage abgeleitet
 		\item regional
 \end{itemize}
 
-Mit der richtigen SPARQL-Abfrage wird der Familie Muster schliesslich der Seilpark in Balmberg vorgeschlagen.
+Diese sind zugleich die Schlüsse der Regeln. Mit der richtigen SPARQL-Abfrage wird der Familie Muster schliesslich der Seilpark in Balmberg vorgeschlagen.
 
 \begin{lstlisting}[caption={SPARQL-Abfrage um familiengerechte, regionale und actionreiche Ausflüge zu finden.},captionpos=b,language=SQL]
     SELECT
@@ -170,7 +178,7 @@ Mit der richtigen SPARQL-Abfrage wird der Familie Muster schliesslich der Seilpa
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-In diesem ersten, bewusst sehr einfach gehaltenen Anwendungsfall, wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispielen wurde die Ontologie stetig erweitert. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde also dahingehend geändert, dass die Eigenschaft Untereigenschaften beinhaltet, welche unterscheiden in welchem Alter die Kinder sind. Die gesamte Ontologie wird im Kapitel {\color{red} TODO} genauer erläutert.
+In diesem ersten, bewusst sehr einfach gehaltenen Anwendungsfall, wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispielen wurde die Ontologie stetig erweitert. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde dahingehend geändert, dass die Eigenschaft Untereigenschaften beinhaltet, welche unterscheiden in welchem Alter die Kinder sind. Die gesamte Ontologie wird im Kapitel {\color{red} TODO} genauer erläutert.
 
 \subsection{Erstellung der Dokumentation zur Wissensmodellierung}
 \label{subsec:dokumentation_wissensmodellierung}
