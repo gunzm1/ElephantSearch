@@ -54,28 +54,33 @@
     Experte: Jean-Marie Leclerc
 
     % Lead: 480
-    \textbf{Der klassische Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welchem die relationale Datenspeicherung zugrunde liegt, wird in der heutigen Informatik weitläufig eingesetzt und ist de facto Standard. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Experten aus einer Fachrichtung sind fähig diese Daten zu interpretieren und daraus Schlüsse zu ziehen. Es ist nicht möglich Fragestellungen zu beantworten, welche über reine Relationsverknüpfungen hinausgehen. Mit dieser Technik sind Objekteigenschaften und -verhalten also eher schwer abbildbar. Eine andere Art Wissen zu repräsentieren sind semantische Datenbanken. Diese ermöglichen das Abbilden dieser Eigenschaften und können mithilfe von Schlussfolgerungen die Rolle des Experten einnehmen.}
+    \textbf{Der klassische Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welchem die relationale Datenspeicherung zugrunde liegt, wird in der heutigen Informatik weitläufig eingesetzt und ist de facto Standard. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Experten aus einer Fachrichtung sind fähig, die Daten zu interpretieren und Schlüsse zu ziehen. Es ist nicht möglich Fragestellungen zu beantworten, welche über reine Relationsverknüpfungen hinausgehen. Mit dieser Technik sind Objekteigenschaften und -verhalten schwer abbildbar. Semantische Datenbanken sind eine andere Art Wissen zu repräsentieren. Sie ermöglichen das Abbilden von Objekteigenschaften und können mithilfe von Schlussfolgerungen die Rolle eines Experten einnehmen.}
 
     % Text: 2400
     \begin{multicols}{3}
         \section*{Wissenabbildung}
-        Semantische Datenbanken werden auf der Basis von Ontologien erstellt. Eine Ontologie beschreibt Wissen rund um eine Wissens- bzw. Problemdomäne und wird überall dort verwendet, wo Semantik zur Formulierung von Informationen genutzt wird.  Ontologien werden in Form von Tripeln abgelegt, wobei die Tripel die Form \textit{Subjekt Prädikat Objekt} haben. Also zum Beispiel \textit{Seilpark hatStandort Balmberg}. So können Objekte und deren Eigenschaften sowie Beziehungen zwischen Objekten abgebildet werden.
+        Semantische Datenbanken werden auf der Basis von \textbf{Ontologien} erstellt. Eine Ontologie beschreibt Sachwissen einer Wissens- bzw. Problem-Domäne. Sie wird überall dort verwendet, wo Semantik zur Formulierung von Informationen benutzt wird. Ontologien werden in Form von \textbf{Tripeln} abgelegt. Tripel beinhalten \textit{Subjekt, Prädikat} und \textit{Objekt}. Zum Beispiel \textit{Seilpark hatStandort Balmberg}. So können Objekte und deren Eigenschaften sowie Beziehungen zwischen Objekten abgebildet werden.
 
-        Eine weitere Komponente der Wissensabbildung ist die Verwendung von Regeln. Diese ermöglichen es Schlüsse zu ziehen, so kann zum Beispiel definiert werden, dass wenn ein Reise Mut erfordert diese actionreich ist.
-        
-        Aufgrund einer Wissensbasis, bestehend aus einer Ontologie und Regeln, können mithilfe eines Reasoners (Inferenz-Maschine) Schlüsse gezogen werden.
-        Ein Reasoner ist eine Software-Komponente, welche mithilfe von Inferenz und Resolution zusätzliches Wissen ableiten kann. Dazu wird Beschreibungslogik (welche Teil der Prädikatenlogik ist) genutzt.
+        Die Verwendung von \textbf{Regeln} ist eine weitere Komponente der Wissensabbildung. Diese ermöglichen es Schlüsse zu ziehen. So kann beispielsweise definiert werden, dass eine Reise \textit{aufregend} (actionreich) ist, wenn sie \textit{Mut erfordert}.
+
+        Aufgrund der Wissensbasis, bestehend aus Ontologie und Regeln, können mithilfe eines \textbf{Reasoners} (Inferenz-Maschine) Schlüsse gezogen werden.
+        Ein \textbf{Reasoner} ist eine Software-Komponente, welche mittels Inferenz und Resolution zusätzliches Wissen ableiten kann. Hierfür wird \textbf{Beschreibungslogik} (ein Teil der Prädikatenlogik) benützt.
+
+        {[}Inferenz: Aufbereitetes Wissen, das aufgrund von logischen Schlussfolgerungen gewonnen wurde.\\
+        Resolution: Verfahren der formalen Logik, um eine logische Formel auf Gültigkeit zu testen.{]}
 
         \section*{Aufgabenstellung und Umsetzung}
-        Ziel dieser Arbeit ist der Aufbau einer semantischen Datenbank, anhand einer konkreten Wissensdomäne, sowie der Nutzung der Datenbank. Weiter soll gezeigt werden, wie ein Knowledge Engineer bei der Wissensmodellierung, in Form von Ontologien, vorgeht.
+        Ziel dieser Arbeit:  Aufbau einer semantischen Datenbank anhand einer konkreten Wissensdomäne.  Nutzung dieser Datenbank. Weiter soll gezeigt werden, wie ein Knowledge Engineer bei der Wissensmodellierung durch Ontologien vorgeht.
 
-        Konkret wurde die Wissensdomäne Reiseplanung gewählt, denn in der heutigen Zeit werden Ferien häufig per Internet gebucht. Was aber, wenn der Urlaub nicht einfach zwei Wochen an einem Ort stattfinden soll? Was, wenn der Kunde reisen möchte? Oder sonstige spezielle Wünsche hat? Für solche Anforderungen muss er auch heute noch in ein Reisebüro um sich beraten zu lassen.
+        Konkret wurde Reiseplanung als Wissensdomäne gewählt. In der heutigen Zeit werden Urlaubsaufenthalte/Pauschalreisen häufiger über Internet gebucht. Wenn jedoch ein Kunde spezielle Wünsche hat, so muss er sich immer noch in einem Reisebüro beraten lassen. 
 
-        Damit dieses Ziel erreicht werden konnte, wurde zuerst eine Ontologie in Form von Klassen, Individuen, Relationen und Eigenschaften erstellt. Da dies jedoch schnell ins Uferlose übergehen kann, wenn kein klarer Rahmen definiert ist, wurde die Ontologie, anhand exemplarischer Reisen schrittweise aufgebaut.
+        Um eine sehr individuelle Reiseplanung zu erreichen, musste zuerst eine Ontologie in Form von Klassen, Individuen, Relationen und Eigenschaften erstellt werden. Ohne klaren Rahmen würde eine Ontologie zu komplex und zu gross. Daher wurde die Ontologie anhand exemplarischer Reisen schrittweise aufgebaut.
 
-        Normalerweise werden Abfragen in einer Ontologie mittels einer Abfragesprache getätigt. Diese benötigt jedoch viel Fachwissen und Wissen über den Aufbau einer Ontologie. Um dennoch eine benutzerfreundliche Reiseplanung zu bieten, wurde eine Webapplikation zur Reiseplanung entwickelt. Diese ermöglicht das Planen einer Reise mithilfe eines Assistenten. Der Benutzer kann die gewünschten Reisekriterien auswählen. Er erhält als Ergebnis eine Auswahl an Objekten, welche seinen gewählten Kriterien entsprechen.
+        Um auf gespeichertes Fachwissen einer Ontologie zugreifen zu können, werden Kenntnisse der Ontologie und Beherrschung einer speziellen Abfragesprache benötigt.
 
-       Der theoretische Teil der Arbeit beinhaltet ein Tutorial, das aufzeigt wie man beim Aufbau und bei der Nutzung eines Expertensystems schrittweise vorgehen kann.
+        Um eine benutzerfreundliche Reiseplanung zu bieten, wurde eine Webapplikation zur Reiseplanung entwickelt. Diese ermöglicht das Planen einer Reise mithilfe eines Assistenten. Der Benutzer kann die gewünschten Reisekriterien auswählen. Er erhält eine Auswahl an Reiseobjekten, welche seinen Kriterien entsprechen.
+
+       Der theoretische Teil der Arbeit beinhaltet ein Tutorial, das aufzeigt, wie man bei Aufbau und Nutzung eines Expertensystems schrittweise vorgehen kann.
 
     \end{multicols}
 
