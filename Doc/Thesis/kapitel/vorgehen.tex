@@ -2,20 +2,68 @@
 \label{chap:vorgehen}
 
 % Dieses Kapitel beschreibt das methodische Vorgehen, welches in der Arbeit angewendet wurde. Erwähnen Sie hier die verschiedenen Phasen der Arbeit und ihre Ergebnisse. Arbeiten mit hohem Softwareentwicklungs-Anteil lehnen sich am besten an eine etablierte Vorgehensweise an wie zum Beispiel Scrum, XP oder Agiler UP. Detailierte Projektpläne, Deliverables und anderes, falls vorhanden, gehören aber in den Anhang.
+
+\section{Arbeitsorganisation}
+\label{sec:vorgehen_orga}
+
+Bei dieser Diplomarbeit steht wie bereits erwähnt der Prozess im Vordergrund. Der programmatische Teil der Arbeit umfasst einen kleineren Teil und steht nicht im Fokus. Aus diesem Grund wurde keine der traditionellen Projektorganisations Methoden gewählt. 
+Die Autoren arbeiteten anhand am Anfang der Arbeit generierten Milestones. Zu jedem der Milestones wurde ein Endtermin festgelegt. Um diese Ziel zu erreichen wurde für jeder der Milestones eine individuelle TODO Liste erzeugt, anhand welcher die Arbeiten auf die zwei Autoren verteilt wurde. Der benötigte Zeitaufwand wurde gemeinsam in einem Journal erfasst. Ein wichtiger Teil der Arbeit war aber das ``Erkenntnis'' Dokument. In diesem wurden sämtliche Erfolge und Misserfolge beschrieben und analysiert. Dieses Dokument diente als Grundlage für das Abschlussdokument.
+
+\subsection{Regelmässige Treffen}
+\label{sec:vorgehen_orga_treffen}
+Um Abweichungen von den gesteckten Zielen und eine Entwicklung in die falsche Richtung der Arbeit zu vermeiden, wurden regelmässige Treffen mit dem Betreuer der Arbeit abgehalten. Ein Treffen zwische den Autoren der Arbeit und dem Betreuer wurde im Minium alle zwei Wochen abgehalten.
+
 \section{Projektphasen}
 \label{sec:projektphasen}
 
+\subsection{Meilensteine}
+\label{subsec:vorgehen_projektphasen_meilensteine}
 Um bei der Arbeit ein möglichst strukturiertes Vorgehen zu verfolgen, wurden folgende Projektphasen gewählt:
 \begin{itemize}
-\item Erarbeitung und Festhalten der Anforderungen
-\item Erarbeitung der formalen und technischen Grundlagen
-\item Modellierung der Ontologie
-\item Erstellung der Dokumentation zur Wissensmodellierung
-\item Erarbeitung der praktischen Grundlagen
-\item Erstellung der abschliessenden Dokumentation
+    \item Projektstart
+    \item Erarbeitung und Festhalten der Anforderungen
+    \item Erarbeitung der formalen und technischen Grundlagen
+    \item Modellierung der Ontologie
+    \item Erstellung der Dokumentation zur Wissensmodellierung
+    \item Erarbeitung der praktischen Grundlagen
+    \item Erstellung des Prototypen der Benutzerschnittstelle
+    \item Erstellung der abschliessenden Dokumentation
 \end{itemize}
 
 Dabei ist zu sagen, dass die Phasen der Modellierung der Ontologie sowie der Erstellung der Dokumentation zur Wissensmodellierung grösstenteils parallel abliefen bzw. Hand in Hand übergingen. Die während der Modellierung erhaltenen Erkenntnisse konnten direkt in die Dokumentation übernommen werden. Die bei der Erarbeitung des Dokumentes erarbeiteten theoretischen Grundlagen konnten im Gegenzug direkt für die praktische Modellierung genutzt werden.
+
+\subsection{Zeitplan}
+\label{subsec:vorgehen_projektphasen_zeitplan}
+
+\begin{figure}[H]
+    \begin{ganttchart}[
+        vgrid,
+        x unit=0.7cm,
+        bar/.append style={fill=bfhgrey!50},
+    ]{1}{16}
+        \gantttitle{2014}{14}
+        \gantttitle{2015}{2} \\
+        \gantttitlelist{1,...,16}{1} \\ % chktex 11
+        \ganttbar{Projektstart}{1}{2} \\
+        \ganttbar{Anforderungen}{1}{3} \\
+        \ganttbar{Erarbeitung Grundlagen}{3}{4} \\
+        \ganttbar{Tutorialdokument}{4}{5} \ganttbar{}{8}{14} \\
+        \ganttbar{Modellierung Ontologie}{5}{8} \ganttbar{}{10}{14}\\
+        \ganttbar{Umsetzung Prototyp}{9}{14} \\
+        \ganttbar{Dokumentation}{1}{16}
+
+        % \ganttlink{elem1}{elem2}
+        % \ganttlink{elem1}{elem2}
+        % \ganttlink{elem2}{elem3}
+        % \ganttlink{elem3}{elem4}
+        % \ganttlink{elem4}{elem8}
+    \end{ganttchart}
+    \caption{Zeitplan; Der Titel stellt Jahreszahlen, der Untertitel Semesterwochen dar}
+\end{figure}
+
+\subsection{Projektstart}
+\label{subsec:projektstart}
+In dieser ersten Phase wurden die Meilensteine der Arbeit identifiziert und grob beschrieben. Da ein gewisses Vorwissen hinlänglich semantischen Datenbanken notwendig ist, um die Aufgaben dieser Arbeit zu verstehen, wurde dieses erarbeitet. Zudem wurde das Grundgerüst dieser Dokumentation gelegt.
 
 \subsection{Anforderungen}
 \label{subsec:anforderungen}
@@ -31,6 +79,7 @@ Dieser Entscheidung gingen diverse Diskussionen und Versuche zur Wahl einer geei
 \label{sub:formale_und_technische_grundlagen}
 In dem Vorprojekt zu dieser Bachelor Thesis --- BTI7302, Projekt 2 --- wurden teilweise die Grundlagen für die Erstellung und Modellierung von Ontologien erarbeitet. Die Grundlagen zu den Technologien wurden während dieser Bachelor Thesis erarbeitet.
 
+\subsubsection{Formale Grundlagen}
 Als formale Grundlagen dienen:
 \begin{itemize}
     \item Aufbau und Modellierung von Ontologien~\cite{IspekOntoBedeutung} sowie~\cite{ISpekOntoGeschichte}
@@ -48,13 +97,19 @@ Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umse
         zur einfachen Handhabung von Abfragen und Ausgabe von Resultaten für Anwender
 \end{itemize}
 
-Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Die Details dazu werden in~\autoref{chap:komponenten} genauer beschrieben.
+\subsubsection{Technische Grundlagen}
+Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}, da dies alle Anforderungen zu erfüllen schien. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Anstelle von Apache Stanbol wird die Graphdatenbank Stardog~\footnote{\url{http://www.stardog.com}} eingesetzt. Diese bietet die Möglichkeit Ontologien in diversen Formaten zu importieren und exportieren, Abfragen mittels der SPARQL-Abfragesprache zu stellen sowie eine Komponenten zum Ziehen von Schlüssen bei Abfragen. Die Details dazu werden in~\autoref{chap:komponenten} genauer beschrieben.
+
+Durch die Erarbeitung der Grundlagen war klar, dass die Modellierung der Ontologie mit der Ontologie-Sprache OWL vorgenommen werden sollte. Eine Datei im OWL-Format, welche solch eine Ontologie beinhaltet, wächst mit zunehmendem Umfang der Ontologie sehr schnell an. Zudem ist die Ontologie-Sprache OWL in einer XML-Syntax gehalten. Durch diese beiden Faktoren waren sich die Autoren relativ schnell einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL mit einem Hilfsmittel vorgenommen werden sollte.
+
+Nach einiger Recherche stelle sich die Anwendung Protégé der Universität Stanford als am ehesten geeignet heraus. Diese erlaubt eine Modellierung einer Ontologie in Form von Baumstrukturen, sowie den Export dieser in diverse Formate. Zudem bietet die Anwendung die Möglichkeit eine Ontologie mittels der SPARQL-Abfragesprache abzufragen und erlaubt das Ziehen von Schlüssen mittels einem konfigurierbaren Reasoner. Eine detaillierte Beschreibung findet sich unter~\autoref{sec:komponenten_protege}.
+
+Die gewählte Graphdatenbank nutzt zum Ziehen von Schlüssen den Pellet-Reasoner. Dieser ist auch für Protégé verfügbar. Daher fiel die Entscheidung auf die Verwendung von Pellet als Anwendung zum Ziehen von Schlüssen. Eine detaillierte Beschreibung von Pellet findet sich unter~\autoref{subsec:komponenten_reasoner}.
 
 \newpage
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
-Bereits durch die Erarbeitung der Grundlagen war klar, dass die Modellierung der Ontologie mit der Ontologie-Sprache OWL vorgenommen werden sollte. Eine Datei im OWL-Format, welche solch eine Ontologie beinhaltet, wächst mit zunehmendem Umfang der Ontologie sehr schnell an. Zudem ist die Ontologie-Sprache OWL in einer XML-Syntax gehalten. Durch diese beiden Faktoren waren sich die Autoren relativ schnell einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL mit einem Hilfsmittel vorgenommen werden sollte. Nach einiger Recherche stelle sich die Anwendung Protégé der Universität Stanford als am ehesten geeignet heraus. Diese erlaubt eine Modellierung einer Ontologie in Form von Baumstrukturen, sowie den Export dieser in diverse Formate. Zudem bietet die Anwendung die Möglichkeit eine Ontologie mittels der SPARQL-Abfragesprache abzufragen und erlaubt das Ziehen von Schlüssen mittels einem konfigurierbaren Reasoner.
 
 \subsubsection{Vorarbeit für die Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie_vorarbeit}
@@ -104,12 +159,16 @@ Nach diversen, erfolglosen Versuchen Regeln zu finden, wurde dies zuerst anhand 
 
 Jedoch gelang es auch nach dieser Erfahrung nicht, Regeln für die eigentliche Wissensdomäne zu finden. Die Erkenntnis aus diesem Prozess ist schlussendlich, dass die Abbildung von Prolog in einer Ontologie zwar möglich ist, jedoch eher in lexikalischer Form, was den Vorteil der Inferenz zunichtemacht. So kann beispielsweise gesagt werden, dass Prolog Unfikikation auf Anfragen anwendet und dabei Regeln mit Fakten gleichsetzt. Dabei wird Substitution genutzt, welche Variablen mit Variablen und/oder Atomen substituiert. Dies wurde aber Grösstenteils in Form von Fakten abgebildet. Einige wenige Regeln konnten erzeugt werden. Das damit abgebildete Wissen könnte aber auf eine einfachere und intuitivere Art mit Fakten abgebildet werden. Somit ist der Mehrwert der Regel nichtig. Die Regeln wurden dabei im Modul zur Erstellung von Regeln in der eingesetzten Anwendung zur Modellierung der Ontologie erfasst. Es handelt sich dabei um die Anwendung der Regelsprache SWRL, welche unter~\autoref{subsec:komponenten_protege_features} genauer beschrieben ist.
 
-An dieser Stelle wurden  die Unterschiede der eingesetzten Anwendung zum Ziehen von Schlüssen (Pellet) bzw. der Mächtigkeit der Regeln gegenüber Prolog ersichtlich. Prolog ist hinsichtlich dieser Faktoren sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, wobei diese beliebig viele Fakten und Prädikate enthalten können.
+An dieser Stelle wurden  die Unterschiede der eingesetzten Anwendung zum Ziehen von Schlüssen (Pellet) bzw.\ der Mächtigkeit der Regeln gegenüber Prolog ersichtlich. 
+Prolog ist hinsichtlich dieser Faktoren sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, wobei diese beliebig viele Fakten und Prädikate enthalten können.
 
-Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert sein. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw. die Argumente selbst definiert. 
+Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert sein. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw.\ die Argumente selbst definiert.
 
-%[TODO: Reasoner Constraint Satisfaction]
+Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz. Eine Erklärung dieses Algorithmus findet sich im Tutorialdokument unter LINK.
 
+Zusammenfassend kann gesagt werden, dass in Prolog direkt Anfragen gestellt werden können. Rückgabewerte dieser Anfragen sind entweder Wahrheitsaussagen (wahr oder falsch) über Fakten oder aber Objekte bzw. Listen von Objekten. Pellet hingegen, kann nur Wahrheitsaussagen treffen. Dies bedeutet, dass Objekten somit nur Eigenschaften zugewiesen werden können, so z.B. die Zugehörigkeit zu einer Klasse, eine Relation zu einem anderen Objekt oder eine Objekteigenschaft (wie Geschlecht, Grösse, Dauer etc.). Die Rückgabe von Objekten findet also nicht durch den Reasoner sondern durch Abfragen, z.B. mittels SPARQL, statt.
+
+So ist es in Prolog ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}, mit Pellet bzw. Ontologien und Regeln ist dies nicht ohne Weiteres möglich. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.2}[0.2]{\includegraphics{bilder/prolog_netz.png}}}
@@ -178,7 +237,7 @@ Diese sind zugleich die Schlüsse der Regeln. Mit der richtigen SPARQL-Abfrage w
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-In diesem ersten, bewusst sehr einfach gehaltenen Anwendungsfall, wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispielen wurde die Ontologie stetig erweitert. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde dahingehend geändert, dass die Eigenschaft Untereigenschaften beinhaltet, welche unterscheiden in welchem Alter die Kinder sind. Die gesamte Ontologie wird im Kapitel {\color{red} TODO} genauer erläutert.
+In diesem ersten, bewusst sehr einfach gehaltenen Anwendungsfall, wird die Herangehensweise der Autoren sichtbar. Im Laufe von weiteren Beispielen wurde die Ontologie stetig erweitert. So haben die Autoren zum Beispiel erst zu einem späteren Zeitpunkt eine Zeiteinheit eingeführt oder gemerkt, dass die Eigenschaft familiengerecht zu oberflächlich und pauschal betrachtet wurde. Diese wurde dahingehend geändert, dass die Eigenschaft Untereigenschaften beinhaltet, welche unterscheiden in welchem Alter die Kinder sind. Die gesamte Ontologie wird im~\autoref{sec:loesung_modellierung} genauer erläutert.
 
 \subsection{Erstellung der Dokumentation zur Wissensmodellierung}
 \label{subsec:dokumentation_wissensmodellierung}
@@ -213,6 +272,4 @@ Die Erarbeitung der praktischen Grundlagen war die Vorarbeit für die Erstellung
 
 \subsection{Erstellung der abschliessenden Dokumentation}
 \label{subsec:abschliessende_dokumentation}
-Mit der Erstellung der abschliessenden Dokumentation ist das hier vorliegende Dokument gemeint.
-
-TODO: ganzes vorgehen mit unseren verschiedenen Dokumenten  
+Mit der Erstellung der abschliessenden Dokumentation ist das hier vorliegende Dokument gemeint. Dieses wurde während der ganzen Projektarbeit stetig erweitert, auch um die bereits fertiggestellten Arbeitn zu reflektieren.

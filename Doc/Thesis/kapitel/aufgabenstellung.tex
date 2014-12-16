@@ -1,8 +1,32 @@
 \chapter{Aufgabenstellung}
 \label{chap:Aufgabenstellung}
 
-% In diesem Kapitel wir die Aufgabenstellung beschrieben. Erwähnt werden soll die Ausgangslage (was hat es schon gegeben, was ist schon gemacht worden), auf der die Arbeit aufbaut. Im weiteren wird das Ziel beschrieben, welches erreicht werden soll. Daraus leitet sich das in dieser Arbeit gelöste Problem ab.
+% In diesem Kapitel wird die Aufgabenstellung beschrieben. Erwähnt werden soll die Ausgangslage (was hat es schon gegeben, was ist schon gemacht worden), auf der die Arbeit aufbaut. Im weiteren wird das Ziel beschrieben, welches erreicht werden soll. Daraus leitet sich das in dieser Arbeit gelöste Problem ab.
 
-``Ziel dieser Arbeit ist die Entwicklung und Anwendung eines Systems zur Speicherung (von Daten) in einer Semantischen Datenbank auf der Basis von Apache Stanbol. Dies schliesst die Erstellung einer Domänen-Ontologie mittels RDF/OWL und die Anwendung dieser Ontologie auf ein Anwendungsproblem, wie beispielsweise der Erlernung einer Programmiersprache ein. Exemplarisch soll aufgezeigt werden, wie dabei ein Knowledge Engineer vorgeht, um eine Problemdomäne systematisch zu modellieren und formalisieren. Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu.''~\cite{Aufgabenstellung}
+\section{Motivation}
+\label{sec:aufgabe_motivation}
+Internet-Suchmaschinen sind heutzutage ein gängiges Mittel um an Wissen im Internet zu gelangen. Deren stetige Weiterentwicklung über das letzte Jahrzent macht sie zu einem mächtigen Instrument, welches von vielen Personen zur täglichen Arbeit verwendet wird.
 
-Die obenstehende Aufgabenstellung musste, gegeben durch die gewonnen Erkenntnisse, im Verlaufe der Arbeit geändert werden. So kommt als Werkzeug nicht mehr Apache Stanbol zum Einsatz, sondern Stardog der Firma Clark \& Parsia.
+Suchmaschinen sind heute meist so gehalten, dass in ein Suchfeld Begriflichkeiten eingegeben werden. Dabei muss der Suchende bereits eine mehr oder minder konkrete Vorstellung von den erwarteten Suchergebnissen haben. Dies, da Suchmaschinen Inhalte mittels Stich- und Schlagworten indexieren.
+
+Wenn aber nach Konzepten und Zusammenhängen gesucht werden soll, stossen die heutigen Suchmaschinen schnell an deren Grenzen.  Sie verfügen über wenig bis kein semantisches Wissen, sie kennen in diesem Sinne keine Konzepte. Diese muss der Anwender wissen und entsprechende Stichworte als Eingabe zu einer Suche liefern.
+
+Es existieren Mechanismen zur Speicherung und Darstellung von Konzepten und Zusammenhängen, die Nutzung dieser ist aber eher komplex.
+
+Diese Arbeit zielt daher darauf ab, eine Art Suchmaschine zur Verfügung zu stellen, welche Wissen über Konzepte und Zusammenhänge hat und dabei eine intuitive, einfach zu bedienende Schnittstelle zwischen Mensch und System bietet.
+
+\section{Ausgangslage}
+\label{sec:aufgabe_ausgangslage}
+Die Thematik der Arbeit war den Autoren teilweise bekannt. Im Rahmen des Studienganges der Autoren an der Berner Fachhochschule für angewandte Wissenschaften existiert kein (Haupt-) Fach über diese Thematik.
+
+Um sich Vorwissen zu dieser anzueignen, besuchten die Autoren das Fach \textit{Künstliche Intelligenz}. Sie verfassten zudem eine Projektarbeit zu der Thematik. Diese Vorarbeiten betreffen jedoch nur einzelne Aspekte der Thematik dieser Thesis.
+
+So wurde ursprünglich angenommen, dass gewonnenes Wissen, z.B. über die technische Lösung, auch ihm Rahmen dieser Thesis angwendet werden kann, was sich jedoch als nicht gegeben herausstellte. Einzig gewisse allgemeine theoretische Grundlagen, so z.B. Ontologien oder Sprachen zur Modellierung dieser, konnten übernommen werden.
+
+\section{Ziele und Abgrenzung}
+\label{sec:aufgabe_ziele}
+Generell besteht diese Arbeit aus zwei Teilen. Einerseits aus einem Dokument mit tutorialem Charakter, welches aufzeigt wie ein Knowledge Engineer eine Wissensdomäne systematisch modelliert und formalisiert. Andererseits aus der Erstellung einer Ontologie und der Anwendung dieser Ontolgie auf ein Anwendungsproblem. Dies umfasst dabei einen Prototypen einer möglichst benutzerfreundlichen Schnittstelle zur Nutzung der Ontologie.
+
+Es ist nicht vorgesehen eine vollständige Ontologie der Wissensdomäne zu erstellen. Diese soll nur soweit entwickelt werden, dass Abfragen möglich sind, welche den Mehrwert gegenüber herkömmlichen Suchmaschinen aufzeigen.
+
+Der Prototyp der Benutzerschnittstelle soll nicht alle Möglichkeiten zur Abfrage der Ontologie bieten, sondern lediglich exemplarisch die praktische Nuztung einer semantischen Datenbank aufzeigen.
