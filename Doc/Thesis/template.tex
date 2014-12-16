@@ -29,14 +29,15 @@
 \usepackage{etoolbox}                                                   % color manipulation of header and footer
 \usepackage{graphicx}                                                   % integration of images
 \usepackage{float}                                                      % floating objects
-\usepackage{caption}                                                    % for captions of figures and tables
+\usepackage[font={footnotesize,it}]{caption}                                                    % for captions of figures and tables
 \usepackage{booktabs}                                                   % package for nicer tables
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
-\usepackage[square,sort,comma,numbers]{natbib}                          % provides various citation styles
+\usepackage[round,sort,comma,numbers]{natbib}                           % provides various citation styles
 \usepackage{wrapfig}                                                    % provides floating of text around images
 \usepackage{nameref}                                                    % provides printing names of references
 \usepackage{colortbl}                                                   % Colored tables
 \usepackage{scrhack}                                                    % Remove float errors and warnings
+\usepackage{pgfgantt}                                                   % Provides GANTT charts
 %---------------------------------------------------------------------------
 
 % Load Math Packages
@@ -74,7 +75,7 @@
 \lstdefinelanguage{XML}
 {
   basicstyle=\ttfamily\footnotesize,
-  morestring=[b]",
+  morestring=[b]'',
   moredelim=[s][\bfseries\color{maroon}]{<}{\ },
   moredelim=[s][\bfseries\color{maroon}]{</}{>},
   moredelim=[l][\bfseries\color{maroon}]{/>},
@@ -174,6 +175,9 @@
 \renewcommand*{\footfont}{\normalfont}
 %---------------------------------------------------------------------------
 
+% We need this as mr. gantt chart (teh package..) thinks text should be gray..
+\color{black}
+
 \begin{document}
 
 % Title Page and Abstract
@@ -187,7 +191,7 @@
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Management Summary}
 \include{vorspann/management_summary}
-\cleardoubleemptypage
+\cleardoubleemptypage{}
 %---------------------------------------------------------------------------
 
 % Make sure Umlauts are getting displayed correctly.
@@ -218,7 +222,7 @@
 \include{kapitel/aufgabenstellung}
 \include{kapitel/vorgehen}
 \include{kapitel/loesung}
-\include{kapitel/technologien}
+\include{kapitel/komponenten}
 \include{kapitel/fazit}
 \include{kapitel/schlussbemerkung}
 %---------------------------------------------------------------------------
