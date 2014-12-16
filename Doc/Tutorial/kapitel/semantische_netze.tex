@@ -1,30 +1,31 @@
 \chapter{Wissensrepräsentationsformen}
 \label{chap:wissensrepFormen}
 
-Nachdem im letzten Kapitel etwas über die Grundlage der Graphen sowie Graphdatenbanken aufgezeigt wurde, soll hier auf konkrete Repräsentationsformen von Wissen eingegangen werden.
-In der Wissensmodellierung (Knowledge Engineering) gibt es verschieden Wissensrepräsentationsformen um die Wissen in wissensbasierten Systemen formal abzubilden. Die so gesammelten Informationen werden als Wissensdatenbank respektive Wissensbasis bezeichnet.~\cite{wikiWissensrep}
+Nach Darstellung der Grundlage von Graphen und Graphdatenbanken im letzten Kapitel, wollen wir jetzt Repräsentationsformen von Wissen analysieren.\\
+In der Wissensmodellierung (knowledge engineering) gibt es verschiedene Formen der Wissensrepräsentation um Wissen in wissensbasierten Systemen formal abzubilden. Auf diese Art abgelegte Informationen werden als Wissensdatenbank bzw. Wissensbasis bezeichnet.~\cite{wikiWissensrep}
 
-Das folgende Kapitel basiert auf~\cite{laemmel} und beschreibt einige der klassischen Wissensrepräsentationsformen.
+Das folgende Kapitel basiert auf~\cite{laemmel} und beschreibt einige klassische Formen der Wissensrepräsentation, nämlich semantische Netze, Wissensnetze und Frames.
 
-Semantische Netze, Wissensnetze und Frames gehören zu den üblichen Wissensrepräsentationsformen. Dabei stehen die konkreten Objekte im Vordergrund und nicht, wie zum Beispiel bei Regeln, die Zusammenhänge und die logischen Abhängigkeiten.
+Im Gegensatz zu Regeln stehen hier die Objekte und nicht Zusammenhänge und logische Abhängigkeiten im Vordergrund.
 
-Semantische Netze und Frames versuchen das menschliche Gedächtnis in adäquater Form abzubilden. Ursprünglich wurden Sie vor allem zur Analyse von Wörtern und Sätzen verwendet. Ein weiterer Punkt ist die einfach verständliche Darstellung von Klassen und deren Beziehungen. Zudem haben die Konzepte der semantischen Netze und Frames die Entwicklung der objektorientierten Programmierung beeinflusst.
+Semantische Netze und Frames versuchen das menschliche Gedächtnis abzubilden. Sie wurden hauptsächlich zur Analyse von Wörtern und Sätzen verwendet. Ein weiterer Aspekt ist die verständliche Darstellung von Klassen und ihren Beziehungen. Die Konzepte der semantischen Netze und Frames haben die Entwicklung der objektorientierten Programmierung beeinflusst.
 
 \section{Semantische Netze}
 \label{sec:wissensrepFormen_semantischeNetze}
 
-Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnend. Ein einzelnes Objekt nennt sich auch Individuum. Zwischen den Objekten untereinander, zwischen Objekten und Klassen oder zwischen Klassen untereinander gibt es Beziehungen. Es kann zwischen folgenden Beziehungen unterschieden werden:
+Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnet. Ein einzelnes Objekt heisst Individuum. Es gibt Beziehungen zwischen Objekten, zwischen Objekten und Klassen und zwischen Klassen.
 
+Folgende Beziehungen werden unterschieden:
 \begin{itemize}
-    \item "`ist eine"' Relation
+    \item ``ist ein'' Relation
 
         Es handelt sich um Ober- und Unterklassen.
 
         Beispiel: \textit{Ein Baum ist eine Pflanze.}
 
-    \item "`Instanz von"' Relation
+    \item ``Instanz von'' Relation
 
-        Die Relation beschreibt die Beziehung einer konkreten Instanz zu ihrer Klasse.
+        Die Relation sagt aus von welchem Typ ein Individum ist.
 
         Beispiel: \textit{Birke ist eine Instanz der Klasse Baum.}
 
@@ -35,15 +36,16 @@ Eine zusammengehörige Gruppe von Objekten wird als Klasse bezeichnend. Ein einz
         Beispiel: \textit{Pflanzen erzeugen Sauerstoff.}
 \end{itemize}
 
-Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen, ist auch ein Hund ein Lebewesen. Ausserdem halten sich Eigenschaften an das Gesetz der Vererbung. Braucht also ein Tier Sauerstoff, braucht auch ein Hund Sauerstoff.
+Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen, ist auch ein Hund ein Lebewesen. Weiter unterliegen Eigenschaften de, Gesetz der Vererbung. Ein Tier benötigt Sauerstoff, damit benötigt auch ein Hund Sauerstoff.
 
 In semantischen Netzen werden Objekte und Klassen als Knoten abgebildet. Beziehungen und Eigenschaften werden als Kanten dargestellt.
-Einige Ausdrucksformen wie Existenzaussagen und Oder-Aussagen können mit semantischen Netzen nicht abgebildet werden. Obwohl sich nur zweistellige Beziehungen abbilden lassen, sind komplexe Abbildungen, wie zum Beispiel das Modellieren einer Aktion, möglich.
+Aussagen wie Existenzaussagen und Oder-Aussagen können mit semantischen Netzen nicht abgebildet werden.
+Komplexe Abbildungen, wie zum Beispiel das Modellieren einer Aktion, sind trotz reinen zweistelligen Beziehungen möglich.
 
 \section{Frames}
 \label{sec:wissensrepFormen_frames}
 
-In Frames werden die wesentlichen Charakteristika eines Objekts als Eigenschaften abgebildet und zusammengefasst. Dabei unterstützten Frames die Konzepte der Hierarchie und der Vererbung. Zudem können Frames auch generische Informationen wie Defaults, also Standartwerte, und Wertebeschränkungen (Listen) enthalten.
+In Frames werden die wesentlichen Charakteristika eines Objektes als Eigenschaften abgebildet. Dabei unterstützen Frames die Konzepte der Hierarchie und der Vererbung. Frames können auch generische Informationen wie Standartwerte (Defaults) und Wertebeschränkungen (Listen) enthalten.
 
 \begin{lstlisting}[caption={Beispiel eines Frames anhand einer Reise.}]
     frame Abenteuerreise is a Reise :
@@ -61,13 +63,15 @@ In Frames werden die wesentlichen Charakteristika eines Objekts als Eigenschafte
 
 \section{Wissensnetze}
 \label{sec:wissensrepFormen_Wissensnetze}
-Bei Wissensnetzen handelt es sich um eine Art der Wissensrepräsentation, welche die Konzepte der semantischen Netzte verwenden. Dabei wird eine objektorientierte oder Frame-Darstellung des Wissens integriert. Zusätzlich erfolgt eine grafische Darstellung mittels Topic Maps. Diese wird auch Wissenslandkarte genannt. 
+Bei Wissensnetzen handelt es sich um eine bestimmte Art der Wissensrepräsentation. Dabei werden die Konzepte der semantischen Netze verwendet.
 
-Die Entfernung zweier Begriffe in der Wissenslandkarte bilden deren inhaltliche Nähe ab. Es werden also die semantischen Beziehungen der Begriffe verwaltet. Dies ist eine grosse Unterstützung der semantische Suche.
+Wissen wird in Wissensnetzen objektorientiert oder mittels Frames abgebildet. Eine grafische Darstellung erfolgt zusätzlich mittels Topic Maps, auch Wissenslandkarte genannt.
 
-Wie in den semantischen Netzen werden Instanzen und Klassen in den Knoten abgebildet. Zusätzlich wird das Problem der Mehrfachvererbung umgangen, indem das Konzept der Rollen eingeführt wird. Klassen werden so ausgebaut, das eine Instanz eine bestimmte Rolle annehmen kann.
+``In einer Wissenslandkarte repräsentiert die Entfernung zweier Begriffe oder Wissensinhalte deren inhaltliche Nähe zueinander. Ein Wissensnetz ist somit ein Informationssystem, in dem zusätzlich die semantischen Beziehungen der Begriffe untereinander verwaltet werden. Diese Meta-Ebene ermöglicht eine \textbf{semantische Suche} – eine Suche, die über das Auffinden reiner Zeichenketten weit hinausgeht.''~\cite[S. 89]{laemmel}.
 
-Wissensnetze haben sämtliche Voraussetzungen um effektives Wissensmanagement zu erreichen. Dafür muss das Wissen aber immer aktuell und entsprechend umfangreich sein.
+Die Knoten erhalten die Bedeutung von Instanzen (Individuen) oder Klassen. Das Problem der Mehrfachvererbung durch Einführung des Rollenkonzeptes umgangen. Durch Erweiterung der Klassen kann eine Instanz dann eine bestimmte Rolle einnehmen.
+
+Wissensnetze haben alle Voraussetzungen, um effektives Wissensmanagement zu bieten. Dafür muss das Wissen aber immer aktuell und umfassend sein.
 
 \newpage
 
@@ -92,9 +96,9 @@ Gegeben sind nach wie vor die zuvor gemachten Überlegungen zum Aufbau, also auc
 
 Doch wie geht man nun weiter vor? Was unterscheidet denn ein semantisches Netz eigentlich von einer Graphdatenbank? Nun, im Kapitel zu den Graphdatenbanken wurde bereits eine wichtige Entität vorweggenommen, welche einer Hauptunterschiede zwischen einem semantischen Netz und einer Graphdatenbank darstellt: die Individuen. Diese lassen sich in Graphdatenbanken zwar abbilden, aber viel weniger intuitiv und sinngemäss.
 
-An diese Stelle läuft man jedoch schnell in Gefahr, eine ähnliche Modellierung wie bei der Graphdatenbank zu erhalten. Wir haben uns daher bei der Modellierung an den Aufbau der letztendlich verwendeten Ontologiesprache OWL 2 bzw. deren Anwendung im Editor Protégé der Universität Stanford gehalten, da wir das Gefühl haben, dass dies einen guten Rahmen vorgibt.
+An diese Stelle läuft man jedoch schnell in Gefahr, eine ähnliche Modellierung wie bei der Graphdatenbank zu erhalten. Wir haben uns daher bei der Modellierung an den Aufbau der letztendlich verwendeten Ontologiesprache OWL 2 bzw.\ deren Anwendung im Editor Protégé der Universität Stanford gehalten, da wir das Gefühl haben, dass dies einen guten Rahmen vorgibt.
 
-Schlussendlich ist ja das Ziel, die bereits formulierten Kriterien, \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}, abzubilden, um letztendlich entsprechende Abfragen stellen zu können. Unter den gegebenen Entitäten scheint sich aktuell nur das Kriterium \textit{regional} abzubilden lassen, doch wie setzt man dies nun um? Davon ausgehend, dass der Standort bzw. die Region der Familie bekannt ist --- diese sei der Einfachheit halber Solothurn ---, sollte es also möglich sein, zu Folgern, dass die Region des Seilparks Balmberg dieselbe wie die der Familie ist.
+Schlussendlich ist ja das Ziel, die bereits formulierten Kriterien, \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}, abzubilden, um letztendlich entsprechende Abfragen stellen zu können. Unter den gegebenen Entitäten scheint sich aktuell nur das Kriterium \textit{regional} abzubilden lassen, doch wie setzt man dies nun um? Davon ausgehend, dass der Standort bzw.\ die Region der Familie bekannt ist --- diese sei der Einfachheit halber Solothurn ---, sollte es also möglich sein, zu Folgern, dass die Region des Seilparks Balmberg dieselbe wie die der Familie ist.
 
 Man kann nun also mittels der Relation \textit{hatOrt} definieren, dass die \textit{Region} \textit{Solothurn} den \textit{Ort} \textit{Balmberg} hat. Dies lässt jedoch noch keinen Schluss zu, dass sich der Seilpark Balmberg im selben \textit{Ort}, ja, sogar in derselben \textit{Region} befindet. Es scheint eine Relation zu fehlen. Dies führt zur Einführung der neuen Relation \textit{hatStandort}, welche das Individium \textit{Seilpark Balmberg} mit dem Ort \textit{Balmberg} verbindet.
 

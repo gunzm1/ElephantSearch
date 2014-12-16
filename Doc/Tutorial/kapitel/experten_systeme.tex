@@ -1,15 +1,17 @@
 \chapter{Expertensysteme}
 \label{chap:experten_systeme}
 
-Bei Expertensystemen handelt es sich um Systeme zur Wissenrepräsentation, welche, in einem sehr eingeschränkten (Teil-) Gebiet, die Leistung eines menschlichen Experten erbringen oder diese sogar übertreffen. Die Entwicklung von Expertensystemen und deren Erfolg führten zu einem standardisierten Prozess der Wissensdarstellung und Ontologien, was schlussendlich die Entwicklung von Expertensystemen in neuen, unerforschrten Themengebieten erheblich vereinfachte.~\cite[S. 257]{russel}
+Bei Expertensystemen handelt es sich um Systeme zur Wissenrepräsentation, welche in einem sehr eingeschränkten (Teil-) Gebiet die Leistung eines menschlichen Experten ersetzen  oder diese sogar übertreffen können.Entwicklung und Erfolg von Expertensystemen führten zu einem standardisierten Prozess der Wissensdarstellung und zu Ontologien. Dies vereinfachte die Entwicklung von Expertensystemen in neuen, unerforschten Themengebieten erheblich.~\cite[S. 257]{russel}
 
 \section{Komponenten}
 \label{sec:experten_systeme_komponenten}
-Um ein Expertensystem aufbauen zu können, muss zuerst einmal das Wissen über einen Problembereich formalisiert werden. Die dazu benötigten Komponenten sind:
+Um ein Expertensystem aufbauen zu können, muss zuerst das Wissen über einen Problembereich formalisiert werden.
+
+Die dazu benötigten Komponenten sind:
 \begin{itemize}
     \item Eine Wissensdatenbank, welche die Fakten des Problembereiches enthält
     \item Eine formale Sprache zur Wissensrepräsentation
-    \item Einen Verarbeitungsmechanismus zum automatischen Ziehen von Schlüssen
+    \item Ein Verarbeitungsmechanismus zum automatischen Ziehen von Schlüssen
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -22,22 +24,25 @@ Um ein Expertensystem aufbauen zu können, muss zuerst einmal das Wissen über e
 
 \section{Problemlösung}
 \label{sec:experten_systeme_problemloesung}
-Um ein Problem zu lösen, wird typischerweise in den folgenden Schritten vorgegangen:
+Bei der Problemlösung, wird typischerweise in folgenden Schritten vorgegangen:
 \begin{itemize}
     \item Charakterisierung der Problemdomäne
     \item Symbolische Repräsentation der Objekte
     \item Eingabe des Wissens in den Computer
     \item Stellen von Fragen
-    \item Interpretieren der Antworten
+    \item Interpretation der Antworten
 \end{itemize}
 
-Für die symbolische Repräsentation der Objekte ist es notwendig eine geeignete Sprache zu wählen. Dies können beispielsweise mathematische Relationen, Logik oder auch eine Programmiersprache sein. In der Informatik wird üblicherweise das Wissen über ein Problem direkt mittels Lösungsalgorithmen programmiert, bei der künstlichen Intelligenz jedoch, wird das Wissen getrennt von der Verarbeitungskomponente dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt werden kann, die Verarbeitungskomponente jedoch bestehen bleibt. Ein Programm kann somit also für unterschiedliche Anwendungen verwendet werden. (vgl.~\cite[S. 28 - 30]{laemmel})
+Für die symbolische Repräsentation der Objekte ist es notwendig, eine geeignete Sprache zu wählen. Diese kann beispielsweise aus mathematischen Relationen oder Logik bestehen, oder eine Programmiersprache selbst sein.
 
-Eine Problemlösung geht immer von dem vorhandenen, expliziten Wissen --- z.B. in Form von Fakten --- aus. Aus dem expliziten Wissen kann implizites Wissen gewonnen, es können also Aussagen impliziert werden. Die Aufgabe der Verarbeitungskomponente ist es nun, das implizite Wissen abzuleiten. (vgl.~\cite[S. 30 - 31]{laemmel}) Dabei muss die Sprache zur Wissensrepräsentation sowie die Verarbeitungskomponente gewissen Kriterien genügen, Details siehe~\cite[S. 31]{laemmel}.
+In der Informatik wird das Wissen über ein Problem üblicherweise direkt mittels Lösungsalgorithmen programmiert. Bei der künstlichen Intelligenz hingegen, wird das Wissen von der Verarbeitungskomponente getrennt dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt, die Verarbeitungskomponente jedoch bestehen bleiben kann. Ein Programm in Form eines Expertensystems kann somit also für unterschiedliche Anwendungen verwendet werden. (vgl.~\cite[S. 28 - 30]{laemmel})
+
+Eine Problemlösung geht immer von dem vorhandenen, expliziten Wissen aus, z.B. in Form von Fakten.\\
+Aus dem expliziten kann implizites Wissen gewonnen werden, es können damit Aussagen impliziert werden. Die Aufgabe der Verarbeitungskomponente besteht darin, das implizite Wissen abzuleiten. (vgl.~\cite[S. 30 - 31]{laemmel}) Die Sprache der Wissensrepräsentation und die zugehörige Verarbeitungskomponente müssen gewissen Kriterien erfüllen, Details siehe~\cite[S. 31]{laemmel}.
 
 \section{Wissensarten}
 \label{sec:experten_systeme_wissensarten}
-Der Mensch nutzt mehrere Arten um Wissen abzubilden:
+Um Wissen abzubilden, benützt der Mensch mehrere Arten:
 \begin{itemize}
     \item Relationales Wissen
     \item Vererbung von Eigenschaften
@@ -48,7 +53,7 @@ Der Mensch nutzt mehrere Arten um Wissen abzubilden:
 
 \subsection{Relationales Wissen}
 \label{subsec:relationales_wissen}
-Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten, aber keine logischen Abhängigkeiten abgebildet werden können.
+Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten abgebildet werden können, nicht aber logischen Abhängigkeiten.
 
 \begin{lstlisting}[caption={Einfaches Beispiel von relationalem Wissen.}]
      Abenteuerreisen sind Reisen.
@@ -58,7 +63,7 @@ Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein N
 
 \subsection{Vererbung von Eigenschaften}
 \label{subsec:vererbung_eigenschaft}
-Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Oberklasse an eine Unterklasse weitervererbt werden.
+Bei der Vererbung von Eigenschaften geht es um die Weitergabe von Eigenschaften einer Oberklasse an eine Unterklasse.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/experten_systeme_vererbung.png}}}
@@ -72,12 +77,13 @@ Bei der Vererbung von Eigenschaften geht es darum, dass Eigenschaften einer Ober
     \vspace{-14pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Eine Reise hat zum Beispiel einen Reiseführer. Definiert man nun, dass eine Abenteuerreise auch eine Reise ist (was für den Menschen bereits klar ist, da das Wort ja bereits Reise beinhaltet), ist es für den Menschen intuitiv klar, dass eine Abenteuerreise auch einen Reiseführer haben kann. Die Unterklasse Abenteuerreise erbt also die Eigenschaft der Möglichkeit eines Reiseführers von deren Oberklasse, der Reise.\\
+Eine Reise hat einen Reiseführer. Definiert man eine Abenteuer-Reise ist auch eine Reise, ist es für den Menschen klar, dass eine Abenteuer-Reise auch einen Reiseführer haben kann. Beim Computer hingegen, muss die Unterklasse ``Abenteuer-Reise'' zuerst die Eigenschaft der Möglichkeit eines Reiseführers von der Oberklasse erben.\\
+
 \noindent\rule[1ex]{\textwidth}{1pt}
 
 \subsection{Prozedurales Wissen}
 \label{subsec:prozedurales_wissen}
-Bei prozeduralem Wissen handelt es sich um Wissen, welches in bestimmten Situationen bestimmte Aktionen vorschreibt. Dies kann auch als Folge von Aktionen verstanden werden. So zum Beispiel das Aufschliessen einer Türe: Man steckt den (passenden) Schlüssel in da Schlüsselloch, dreht diesen, entsichert das Schloss, drückt die Türfalle nach unten und öffent schliesslich die Türe.
+Bei prozeduralem Wissen handelt es sich um ein Wissen, welches in bestimmten Situationen bestimmte Aktionen vorschreibt. Man kann dies auch als Folge von Aktionen auffassen. So zum Beispiel das Aufschliessen einer Türe: Man steckt den (passenden) Schlüssel in das Schlüsselloch, dreht diesen, entsichert damit das Schloss, drückt die Türfalle nach unten und öffnet die Türe.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.34}[0.34]{\includegraphics{bilder/experten_systeme_prozedurales_wissen.png}}}
@@ -97,7 +103,10 @@ Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Au
     \vspace{-14pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Möchte man zum Beispiel abbilden, dass ein Ausflug teambildend ist, so könnte man dies tun, indem man sagt, dass dieser für eine gewisse Anzahl Teilnehmer geeignet sein muss und/oder teambildende Eigenschaften hat. Oder, formal ausgedrückt: $A \vee B \rightarrow C$. Wobei $A$ die Tatsache darstellt, dass der Ausflug für eine gewisse Anzahl an Teilnehmern geeignet ist und $B$ die Tatsache, dass der Ausflug teambildend ist.\\
+Möchte man darstellen, dass ein Ausflug teambildend ist, müssen folgende Voraussetzungen erfüllt sein: Für eine gewisse Anzahl Teilnehmer geeignet und gute Zusammenarbeit fördernd.
+
+Formal ausgedrückt: $A \wedge B \rightarrow C$. Hierbei beudetet $A$: geeignet für eine gewisse Anzahl Teilnehmer und $B$: Förderung der Zusammenarbeit.\\
+
 \noindent\rule[1ex]{\textwidth}{1pt}
 
 \section{Wissensrepräsentationsformalismen}
@@ -114,4 +123,4 @@ Formalisiert man die unter~\ref{itm:wissensarten} genannten Arten des Wissens, s
     \item Regelbasierte Sprachen
 \end{itemize}
 
-Wie unter~\ref{sec:experten_systeme_komponenten} beschrieben, bildet die Basis eines Expertensystemes unter Anderem eine Wissensdatenbank. Um solch eine Wissensdatenbank grafisch darzustellen und den Aufbau zu erleichtern, eignen sich Graphen besonders gut. Diese werden im nachfolgenden Kapitel ---~\ref{chap:graph_data}~\nameref{chap:graph_data} --- näher beschreiben.
+Wie unter~\ref{sec:experten_systeme_komponenten} beschrieben, bildet die Basis eines Expertensystemes unter anderem eine Wissensdatenbank. Zur Erleichterung des Aufbaus einer Wissendatenbank und zur grafischen Darstellung, eignen sich Graphen sehr gut. Diese werden im nachfolgenden Kapitel beschreiben.

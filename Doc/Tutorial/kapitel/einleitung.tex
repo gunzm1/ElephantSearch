@@ -1,23 +1,21 @@
 \chapter{Einleitung}
 \label{chap:einleitung}
-Wir kennen alle den klassischen Ansatz der Wissensabbildung, zum Beispiel in Form von UML, welchem die relationale Datenspeicherung zugrunde liegt. Häufig geschieht dies in enger Verbindung mit der objektorientierten Programmierung. Experten aus einer Fachrichtung sind fähig diese Daten zu interpretieren und daraus Schlüsse zu ziehen. Im Zeitalter der Automatisierung reicht dies aber nicht mehr aus, man möchte das Wissen auch ohne die Hilfe von Experten zugänglich machen. Es ist nicht möglich Fragestellungen zu beantworten, welche über reine Relationsverknüpfungen hinausgehen.
+Die relationale Datenspeicherung ist ein klassicher Ansatz zur Wissensabbildung. Häufig wird die relationale Datenspeicherung in der objektorientierten Programmierung verwendet. Experten aus einer Fachrichtung sind dadurch fähig, die Daten zu interpretieren und Schlüsse zu ziehen. In der heutigen Zeit möchte man Zugang zum Wissen auch ohne die Hilfe von Experten haben. 
 
+Daher möchten wir eine neue, eher wenig bekannte Art der Wissensabbildung vorstellen, nämlich die Wissensmodellierung (Knowledge Engineering) bzw. Expertensysteme. Diese berücksichtigt das Abbilden von Objekteigenschaften und -Verhalten und kann mithilfe von Schlussfolgerungen die Rolle des Experten einnehmen. Sie ist auch Teilgebiet der künstlichen Intelligenz.
 
-Mit dieser Technik sind Objekteigenschaften und -Verhalten aber schwer abbildbar. Was aber, wenn man interessantere Fragestellungen als reine Relationen beantworten möchte? Dies ist mit dem genannten Ansatz sehr schwer möglich.
+Grundsätzlich geht es beim knowledge engineering darum, nicht nur Informationen, sondern auch Wissen abzubilden. Es handelt sich um eine Wissensrepräsentation, welche zusätzliche Verarbeitungsmöglichkeiten aufweist zum Beispiel logisches Schlussfolgern oder Beweisführungen. Ein wichtiger Aspekt ist die Darstellung in einer von Maschinen lesbaren Form.~\cite{ISpekOntoGeschichte}
 
-Aus diesem Grund möchten wir eine neue, eher unbekanntere Art der Wissensabbildung vorstellen, welche das Abbilden von Objekteigenschaften und -Verhalten berücksichtig und mithilfe von Schlussfolgerungen die Rolle des Experten einnehmen kann. Es handelt sich dabei um die Wissensmodellierung (Knowledge Engineering) beziehungsweise Expertensysteme, welche Teilgebiete der künstlichen Intelligenz sind. Grundsätzlich geht es bei diesem Konzept darum, nicht nur Informationen, sondern auch Wissen abzubilden. Es handelt sich also um eine Wissensrepräsentation, welche zusätzliche Verarbeitungsmöglichkeiten aufweist. So zum Beispiel das logische Schlussfolgern oder Beweisführungen. Dabei ist ein sehr wichtiger Aspekt, das dies in einer Form dargestellt werden muss, welche von  Maschinen lesbar ist.\cite{ISpekOntoGeschichte}
+Ein wichtiges Einsatzgebiet dieser Form der Wissensabbildung ist das semantische Web. Auch bei diesem geht es in erster Linie darum, Informationen mit ihrer Bedeutung (der sogenannten Semantik) zu verbinden.
 
-Ein wichtiges Einsatzgebiet dieser Form von Wissensabbildung ist das semantische Web. Auch dort geht es in erster Linie darum Informationen mit ihrer Bedeutung, der sogenannten Semantik, zu versehen.
-
-
-Im folgenden Dokument zeigen wir auf, wie Wissen in einem wissensbasierten System abgebildet und genutzt werden kann. Anhand des Beispiels eines Reiseplaners wollen wir veranschaulichen, welche Schritte eine solche Wissensmodellierung enthält. Ausserdem zeigen wir formale Aspekte, wie zum Beispiel verschiedene Sprachen zur Wissensmodellierung, auf. Nicht zu vernachlässigen sind dabei auch praktische Tipps zur direkten Umsetzung, welche wir in eigener Erfahrung erlernt haben.
+Das nachfolgenden Dokument zeigt, wie Wissen in einem wissensbasierten System abgebildet und genutzt werden kann. Anhand unserers Beispieles eines Reiseplaners wollen wir zeigen, welche Schritte eine Wissensmodellierung beinhaltet. Weiter zeigen wir formale Aspekte für die Wissensmodellierung auf, wie zum Beispiel verschiedene Sprachen. Aufgrund unserer Erfahrung geben wir praktische Tipps für die direkte Umsetzung.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[2]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Als Hilfe führen wir die Eule ein. Das Auftreten dieser ist stets ein Anhaltspunkt, dass im danebenstehenden Abschnitt ein praktischer Hinweis ist.
+Als Symbol führen wir die Eule ein. Im jeweils danebenstehenden Abschnitt sind praktische Hinweise zur aktuellen Thematik aufgeführt.
 
 \vspace{30pt}
 
@@ -25,8 +23,7 @@ Als Hilfe führen wir die Eule ein. Das Auftreten dieser ist stets ein Anhaltspu
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Um praktische Beispiele zu geben, etwa wie ein beschriebenes Kapitel effektiv in der Praxis umgesetzt werden kann, führen wir den Elefanten ein.
-Dessen Auftreten, welches immer am Ende eines Kapitels stattfindet, bedeutet, dass im danebenstehenden Abschnitt ein praktisches Beispiel des zuvor beschriebnen Inhaltes ist.
+Das Symbol Elefant dient um Beispiele zu geben, wie ein Thema in der Praxis umgesetzt werden kann. Das Erscheinen dieses Symboles (am Ende eines Kapitels) zeigt das entsprechende Beispiel im nebenstehenden Text.\\
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
@@ -34,15 +31,13 @@ Dessen Auftreten, welches immer am Ende eines Kapitels stattfindet, bedeutet, da
 
 \section{Wissen}
 \label{chap:einleitung_wissen}
+Ein knowledge engineer betreibt Wissenakquise mithilfe von Experten aus der entsprechenden Fachwelt. Dafür müssen Wissensbestände eines Sachgebietes aufgebaut werden. \\
+Die Kommunikation von Wissensbeständen ist ebenso wichtig wie ihr Vorhandensein. In der Fachwelt hängt die Wissenskommunikation sehr von der Anerkennung der Wissensmodellierung ab.
 
+Je nach Situation ist eine andere Form der Wissensabbildung geeignet. Wenn man sich für eine bestimmte Wissensabbildung entschieden hat, muss diese eine spezielle Aufgabe erfüllen. Hierbei muss der Nutzen der Abbildung im Mittelpunkt stehen.
 
-Knowledge Engineering wird durch Knowledge Engineers betrieben. Dieser betreibt, mithilfe von Experten aus der jeweiligen Fachwelt, Wissensakquise. Dazu werden Wissensbestände eines Sachgebietes aufgebaut. \\
-Genau so wichtig wie das Vorhandensein der Wissensbestände ist aber, dass Wissen auch kommuniziert wird. Die Wissenkommunikation hängt stark mit der Anerkennung der Wissensmodellierung in der Fachwelt zusammen. Ohne diese ist eine solche sinnlos.
+Eine Information kann für eine bestimmte Problemstellung unumgänglich, für eine andere aber nutzlos sein. Sucht jemand bei der Planung einer Reise zum Beispiel ein familienfreundliches Hotel zur Übernachtung, so ist die Historie der Besitzer dabei nicht relevant. Die Information, dass ein Hotel familienfreundlich ist, jedoch schon.
 
-Je Situation, für welche das Wissen benötigt wird, ist eine andere Form der Wissensabbildung geeignet. Auch wenn man sich für eine Wissensmodellierung entschieden hat, muss diese eine spezielle Aufgabe unterstützten. Dabei ist es wichtig, dass der Nutzen der Abbildung im Mittelpunkt steht. Eine Information kann für eine Problemstellung unumgänglich, für eine andere aber total nutzlos sein.
+Es gibt nicht ``das richtige'' Vorgehen beim Sammeln von Wissen. Es ist sinnvoll das Wissen von groben Begriffen bis hin zu detaillierten Informationen einzuteilen.
 
-Sucht jemand bei der Planung einer Reise zum Beispiel ein familienfreundliches Hotel zur übernachtung, so ist dessen historischer Besitzer dabei eher nicht relevant. Der Fakt, dass ein Hotel familienfreundlich ist, jedoch schon.
-
-Es gibt nicht ``das Richtige'' Vorgehen beim Sammeln von Wissen. Grundsätzlich ist es aber sicher sinnvoll, das Wissen von den groben Begriffen bis hin zu detaillierten Informationen zu sammeln.
-
-Das nachfolgende Kapitel zeigt einen Formalismums zum Sammeln und Nutzen von Wissen in Form von Expertensystemen auf.
+Das nachfolgende Kapitel zeigt einen der vielen Formalismen zum Sammeln und Nutzen von Wissen in Form eines Expertensystemes auf.

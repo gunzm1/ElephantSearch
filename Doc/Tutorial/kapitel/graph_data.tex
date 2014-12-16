@@ -1,15 +1,15 @@
 \chapter{Graphrepräsentationen}
 \label{chap:graph_data}
 
-Das nachfolgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{linkeddatatools}.
+Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite{linkeddatatools}.
 
-Eine der Grundlagen der semantischen Daten, sowie speziell von semantischen Netzen, bilden Graphen. Man spricht in diesem Zusammenhang auch von Graphdatenbanken.
+Graphen bilden eine der Grundlagen für semantische Daten, besonders für semantische Netze. In diesem Zusammenhang spricht man auch von Graphdatenbanken.
 
-Der Unterschied gegenüber den anonsten gängigen Datenbanken, wie den relationalen oder hierarchischen Datenbanken, liegt vorallem darin, dass die Objekte beliebig verknüpft sein können.
+Der Unterschied gegenüber den gängigen Datenbanken, wie zum Beispiel den relationalen oder hierarchischen Datenbanken, liegt vorallem darin, dass Objekte beliebig verknüpft werden können.
 
 Eine Graphdatenbank ist analog einem Graphen aufgebaut. Sie nutzt also dessen Struktur, bestehend aus Knoten, Kanten und Eigenschaften, um Daten bzw. Wissen darzustellen und abzulegen. Eine Graphdatenbank ist also ein Graph mit zyklenfreier Nachbarschaft. Dies bedeudet, dass jedes Element einen direkten Verweis auf seine benachbarten Elemente enthält und somit keine Abfragen auf dessen Relationen notwendig sind.
 
-Die Knoten einer Graphdatenbank repräsentieren Entitäten, Eigenschaften sind auf Knoten bezogene Informationen. Kanten verbinden Knoten mit Knoten oder Knoten mit Eigenschaften und stellen eine Beziehung zwischen diesen dar.
+Die Knoten einer Graphdatenbank repräsentieren Entitäten. Eigenschaften sind auf Knoten bezogene Informationen. Kanten verbinden Knoten mit Knoten oder Knoten mit Eigenschaften und stellen die Beziehung zwischen diesen dar.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/datenbanktypen.png}}}
@@ -27,7 +27,7 @@ Gegeben seien die folgenden Aussagen über Hotels:
     Wellnesshotels sind mit Familienhotels verwandt.
 \end{lstlisting}
 
-Verwendet man nun diese Aussagen über Hotels um daraus eine Graphdatenbank zu erstellen, so ergibt sich folgende Graphdatenbank:
+Verwendet man diese Hotelangaben um daraus eine Graphdatenbank zu erstellen, so ergibt sich folgende Graphdatenbank:
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/hotels_graph.png}}}
 \caption{Aussagen über Hotels als Graphdatenbank.\label{fig:hotels_graphdatenbank}\protect\footnotemark}
@@ -39,30 +39,34 @@ In der Graphdatenbank existieren also zwei Objekte, \textit{``Objekt1''} und \te
 \newpage
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}[5]{l}{0.1\textwidth}
+\begin{wrapfigure}[6]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
 \label{elephant_graph_data}
-Möchte man nun eine Graphdatenbank als Grundlage für eine semantische Datenbank aufbauen, so empfiehlt es sich, zuerst die wichtigsten Klassen und Individuen  zu identifizieren. Es lohnt sich sicherlich auch, wenn man beim Aufbau schrittweise vorgeht.
+Möchte man eine Graphdatenbank als Grundlage für eine semantische Datenbank aufbauen, so empfiehlt es sich, zuerst die wichtigsten Klassen und Individuen zu definieren. Es ist lohnen schon zu Beginn des Aufbaus schrittweise vorzugehen.
 
-Nimmt man das Beispiel des Reispeplaners, macht es sicherlich Sinn, wenn man nicht von Anfang an versucht eine komplette Reise abzubilden, sondern zuerst mit der Abbildung lokaler Ausflüge beginnt. Diese können später mittels Logik zu einer Reise kombiniert werden.
+Nimmt man das Beispiel des Reispeplaners, ist es sinnvoll nicht von Anfang an eine komplette Reise abzubilden, sodern zuerst mit der Abbildung lokaler Ausflüge zu beginnen. Später können diese mittels Logik zu einer Reise kombiniert werden.
 
-Nach einiger Überlegung ergeben sich die Klassen \textit{Ausflug}, \textit{Land}, \textit{Region} und \textit{Ort}. Doch wie gelangt man zu diesen? Unserer Erfahrung nach lohnt es sich, wenn man konkrete Fragen stellt, welche die semantische Datenbank schlussendlich beantworten können soll. Es ist auch hilfreich, sich praktische Beispiele der Anwendung solch einer Datenbank zu überlegen.
+Nach Überlegung ergeben sich die Klassen \textit{Ausflug}, \textit{Land}, \textit{Region} und \textit{Ort}. Doch wie gelangt man zu diesen Klassen? Nach unserer Erfahrung lohnt es sich, konkrete Fragen zu stellen, welche die semantische Datenbank schliesslich beantworten können sollte. Es ist zudem hilfreich, sich praktische Beispiele von der Anwendung solch einer Datenbank zu überlegen.
 
-So könnte eine konkrete Anwendung zum Beispiel eine Familie sein, welche einen eintägigen Ausflug planen möchte und deren Kinder bereits in einem Alter sind, in welchem sie Beschäftigung benötigen. Dies führt schlussendlich zu den Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}. Dies sind jedoch reine Überlegungen für die spätere Entwicklung. Eine Graphdatenbank in diesem Sinne nicht ohne Weiteres komplexe Anfragen im Sinne der genannten Kriterien beantworten. Man könnte dies statisch modellieren, in dem man den Objekten die Kriterien zuweist, dies würden jedoch den Vorteil einer semantischen Datebank, dass Schlüsse aufgrund von komplexen Zusammenhängen gewonnen werden können, zu Nichte machen.
+So könnte eine konkrete Anwendung eine Familie sein, welche einen eintägigen Ausflug planen möchte und deren Kinder bereits in einem Alter sind, in dem sie Beschäftigung benötigen. Dies führt schliesslich zu den Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}. Dies sind ausschliesslich Überlegungen für die spätere Entwicklung des Modelles. Eine Graphdatenbank kann nicht ohne Weiteres komplexe Anfragen im Sinne der genannten Kriterien oder Inhalte beantworten. Die Zusammenhänge könnte man durch Zuweisung von Kriterien an die Objekte statisch modellieren. Dies würde jedoch den Vorteil einer semantischen Datebank zu Nichte machen, nämlich die Gewinnung von Schlüssen aus komplexen Zusammenhängen.
 
-Hat man die Klassen und die Kriterien identifiziert, fällt auf, dass so noch keine konkreten Anfragen beantwortet werden können. Es fehlen die Individuen und die Relationen. Es wird daher ein Individuum für einen Ausflug, \textit{Seilpark Balmberg}, erstellt. Nun erscheint es logisch, dass ein Land in Regionen unterteilt ist und diese wiederum Orte beinhalten. Dies kann über die Relationen \textit{hatRegion} und \textit{hatOrt} abgebildet werden.
+Hat man Klassen und Kriterien definiert, fällt auf, dass damit noch keine konkreten Anfragen beantwortet werden können. Es fehlen die Individuen und die Relationen.\\
+Daher wird für einen Ausflug das ``Individuum \textit{Seilpark Balmberg''} erstellt. Der Seilpark befindet sich in der Ortschaft \textit{Balmberg}, welche in der Region \textit{Solothurn} und damit in der \textit{Schweiz} liegt.\\
+Damit erscheint es logisch, wenn ein Land in Regionen unterteilt ist, diese wiederum Orte beinhalten. Daher werden für Länder, Regionen und Orte ebenso Individuen erstellt.
+
+Dies kann über die Relationen \textit{hatRegion} und \textit{hatOrt} abgebildet werden.
 
 \begin{figure}[H]
-\centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/graphen_beispiel_1.png}}}
+\centering \rotatebox{0}{\scalebox{0.4}[0.4]{\includegraphics{bilder/graphen_beispiel_1.png}}}
 \caption{Beispiel einer Graphdatenbank basierend auf dem Beispiel eines Reiseplaners\label{fig:protegebeispiel}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd\footnote{\url{http://www.yworks.com/en/products/yfiles/yed/}}}
 
-Wie in der Grafik ersichtlich ist, hat jedoch das Individuum \textit{Seilpark Balmberg} momentan keine Relation/en zu anderen Individuuen. Zum jetzigen Zeitpunkt ist nicht klar, wie dieses so verknüpft werden kann, dass ein Mehrwert mi Sinn von Abfragemöglichkeiten generiert wird.
+Wie aus der Grafik ersichtlich, hat das Individuum \textit{Seilpark Balmberg} noch keine Relationen zu anderen Individuuen. Daher ist zum jetzigen Zeitpunkt die Verknüpfung für Mehrwert bei Abfragen unklar.
 
 \vspace{0.1pt}
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-Da eine Graphdatenbank eher eine hohe Abstraktionsebene darstellt, werden Wissensrepräsentationsformen sowie die Anwendung dieser im folgenden Kapitel ---~\ref{chap:wissensrepFormen}~\nameref{chap:wissensrepFormen}--- genauer erläutert.
+Da eine Graphdatenbank eine hohe Abstraktionsebene darstellt, werden Wissensrepräsentationsformen sowie ihre Anwendung im folgenden Kapitel genauer erläutert.
