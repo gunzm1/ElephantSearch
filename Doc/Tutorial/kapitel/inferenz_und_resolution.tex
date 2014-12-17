@@ -39,14 +39,19 @@ Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann
 \section{Praktische Umsetzung}
 \label{sec:inferenz_praktisch}
 
-Inferenz im semantischen Netz kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entiäten beschreiben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen generieren. Wie die neuen Beziehungen umgesetzt werden --- durch Hinzufügen zu den Daten oder durch eine einfach Rückgabe dieser --- ist eine Frage der Implementation (vgl.~\cite[Abschnitt 1]{w3inference}). Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet} Reasoners der Firma Clark \& Parsia, findet sich im nächsten Kapitel.
+Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen ableiten. Wie die neuen Beziehungen generiert werden ist eine Frage der Implementation, so z.B. durch Hinzufügen zu den Daten oder durch eine einfache Rückgabe dieser (vgl.~\cite[Abschnitt 1]{w3inference}).
 
-\subsection{Beispiel Reasoner Pellet}
+Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es implizites Wissens aus explizitem Wissen, in Form einer Ontologie, zu erschliessen.
+
+Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia, findet sich im nächsten Kapitel.
+
+\subsection{Pellet}
 \label{subsec:inferenz_pellet}
+Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. Pellet wurde von Grund auf für die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}} Sprache entwickelt wurde. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
 
-Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt es sich um eine Art ``Verstehen'' durch Maschinen. Man möchte also implizite Fakten finden, welche durch explizite Fakten in einer Ontologie definiert sind. 
+Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da dieses nicht entscheidbar ist, daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
 
-Bei Pellet handelt es sich um einen Reasoner, für die Sprache OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}}, welche wiederum eine Teilsprache von OWL darstellt. Eine komplette Unterstützung des OWL full Profils ist so nicht möglich, da dieses nicht entscheidbar ist, daher beschränkt sich die Umsetzung auf OWL DL\@. Pellet setzt dabei komplett die Spezifikation der WebOnt Arbeitsgruppe um. OWL-DL ist eine syntaktische Variante der Beschreibungslogik SHOIN (D).
+% Pellet setzt dabei komplett die Spezifikation der WebOnt-Arbeitsgruppe um. OWL-DL ist eine Umsetzung der Beschreibungslogik $SHOIN (D)$.
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/pellet_komponenten.png}}}
@@ -54,92 +59,64 @@ Bei Pellet handelt es sich um einen Reasoner, für die Sprache OWL-DL~\footnote{
 \end{figure}
 \footnotetext{\cite[S. 6]{sirin:pellet05}}
 
+Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente des Systems, welche die Wissensbasis auf deren Konsistenz prüft. Genaueres dazu wird im nachfolgenden Abschnitt beschrieben.
+
+Wird eine Ontologie mittels Parser geladen, wird diese auf Gültigkeit geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden normalisiert, absorbiert und internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
+
+
+\subsubsection{Laden und Parsen der Daten}
+\label{ssubsection:inferenz_pellet_parsing}
+Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser, ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen um Anfragen der Werkzeuge zu beantworten zur Verfügung.
+
+\subsubsection{Tableaux-Reasoner}
+\label{ssubsection:inferenz_pellet_tableaux}
+Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet. 
+
+Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. 
+
+Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+
+Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
+
+Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
+
+\subsubsection{Datentypenprüfung}
+\label{ssubsection:inferenz_pellet_datatypes}
+
+
 \subsubsection{Beschreibungslogik}
 \label{subsubsection:beschreibungslogik}
 Beschreibungslogiken sind Formalismen um Wissen darzustellen, dabei sind sie eine Teilmenge der Prädikatenlogik. Sie stellen den Kern von Wissensrepräsentationssystemen dar, in dem sie eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung bieten (vgl.~\cite{dl:baader2003}).
 
 Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellen, besteht aus einem Schema (Tbox, Regeln), sowie aus den Daten (Abox, Fakten).
 
-Die Semantik von Beschreibungslogiken wird durch Interpretationen definiert:
-
-\noindent\hspace*{16mm} $ I = (\Delta^I, \cdot^I) $
-
-Dabei ist:
-\begin{itemize}
-\item $ \Delta^I $
-
-    Die (Wissens-) Domäne (eine nicht leere Menge).
-
-\item $ \cdot^I $
-
-    Eine Funktion zur Interpretation von:
-    \begin{itemize}
-        \item Konzepten (Klassen, A)
-
-            Wobei $ A^I $ eine Teilmenge von $ \Delta^I $ ist.
-        \item Rollen (Eigenschaften, R)
-
-            Wobei $ R^I $ eine binäre Relation auf $ \Delta^I $ ist.
-        \item Individuen (i)
-
-            Wobei $ i^I $ Element von $ \Delta^I $ ist.
-    \end{itemize}
-\end{itemize}
-
-Die Funktion zur (Wissens-) Interpretation $ \cdot^I $ definiert, wie atomare Konzpte, Eigenschaften und Individuen zu interpretieren sind. Eine Interpretation, welche allen Axiomen einer Ontologie in Beschreibungslogik genügt ist ein Modell der Ontologie.
-
-Eine Ontologie in Beschreibungslogik ist eine Menge von Termen und deren Relationen. Die Interpretation dieser Ontologie stellt als ein Modell dar, welches die Ontologie abbildet.
-
-Die Pellet zu Grunde liegende Beschreibungslogik SHOIN (D) ist ein Kürzel und steht für:
-\begin{itemize}
-\item \textit{S}
-
-ALC (Attributive Concept Language with Complements) mit einer transitiven Rolle. Bei ALC handelt es sich um die kleinste Beschreibungslogik, welche aussagenlogisch geschlossen ist (d.h.\ sie bietet, entweder implizit oder explizit, Konjunktion, Union und Negation von Klassen (-beschreibungen)). Eine Rolle entspricht einer Eigenschaft bzw.\ einem Prädikat in der Prädikatenlogik erster Stufe.
-
-\item \textit{H}
-
-    Rollenhierarchie (Sub-Eigenschaften), z.B. rdfs:subPropertyOf.
-
-\item \textit{O}
-
-    Nominal, z.B. Wochenden = {Samstag, Sonntag}.
-
-
-\item \textit{I}
-
-    Inverse Rolle (inverse Eigenschaft bzw.\ Prädikt).
-
-\item \textit{N}
-
-    Nummerische Einschränkung, z.B. >= hatKind 1.
-
-\item \textit{(D)}
-
-    Nutzung von Wertebereichen, Werten oder Datentypen.
-\end{itemize}
-
-(vgl.~\cite{dl:baader2003})
+Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
 
 \subsubsection{Folgerung}
 \label{subsubsection:folgerung}
-Die W3C Spezifikation betreffend der Umsetzung eines Reasoners definiert zwei Arten von OWL Dokumentprüfungen: Prüfung auf korrekte Syntax sowie Prüfung der Konsistenz. Bei der Konsistenzprüfung geht es darum festzustellen, ob eine gegebene Eingabe anhand einer definierten Spezifikation syntaktisch korrekt ist. Jedoch macht eine reine Umsetzung der genannten Prüfungen wenig Sinn. Man möchte ja eine Ontologie möglichst effektiv nutzen können, zum Beispiel um indirektes Wissen abzuleiten.  Da OWL DL eine syntaktische Variante der Beschreibungslogik SHOIN (D) darstellt, liegt es nahe, mittels einem Reasoner folgende Methoden zur Inferenz zur Verfügung zu stellen:
+Die W3C-Spezifikation zu der Umsetzung eines Reasoners sieht zwei Arten von OWL-Dokumentprüfungen vor: Prüfung auf korrekte Syntax, sowie Prüfung der Konsistenz.
+
+Bei der Konsistenzprüfung geht es darum festzustellen, ob eine gegebene Eingabe anhand einer definierten Spezifikation syntaktisch korrekt ist. Jedoch macht eine ausschliessliche Umsetzung der genannten Prüfungen wenig Sinn. Man möchte eine Ontologie möglichst effektiv nutzen können, zum Beispiel um indirektes Wissen zu gewinnen.  Da OWL-DL eine Umsetzung der Beschreibungslogik $SHOIN (D)$ darstellt, liegt es nahe, mittels einem Reasoner folgende Methoden zur Inferenz zur Verfügung zu stellen:
 \begin{itemize}
-\item \textit{Konsistenzprüfung}
 
-Stellt sicher, dass sich in der Ontologie keine gegenstätzlichen Fakten befinden. Konkret bedeutet dies anhand der OWL Semantik~\footnote{http://www.w3.org/TR/owl-semantics/}, dass die Konsistenz einer ABox in Bezug auf eine TBox geprüft wird.
-\item \textit{Konzept-Erfüllbarkeit}
+    \item \textbf{Konsistenzprüfung}
+    Stellt sicher, dass sich in der Ontologie keine gegensätzlichen Fakten befinden. Konkret bedeutet dies, dass die Daten (Abox, Fakten) anhand des Schemas (Tbox, Regeln) auf Konsistenz geprüft werden.
 
-Stellt sicher, dass Objekte einer Klasse instanziert werden können. Ist dies nicht der Fall, so ist die Ontologie inkonsistent.
-\item \textit{Klassifikation}
+    \item \textbf{Konzept-Erfüllbarkeit}
+    Stellt sicher, dass Objekte einer Klasse instanziert werden können. Ist eine Klasse unvollständig definiert, so können auch keine Instanzen davon erzeugt werden und die Ontologie wird inkonsistent.
 
-Berechnet die Relationen zwischen Subklassen, stellt also die Klassenhierarchie auf. Dies ermöglicht das Abfragen der Ontologie.
-\item \textit{Gewinnung von Erkenntnissen}
+    \item \textbf{Klassifikation}
+    Berechnet die Relationen zwischen Subklassen, stellt also die Klassenhierarchie auf.
 
-Findet die spezifischste Klasse eines Objektes, leitet also den direkten Typ jedes Objektes ab.
+    \item \textbf{Gewinnung von Erkenntnissen}
+    Leitet den direkten Typen einer Klasseninstanz ab.
+
 \end{itemize}
 (vgl. \citet[S. 1 und 2]{sirin:pellet05})
 
-Bei der eigentliche Komponente, welche in Pellet zur Folgerung eingesetzt wird, handelt es sich um den Tableau Reasoner, welcher den gleichnamigen Algorithmus verwendet. Dieser reduziert ein Problem der Folgerung auf ein Problem der Konzept-Erfüllbarkeit, wobei er eine Interpretation sucht, welche die gefragten Konzepte erfüllt. Solch eine Interpretation wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.
+\subsubsection{Tableau-Algorithmus}
+\label{ssubsec:infres_pellet_tableau}
+Bei der eigentliche Komponente welche in Pellet zur Folgerung eingesetzt wird, handelt es sich um einen Tableau-Reasoner, welcher den gleichnamigen Algorithmus verwendet. Dieser reduziert ein Problem der Folgerung auf ein Problem der Konzept-Erfüllbarkeit, wobei er eine Interpretation sucht, welche die gefragten Konzepte erfüllt. Solch eine Interpretation wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.
 
 Nachfolgend ein Beispiel, gegeben sei:
 $ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
