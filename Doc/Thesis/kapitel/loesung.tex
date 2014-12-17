@@ -47,27 +47,23 @@ Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränku
 
 \subsection{Technische Schwierigkeiten}
 \label{subsec:loesung_modellierung_technischeSchwierigkeiten}
-TODO: evt doch in kapitel Technologien verschieben?!\\
-Im Laufe der Modellierung sind die Autoren auf ein für sie unerklärliches Phänomen gestossen. So war es dem Reasoner in Stardog nicht möglich von einer DataProperty mit einem Wert auf die gleiche DataProperty zu schliessen. Konkret wollten die Autoren aussagen, dass ein Ausflug der eine Sauna bietet auch Wellness bietet. Diese Regel kann aber von Stardog nicht ausgewertet werden. Im Entwicklungstool Protégé wird die Schlussfolgerung aber richtig angezeigt. Nach längeren Recherchen entschieden die Autoren das es sich bei dieser Einschränkung wohl um einen technischen Fehler von Stardog handeln muss. Dies war doch sehr verwirrend, da beide Werkzeuge den gleichen Reasoner (Pellet) verwenden. Nach dem Buckreporing in der Stardogcommunity erhielten die Autoren die Information, dass es sich tatsächlich um einen Fehler im System handelt. Anscheinend wurde ein zu strenges Ausschlussverfahren in der Programlogik angewendet. Dieser soll aber im nächsten Release korrigiert werden. \\
-Also Work-Arount wurde die Modellierung von den Autoren so umgebaut, dass Wellness ein DataProperty vom Type Boolean ist. Da es sich so nicht mehr um die gleiche DataProperty handelt, funktioniert die angepasste Regel.
+Im Laufe der Modellierung sind die Autoren auf ein für sie unerklärliches Phänomen gestossen. So war es dem Reasoner in Stardog nicht möglich von einem DataProperty auf dasselbe DataProperty zu schliessen. Konkret wollten die Autoren aussagen, dass ein Ausflug, der eine Sauna bietet auch Wellness bietet. Diese Regel kann aber von Stardog nicht ausgewertet werden. In Protégé wird die Schlussfolgerung aber richtig angezeigt. Nach längeren Recherchen befanden die Autoren, dass es sich bei dieser Einschränkung wohl um einen technischen Fehler von Stardog handeln muss. Dagegen sprach allerdings, dass beide Werkzeuge den gleichen Reasoner (Pellet) verwenden. Nach dem Melden des Fehlers (Bugreporting) in der Diskussionsgruppe von Stardog, erhielten die Autoren die Information, dass es sich tatsächlich um einen Fehler des Systems handelt. Anscheinend wurde ein zu strenges Ausschlussverfahren in der Programmlogik angewendet um zirkuläre Referenzen zu vermeiden. Dies soll aber im nächsten Release korrigiert werden. \\
+Also Workround wurde die Modellierung von den Autoren so abgeändert, dass Wellness ein DataProperty vom Typ Boolean ist. Da es sich so nicht mehr um dasselbe DataProperty handelt, funktioniert die angepasste Regel.
 
-\subsection{Output}
-\label{subsec:loesung_modellierung_output}
-Ein Teil des Outputs der Modellierung sind die oben erwähnten Semantischen Netze. Diese wurden in drei Grafiken aufgeteilt. Auf der ersten Grafik wird die gesamte Region/Ort Problematik abgebildet. Auf je zwei weiteren Grafiken wurden die Details zu den Restaurants respektive Ausflügen dargestellt.
+\subsection{Ergebnis}
+\label{subsec:loesung_modellierung_ergebnis}
+Ein Teil des Ergebnisses der Modellierung sind die oben erwähnten semantischen Netze. Diese wurden in drei Grafiken aufgeteilt. Auf der ersten Grafik wird die gesamte Region/Ort-Thematik abgebildet. Auf zwei weiteren Grafiken wurden jeweils die Details zu den Restaurants respektive Ausflügen dargestellt.
 
-Der zweite Teil ist ein durch das Entwicklungswerkzeug automatisch generierte RDF \ XML Dokument. Darin ist die Semantische Datenbank im OWL Format abgelegt. Es handelt sich dabei um die konkreten Daten.
+Der zweite Teil ist ein von Protégé automatisch generiertes RDF/XML-Dokument. Darin ist die semantische Datenbank im OWL-Format abgelegt. Es handelt sich dabei um die konkreten Daten.
 
-\section{Generieren von Abfragen}
+\section{Erstellung von Abfragen}
 \label{sec:loesung_sparql}
-
-Sowohl während des Abbilden der Problemdomäne als auch für die endgültige Suche mussten immer wieder Abfragen generiert werden. Dies geschieht in einer semantischen Datenbank mittels sparql Abfragen. Bei Spargl handelt es sich um eine  Abfragesprache für Ontologien todo ref Tutorial. Die Abfragen sind direkt in der Benutzeroberfläche integriert. So konnte verhindert werden, dass der Leser der Arbeit gezwungen ist, sich die Sprache anzueignen um die Suche zu benutzten.
-
+Sowohl während des Abbildens der Problemdomäne, als auch für die endgültige Suche, mussten immer wieder Abfragen erstellt werden. Abfragen müssen in einer semantischen Datenbank mittels SPARQL gestellt werden. Dabei handelt es sich um eine Abfragesprache für Ontologien {\color{red} TODO ref Tutorial}. Die Abfragen sind direkt in der erstellten Benutzeroberfläche integriert. So konnte verhindert werden, dass der Benutzer gezwungen ist, sich die Sprache anzueignen.
 
 \section{Benutzeroberfläche}
-\label{sec:gui}
+\label{sec:loesung_gui}
+Eine weitere Anforderung an die Lösung lautet ``...Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu...''.~\cite{Aufgabenstellung}
 
-Nun sind alle oben beschriebenen Anforderungen abgedeckt. Eine letzte Aufgabe, die bis zu diesem Punkt noch unterschlagen wurde lautet "`...Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu..."'. Nachdem klar wurde, dass es in keiner weise Benutzerfreundlich ist, Abfragen mittels Sparql selber zu schreiben, haben die Autoren entschieden eine Benutzeroberfläche zu implementieren. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von Sparql während der Benutzung, ist so sichergestellt das der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben. 
-In einem ersten Schritt kann der Besucher entscheiden ob er nur ein Ausflug planen will, oder auch nach einem Restaurant sucht. Im zweiten Schritt werden sämtliche Folgepropertys zu den gewählten Komponenten angeboten. Zum Schluss erhält der Benutzer eine Liste sämtlicher Ergebnisse. Dabei wird aus allen gewählten Folgepropertys dynamisch eine Sparqlabfrage generiert. In der Outputliste sind der Name des Ausflugs, sein Standort und wenn vorhanden die URL zu seiner Homepage aufgelistet. Je nach Kriterienliste ist es natürlich möglich, dass keine Reise gefunden wird. Dies ist der Fall, wenn keine der erfassten Reisen auf die gewählten Kriterien passt. Da nur sehr exemplarisch Reisen erfasst wurde ist das Risiko für eine leere Antwort relativ hoch.
+Da klar wurde, dass es in keiner Weise Benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
 
-TODO: wo wollen wir die Architektur unsere Bentuezroberfläche hinmachen?
-
+In einem ersten Schritt kann der Benutzer entscheiden ob er nur ein Ausflug planen will oder auch nach einem Restaurant sucht. Im zweiten Schritt werden sämtliche gefolgerte Eigenschaften und Beziehungen zu den gewählten Komponenten angeboten. Zum Schluss erhält der Benutzer eine Liste sämtlicher Ergebnisse. Dabei wird aus allen gewählten Eigenschaften dynamisch eine SPARQL-Abfrage generiert. In der Ausgabe sind der Name des Ausflugs, sein Standort und, wenn vorhanden, die URL zu seiner Homepage aufgelistet. Je nach Kriterien ist es natürlich möglich, dass keine Reise gefunden wird. Dies ist der Fall, wenn keine der erfassten Reisen auf die gewählten Kriterien zutrifft. Da nur sehr exemplarisch Reisen erfasst wurden, ist das Risiko für eine leere Antwort relativ hoch.
