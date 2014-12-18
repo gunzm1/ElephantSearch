@@ -45,6 +45,36 @@ Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen 
 
 Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia, findet sich im nächsten Kapitel.
 
+\subsection{Beschreibungslogik}
+\label{subsubsection:beschreibungslogik}
+Beschreibungslogiken sind Formalismen um Wissen darzustellen, dabei sind sie eine Teilmenge der Prädikatenlogik. Sie stellen den Kern von Wissensrepräsentationssystemen dar, in dem sie eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung bieten (vgl.~\cite{dl:baader2003}).
+
+Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellen, besteht aus einem Schema (Tbox, Regeln), sowie aus den Daten (Abox, Fakten).
+
+Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
+
+\subsubsection{Interpretation}
+\label{subsubsection:beschreibungslogik_Interpretation}
+Die Zuordnung von Ereigniessen aus der realen Welt zu aussagenlogischen Variablen wird als Interpretation bezeichnet. 
+\begin{lstlisting}[caption={Definition einer Interpretation \protect\footnotemark}]
+	Sei M die Menge aller aussagenlogischen Formeln. Eine Funktion
+		$I : M \rightarrow \{ W , F \}$
+	heißt Interpretation.
+\end{lstlisting}
+\footnotetext{\cite[S. 36]{laemmel}}
+
+\subsubsection{Model}
+\label{subsubsection:beschreibungslogik_model}
+\begin{lstlisting}[caption={Definition einer Model \protect\footnotemark}]
+Sei I eine Interpretation und X eine aussagenlogische Formel. Ist X unter I wahr,
+so bezeichnet man I als Modell von X.
+\end{lstlisting}
+\footnotetext{\cite[S. 37]{laemmel}}
+
+\subsubsection{Vollständigkeit}
+\label{subsubsection:beschreibungslogik_vollstanendigkeit}
+
+
 \subsection{Pellet}
 \label{subsec:inferenz_pellet}
 Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. Pellet wurde von Grund auf für die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}} Sprache entwickelt wurde. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
@@ -52,6 +82,10 @@ Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. P
 Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da dieses nicht entscheidbar ist, daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
 
 % Pellet setzt dabei komplett die Spezifikation der WebOnt-Arbeitsgruppe um. OWL-DL ist eine Umsetzung der Beschreibungslogik $SHOIN (D)$.
+
+
+
+
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/pellet_komponenten.png}}}
@@ -84,13 +118,7 @@ Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7
 \label{ssubsection:inferenz_pellet_datatypes}
 
 
-\subsubsection{Beschreibungslogik}
-\label{subsubsection:beschreibungslogik}
-Beschreibungslogiken sind Formalismen um Wissen darzustellen, dabei sind sie eine Teilmenge der Prädikatenlogik. Sie stellen den Kern von Wissensrepräsentationssystemen dar, in dem sie eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung bieten (vgl.~\cite{dl:baader2003}).
 
-Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellen, besteht aus einem Schema (Tbox, Regeln), sowie aus den Daten (Abox, Fakten).
-
-Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
 
 \subsubsection{Folgerung}
 \label{subsubsection:folgerung}
