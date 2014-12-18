@@ -40,7 +40,7 @@
 
 % Definition of Colors
 %---------------------------------------------------------------------------
-\RequirePackage{color}                                                  % Color (not xcolor!)
+\RequirePackage{color}                                                  % Color (not xcolor! why?)
 \definecolor{linkblue}{rgb}{0,0,0.8}                                    % Standard
 \definecolor{darkblue}{rgb}{0,0.08,0.45}                                % Dark blue
 \definecolor{bfhgrey}{rgb}{0.41,0.49,0.57}                              % BFH grey
@@ -195,7 +195,7 @@
 
 \begin{document}
 
-\lstset{language=XML,
+\lstset{%language=XML,
   caption={},
   frame=L,
   basicstyle=\small\normalfont\sffamily,  % the size of the fonts that are used for the code
@@ -215,9 +215,9 @@
   framexbottommargin=5pt,
   framextopmargin=5pt,
   showstringspaces=false                  % Leerzeichen in Strings anzeigen ?
-  belowcaptionskip=5em,
-  belowskip=3em,
-  aboveskip=3em
+  belowcaptionskip=0em,
+  belowskip=0em,
+  aboveskip=1em
  }
 
 % Make sure Umlauts are getting displayed correctly.
@@ -235,7 +235,6 @@
 
 % Title Page and Abstract
 %---------------------------------------------------------------------------
-%\include{vorspann/titelseite_ohne_bild}        % activate for Titelseite ohne Bild
 \include{vorspann/titelseite_mit_bild}          % activate for Titelseite mit Bild
 \cleardoublepage{}
 \phantomsection{}
@@ -245,7 +244,6 @@
 \setcounter{page}{1}
 \cleardoublepage{}
 \phantomsection{}
-%\addcontentsline{toc}{chapter}{Versionen}
 \cleardoubleemptypage{}
 %---------------------------------------------------------------------------
 
@@ -285,8 +283,6 @@
 %\cleardoublepage
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-% \bibliographystyle{unsrtdin}
-% \bibliographystyle{plainnat}
 \bibliographystyle{unsrtnat}
 \bibliography{datenbanken/bibliography}{}
 %---------------------------------------------------------------------------

@@ -36,14 +36,13 @@ Resolution, aus dem Lateinischen ``resolutio'', zu Detsch ``Auflösung'', ist ei
 
 Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.~\cite[S. 278]{russel}
 
-\section{Praktische Umsetzung}
+\section{Inferenz und Resolution zum Ziehen von Schlüssen}
 \label{sec:inferenz_praktisch}
-
 Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen ableiten. Wie die neuen Beziehungen generiert werden ist eine Frage der Implementation, so z.B. durch Hinzufügen zu den Daten oder durch eine einfache Rückgabe dieser (vgl.~\cite[Abschnitt 1]{w3inference}).
 
 Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es implizites Wissens aus explizitem Wissen, in Form einer Ontologie, zu erschliessen.
 
-Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia, findet sich im nächsten Kapitel.
+Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia, findet sich im~\autoref{sec:inferenz_pellet}. Dieser basiert auf Beschreibungslogik.  Eine Einführung der Grundlagen der Beschreibungslogik folgt im nächsten Abschnitt.
 
 \subsection{Beschreibungslogik}
 \label{subsubsection:beschreibungslogik}
@@ -55,37 +54,66 @@ Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
 
 \subsubsection{Interpretation}
 \label{subsubsection:beschreibungslogik_Interpretation}
-Die Zuordnung von Ereigniessen aus der realen Welt zu aussagenlogischen Variablen wird als Interpretation bezeichnet. 
+``Man bezeichnet die Zuordnung von Ereignissen aus einer realen Welt zu aussagenlogischen Variablen als Interpretation.''~\cite[S. 36]{laemmel}
+
 \begin{lstlisting}[caption={Definition einer Interpretation \protect\footnotemark}]
-	Sei M die Menge aller aussagenlogischen Formeln. Eine Funktion
-		$I : M \rightarrow \{ W , F \}$
-	heißt Interpretation.
+    Sei M die Menge aller aussagenlogischen Formeln. Eine Funktion
+        $I : M \rightarrow \{ W , F \}$
+    heisst Interpretation.
 \end{lstlisting}
 \footnotetext{\cite[S. 36]{laemmel}}
 
-\subsubsection{Model}
-\label{subsubsection:beschreibungslogik_model}
-\begin{lstlisting}[caption={Definition einer Model \protect\footnotemark}]
-Sei I eine Interpretation und X eine aussagenlogische Formel. Ist X unter I wahr,
-so bezeichnet man I als Modell von X.
+\subsubsection{Modell}
+\label{subsubsection:beschreibungslogik_modell}
+\begin{lstlisting}[caption={Definition Modell \protect\footnotemark}]
+    Sei $I$ eine Interpretation und $X$ eine aussagenlogische Formel.
+    Ist $X$ unter $I$ wahr, so bezeichnet man $I$ als Modell von $X$.
 \end{lstlisting}
 \footnotetext{\cite[S. 37]{laemmel}}
 
-\subsubsection{Vollständigkeit}
+\subsubsection{Semantische Folgerung}
+\label{subsubsection:beschreibungslogik_semfol}
+``Der Zusammenhang von Formeln kann durch den Begriff der semantischen Folgerung dargestellt werden.''~\cite[S. 39]{laemmel}
+
+\begin{lstlisting}[caption={Definition semantische Folgerung\protect\footnotemark}]
+    Sei $X$ eine Menge von aussagenlogischen Formeln, $Y$ eine aussagenlogische Formel.
+        $Y$ ist eine semantische Folgerung von $X$
+    falls jedes Modell von $X$ auch Modell von $Y$ ist.
+    Man schreibt dafür $X \models Y$ und sagt auch $Y$ folgt aus $X$.
+\end{lstlisting}
+\footnotetext{\cite[S. 39]{laemmel}}
+
+\subsubsection{Ableitbarkeit}
+\label{subsubsection:beschreibungslogik_ableitbarkeit}
+Es ist erforderlich, ``\dots dass das Folgern von Formeln auf der Ebene der Gültigkeit von der Berechnung von Formeln auf der Inferenzebene unterschieden wird. Dies wird mit dem Begriff des Ableitens getan.''~\cite[S. 42]{laemmel}
+
+\begin{lstlisting}[caption={Definition Ableitbarkeit\protect\footnotemark}]
+    $Y$ ist aus $X$ ableitbar,
+        $X \vdash Y$
+    wenn eine endliche Folge von Inferenzschritten existiert,
+    so dass man von $X$ zu $Y$ gelangt.
+\end{lstlisting}
+\footnotetext{\cite[S. 42]{laemmel}}
+
+\subsubsection{Korrektheit und Vollständigkeit}
 \label{subsubsection:beschreibungslogik_vollstanendigkeit}
+``Der Bezug zwischen beiden Begriffen (semantische Folgerung und Ableitbarkeit, Anm.\ der Autoren) wird durch die Begriffe der Korrektheit und der Vollständigkeit hergestellt.''~\cite[S. 43]{laemmel}
 
+\begin{lstlisting}[caption={Definition Korrektheit und Vollständigkeit\protect\footnotemark}]
+    Ein Beweis-Verfahren heisst korrekt, wenn für beliebige Formeln $X, Y$ gilt:
+        Falls $X \vdash Y$ gilt, dann gilt auch $X \models Y$.
+    Ein Beweis-Verfahren heißt vollständig, wenn für beliebige Formeln $X, Y$ gilt:
+        Falls $X \models Y$ gilt, dann gilt auch $X \vdash Y$.
+\end{lstlisting}
+\footnotetext{\cite[S. 43]{laemmel}}
 
-\subsection{Pellet}
-\label{subsec:inferenz_pellet}
-Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. Pellet wurde von Grund auf für die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}} Sprache entwickelt wurde. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
+\section{Pellet}
+\label{sec:inferenz_pellet}
+Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite{sirin:pellet05}.
+
+Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. Eine syntaktische Variante von Beschreibungslogik ist OWL. Pellet wurde von Grund auf für die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}} Sprache entwickelt. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
 
 Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da dieses nicht entscheidbar ist, daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
-
-% Pellet setzt dabei komplett die Spezifikation der WebOnt-Arbeitsgruppe um. OWL-DL ist eine Umsetzung der Beschreibungslogik $SHOIN (D)$.
-
-
-
-
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/pellet_komponenten.png}}}
@@ -93,10 +121,31 @@ Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da die
 \end{figure}
 \footnotetext{\cite[S. 6]{sirin:pellet05}}
 
-Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente des Systems, welche die Wissensbasis auf deren Konsistenz prüft. Genaueres dazu wird im nachfolgenden Abschnitt beschrieben.
+Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente des Systems, welche die Wissensbasis auf deren Konsistenz prüft. Der Designentscheid, dass Pellet von Anfang an für OWL entwickelt wurde, führte zu einer modularen Struktur. Module sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
 
-Wird eine Ontologie mittels Parser geladen, wird diese auf Gültigkeit geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden normalisiert, absorbiert und internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
+Hier eine Übersicht der wichtigsten Komponenten von Pellet:
+\begin{table}[H]
+\centering
+\fbox{\begin{minipage}[t]{0.48\linewidth}%
+    \begin{tabbing}
+        Abkürzung \= Bezeichnung ******** \= Beschreibung \kill \\
+        -             \> Tableaux-Reasoner  \> Komponente, zum Ziehen von Schlüssen durch Konsistenzprüfung \\
+                      \>                    \> einer Ontolgie.  \\
+        \textbf{Abox} \> Assertional Box    \> Komponente, welche Aussagen zu Individuen enthält, \\
+                      \>                    \> also OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz. \\
+        \textbf{Tbox} \> Terminological Box \> Komponente, welche Klassenaxiome enthält, also OWL-Axiome \\
+                      \>                    \> wie z.B. Unterklassen, Gleichheit von Klassen und Klasseneinschränkungen. \\
+        \textbf{KB}   \> Knowledge Base     \> Eine Kombination einer Abox und Tbox, daher eine komplette OWL-Ontologie.
+    \end{tabbing}
+\end{minipage}}\hfill
+\captionof{table}{Beschreibung der wichtigsten Komponenten von Pellet\protect\footnotemark}
+\footnotetext{\cite[S. 4]{sirin:pellet04}}
+\end{table}
 
+
+\subsection{Vorgehen des Pellet-Reasoners}
+\label{subsection:inferenz_pellet_vorgehen}
+Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden normalisiert, absorbiert und internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
 
 \subsubsection{Laden und Parsen der Daten}
 \label{ssubsection:inferenz_pellet_parsing}
@@ -114,36 +163,8 @@ Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen
 
 Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
 
-\subsubsection{Datentypenprüfung}
-\label{ssubsection:inferenz_pellet_datatypes}
+% TODO ----------------------------
 
-
-
-
-\subsubsection{Folgerung}
-\label{subsubsection:folgerung}
-Die W3C-Spezifikation zu der Umsetzung eines Reasoners sieht zwei Arten von OWL-Dokumentprüfungen vor: Prüfung auf korrekte Syntax, sowie Prüfung der Konsistenz.
-
-Bei der Konsistenzprüfung geht es darum festzustellen, ob eine gegebene Eingabe anhand einer definierten Spezifikation syntaktisch korrekt ist. Jedoch macht eine ausschliessliche Umsetzung der genannten Prüfungen wenig Sinn. Man möchte eine Ontologie möglichst effektiv nutzen können, zum Beispiel um indirektes Wissen zu gewinnen.  Da OWL-DL eine Umsetzung der Beschreibungslogik $SHOIN (D)$ darstellt, liegt es nahe, mittels einem Reasoner folgende Methoden zur Inferenz zur Verfügung zu stellen:
-\begin{itemize}
-
-    \item \textbf{Konsistenzprüfung}
-    Stellt sicher, dass sich in der Ontologie keine gegensätzlichen Fakten befinden. Konkret bedeutet dies, dass die Daten (Abox, Fakten) anhand des Schemas (Tbox, Regeln) auf Konsistenz geprüft werden.
-
-    \item \textbf{Konzept-Erfüllbarkeit}
-    Stellt sicher, dass Objekte einer Klasse instanziert werden können. Ist eine Klasse unvollständig definiert, so können auch keine Instanzen davon erzeugt werden und die Ontologie wird inkonsistent.
-
-    \item \textbf{Klassifikation}
-    Berechnet die Relationen zwischen Subklassen, stellt also die Klassenhierarchie auf.
-
-    \item \textbf{Gewinnung von Erkenntnissen}
-    Leitet den direkten Typen einer Klasseninstanz ab.
-
-\end{itemize}
-(vgl. \citet[S. 1 und 2]{sirin:pellet05})
-
-\subsubsection{Tableau-Algorithmus}
-\label{ssubsec:infres_pellet_tableau}
 Bei der eigentliche Komponente welche in Pellet zur Folgerung eingesetzt wird, handelt es sich um einen Tableau-Reasoner, welcher den gleichnamigen Algorithmus verwendet. Dieser reduziert ein Problem der Folgerung auf ein Problem der Konzept-Erfüllbarkeit, wobei er eine Interpretation sucht, welche die gefragten Konzepte erfüllt. Solch eine Interpretation wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.
 
 Nachfolgend ein Beispiel, gegeben sei:
@@ -172,8 +193,6 @@ Der generelle Prozess der Folgerung läuft wie folgt ab:
     \item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
 \end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
 
-
-
 \subsection{Beispiel}
 \label{subsec:inferenz_beispiel}
 
@@ -190,7 +209,67 @@ definiert.
 
 Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).
 
-\newpage
+% TODO END ----------------------------
+
+\subsubsection{Datentypenprüfung}
+\label{ssubsection:inferenz_pellet_datatypes}
+In OWL werden Datentypen in einem XML-Schema beschrieben. Dadurch sind viele einfache Datentypen bereits gegeben, so z.B.\ numerische Datentypen (Ganz- und Fliesskommazahlen) und Zeichenketten. OWL bietet des Weiteren die Möglichkeit eigene Datentypen zu definieren.
+
+Das Modul zur Datentypenprüfung prüft ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
+
+Der Tableaux-Reasoner nutzt das Modul um für jeden Literal-Knoten des Graphen der Abox festzustellen, ob die Schnittmenge aller Datentypen eines jeden Knotens erfüllbar ist.
+
+\subsubsection{Schnittstelle zur Wissensdatenbank (KB)}
+\label{ssubsection:inferenz_pellet_kb}
+Alle Aufgaben zum Ziehen von Schlüssen können auf eine Konsistenzprüfung anhand der Wissensdatenbank (KB) reduziert werden. Die Schnittstelle zur Wissensdatenbank entscheidet, wann die Konsistenz der Abox geprüften werden muss, wann alle Konzepte neu klassifizert werden müssen oder wann alle Individuen umgesetzt werden. %TODO WTF!?
+
+Die Schnittstelle bietet die Möglichkeit beliebige atomare Anfragen zu beantworten. Diese können Klassen, Eigenschaften oder Individuen betreffen. Wahrheitsabfragen werden in Erfüllbarkeitsprobleme umgewandelt.
+
+Für Anfragen, welche mehrere Ergebnisse zurückliefern, sind theoretisch mehrere Konsistenzprüfungen notwendig. Da dies aber sehr aufwändig ist, wird im Kapitel TODO beschriebene Verfahren zur Optimierung genutzt.
+
+Die Schnittstelle, wie auch der Rest der internen Komponenten von Pellet, baut auf der ATerm-Bibliothek~\footnote{\url{https://strategoxt.org/Tools/ATermLibrary}} auf. ATerm (Annotated Term) ist ein abstratker Datentyp, welcher für den Austausch von baumartigen Datenstrukturen zwischen verteilten Applikationen konzipiert wurde.
+
+\subsubsection{Abox Query-Engine}
+\label{ssubsection:inferenz_pellet_aboxquery}
+Die Schnittstelle zur Wissensdatebank ist mit einer Abox Query-Engine gekoppelt. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Diese müssen aber gewisse Einschränkungen erfüllen, Details siehe~\cite[Seiten 10 und 11]{sirin:pellet05}.
+
+Die Abox Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und die angemessene Query-Engine auswählt um eine Anfrage zu beantworten. Details zum genauen Ablauf, siehe~\cite[Seite 11]{sirin:pellet05}.
+
+\begin{figure}[htbp]
+    \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/infres_pellet_queryengine.png}}}
+    \caption{Ablauf Beantwortung einer Anfrage in der Abox Query-Engine.\label{fig:pellet_queryengine_komponenten}\protect\footnotemark}
+\end{figure}
+\footnotetext{\cite[S. 11]{sirin:pellet05}}
+
+\subsubsection{Gültigkeitsprüfung bezüglich OWL-DL}
+\label{ssubsection:inferenz_pellet_owldl}
+Werkzeuge zur Modellierung und Export von Ontologien im OWL-Format, bieten häufig Charakteristika von OWL-full zur Modellierung an. Bei der Gültigkeitsprüfung einer Ontologie wird diese analysiert und gegebenenfalls mittels Heuristiken von OWL-full in OWL-DL umgewandelt.
+
+Diese Umwandlung ist jedoch nur in gewissen Fällen möglich, so z.B.\ gleiche Bezeichnung von Klassen, Eigenschaften und Individuen, andernfalls werden die OWL-full Charakteristika ignoriert oder der Prozess wird komplett abgebrochen.
+
+\subsection{Behandlung von Regeln in Pellet}
+\label{subsection:inferenz_pellet_swrl}
+Pellet ermöglicht die Verwendung von in SWRL formulierten Regeln zum Ziehen von Schlüssen. Damit die in der Wissensdatenbank gespeicherten Konzepte in den Regeln verfügbar sind, wird das $AL$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln. $AL$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf Beschreibungslogik und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog} Bei $AL$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[Seite 51]{dl:baader2003}. Als Implementation des $AL$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner. 
+
+Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Formel eine funktionsfreie Hornklausel ist. Im Unterschied zu Prolog muss jede Variable, die im Kopf einer Klausel vorkommt, auch im Körper der Klausel vorkommen. Weiter spielt die Reihenfolge, in welcher die Klauseln angegeben werden, keine Rolle. Alle Anfragen terminieren und jede mögliche Antwort wird ausgegeben.~\cite{datalog}
+
+In der Pellet-Implementation wird das $AL$-Log-Framework dahingehend erweitert, dass es $SHOINQ(D)$ (TODO: Beschreibung!) nutzen kann. Die Erweiterung erlaubt zudem die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.
+
+\subsection{Optimierungen}
+\label{subsection:inferenz_pellet_opti}
+TODO
+
+\subsection{Unterschiede zu Prolog}
+\label{}
+An dieser Stelle wurden die Unterschiede zwischen Pellet und der Inferenz-Maschine in Prolog ersichtlich. Prolog ist hinsichtlich der Verwendung von Regeln sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, da diese beliebig viele Fakten und Prädikate enthalten können.
+
+Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert werden. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw.\ die Argumente selbst definiert.
+
+Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz. Eine Erklärung dieses Algorithmus findet sich im Tutorialdokument unter LINK.\@
+
+Zusammenfassend kann gesagt werden, dass in Prolog direkt Anfragen gestellt werden können. Rückgabewerte dieser Anfragen sind entweder Wahrheitsaussagen (wahr oder falsch) über Fakten oder aber Objekte bzw. Listen von Objekten. Pellet kann hingegen nur Wahrheitsaussagen treffen. Dies bedeutet, dass Objekten somit nur Eigenschaften zugewiesen werden können, so z.B. die Zugehörigkeit zu einer Klasse, eine Relation zu einem anderen Objekt oder eine Objekteigenschaft (wie Geschlecht, Grösse, Dauer etc.). Die Rückgabe von Objekten findet also nicht durch den Reasoner sondern durch Abfragen, z.B.\ mittels SPARQL, statt.
+
+So ist es in Prolog ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht ohne Weiteres möglich. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[14]{l}{0.1\textwidth}
@@ -214,15 +293,3 @@ Eine solche Folgerung ist durchaus möglich, man muss den Relationen die entspre
 Wir haben die eigentliche Folgerung mittels einer Regel in der Ontologie vorgenommen. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-
-\subsection{Unterschiede zu Prolog}
-\label{}
-An dieser Stelle wurden die Unterschiede zwischen Pellet und der Inferenz-Maschine in Prolog ersichtlich. Prolog ist hinsichtlich der Verwendung von Regeln sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, da diese beliebig viele Fakten und Prädikate enthalten können.
-
-Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert werden. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw.\ die Argumente selbst definiert.
-
-Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz. Eine Erklärung dieses Algorithmus findet sich im Tutorialdokument unter LINK.
-
-Zusammenfassend kann gesagt werden, dass in Prolog direkt Anfragen gestellt werden können. Rückgabewerte dieser Anfragen sind entweder Wahrheitsaussagen (wahr oder falsch) über Fakten oder aber Objekte bzw. Listen von Objekten. Pellet kann hingegen nur Wahrheitsaussagen treffen. Dies bedeutet, dass Objekten somit nur Eigenschaften zugewiesen werden können, so z.B. die Zugehörigkeit zu einer Klasse, eine Relation zu einem anderen Objekt oder eine Objekteigenschaft (wie Geschlecht, Grösse, Dauer etc.). Die Rückgabe von Objekten findet also nicht durch den Reasoner sondern durch Abfragen, z.B. mittels SPARQL, statt.
-
-So ist es in Prolog ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht ohne Weiteres möglich. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
