@@ -153,19 +153,11 @@ Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst imple
 
 \subsubsection{Tableaux-Reasoner}
 \label{ssubsection:inferenz_pellet_tableaux}
-Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet. 
+Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
-Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. 
+Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. 
 
 Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
-
-Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
-
-Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
-
-% TODO ----------------------------
-
-Bei der eigentliche Komponente welche in Pellet zur Folgerung eingesetzt wird, handelt es sich um einen Tableau-Reasoner, welcher den gleichnamigen Algorithmus verwendet. Dieser reduziert ein Problem der Folgerung auf ein Problem der Konzept-Erfüllbarkeit, wobei er eine Interpretation sucht, welche die gefragten Konzepte erfüllt. Solch eine Interpretation wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.
 
 Nachfolgend ein Beispiel, gegeben sei:
 $ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
@@ -174,13 +166,23 @@ $ if Prolog \subseteq Programmiersprache $
 
 Der Prozess der Folgerung findet nun wie folgt statt:
 \begin{itemize}
-    \item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist. Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.
+    \item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist.\\
+        Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.\\
+        Es wird also versucht die Erfüllbarkeit mittels Widerspruch zu beweisen.
     \item $ C_0(x) \Rightarrow Prolog(x), (\neg Programmiersprache)(x) $
     \item $ Prolog(x) \Rightarrow LogischeProgrammiersprache(x) $
     \item $ LogischeProgrammiersprache(x) \Rightarrow Programmiersprache(x) $
         $ \Rightarrow $ Konflikt!
 \end{itemize}
-Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft also innerhalb der gegebenen Ontologie zu. Der Beweis wird mittels Kontradiktion erbracht.
+Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
+
+Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
+
+Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
+
+% TODO ----------------------------
+
+
 
 Der generelle Prozess der Folgerung läuft wie folgt ab:
 \begin{itemize}
@@ -277,13 +279,9 @@ Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 
 
 \subsection{Unterschiede zu Prolog}
 \label{}
-An dieser Stelle wurden die Unterschiede zwischen Pellet und der Inferenz-Maschine in Prolog ersichtlich. Prolog ist hinsichtlich der Verwendung von Regeln sehr flexibel. So ist man bei der Definition von Regeln nicht eingeschränkt, da diese beliebig viele Fakten und Prädikate enthalten können.
+Datalog: in kopf verwendete variablen müssen auch im körper vorkommen. in prolog nicht. anfragen terminieren in datalog, jede mögliche antwort wird zurückgegeben, in prolog ist dies nicht gegeben, endlosschleifen möglich, die reihenfolge von regeln spielt eine rolle.~\cite[Seite 175]{laemmel}
 
-Im Unterschied dazu muss bei der eingesetzten Regelsprache SWRL jedes verwendete Konzept --- Klasse, Individuum, Eigenschaft oder Beziehung --- zuvor definiert werden. Es wird also explizit zwischen den verschiedenen Typen unterschieden. Bei Prolog wird dies nur durch die Menge der Argumente bzw.\ die Argumente selbst definiert.
-
-Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz. Eine Erklärung dieses Algorithmus findet sich im Tutorialdokument unter LINK.\@
-
-Zusammenfassend kann gesagt werden, dass in Prolog direkt Anfragen gestellt werden können. Rückgabewerte dieser Anfragen sind entweder Wahrheitsaussagen (wahr oder falsch) über Fakten oder aber Objekte bzw. Listen von Objekten. Pellet kann hingegen nur Wahrheitsaussagen treffen. Dies bedeutet, dass Objekten somit nur Eigenschaften zugewiesen werden können, so z.B.\ die Zugehörigkeit zu einer Klasse, eine Relation zu einem anderen Objekt oder eine Objekteigenschaft (wie Geschlecht, Grösse, Dauer etc.). Die Rückgabe von Objekten findet also nicht durch den Reasoner sondern durch Abfragen, z.B.\ mittels SPARQL, statt.
+Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz.
 
 So ist es in Prolog ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht ohne Weiteres möglich. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
@@ -304,7 +302,7 @@ Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielswei
 \end{figure}
 \footnotetext{Eigene Darstellung mittels Stanford Protégé Version 5.0.0 beta 15}
 
-Eine solche Folgerung ist durchaus möglich, man muss den Relationen die entsprechenden Eigenschaften, wie Symmetrie oder Transivität, geben. Wir haben dies in unserem Fall jedoch bewusst nicht getan, da sonst Folgerungen auftreten, welche irreführend sind, so wäre dann z.B.\ ein Ort auch ein Land und umgekehrt.
+Eine solche Folgerung ist durchaus möglich, man muss den Relationen die entsprechenden Eigenschaften, wie Symmetrie oder Transitivität, geben. Wir haben dies in unserem Fall jedoch bewusst nicht getan, da sonst Folgerungen auftreten, welche irreführend sind, so wäre dann z.B.\ ein Ort auch ein Land und umgekehrt.
 
 Wir haben die eigentliche Folgerung mittels einer Regel in der Ontologie vorgenommen. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
 
