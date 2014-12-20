@@ -145,7 +145,7 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet:
 
 \subsection{Vorgehen des Pellet-Reasoners}
 \label{subsection:inferenz_pellet_vorgehen}
-Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden normalisiert, absorbiert und internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
+Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden durch verschiedene Optimierungsverfahren vereinfacht (siehe \ref{subsection:inferenz_pellet_opti)} und anschliessend in den Tableaux-Reasoner eingespiesen.
 
 \subsubsection{Laden und Parsen der Daten}
 \label{ssubsection:inferenz_pellet_parsing}
@@ -159,11 +159,11 @@ Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Di
 Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
 
 
-Durch wiederholtes Anwenden der Transformationsregeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
 
-Der Tableaux Algorithmus basiert auf dem Tableau Kalkül. Dabei soll ein mittels Wiederspruchbeweises aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Prämissen (Anforderungen) als auch die Negation der Konklusion (Folgerung) wahr ist. Kann ein solches Modell aufgezeigt werden, kann beweisen werden das die Ursprüngliche "`Formel"' falsch ist. Die in der ABox definierten Daten sind also dann Konsistenz wenn beim Aufbau des Baums inklusive der Negation ein Widerspruch auftritt.
+Der Tableaux Algorithmus basiert auf dem Tableau Kalkül. Dabei soll ein mittels Wiederspruchsbeweis aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Prämissen (Anforderungen) als auch die Negation der Konklusion (Folgerung) wahr ist. Kann ein solches Modell aufgezeigt werden, kann beweisen werden das die Ursprüngliche "`Formel"' falsch ist. Die in der ABox definierten Daten sind also dann Konsistenz wenn beim Aufbau des Baums inklusive der Negation ein Widerspruch auftritt.~\cite{baumkalkül}
 
-Für das Tableau Kalkül werden wie oben erwähnt Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.
+Für das Tableau Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkül}
 
 Nachfolgend sind die Transformationsregeln zum erzeugen von Modellen aufgelistet.
 
@@ -184,8 +184,21 @@ Nachfolgend sind die Transformationsregeln zum erzeugen von Modellen aufgelistet
     \end{tabbing}
 \end{minipage}}\hfill
 \captionof{table}{Transformationsregeln \protect\footnotemark}
-\footnotetext{\cite[S. 4]{sirin:pellet04}}
+\footnotetext{\cite{baumkalkül}}
 \end{table}
+
+Das Tableaukalkül läuft folgendermassen ab:
+%Der generelle Prozess (der Folgerung TODO: wieso der Folgerung??)  läuft wie folgt ab:
+\begin{itemize}
+    \item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF) ( die Negation $ \neg $ befindet sich vor Konzeptnamen.)
+    \item Ablegen des umgewandelten Konzeptes als $ C_0 $.
+        Der Algorithmus hat also die Datenbasis (Abox) $ A_0 = {C_0(x_0)} $
+    \item Regeln zur Transformation auf die Datenbasis (Abox) so weit als möglich anwenden.
+    \item Wurde eine gültige Datenbasis (Abox) gefunden, so ist $ C_0 $ erfüllbar. (TODO: also wenn beim anwenden der Transformationsregeln auff die NNF ein Widerspruch Auftritt)
+    \item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
+\end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
+
+
 
 Mit dem folgenden Beispiel soll veranschaulicht werden wie das Tableaukalkül im Reasoner angewendet wird:
 
@@ -193,54 +206,54 @@ TODO: Dieses Beispiel habe ich im Moment auf Papier vorbereitet. Bevor ich das h
 
 % TODO ----------------------------
 
-Nachfolgend ein Beispiel, gegeben sei:
-$ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
-Man stellt nun folgende Anfrage:
-$ if Prolog \subseteq Programmiersprache $
+%Nachfolgend ein Beispiel, gegeben sei:
+%$ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
+%Man stellt nun folgende Anfrage:
+%$ if Prolog \subseteq Programmiersprache $
+%
+%Der Prozess der Folgerung findet nun wie folgt statt:
+%\begin{itemize}
+    %\item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist.\\
+        %Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.\\
+        %Es wird also versucht die Erfüllbarkeit mittels Widerspruch zu beweisen.
+    %\item $ C_0(x) \Rightarrow Prolog(x), (\neg Programmiersprache)(x) $
+    %\item $ Prolog(x) \Rightarrow LogischeProgrammiersprache(x) $
+    %\item $ LogischeProgrammiersprache(x) \Rightarrow Programmiersprache(x) $
+        %$ \Rightarrow $ Konflikt!
+%\end{itemize}
+%Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
+%
+%Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
+%
+%Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
+%
+%
+%
+%
+%
+%Der generelle Prozess der Folgerung läuft wie folgt ab:
+%\begin{itemize}
+    %\item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF), die Negation $ \neg $ befindet sich vor Konzeptnamen.
+    %\item Ablegen des umgewandelten Konzeptes als $ C_0 $.
+%
+        %Der Algorithmus hat also die Datenbasis (Abox) $ A_0 = {C_0(x_0)} $
+    %\item Regeln zur Transformation auf die Datenbasis (Abox) so weit als möglich anwenden.
+    %\item Wurde eine gültige Datenbasis (Abox) gefunden, so ist $ C_0 $ erfüllbar.
+    %\item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
+%\end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
+%
+%Gegeben seien folgende Datensätze, welche Regeln definieren
+%
+%\begin{lstlisting}[caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b,label=lst:reasoning_seilpark]
+    %``Schweiz hatRegion Solothurn.''
+    %``Solothurn hatOrt Balmberg.''
+    %``Seilpark istUnterklasseVon Ausflug.''
+    %``Seilpark hatStandort Balmberg.''
+%\end{lstlisting}
 
-Der Prozess der Folgerung findet nun wie folgt statt:
-\begin{itemize}
-    \item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist.\\
-        Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.\\
-        Es wird also versucht die Erfüllbarkeit mittels Widerspruch zu beweisen.
-    \item $ C_0(x) \Rightarrow Prolog(x), (\neg Programmiersprache)(x) $
-    \item $ Prolog(x) \Rightarrow LogischeProgrammiersprache(x) $
-    \item $ LogischeProgrammiersprache(x) \Rightarrow Programmiersprache(x) $
-        $ \Rightarrow $ Konflikt!
-\end{itemize}
-Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
-
-Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
-
-Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
-
-
-
-
-
-Der generelle Prozess der Folgerung läuft wie folgt ab:
-\begin{itemize}
-    \item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF), die Negation $ \neg $ befindet sich vor Konzeptnamen.
-    \item Ablegen des umgewandelten Konzeptes als $ C_0 $.
-
-        Der Algorithmus hat also die Datenbasis (Abox) $ A_0 = {C_0(x_0)} $
-    \item Regeln zur Transformation auf die Datenbasis (Abox) so weit als möglich anwenden.
-    \item Wurde eine gültige Datenbasis (Abox) gefunden, so ist $ C_0 $ erfüllbar.
-    \item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
-\end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
-
-Gegeben seien folgende Datensätze, welche Regeln definieren
-
-\begin{lstlisting}[caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b,label=lst:reasoning_seilpark]
-    ``Schweiz hatRegion Solothurn.''
-    ``Solothurn hatOrt Balmberg.''
-    ``Seilpark istUnterklasseVon Ausflug.''
-    ``Seilpark hatStandort Balmberg.''
-\end{lstlisting}
-
-definiert.
-
-Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).
+%definiert.
+%
+%Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).
 
 % TODO END ----------------------------
 
