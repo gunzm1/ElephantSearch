@@ -155,9 +155,43 @@ Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst imple
 \label{ssubsection:inferenz_pellet_tableaux}
 Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
-Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. 
+Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. %mira ab hier
+Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
 
-Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+
+Durch wiederholtes Anwenden der Transformationsregeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+
+Der Tableaux Algorithmus basiert auf dem Tableau Kalkül. Dabei soll ein mittels Wiederspruchbeweises aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Prämissen (Anforderungen) als auch die Negation der Konklusion (Folgerung) wahr ist. Kann ein solches Modell aufgezeigt werden, kann beweisen werden das die Ursprüngliche "`Formel"' falsch ist. Die in der ABox definierten Daten sind also dann Konsistenz wenn beim Aufbau des Baums inklusive der Negation ein Widerspruch auftritt.
+
+Für das Tableau Kalkül werden wie oben erwähnt Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.
+
+Nachfolgend sind die Transformationsregeln zum erzeugen von Modellen aufgelistet.
+
+\begin{table}[H]
+\centering
+\fbox{\begin{minipage}[t]{0.48\linewidth}%
+    \begin{tabbing}
+        Argument \= Modell ******** \= Beschreibung \kill \\
+        P           \> I(P) = W  \> \\
+        $\lnot$ Q       \>    I(Q) =F          \>   \\
+        P $\lang$ Q \> I(P) = I(Q) = W    \>  \\
+        P $\lor$ Q 	\>	I(Q) = W    \> oder  \\	
+									\>	I(P) = W    \> oder  \\		
+									\>	beides    	\>   			\\		
+        P $\rightarrow$ Q 	\>	I(P) = W    \> oder  \\	
+									\>	I(Q) = F    \> oder  \\		
+									\>	beides    	\>   			\\																								
+    \end{tabbing}
+\end{minipage}}\hfill
+\captionof{table}{Transformationsregeln \protect\footnotemark}
+\footnotetext{\cite[S. 4]{sirin:pellet04}}
+\end{table}
+
+Mit dem folgenden Beispiel soll veranschaulicht werden wie das Tableaukalkül im Reasoner angewendet wird:
+
+TODO: Dieses Beispiel habe ich im Moment auf Papier vorbereitet. Bevor ich das hier mit viel Aufwand in s Latex bastle können wirs ja mal zusammen anschauen. Ich habs aber glaub. Ich mach aber morgen noch weiter. Den Teil unter TODO überleg ich mir noch, wie ich den einarbeite. aber ich hab da schon neh idee... :D
+
+% TODO ----------------------------
 
 Nachfolgend ein Beispiel, gegeben sei:
 $ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
@@ -180,7 +214,7 @@ Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen
 
 Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
 
-% TODO ----------------------------
+
 
 
 
