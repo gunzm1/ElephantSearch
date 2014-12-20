@@ -3,7 +3,7 @@
 
 \section{Inferenz}
 \label{sec:inferenz}
-Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mithilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.~\cite[S. 163]{russel}.
+Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mit Hilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und der Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.~\cite[S. 163]{russel}.
 
 \subsection{Inferenz in Computern}
 \label{subsec:inferenz-in-computer}
@@ -11,44 +11,47 @@ Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mithil
 Das grundsätzliche Problem bei Computern im Bezug auf Inferenz ist, dass ein Computer keine Interpretation vornehmen kann und nichts über die (Um-) Welt weiss, bzw.\ nur, was in seiner Wissensdatenbank gespeichert ist (vgl.~\citet[S. 164]{russel}).
 
 
-Angenommen, man möchte einen Computer fragen
+Angenommen, man möchte einen Computer fragen:
 
 \lstset{caption={Beispielanfrage an eine Wissensdatenbank eines Computers},captionpos=b}
 \begin{lstlisting}
     ``Ist eine Abenteuerreise eine Reise?''
 \end{lstlisting}
 
-so weiss der Computer weder was ein Abenteuerreise ist, noch kennt er das Konzept des Reisens an sich. Das Einzige, was er tun kann, ist, in der Wissensdatenbank nach 
+so weiss der Computer weder was ein Abenteuerreise ist, noch kennt er das Konzept des Reisens an sich. Das Einzige, was er tun kann, ist in der Wissensdatenbank zu suchen nach:
 
 \lstset{caption={Aussage in einer Wissensdatenbank eines Computers},captionpos=b}
 \begin{lstlisting}
     ``Eine Abenteuerreise ist eine Reise.''
 \end{lstlisting}
 
-zu suchen. Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S.164]{russel}).
+Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S.164]{russel}).
 
-Zusammengefasst kann gesagt werden, dass die formale Inferenz in der Lage ist, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
+Zusammenfassend ist die formale Inferenz in der Lage, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
 
 \section{Resolution}
 \label{sec:resolution}
 
-Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens~\cite[S. 279]{russel}. Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt, dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form handelt es sich bei der Resolution um eine Inferenz-Regel der Aussagenlogik.~\cite[S. 277]{russel}
+Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens~\cite[S. 279]{russel}. Der Modus ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[Seite 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
+
+Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.~\cite[S. 277]{russel}
 
 Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.~\cite[S. 278]{russel}
 
-\section{Inferenz und Resolution zum Ziehen von Schlüssen}
+\section{Inferenz und Resolution zur Ziehung von Schlüssen}
 \label{sec:inferenz_praktisch}
-Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Dies heisst, dass automatische Prozeduren, in Form von so genannten \textit{Reasonern}, neue Beziehungen ableiten. Wie die neuen Beziehungen generiert werden ist eine Frage der Implementation, so z.B. durch Hinzufügen zu den Daten oder durch eine einfache Rückgabe dieser (vgl.~\cite[Abschnitt 1]{w3inference}).
+Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Das beduetet, automatische Prozeduren, in Form von so genannten \textit{Reasonern}, leiten neue Beziehungen ab. Wie die neuen Beziehungen generiert werden, ist eine Frage der Implementation, z.B. durch Hinzufügen zu den vorhandenen Daten oder durch einfache Rückgabe derselben (vgl.~\cite[Abschnitt 1]{w3inference}).
 
-Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es implizites Wissens aus explizitem Wissen, in Form einer Ontologie, zu erschliessen.
+Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es, aus explizitem Wissen in Form einer Ontologie implizites Wissen zu gewinnen.
 
-Eine detaillierte Beschreibung solch einer praktischen Umsetzung, in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia, findet sich im~\autoref{sec:inferenz_pellet}. Dieser basiert auf Beschreibungslogik.  Eine Einführung der Grundlagen der Beschreibungslogik folgt im nächsten Abschnitt.
+Eine detaillierte Beschreibung, wie man einen Reasoner in der Praxis umsetzt, findet sich in Form des \textit{Pellet}-Reasoners der Firma Clark \& Parsia im~\autoref{sec:inferenz_pellet}. Der \textit{Pellet}-Reasoner basiert auf Beschreibungslogik.  Eine Einführung der Grundlagen der Beschreibungslogik folgt im nächsten Abschnitt.
 
 \subsection{Beschreibungslogik}
 \label{subsubsection:beschreibungslogik}
-Beschreibungslogiken sind Formalismen um Wissen darzustellen, dabei sind sie eine Teilmenge der Prädikatenlogik. Sie stellen den Kern von Wissensrepräsentationssystemen dar, in dem sie eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung bieten (vgl.~\cite{dl:baader2003}).
+Beschreibungslogiken sind Formalismen um Wissen darzustellen. Sie sind dabei eine Teilmenge der Prädikatenlogik und stellen den Kern von Wissensrepräsentationssystemen dar.
+Sie sind eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung (vgl.~\cite{dl:baader2003}).
 
-Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellen, besteht aus einem Schema (Tbox, Regeln), sowie aus den Daten (Abox, Fakten).
+Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellt, besteht aus einem Schema (Tbox, Regeln) und aus Daten (Abox, Fakten).
 
 Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
 
@@ -111,9 +114,9 @@ Es ist erforderlich, ``\dots dass das Folgern von Formeln auf der Ebene der Gül
 \label{sec:inferenz_pellet}
 Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite{sirin:pellet05}.
 
-Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. Eine syntaktische Variante von Beschreibungslogik ist OWL.\@ Pellet wurde von Grund auf für die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}} Sprache entwickelt. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
+Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. OWL ist eine syntaktische Variante der Beschreibungslogik.\@ Bei der Entwickelung von Pellet wurde von Anfang an nur die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}}-Sprache berücksichtigt. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
 
-Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da dieses nicht entscheidbar ist, daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
+Eine komplette Unterstützung des OWL-full Profils ist generell nicht möglich, da dieses nicht entscheidbar ist. Daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/pellet_komponenten.png}}}
@@ -121,7 +124,7 @@ Eine komplette Unterstützung des OWL-full Profils ist so nicht möglich, da die
 \end{figure}
 \footnotetext{\cite[S. 6]{sirin:pellet05}}
 
-Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente des Systems, welche die Wissensbasis auf deren Konsistenz prüft. Der Designentscheid, dass Pellet von Anfang an für OWL entwickelt wurde, führte zu einer modularen Struktur. Module sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
+Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente, welche die Wissensbasis auf deren Konsistenz prüft. Der Entscheid bei der Entwicklung von Pellet, ausschliesslich OWL-DL zu verwenden, führte zu einer modularen Struktur. Module ihrerseits sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
 
 Hier eine Übersicht der wichtigsten Komponenten von Pellet:
 \begin{table}[H]
@@ -132,10 +135,10 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet:
         ---           \> Tableaux-Reasoner  \> Komponente, zum Ziehen von Schlüssen durch Konsistenzprüfung \\
                       \>                    \> einer Ontolgie.  \\
         \textbf{Abox} \> Assertional Box    \> Komponente, welche Aussagen zu Individuen enthält, \\
-                      \>                    \> also OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz. \\
-        \textbf{Tbox} \> Terminological Box \> Komponente, welche Klassenaxiome enthält, also OWL-Axiome \\
+                      \>                    \> d.h. OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz. \\
+        \textbf{Tbox} \> Terminological Box \> Komponente, welche Klassenaxiome enthält, d.h. OWL-Axiome \\
                       \>                    \> wie z.B. Unterklassen, Gleichheit von Klassen und Klasseneinschränkungen. \\
-        \textbf{KB}   \> Knowledge Base     \> Eine Kombination einer Abox und Tbox, daher eine komplette OWL-Ontologie.
+        \textbf{KB}   \> Knowledge Base     \> Eine Kombination einer Abox und Tbox, damit eine komplette OWL-Ontologie.
     \end{tabbing}
 \end{minipage}}\hfill
 \captionof{table}{Beschreibung der wichtigsten Komponenten von Pellet\protect\footnotemark}
@@ -145,26 +148,31 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet:
 
 \subsection{Vorgehen des Pellet-Reasoners}
 \label{subsection:inferenz_pellet_vorgehen}
-Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden normalisiert, absorbiert und internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
+Der Parser prüft beim Laden einer Ontologie ihre Kompatibilität bezüglich OWL-DL.\@ Über den Parser werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox ihrerseits werden durch das Standardverfahren von OWL-DL-Reasonern vorbereitet. Sie werden normalisiert, absorbiert, internationalisiert und anschliessend in den Tableaux-Reasoner eingespiesen.
 
 \subsubsection{Laden und Parsen der Daten}
 \label{ssubsection:inferenz_pellet_parsing}
-Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser, ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen um Anfragen der Werkzeuge zu beantworten zur Verfügung.
+Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser. Es ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen zur Beantwortung von Anfragen der Werkzeuge zur Verfügung.
 
 \subsubsection{Tableaux-Reasoner}
 \label{ssubsection:inferenz_pellet_tableaux}
-Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
+Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist dann konsistent, wenn nur eine Interpretation der Ontologie existiert und sie alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
-Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. 
+Beginnend mit einem initalen Graphen der Abox, sucht der Tableaux-Reasoner durch Vervollständigung des Graphen nach einer Interpretation (Modell der Ontologie). Der Graph wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Dabei repräsentieren Knoten die Individuen und die Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten stellen die Eigenschaften dar.
 
-Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies führt er solange aus, bis ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
 
-Nachfolgend ein Beispiel, gegeben sei:
+\newpage
+
+Nachfolgend ein Beispiel:
+
 $ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
-Man stellt nun folgende Anfrage:
+
+Stellt man folgende Anfrage:
+
 $ if Prolog \subseteq Programmiersprache $
 
-Der Prozess der Folgerung findet nun wie folgt statt:
+findet der Prozess der Folgerung (Modus ponens) wie folgt statt:
 \begin{itemize}
     \item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist.\\
         Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.\\
@@ -172,9 +180,10 @@ Der Prozess der Folgerung findet nun wie folgt statt:
     \item $ C_0(x) \Rightarrow Prolog(x), (\neg Programmiersprache)(x) $
     \item $ Prolog(x) \Rightarrow LogischeProgrammiersprache(x) $
     \item $ LogischeProgrammiersprache(x) \Rightarrow Programmiersprache(x) $
-        $ \Rightarrow $ Konflikt!
+
+    $ \Rightarrow $ Konflikt!
 \end{itemize}
-Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
+Daraus ist ersichtlich, das Konzept $ C_0 $ ist nicht erfüllbar. Die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
 
 Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
 
@@ -184,7 +193,7 @@ Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7
 
 
 
-Der generelle Prozess der Folgerung läuft wie folgt ab:
+Der generelle Prozess der Folgerung läuft ab wie folgt:
 \begin{itemize}
     \item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF), die Negation $ \neg $ befindet sich vor Konzeptnamen.
     \item Ablegen des umgewandelten Konzeptes als $ C_0 $.
@@ -212,89 +221,93 @@ Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann diese
 
 \subsubsection{Datentypenprüfung}
 \label{ssubsection:inferenz_pellet_datatypes}
-In OWL werden Datentypen in einem XML-Schema beschrieben. Dadurch sind viele einfache Datentypen bereits gegeben, so z.B.\ numerische Datentypen (Ganz- und Fliesskommazahlen) und Zeichenketten. OWL bietet des Weiteren die Möglichkeit eigene Datentypen zu definieren.
+In OWL werden Datentypen in einem XML-Schema beschrieben. Dadurch sind viele einfache Datentypen wie numerische Datentypen (Ganz- und Fliesskommazahlen) und Zeichenketten gegeben. Zudem kann OWL eigene Datentypen definieren.
 
-Das Modul zur Datentypenprüfung prüft ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
+Das Modul zur Datentypenprüfung zeigt auf ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
 
-Der Tableaux-Reasoner nutzt das Modul um für jeden Literal-Knoten des Graphen der Abox festzustellen, ob die Schnittmenge aller Datentypen eines jeden Knotens erfüllbar ist.
+Der Tableaux-Reasoner nutzt dieses Modul um zu prüfen, ob die Schnittmenge aller Datentypen für jeden Literal-Knoten des Graphens erfüllbar ist.
 
 \subsubsection{Schnittstelle zur Wissensdatenbank (KB)}
 \label{ssubsection:inferenz_pellet_kb}
-Alle Aufgaben zum Ziehen von Schlüssen können auf eine Konsistenzprüfung anhand der Wissensdatenbank (KB) reduziert werden. Die Schnittstelle zur Wissensdatenbank entscheidet, wann die Konsistenz der Abox geprüften werden muss, wann alle Konzepte neu klassifizert werden müssen oder wann alle Individuen umgesetzt werden. %TODO WTF!?
+Die Schnittstelle zur Wissensdatenbank entscheidet, wann die Konsistenz der Abox geprüft werden muss, wann alle Konzepte neu klassifizert werden müssen und wann alle Individuen umgesetzt werden. Alle Aufgaben zum Schlussfolgern können unter geeigneter Umwandlung auf eine Prüfung der Konsistenz der Wissensdatenbank (KB) reduziert werden.
 
 Die Schnittstelle bietet die Möglichkeit beliebige atomare Anfragen zu beantworten. Diese können Klassen, Eigenschaften oder Individuen betreffen. Wahrheitsabfragen werden in Erfüllbarkeitsprobleme umgewandelt.
 
-Für Anfragen, welche mehrere Ergebnisse zurückliefern, sind theoretisch mehrere Konsistenzprüfungen notwendig. Da dies aber sehr aufwändig ist, werden die im~\autoref{subsection:inferenz_pellet_opti} beschriebenen Verfahren zur Optimierung genutzt.
+Für alle Anfragen, welche mehrere Ergebnisse liefern, sind theoretisch mehrere Konsistenzprüfungen notwendig. Da dies aber sehr aufwändig ist, werden zur Optimierung im~\autoref{subsection:inferenz_pellet_opti} beschriebene Verfahren eingesetzt.
 
-Die Schnittstelle, wie auch der Rest der internen Komponenten von Pellet, baut auf der ATerm-Bibliothek~\footnote{\url{https://strategoxt.org/Tools/ATermLibrary}} auf. ATerm (Annotated Term) ist ein abstratker Datentyp, welcher für den Austausch von baumartigen Datenstrukturen zwischen verteilten Applikationen konzipiert wurde.
+Die Schnittstelle zur Wissensdatenbank, wie auch der Rest der Komponenten von Pellet, bauen auf der ATerm-Bibliothek~\footnote{\url{https://strategoxt.org/Tools/ATermLibrary}} auf. ATerm (Annotated Term) ist ein abstratker Datentyp, welcher für den Austausch von baumartigen Datenstrukturen zwischen verteilten Applikationen entwickelt wurde.
 
 \subsubsection{Abox Query-Engine}
 \label{ssubsection:inferenz_pellet_aboxquery}
-Die Schnittstelle zur Wissensdatebank ist mit einer Abox Query-Engine gekoppelt. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Diese müssen aber gewisse Einschränkungen erfüllen, Details siehe~\cite[Seiten 10 und 11]{sirin:pellet05}.
+Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[Seiten 10 und 11]{sirin:pellet05}.
 
-Die Abox Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und die angemessene Query-Engine auswählt um eine Anfrage zu beantworten. Details zum genauen Ablauf, siehe~\cite[Seite 11]{sirin:pellet05}.
+Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[Seite 11]{sirin:pellet05}.
 
 \begin{figure}[htbp]
     \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/infres_pellet_queryengine.png}}}
-    \caption{Ablauf Beantwortung einer Anfrage in der Abox Query-Engine.\label{fig:pellet_queryengine_komponenten}\protect\footnotemark}
+    \caption{Ablauf der Beantwortung einer Anfrage in Abox-Query-Engine.\label{fig:pellet_queryengine_komponenten}\protect\footnotemark}
 \end{figure}
 \footnotetext{\cite[S. 11]{sirin:pellet05}}
 
 \subsubsection{Gültigkeitsprüfung bezüglich OWL-DL}
 \label{ssubsection:inferenz_pellet_owldl}
-Werkzeuge zur Modellierung und Export von Ontologien im OWL-Format, bieten häufig Charakteristika von OWL-full zur Modellierung an. Bei der Gültigkeitsprüfung einer Ontologie wird diese analysiert und gegebenenfalls mittels Heuristiken von OWL-full in OWL-DL umgewandelt.
+Werkzeuge zur Modellierung und zum Export von Ontologien im OWL-Format bieten häufig Charakteristika von OWL-full zur Modellierung an. Für die Gültigkeitsprüfung einer Ontologie wird diese analysiert und gegebenenfalles mittels Heuristiken von OWL-full in OWL-DL umgewandelt.
 
-Diese Umwandlung ist jedoch nur in gewissen Fällen möglich, so z.B.\ gleiche Bezeichnung von Klassen, Eigenschaften und Individuen, andernfalls werden die OWL-full Charakteristika ignoriert oder der Prozess wird komplett abgebrochen.
+Diese Umwandlung ist jedoch nur in gewissen Fällen möglich, so z.B.\ bei gleicher Bezeichnung von Klassen, Eigenschaften und Individuen, andernfalls werden die OWL-full Charakteristika ignoriert oder der Prozess wird abgebrochen.
 
 \subsection{Behandlung von Regeln in Pellet}
 \label{subsection:inferenz_pellet_swrl}
-Pellet ermöglicht die Verwendung von in SWRL formulierten Regeln zum Ziehen von Schlüssen. Damit die in der Wissensdatenbank gespeicherten Konzepte in den Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[Seiten 4 und 5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog} Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[Seite 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[Seiten 4 und 5]{sirin:pellet07}
+Pellet ermöglicht die Verwendung von Regeln zur Schlussfolgerung. Dies unter Verwendung der SWRL-Regelsprache.
 
-Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Formel eine funktionsfreie Hornklausel ist. Im Unterschied zu Prolog muss jede Variable, die im Kopf einer Klausel vorkommt, auch im Körper der Klausel vorkommen. Weiter spielt die Reihenfolge, in welcher die Klauseln angegeben werden, keine Rolle. Alle Anfragen terminieren und jede mögliche Antwort wird ausgegeben.~\cite{datalog}
+Damit in der Wissensdatenbank gespeicherte Konzepte in Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[Seiten 4 und 5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog}
 
-In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die Beschreibungslogik $\mathcal{SHOIQ}(\mathcal{D})$ nutzen kann. Die Erweiterung erlaubt zudem die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[Seite 5]{sirin:pellet07}
+Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[Seite 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[Seiten 4 und 5]{sirin:pellet07}
+
+Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Formel eine funktionsfreie Hornklausel ist. Im Unterschied zu Prolog muss jede Variable, die im Kopf einer Klausel vorkommt, auch im Körper der Klausel vorkommen. Die Reihenfolge der Klauseln spielt keine Rolle. Alle Anfragen terminieren und jede mögliche Antwort wird ausgegeben.~\cite{datalog}
+
+In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[Seite 5]{sirin:pellet07}
 
 \subsection{Optimierungen}
 \label{subsection:inferenz_pellet_opti}
 Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[Seiten 16 bis 19]{sirin:pellet05}
 
-Beschreibungslogiken, wie $\mathcal{SHOIQ}(\mathcal{D})$ haben im schlechtesten Fall eine sehr hohe Komplexität. Daher unterscheidet sich die effektive Implementation einer solchen sehr stark von deren Design bzw. Theorie.
+Beschreibungslogiken, wie $\mathcal{SHOIQ}(\mathcal{D})$ haben im ungünstigsten Fall eine sehr hohe Komplexität. Daher besteht ein grosser Unterschied zwischen Design und praktischer Umsetzung einer Entscheidungsprozedur.
 
-Um dennoch akzeptable Leistungen beim Ziehen von Schlüssen mittels Beschreibungslogik zu erhalten, nutzen moderne Reasoner verschiedene Arten von Optimierungen, so z.B.:
+Um dennoch akzeptable Leistungen bei Schlussfolgerungen mittels Beschreibungslogik zu erhalten, nutzen moderne Reasoner verschiedene Arten von Optimierungen, so z.B.:
 
 \begin{itemize}
     \item \textbf{Normalisierung und Vereinfachung}\\
-        Alle Konzepte der Wissensdatenbank werden in eine Form gebracht, so dass Widersprüche möglichst früh während der Tableaux-Erweiterung erkannt werden können. Sie werden also in die Normalform gebracht.\\
-        Die Vereinfachung erkennt offensichtliche Fehler während der Normalisierung. Weiter werden mehrfache Vorkommen eines Konzeptes eliminiert.
+        Alle Konzepte der Wissensdatenbank werden in eine Form gebracht, die hilft, dass Widersprüche bei der Tableaux-Erweiterung möglichst früh erkannt werden. Die Konzepte werden in die Normalform gebracht.\\
+        Diese Vereinfachung erkennt offensichtliche Fehler während der Normalisierung. Mehrfaches Vorkommen eines gleichen Konzeptes wird eliminiert.
 
     \item \textbf{Tbox-Absorption}\\
-        Bei dem Prozess der Tbox-Absorption wird versucht gleiche Konzepte (GCI --- General Concept Inclusion) zu eliminieren, indem diese mit Definitionen atomarer Konzepte ersetzt werden.
+        Bei dem Prozess der Tbox-Absorption wird ebenfalls versucht, gleichartige Konzepte (GCI --- General Concept Inclusion) zu eliminieren, dies mittels Ersatz durch atomare Konzepte.
 
     \item \textbf{Dependency-directed Backjumping}\\
-        Der Prozess des dependency-directed Backjumpings eliminiert unproduktive Backtracking-Suchen, indem er herausfindet welche Verzweigungspunkte Konflikte verursachen. Er springt dann zurück und überspringt dabei diese Punkte ohne nach Alternativen zu suchen.
+        Der Prozess des dependency-directed Backjumpings eliminiert unproduktive Backtracking-Suchen, indem er Verzweigungspunkte identifiziert welche Konflikte verursachen. Er springt zurück und überspringt dabei die Konfliktpunkte ohne nach Alternativen zu suchen.
 \end{itemize}
 
 Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 17 bis 19]{sirin:pellet05}.
 
 
-\subsection{Unterschiede zu Prolog}
+\subsection{Unterschiede zwischen Pellet und Prolog}
 \label{}
 Datalog: in kopf verwendete variablen müssen auch im körper vorkommen. in prolog nicht. anfragen terminieren in datalog, jede mögliche antwort wird zurückgegeben, in prolog ist dies nicht gegeben, endlosschleifen möglich, die reihenfolge von regeln spielt eine rolle.~\cite[Seite 175]{laemmel}
 
-Ein weiterer, fundamentaler Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert grundsätzlich auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei dem eingesetzten Reasoner der Tableau-Algorithmus zum Einsatz.
+Ein weiterer, grundlegender Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der Tableau-Algorithmus zum Einsatz.
 
-So ist es in Prolog ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht ohne Weiteres möglich. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
+Mit Prolog ist es ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[14]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Das unter~\ref{lst:reasoning_seilpark} genannte Beispiel beantwortet genau die unter~\ref{sec:wissensrepFormen_Wissensnetze} gestellte Frage, wie man zum Schluss gelangt, dass das Individuum \textit{Seilpark Balmberg} in der \textit{Region} \textit{Solothurn} ist.
+Das unter~\ref{lst:reasoning_seilpark} genannte Beispiel beantwortet exakt die unter~\ref{sec:wissensrepFormen_Wissensnetze} gestellte Frage: Wie gelangt man zum Schluss, dass das Individuum \textit{Seilpark Balmberg} in der \textit{Region} \textit{Solothurn} liegt.
 
-Wie wendet man dies jedoch an? Wie gelangt man effektiv zu dieser Information? Kann dies effektiv durch reine Folgerung erreicht werden?
+Wie gelangt man effektiv zu dieser Information? Kann diese durch reine Folgerung erreicht werden?
 
-Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielsweise in Protégé und nutzt den Pellet-Reasoner zum Ziehen von Schlüssen, so würde man annehmen, dass dies der Fall ist. Rein von den Möglichkeiten her sollte der Reasoner genau dies bieten. Dies ist jedoch nicht ganz der Fall, wie in der nachfolgenden Grafik ersichtlich ist.
+Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielsweise in Protégé und unter Benützung des Pellet-Reasoners für Schlussfolgerungen, so nimmt man an, dass er dies finden kann. Aufgrund seiner Möglichkeiten sollte der Reasoner dies beantworten können. Die nachfolgende Grafik zeigt jedoch, dass dies nicht immer der Fall ist.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/inferenz_protege.png}}}
@@ -302,8 +315,8 @@ Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielswei
 \end{figure}
 \footnotetext{Eigene Darstellung mittels Stanford Protégé Version 5.0.0 beta 15}
 
-Eine solche Folgerung ist durchaus möglich, man muss den Relationen die entsprechenden Eigenschaften, wie Symmetrie oder Transitivität, geben. Wir haben dies in unserem Fall jedoch bewusst nicht getan, da sonst Folgerungen auftreten, welche irreführend sind, so wäre dann z.B.\ ein Ort auch ein Land und umgekehrt.
+Wenn man den Relationen die entsprechenden Eigenschaften wie Symmetrie oder Transitivität gibt, ist diese Folgerung durchaus möglich. Bei unserem Beispiel haben wir die Eigenschaften bewusst weggelassen, da andernfalls irreführende Folgerungen auftreten. So wäre z.B.\ ein Ort auch ein Land und umgekehrt.
 
-Wir haben die eigentliche Folgerung mittels einer Regel in der Ontologie vorgenommen. Dies führen wir zu einem späteren Zeitpunkt noch genauer aus.
+Die eigentliche Folgerung haben wir mittels einer Regel vorgenommen. Zu einem späteren Zeitpunkt erklären wir genauer, siehe~\autoref{chap:swrl}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}

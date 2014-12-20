@@ -1,44 +1,49 @@
 \chapter{OWL}
 \label{chap:owl}
 
-Im letzten Kapitel wurde die Basis geschaffen um die eigentlich Ontologiesprache OWL zu analysieren. In diesem Kapitel, welches auf der W3C-Spezifikation~\cite{w3owl} basiert, wird diese nun genauer betrachtet. Bei OWL (Web Ontology Language) und OWL2 handelt es sich um die Ontologie-Sprache für das semantische Web, also um eine Sprache um Ontologien auszudrücken.~\cite{cambSemOWL} Wie RDF wurde auch OWL entwickelt um Informationen nicht nur anzuzeigen, sondern auch zu verarbeiten. Durch zusätzliches Vokabular, wie zum Beispiel Beziehungen zwischen Klassen, und erweiterte formale Semantik hat der Benutzer mehr Möglichkeiten als bei RDF oder auch XML.
+Im letzten Kapitel wurden Voraussetzungen geschaffen um die eigentliche Ontologiesprache, OWL zu analysieren. In diesem Kapitel, welches auf der W3C-Spezifikation~\cite{w3owl} basiert, wird OWL näher betrachtet.
+
+Bei OWL (Web Ontology Language) handelt es sich um eine Ontologiesprache für das semantische Web. Mit dieser Sprache können Ontologien beschrieben werden.~\cite{cambSemOWL} Wie RDF wurde auch OWL nicht nur für die Anzeige sondern auch für die Verarbeitung von Informationen entwickelt.
+
+Durch zusätzliches Vokabular, wie Beziehungen zwischen Klassen, erweiterter formaler Semantik hat der Benutzer mehr Möglichkeiten als bei RDF/XML oder auch XML.\@
 
 \section{OWL Syntax}
 \label{sec:owl_owl_syntax}
-Auch für OWL stehen verschiedene Schreibweisen zur Verfügung, welche für verschiedene Anwendungszwecke gedacht sind:
+Für OWL stehen verschiedene Schreibweisen zur Verfügung, welche für verschiedene Anwendungen definiert wurden:
 \begin{itemize}
 	\item \textit{RDF/XML Syntax für OWL}
 
-        Entspricht RDF/XML Syntax mit einer speziellen Übersetzung für OWL-Konstrukte. Dabei handelt es sich um die einzige Syntax, welche von allen OWL2-Tools unterstützt wird.
+        Entspricht der RDF/XML Syntax mit einer spezifischen Übersetzung für OWL-Konstrukte. Es ist die einzige Syntax, welche von allen OWL2-Werkzeugen unterstützt wird (OWL2 ist die letzte Version von OWL).
 	\item \textit{OWL/XML Syntax}
 
-        XML Syntax für OWL.
+        XML Syntax für OWL.\@
 	\item \textit{Functional-Style Syntax}
 
-        Zur Vereinfachung der ursprünglichen Spezifikation; Unterstützt Grundlagen zur Implementation von OWL2 mittels APIs und Reasoners
+        Sie dient der Vereinfachung der ursprünglichen Spezifikation. Sie unterstützt Grundlagen zur Implementation von OWL2 durch APIs und Reasoners.
 	\item \textit{Turtle Syntax}
 
-        Bei der Tutrtle Syntax handelt es sich um eine textuelle Syntax, welche die Beschreibung eines RDF-Graphen in kompakter und natürlicher Form erlaubt.
+        Bei der Turtle Syntax handelt es sich um eine textuelle Syntax, welche die Beschreibung eines RDF-Graphen in kompakter und natürlicher Form erlaubt.
 
-        \begin{lstlisting}[caption={Beispiel der Turtle Syntax\protect\footnotemark}]
-            <#green-goblin>
-                rel:enemyOf <#spiderman> ;
-                a foaf:Person ;    # in the context of the Marvel universe
-                foaf:name "Green Goblin".
-        \end{lstlisting}
-        \footnotetext{Beispiel von \url{http://www.w3.org/TR/turtle/\#sec-intro}}
 	\item \textit{Manchester Syntax}
 
-        Vereinfacht das Lesen für nicht logikaffine Leser.
+        Vereinfacht das Lesen und Verstehen für Leser ohne Kenntnisse der Prädikatenlogik.
 \end{itemize}
 
-Dabei ist zu sagen, dass Werkzeuge existieren, welche eine Übersetzung zwischen den verschiedenen Schreibweisen vornehmen.
+Anmerkung: Es existieren Werkzeuge, welche eine Übersetzung zwischen den verschiedenen Schreibweisen zulassen.
 
-Bei OWL handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschreibt OWL nicht wie ein Dokument aufgebaut sein muss. So kann auch nicht vorgeschrieben werden, dass ein bestimmtes Element vorhanden sein muss.
+Bei OWL handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschreibt OWL nicht, wie ein Dokument aufgebaut sein muss. So kann das Vorhandensein eines bestimmten Elementes nicht vorgeschrieben werden.
+
+\begin{lstlisting}[caption={Beispiel der Turtle Syntax\protect\footnotemark}]
+    <#green-goblin>
+        rel:enemyOf <#spiderman> ;
+        a foaf:Person ;    # in the context of the Marvel universe
+        foaf:name "Green Goblin".
+\end{lstlisting}
+\footnotetext{Beispiel von \url{http://www.w3.org/TR/turtle}}
 
 \section{Wissen modellieren}
 \label{sec:owl_owl_wissenModellieren}
-Bei OWL handelt sich um eine wissensbasierte Repräsentationssprache. Sie bildet das Wissen einer Domäne ab. Es wird versucht, eine Domäne in OWL so abzubilden, dass das menschliche Wissen widerspiegelt wird. Dabei gibt es keine Möglichkeit sämtliche Aspekte des menschlichen Wissens abzubilden. OWL kann aber als mächtige Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung nennt man, wie bereits erwähnt, eine Ontologie.
+Bei OWL handelt ist eine wissensbasierte Repräsentationssprache. Sie widerspiegelt das Wissen einer spezifischen Domäne. Es wird versucht, eine Domäne in OWL so abzubilden, dass das menschliche Wissen widerspiegelt wird. Dabei gibt es keine Möglichkeit sämtliche Aspekte des menschlichen Wissens abzubilden. OWL kann aber als mächtige Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung nennt man, wie bereits erwähnt, eine Ontologie.
 
 Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der grundsätzliche Aufbau von OWL beschrieben. Die grundlegenden Elemente sind Axiome, Entitäten und Ausdrücke (Expressions).
 
