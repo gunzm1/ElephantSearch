@@ -1,40 +1,39 @@
 \chapter{Regeln --- SWRL}
 \label{chap:swrl}
 
-Das letzte Kapitel ---~\ref{chap:owl}~\nameref{chap:owl}--- hat aufgzeigt, wie mittels der Ontologiesprache OWL bzw. OWL2 eine Ontologie erstellt werden kann und innerhalb dieser Klassen, Individuen und Beziehungen aufgebaut werden können. Erstellt man solch eine Ontologie, fällt auf, dass der Nutzen der Inferenz mit den beschriebenen Entitäten nicht voll ausgenutzt werden kann. Damit eine Reasoner die Inferenz vollumfänglich nutzen kann, wurden schliesslich Regeln in Form der Regelsprache \textit{SWRL} eingeführt.
+Das vorangehende Kapitel~\ref{chap:owl}, ``\nameref{chap:owl}'' hat gezeigt, wie mittels der Ontologiesprache OWL in der Version 2 eine Ontologie erstellt werden kann. Weiter zeigte das Kapitel wie innerhalb einer Ontologie Klassen, Individuen und Beziehungen aufgebaut werden können. Beim Erstellen solch einer Ontologie, fällt auf, dass der Nutzen der Inferenz mit den beschriebenen Entitäten nicht voll ausgeschöpft werden kann. Damit ein Reasoner die Inferenz vollumfänglich nutzen kann, mussten wir Regeln in Form der Regelsprache \textit{SWRL} einführen.
 
 Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{swrl}.
 
-Bei SWRL handelt es sich um eine auf OWL und RuleML~\footnote{www.ruleml.org} basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet so vielfältige Möglichkeiten zur Inferenz.
+Bei SWRL handelt es sich um eine auf OWL und RuleML~\footnote{www.ruleml.org} basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet dadurch vielfältige Möglichkeiten der Inferenz.
 
 \section{Aufbau}
 \label{sec:swrl_aufbau}
-Eine SWRL-Regel besteht aus einem Kopf und einem Körper. Wobei der Kopf immer auf den Körper folgt. Beide Teile bestehen aus positiven Konjunktionen von Atomen:
+Eine SWRL-Regel besteht aus einem Kopf und einem Körper. Hierbei folgt der Kopf immer auf den Körper. Beide bestehen aus positiven Konjunktionen von Atomen:
 \lstset{caption={Beispiel von positiven Konjunktionen von Atomen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     $ atom \wedge atom \cdots \rightarrow atom \wedge atom $
 \end{lstlisting}
 
-Informal ausgedrückt kann man also sagen: ``Wenn alle Teile des Körpers wahr sind, dann ist auch der Kopf wahr''. SWRL unterstützt keine negierten Atome oder Disjunktionen.
+Informal ausgedrückt heisst das: ``Wenn alle Teile des Körpers wahr sind, dann ist auch der Kopf wahr''. SWRL unterstützt keine negierten Atome oder Disjunktionen.
 
-Ein Atom ist einen Ausdruck der Form:
+Ein Atom ist Ausdruck der Form:
 \lstset{caption={Beispiel eines Atoms},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     $ p(\arg1, \arg2, \cdots argn) $
 \end{lstlisting}
-$p$ ist hierbei ein Prädikat und $\arg1$, $\arg2$ und $argn$ die Argumente bzw. Terme des Ausdrucks.
+$p$ ist hierbei ein Prädikat, $\arg1$, $\arg2$ und $argn$ sind die Argumente bzw. Terme des Ausdrucks.
 
-Prädikate können in SWRL OWL-Klassen, -Eigenschaften oder -Datentypen sein, Argumente OWL-Individuen, -Werte oder darauf verweisende Variablen.
+Prädikate können OWL-Klassen, -Eigenschaften oder -Datentypen sein. Argumente können OWL-Individuen, -Werte oder darauf verweisende Variablen sein.
 
-% UND-Verknüpfung in SWRL mittels Komma, ODER-Verknüpfung gibt es nicht
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[4]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-In SRWL können Atome nur UND-verknüpft werden, eine ODER-Verknüpfung gibt es in diesem Sinne nicht. Die UND-Verknüpfung wird mittels einem Komma \textit{,} vorgenommen. Möchte man eine ODER-Verknüpfung abbilden, so tut man dies, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet.
+In SRWL können Atome ausschliesslich mit UND-verknüpft werden. Eine ODER-Verknüpfung gibt es nicht. Die UND-Verknüpfung wird mittels eines Kommas \textit{,} vorgenommen. Eine ODER-Verknüpfung wird duch mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abgebildet.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
@@ -44,16 +43,16 @@ SWRL unterscheidet zwischen den folgenden atomaren Typen:
 \begin{itemize}
     \item Klassen
     \item Eigenschaften von Individuen
-    \item Wertespezifische Eigenschaften
+    \item Wertespezifischen Eigenschaften
     \item Unterscheidung von Individuen
-    \item Gleichsetzung von Individuen
-    \item Wertebereiche
-    \item Vordefinierte Atome
+    \item Gleichsetzungen von Individuen
+    \item Wertebereichen
+    \item Vordefinierten Atomen
 \end{itemize}
 
 \subsubsection{Klassen}
 \label{ssubsec:swrl_aufbau_atomaretypen_klassen}
-Ein Klassenatom besteht aus einem Prädikat, sowie genau einem Argument. Das Prädikat ist eine OWL-Klasse, das Argument ein OWL-Individuum (welches dies auch in Form einer Variable sein kann).
+Ein Klassenatom besteht aus einem Prädikat, sowie nur einem Argument. Das Prädikat ist eine OWL-Klasse, das Argument ein OWL-Individuum oder eine Variable.
 \lstset{caption={Beispiele von Klassen-Atomen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -61,8 +60,8 @@ Ein Klassenatom besteht aus einem Prädikat, sowie genau einem Argument. Das Pr�
     Ausflug(Seilpark_Balmberg)
 \end{lstlisting}
 
-Möchte man nun mittels SWRL z.B. Aussagen, dass alle Abenteuerreisen auch Reisen sind, so geschieht dies mittels:
-\lstset{caption={Beispiel der einfachen SWRL-Regel, dass alle Abenteuerreisen auch Reisen sind},captionpos=b}
+Möchte man nun mittels SWRL z.B. aussagen, dass alle Abenteuerreisen auch Reisen sind, so geschieht dies mittels:
+\lstset{caption={Beispiel der SWRL-Regel, dass alle Abenteuerreisen auch Reisen sind},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     Abenteuerreise(?x) $\rightarrow$ Reise(?x)
@@ -70,7 +69,7 @@ Möchte man nun mittels SWRL z.B. Aussagen, dass alle Abenteuerreisen auch Reise
 
 \subsubsection{Eigenschaften von Individuen}
 \label{ssubsec:swrl_aufbau_atomaretypen_eigenschaftenvonindividuen}
-Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist eine OWL-Eigenschaft bzw.\ Relation zwischen zwei Individuen, die Argumente sind also somit ein OWL-Individuum (welche dies auch in Form einer Variable sein können).
+Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prädikat und zwei Argumenten. Das Prädikat ist eine OWL-Eigenschaft bzw.\ eine Relation zwischen zwei Individuen. Die Argumente sind somit ein OWL-Individuum oder eine Variable.
 \lstset{caption={Beispiele von Atomen zur Darstellung von Eigenschaften von Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -97,12 +96,11 @@ Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Pr
     durchschnittspreis(?r, ?preis)
 \end{lstlisting}
 
-HERE!
 Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend) gilt, wenn es Mut erfordert, so kann man dies mittels folgender Regel tun:
 \lstset{caption={Beispiel einer Regel, welche ausdrückt, dass ein Objekt actionreich ist, wenn es Mut erfordert},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    erfordert(?a, "mut") -> action(?a, true)
+    erfordert(?a, "mut") $\rightarrow$ action(?a, true)
 \end{lstlisting}
 
 \subsubsection{Unterscheidung von Individuen}

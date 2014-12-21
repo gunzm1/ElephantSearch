@@ -43,40 +43,43 @@ Bei OWL handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschre
 
 \section{Wissen modellieren}
 \label{sec:owl_owl_wissenModellieren}
-Bei OWL handelt ist eine wissensbasierte Repräsentationssprache. Sie widerspiegelt das Wissen einer spezifischen Domäne. Es wird versucht, eine Domäne in OWL so abzubilden, dass das menschliche Wissen widerspiegelt wird. Dabei gibt es keine Möglichkeit sämtliche Aspekte des menschlichen Wissens abzubilden. OWL kann aber als mächtige Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung nennt man, wie bereits erwähnt, eine Ontologie.
+Bei OWL handelt ist eine wissensbasierte Repräsentationssprache. Sie widerspiegelt das Wissen einer spezifischen Domäne. Dabei wird versucht, eine Domäne mittels OWL so abzubilden, dass Teile dem menschlichen Wissen entsprechen. Eine Möglichkeit alle Aspekte des menschlichen Wissens abzubilden besteht aber nicht. Trotzdem kann OWL als potente Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung ist eine Ontologie, wie bereits ausgeführt.
 
-Um das Abbilden von Wissen zu erklären, wird in den folgenden Abschnitten der grundsätzliche Aufbau von OWL beschrieben. Die grundlegenden Elemente sind Axiome, Entitäten und Ausdrücke (Expressions).
+Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Entitäten und Ausdrücke (Expressions) benützt.
+
 
 \begin{itemize}
 	\item \textit{Axiom}
 
-        Grundlegende Aussagen.
+        Grundlegende Aussage.
 
-        Grundaussagen  oder Basispropositionen wie ``Abenteuerreisen sind Reisen'' werden in OWL Axiome genannt. Es handelt sich  um ``Stücke des Wissens'', welche je nach Sachlage wahr oder falsch sein können. Dies unterscheidet Axiome grundlegend von Entitäten und Ausdrücken.
+        Grundaussagen  oder Basispropositionen wie ``Abenteuerreisen sind Reisen'' werden in OWL Axiome genannt. Es handelt sich  um ``Teile des Wissens'', welche je nach Sachlage wahr oder falsch sein können. Dies ist ein essentieller Unterschied zu Entitäten und Ausdrücken.
 
     \item \textit{Entitäten}
 
         Elemente, welche konkrete Objekte aus der realen Welt abbilden.
 
-        Grundbestandteile einer Aussage, wie zum Beispiel die Objekte \textit{Abenteuerreise} und \textit{Reise} oder die Beziehung \textit{sind}, werden allgemein Entitäten genannt. Konkrete Objekte werden dabei als Individuen (Individuals), Kategorien als Klassen und Beziehungen als Eigenschaften (Properties) bezeichnet. Beziehungen werden in ObjectProperties (Relation zwischen zwei Individuen), DataProperties (spezifischer Datenwert eines Objektes) und AnnotationProperties (zusätzliche Information zu einem Objekt) unterteilt.
+        Grundbestandteile einer Aussage werden Entitäten genannt, zum Beispiel Objekte wie ``Abenteuerreise'' und ``Reise'' oder Beziehungen wie ``sind''.\\
+        Konkrete Objekte werden dabei als Individuen (Individuals), Kategorien (für Individuen) als Klassen und Beziehungen (zwischen Individuen) als Eigenschaften (Properties) bezeichnet.\\
+        Beziehungen werden unterteilt in Relationen zwischen zwei Individuen (ObjectProperties), spezifischen Datenwerten von Objekten (DataProperties) und zusätzliche Informationen zu einem Objekt (AnnotationProperties).
 
 	\item \textit{Expression (Ausdruck)}
 
-        Ausdrücke sind Kombinationen aus Entitiäten, die es ermöglichen komplexe Beschreibungen aufzubauen.
+        Ausdrücke sind Kombinationen aus Entitiäten. Sie ermöglichen den Aufbau von komplexen Beschreibungen.
 
-        Entitäten können mithilfe eines Konstruktors kombiniert werden. Zum Beispiel \textit{Abenteuerreise} und die Klasse \textit{Reise}. Diese Vereinigung wird als so genannte Class Expression abgebildet und kann als neue Entität angesehen werden.
+        Entitäten, wie z.B. Klassen, können mit Hilfe eines Konstruktors kombiniert werden. Beispiel: ``Abenteuerreise'' und ``Reise''. Diese Kombination wird als ClassExpression abgebildet und ist eine neue Entität.
 
-        \begin{lstlisting}[caption={Beispiel eines Ausdrucks}]
+        Ausdrücke (Ausdruckssprache) sind für Klassen sehr vielfältig, hingegen nicht für Eigenschaften.
+
+        \begin{lstlisting}[caption={Beispiel eines Ausdrucks: Zwei Klassen bedeuten das Gleiche}]
             EquivalentClasses(
                 :Restaurant
                 :Gaststätte
             )
         \end{lstlisting}
 
-        Ausdrücke für Klassen sind sehr mächtig, Ausdrücke für Eigenschaften sind hingegen schwächer.
 \end{itemize}
 
-Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, dass es Situationen gibt, bei welchen aus einer Tatsache eine nächste folgt. Wenn also eine Aussage wahr ist, folgt daraus, dass eine andere auch zutrifft. Dies wird mittels sogenannten Reasonern umgesetzt. Ein Reasoner kann also Konsequenzen ermitteln. Es kann schwierig zu verstehen sein, wie Axiome miteinander interagieren. Dieser Zusammenhang kann als Stärke und als Schwäche von OWL angesehen werden. Als Stärke, weil der Reasoner Informationen aufdeckt, welche ein Mensch ggf.\ nicht erkennen würde. Eine Schwäche hingegen, weil es schwer ist, die unmittelbare Wirkung vorherzusehen.
 
 \section{Die wichtigsten Elemente von OWL}
 \label{sec:owlRdf_owl_wichtigsteElemente}
@@ -86,7 +89,8 @@ Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, dass es Situationen gibt
 
 \textbf{Klassen}
 
-\textit{Ausflug} ist eine Klasse.
+% TODO: Übersetzen
+In general classes are used to group individuals that have something in common in order to refer to them. Hence, classes essentially represent sets of individuals. In modeling, classes are often used to denote the set of objects comprised by a concept of human thinking, like the concept person or the concept woman. Consequently, we can use the same type of statement to indicate that Mary is a woman by expressing that she is an instance of the class of women
 
 \begin{lstlisting}[caption={Beispiel einer Klasse}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Ausflug -->
@@ -95,7 +99,10 @@ Ein Mensch kann Schlussfolgern. Er kann nachvollziehen, dass es Situationen gibt
 
 \textbf{Subklassen}
 
-\textit{Landgasthaus} ist Subklasse von \textit{Restaurant}.
+% TODO: übersetzen
+In the previous section, we were talking about two classes: the class of all persons and that of all women. To the human reader it is clear that these two classes are in a special relationship: Person is more general than Woman, meaning that whenever we know some individual to be a woman, that individual must be a person. However, this correspondence cannot be derived from the labels “Person” and “Woman” but is part of the human background knowledge about the world and our usage of those terms. Therefore, in order to enable a system to draw the desired conclusions, it has to be informed about this correspondence. In OWL 2, this is done by a so-called subclass axiom.
+
+\textit{Landgasthaus} ist (nach unserer Definition) Subklasse von \textit{Restaurant}.
 
 \begin{lstlisting}[caption={Beispiel einer Subklasse}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Landgasthaus -->
@@ -123,9 +130,9 @@ Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen, sondern a
 
 \newpage
 
-Individuen können gleichgestellt werden oder sich auch gegenseitig ausschliessen.
+Mittels der \textit{owl:sameAs-Relation} kann ausgedrückt werden, dass es sich bei zwei oder mehreren Individuen um die gleichen Individuen handelt.
 
-\begin{lstlisting}[caption={Beispiel einer Gleichstellung von Individuen}]
+\begin{lstlisting}[caption={Beispiel einer Gleichstellung von Individuen: Seilpark und Seilpark-Balmberg sind das gleiche Individuum}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Seilpark -->
     <owl:NamedIndividual rdf:about="&reiseplaner;Seilpark">
         <rdf:type rdf:resource="&reiseplaner;Ausflug"/>
@@ -134,26 +141,26 @@ Individuen können gleichgestellt werden oder sich auch gegenseitig ausschliesse
     </owl:NamedIndividual>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Beispiel einer Differenzierung von Individuen}]
+
+Durch die \textit{owl:AllDifferent-Relation} kann das Gegenteil ausgesagt werden:  Zwei oder mehrere Individuen sind nicht die gleichen Individuen.
+
+\begin{lstlisting}[caption={Beispiel einer Differenzierung von Individuen: Seilpark ist nicht das gleiche Individuum wie Seilpark-Pilatus}]
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&reiseplaner;Seilpark"/>
-            <rdf:Description rdf:about="&reiseplaner;Seilpark_Balmberg"/>
             <rdf:Description rdf:about="&reiseplaner;Seilpark_Pilatus"/>
         </owl:distinctMembers>
     </rdf:Description>
 
 \end{lstlisting}
 
-
-
 \subsubsection{Eigenschaften}
 \label{subsubsec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Propertys}
 
 \textbf{Objekt-Eigenschaften (ObjectProperties)}
 
-Hierbei handelt es sich um eine Beziehung zwischen zwei Individuen.
+Objekt-Eigenschaften beschreibt die Beziehung zwischen zwei Individuen.
 
 \begin{lstlisting}[caption={Beispiel einer Objekteigenschaft \textit{hatOrt} und deren Anwendung}]
     <owl:ObjectProperty rdf:about="&reiseplaner;hatOrt">
@@ -170,7 +177,8 @@ Hierbei handelt es sich um eine Beziehung zwischen zwei Individuen.
     </owl:Thing>
 \end{lstlisting}
 
-Dabei kann eingeschränkt werden auf welche und mit welcher Klasse einer Domäne eine Objekteigenschaft angewendet werden darf.
+Durch Auswahl von Klassen kann eingeschränkt werden, auf welche Individuen eine Objekt-Eigenschaft angwendet werden darf. Dies gilt sowohl für die Quelle einer Beziehung (Domäne, Domains) als auch für das Ziel einer Beziehung (Wertebereich, Ranges).
+
 
 \begin{lstlisting}[caption={Beispiel von Einschränkungen der Objekteigenschaft \textit{hatRegion}}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#hatRegion -->
@@ -181,7 +189,8 @@ Dabei kann eingeschränkt werden auf welche und mit welcher Klasse einer Domäne
 \end{lstlisting}
 
 \textbf{Subeigenschaften}
-Es besteht die Möglichkeit Untereigenschaften zu definieren.
+
+Analog zu Subklassen lassen sich Untereigenschaften (Subproperties) definieren.
 
 \begin{lstlisting}[caption={Beispiel der Objekteigenschaft \textit{hatGemeinde} als Subeigenschaft von \textit{hatRegion}}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#hatGemeinde -->
@@ -192,12 +201,7 @@ Es besteht die Möglichkeit Untereigenschaften zu definieren.
 
 \textbf{Datentypen-Eigenschaften (DataProperties)}
 
-Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert eines Individuums. Dies kann beispielsweise das Alter oder die Grösse einer Person sein. Datentypen-Eigenschaft können frei definiert werden und, bei Bedarf, an vordefinierte Wertetypen gebunden werden. Eine Auflistung dieser befindet sich unter~\footnote{\url{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}}.
-
-% Datentypen Eigenschaft: TODO: bei uns anwenden.\\
-% \noindent\hspace*{15mm} <Person rdf:about="'John"'>\\
-% \noindent\hspace*{25mm}   <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema\#integer"'>51</hasAge>\\
-% \noindent\hspace*{15mm} </Person>\\
+Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert eines Individuums. Dies können beispielsweise das Alter oder die Grösse einer Person sein. Datentypen-Eigenschaft können frei definiert werden und, bei Bedarf, an vordefinierte Wertetypen gebunden werden. Eine Auflistung vordefinierter Wertetypen findet sich unter~\footnote{\url{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}}.
 
 \begin{lstlisting}[caption={Beispiel der Datentypen-Eigenschaft \textit{anzahlTeilnehmer} und deren Anwendung bei einem Individuum}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#anzahlTeilnehmer -->
@@ -219,16 +223,16 @@ Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert
 \section{Ontologien}
 \label{sec:owl_owl_Ontologien}
 
-Die gesamten Informationen zu einem Thema werden in Ontologien abgebildet. Diese können von verschiedenen Anwendungen genutzt werden.
+Wissensdomänen zu einem Thema werden in Ontologien abgebildet. Diese können für verschiedenen Anwendungen genutzt werden.
 
 \begin{lstlisting}[caption={Beispiel einer Definition einer Ontologie}]
     <owl:Ontology rdf:about="http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner"/>
 \end{lstlisting}
 
-Ontologien werden in bzw.\ als OWL-Dokumente abgespeichert. Diese können entweder rein lokal, oder aber im Internet zur Verfügung gestellt werden.
-Beim Schreiben einer Ontologie können zusätzliche Namespaces verwendet werden, so zum Beispiel \textit{http://www.w3.org/2001/XMLSchema\#}. Ist ein Namespace z.B. nur per Internet verfügbar, so kann dieser beispielsweise bei einem Ausfall der Internetverbindung nicht genutzt werden. Daher sollte berücksichtigt werden, dass Namespaces kontrollierbar im Sinne der Verfügbarkeit sein sollten.
+Ontologien werden als OWL-Dokumente abgespeichert. Dabei steht es dem Autor frei, sie im Internet zur Verfügung zu stellen.
+Namespaces können zusätzlich beim Schreiben einer Ontologie verwendet werden. Sie dienen der Unterscheidbarkeit von Ontologien. Beispiel: ``\textit{meineOntologie\#}''. Um eine Onotlogie anhand deren Namespace benutzten zu können, wird ein Präfix definiert und dieser einer Ontologie zugewiesen. Beispiel: ``\textit{PREFIX hallo: <meineOntologie\#>}''. Somit können die Elemente der Ontologie mit dem Präfix angesprochen werden. Beispiel: ``\textit{hallo:objekt1DerOntologie}''.
 
-Informationen aus einer Ontologie können in einer anderen verwendet werden. Dazu muss diese allerdings importiert werden.
+Informationen aus einer beliebigen Ontologie können in einer anderen verwendet werden. Dafür ist ein Import der Ontologie nötig.
 
 \begin{lstlisting}[caption={Beispiel eines Importes einer Ontologie}]
     <owl:Ontology rdf:about="http://example.com/owl/families\">
@@ -247,22 +251,28 @@ Um bei der Verwendung von Objekten aus anderen Ontologien eine Umbenennung zu um
 
 \section{OWL Untersprachen}
 \label{sec:owl_owl_Untersprachen}
-OWL ist in drei Untersprachen aufgeteilt. Jede dieser Sprachen wurde für die Verwendung durch verschiedene Anwendergruppen entwickelt. Dabei handelt es sich um OWL Lite, OWL DL und OWL Full. Die neue Version OWL2 unterscheidet zusätzlich zwischen OWL2 QL, OWL2 EL und OWL2 RL.\ Dabei handelt es sich um weitere Unterklassen von OWL2 DL, welche wiederum eine Untersprache von OWL2 Full ist. Diese sollen hier nicht weiter analysiert werden. Genauere Informationen zu den einzelnen Untersprachen finden sich unter~\footnote{\url{http://www.w3.org/TR/2004/REC-owl-features-20040210/\#s1.3}}, genauere Informationen zu den OWL2 Profilen finden sich unter~\footnote{\url{http://www.w3.org/TR/owl2-profiles/}}.
+OWL ist in drei Untersprachen aufgeteilt: OWL Lite, OWL DL und OWL full. Jede dieser Sprachen wurde für verschiedene Anwendergruppen entwickelt.
+
+Die Version 2 von OWL unterscheidet zusätzlich zwischen OWL2 QL, OWL2 EL und OWL2 RL. Dies sind weitere Unterklassen von OWL2 DL, welche ihrerseits wiederum eine Untersprache von OWL2 full ist.
+
+Genauere Informationen über die einzelnen Untersprachen finden sich unter~\footnote{\url{http://www.w3.org/TR/2004/REC-owl-features-20040210/\#s1.3}}, über OWL2-Profile unter~\footnote{\url{http://www.w3.org/TR/owl2-profiles/}}.
 
 \section{OWL-Werkzeuge}
 \label{sec:owl_owl_OwlTools}
-Es wird typischerweise zwischen zwei Arten von Ontologiewerkzeugen unterschieden. Der Editor, welcher für das Erzeugen und Ändern von Ontologien zuständig ist, und der Reasoner, welcher fähig ist logische Folgerungen aus dem bestehenden Wissen abzuleiten.
+Typischerweise unterscheidet man zwischen zwei Arten von Ontologiewerkzeugen, einem Editor und einem Reasoner. Der Editor ermöglicht das Erstellen und Ändern von Ontologien. Der Reasoner leitet logische Folgerungen aus dem bestehenden Wissen ab.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[5]{l}{0.1\textwidth}
     \vspace{-19pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Diese Sprachen mögen nützlich sein um Ontologien zu modellieren, sie sind aber in der Formulierung und vorallem zum Lesen eher umständlich. An diesem Punkt kommt der Editor ins Spiel. Mittels mehr oder weniger freundlichen Ontologiewerkzeugen lässt sich eine Ontologie intuitiv und übersichtlich abbilden. Wir haben in unserem Beispiel das in der Fachwelt weitverbreitete Werkzeug Protégé der Universität Stanford verwendet.
+Die Ontologiesprachen erlauben Ontologien zu modellieren. Für die Formulierung und das Lesen aber sind sie umständlich. Mit Hilfe von Ontologiewerkzeugen, zum Beispiel einem Editor, lassen sich Ontologien intuitiv und übersichtlich modellieren.
+
+In unserem Beispiel haben wir den in der Fachwelt häufig verwendeten Editor Protégé der Universität Stanford benützt.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/protege.png}}}
-\caption{Übersichtsfenster der Anwendung Protégé\label{fig:protege}\protect\footnotemark}
+\caption{Übersichtsfenster des Protégé-Editors\label{fig:protege}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigens erstellter Screenshot von Protégé}
 \noindent\rule[1ex]{\textwidth}{1pt}
