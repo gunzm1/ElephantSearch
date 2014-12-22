@@ -45,8 +45,8 @@ Eine Besonderheit von Ausflügen ist, dass sie nicht das ganze Jahr über machba
 
 Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränkung. Bekanntlich kann dem Lösen von Planungsproblemen, welche NP-vollständig sind, eine ganze Bachelor Thesis gewidmet werden. Erschwerend kommt dazu, dass es bei der Wissensabbildung mittels OWL nur in sehr begrenztem Rahmen möglich ist zu rechnen. Da dies kein wichtiger Teil der Arbeit ist, haben die Autoren entschieden, dass es keinen Sinn macht diese Problematik in Form von Programmlogik zu lösen. Aus diesem Grund fällt die Zeitplanung relativ simpel aus. Es kann festgelegt werden wie viel Zeit ein Ausflug in Anspruch nimmt. In der Verwendung kann der Benutzer des Reiseplaners angeben wie viel Zeit er für einen Ausflug zur Verfügung hat. Zur Auswahl stehen die Kriterien halbtags, ganztags und mehrtägig, wobei die mehrtägigen Ausflüge nicht eingearbeitet wurden. In dieser Version des Reiseplaners werden in der Anfrage immer nur jene Ausflüge ausgegeben, welche der festgelegten Zeiteinheit entsprechen.
 
-\subsection{Technische Schwierigkeiten}
-\label{subsec:loesung_modellierung_technischeSchwierigkeiten}
+\subsection{Mängel in Stardog}
+\label{subsec:loesung_modellierung_maengel_stardog}
 Im Laufe der Modellierung sind die Autoren auf ein für sie unerklärliches Phänomen gestossen. So war es dem Reasoner in Stardog nicht möglich von einem DataProperty auf dasselbe DataProperty zu schliessen. Konkret wollten die Autoren aussagen, dass ein Ausflug, der eine Sauna bietet auch Wellness bietet. Diese Regel kann aber von Stardog nicht ausgewertet werden. In Protégé wird die Schlussfolgerung aber richtig angezeigt. Nach längeren Recherchen befanden die Autoren, dass es sich bei dieser Einschränkung wohl um einen technischen Fehler von Stardog handeln muss. Dagegen sprach allerdings, dass beide Werkzeuge den gleichen Reasoner (Pellet) verwenden. Nach dem Melden des Fehlers (Bugreporting) in der Diskussionsgruppe von Stardog, erhielten die Autoren die Information, dass es sich tatsächlich um einen Fehler des Systems handelt. Anscheinend wurde ein zu strenges Ausschlussverfahren in der Programmlogik angewendet um zirkuläre Referenzen zu vermeiden. Dies soll aber im nächsten Release korrigiert werden. \\
 Also Workround wurde die Modellierung von den Autoren so abgeändert, dass Wellness ein DataProperty vom Typ Boolean ist. Da es sich so nicht mehr um dasselbe DataProperty handelt, funktioniert die angepasste Regel.
 
@@ -62,7 +62,7 @@ Sowohl während des Abbildens der Problemdomäne, als auch für die endgültige 
 
 \section{Benutzeroberfläche}
 \label{sec:loesung_gui}
-Eine weitere Anforderung an die Lösung lautet ``...Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu...''.~\cite{Aufgabenstellung}
+Eine weitere Anforderung an die Lösung lautet ``\ldots Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu \ldots''.~\cite{Aufgabenstellung}
 
 Da klar wurde, dass es in keiner Weise Benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
 

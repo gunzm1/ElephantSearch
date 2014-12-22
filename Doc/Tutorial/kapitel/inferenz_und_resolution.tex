@@ -158,107 +158,51 @@ Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst imple
 \label{ssubsection:inferenz_pellet_tableaux}
 Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist dann konsistent, wenn nur eine Interpretation der Ontologie existiert und sie alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
-Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. %mira ab hier
+Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.Dieses Vorgehen wird Tableaxu-Algorithmus genannt. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten stellen die Eigenschaften dar. %mira ab hier
 %Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
 
 
 Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
 
-Der Tableaux Algorithmus basiert auf dem Tableau Kalkül. Dabei soll ein mittels Wiederspruchsbeweis aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Prämissen (Anforderungen) als auch die Negation der Konklusion (Folgerung) wahr ist. Kann ein solches Modell aufgezeigt werden, kann beweisen werden das die Ursprüngliche ``Formel'' falsch ist. Die in der ABox definierten Daten sind also dann Konsistenz wenn beim Aufbau des Baums inklusive der Negation ein Widerspruch auftritt.~\cite{baumkalkuel}
+Der Tableaux-Algorithmus basiert auf dem Tableau-Kalkül. Dabei soll mittels Widerspruchsbeweis aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Anforderungen (Prämissen) als auch die Negation der Folgerung (Konklusion) wahr ist. Kann ein solches Modell gefunden werden, ist damit beweisen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind also dann Konsistenz, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
 
-Für das Tableau Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}
+Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}
 
-Nachfolgend sind die Transformationsregeln zum erzeugen von Modellen aufgelistet.
+Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgelistet.
 
 \begin{table}[H]
 \centering
 \fbox{\begin{minipage}[t]{0.48\linewidth}
     \begin{tabbing}
-        Argument \= Modell ******** \= Beschreibung \kill \\
+        Argument *****      \= Modell ********      \= Beschreibung \kill
+        \textbf{Argument}   \> \textbf{Modell}      \>   \\
         P                   \> I (P) = W            \> \\
-        $\lnot$ Q           \> I (Q) =F             \> \\
+        $\lnot$ Q           \> I (Q) = F             \> \\
         P $\land$ Q         \> I (P) = I (Q) = W    \> \\
-        P $\lor$ Q          \> I (Q) = W            \> oder\\
-                            \> I (P) = W            \> oder\\
-                            \> beides               \> \\
-        P $\rightarrow$ Q   \> I (P) = W            \> oder \\
-                            \> I (Q) = F            \> oder \\
-                            \> beides               \>\\
+        P $\lor$ Q          \> I (Q) = W oder I (P) = W oder beides \\
+        P $\rightarrow$ Q   \> I (P) = F oder I (Q) = W oder beides \\
     \end{tabbing}
 \end{minipage}} \hfill
 \captionof{table}{Transformationsregeln \protect\footnotemark}
 \footnotetext{\cite{baumkalkuel}}
 \end{table}
 
-Das Tableaukalkül läuft folgendermassen ab:
+Die Anwendung des Tableau-Kalküles läuft folgendermassen ab:
 %Der generelle Prozess (der Folgerung TODO: wieso der Folgerung??)  läuft wie folgt ab:
 \begin{itemize}
-    \item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF) (die Negation $ \neg $ befindet sich vor Konzeptnamen.)
-    \item Ablegen des umgewandelten Konzeptes als $ C_0 $.
-        Der Algorithmus hat also die Datenbasis (Abox) $ A_0 = {C_0(x_0)} $
-    \item Regeln zur Transformation auf die Datenbasis (Abox) so weit als möglich anwenden.
-    \item Wurde eine gültige Datenbasis (Abox) gefunden, so ist $ C_0 $ erfüllbar. (TODO:\@ Also wenn beim anwenden der Transformationsregeln auf die NNF ein Widerspruch Auftritt)
-    \item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
-\end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
+    \item Umwandlung der Konzepte der Abox in die negierte Normalform (NNF) (die Negation $ \neg $ befindet sich vor Konzeptnamen.)
+    \item Ablegen der umgewandelten Konzepte als $ C_0 $.
+        Der Algorithmus hat also die Datenbasis $ A_0 = {C_0(x_0)} $
+    \item Anwendung der Transformationsregeln auf die Datenbasis.
+    \item Tritt bei der Anwendung der Transformationsregeln auf $C_0$ ein Widerspruch auf, ist die Negation nicht erfüllbar.
 
+    $\Rightarrow$ Damit sind die ursprünglichen Konzepte der Abox erfüllbar.
+\end{itemize} (vgl.~\cite{horrocks2012})
 
+Um die Anwendung des Tableau-Kalküles zu verdeutlichen, sollen die Fakten der Instanz ``Sole Uno'' (welches Sauna und Dampfbad bietet) auf nachfolgende Regel angewendet werden. Dabei soll geprüft werden, dass ``Sole Uno'' Wellness bietet.
 
-Mit dem folgenden Beispiel soll veranschaulicht werden wie das Tableaukalkül im Reasoner angewendet wird:
+$bietet(?x, ``Sauna''), bietet(?x, ``Dampfbad'') \rightarrow wellness(?x, true)$
 
-TODO:\ Dieses Beispiel habe ich im Moment auf Papier vorbereitet. Bevor ich das hier mit viel Aufwand in s Latex bastle können wirs ja mal zusammen anschauen. Ich habs aber glaub. Ich mach aber morgen noch weiter. Den Teil unter TODO überleg ich mir noch, wie ich den einarbeite. Aber ich hab da schon neh idee \ldots\:\ D
-
-% TODO ----------------------------
-
-%Nachfolgend ein Beispiel, gegeben sei:
-%$ Prolog \subseteq LogischeProgrammiersprache, LogischeProgrammiersprache \subseteq Programmiersprache $
-%Man stellt nun folgende Anfrage:
-%$ if Prolog \subseteq Programmiersprache $
-%
-%Der Prozess der Folgerung findet nun wie folgt statt:
-%\begin{itemize}
-    %\item Testen, ob ein Individuum existiert, welches eine logische Programmiersprache, aber keine Programmiersprache ist.\\
-        %Man möchte also die Erfüllbarkeit des Konzeptes $ C_0 = (Prolog \sqcap \neg Programmiersprache) $ testen.\\
-        %Es wird also versucht die Erfüllbarkeit mittels Widerspruch zu beweisen.
-    %\item $ C_0(x) \Rightarrow Prolog(x), (\neg Programmiersprache)(x) $
-    %\item $ Prolog(x) \Rightarrow LogischeProgrammiersprache(x) $
-    %\item $ LogischeProgrammiersprache(x) \Rightarrow Programmiersprache(x) $
-        %$ \Rightarrow $ Konflikt!
-%\end{itemize}
-%Wie ersichtlich ist, ist das Konzept $ C_0 $ nicht erfüllbar, die Anfrage $ Prolog \subseteq Programmiersprache $ trifft somit innerhalb der gegebenen Ontologie zu.
-%
-%Alle anderen Aufgaben zum Ziehen von Schlüssen können als Konsistenzprüfungen definiert werden.
-%
-%Die Strategien zur Vervollständigung eines Modelles werden unter~\cite[Seiten 7 bis 9]{sirin:pellet05} ausführlich beschrieben.
-%
-%
-%
-%
-%
-%Der generelle Prozess der Folgerung läuft wie folgt ab:
-%\begin{itemize}
-    %\item Umwandlung eines Konzeptes bzw.\ der Konzepte in die negierte Normalform (NNF), die Negation $ \neg $ befindet sich vor Konzeptnamen.
-    %\item Ablegen des umgewandelten Konzeptes als $ C_0 $.
-%
-        %Der Algorithmus hat also die Datenbasis (Abox) $ A_0 = {C_0(x_0)} $
-    %\item Regeln zur Transformation auf die Datenbasis (Abox) so weit als möglich anwenden.
-    %\item Wurde eine gültige Datenbasis (Abox) gefunden, so ist $ C_0 $ erfüllbar.
-    %\item Wurde keine gültige Datenbasis unter Berücksichtigung aller (Such-) Pfade gefunden, so ist $ C_0 $ nicht erfüllbar.
-%\end{itemize} (vgl.~\cite{horrocks2002} und~\cite{horrocks2005})
-%
-%Gegeben seien folgende Datensätze, welche Regeln definieren
-%
-%\begin{lstlisting}[caption={Aussagentripel bestehend aus Objekt, Prädikat und Subjekt},captionpos=b,label=lst:reasoning_seilpark]
-    %``Schweiz hatRegion Solothurn.''
-    %``Solothurn hatOrt Balmberg.''
-    %``Seilpark istUnterklasseVon Ausflug.''
-    %``Seilpark hatStandort Balmberg.''
-%\end{lstlisting}
-
-%definiert.
-%
-%Unterstützt nun ein Programm Inferenz, z.B. durch einen Reasoner, so kann dieser schlussfolgern, dass der Ausflug \textit{Seilpark} in der Region Solothurn ist (vgl.~\cite[Abschnitt `Examples']{w3inference}).
-
-% TODO END ----------------------------
 
 \subsubsection{Datentypenprüfung}
 \label{ssubsection:inferenz_pellet_datatypes}
@@ -308,6 +252,8 @@ Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Fo
 
 In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[Seite 5]{sirin:pellet07}
 
+Bei $\mathcal{SHOIQ}(\mathcal{D})$ handelt es sich um eine Erweiterung der Beschreibungslogik $\mathcal{AL}$. $\mathcal{SHOIQ}(\mathcal{D})$ unterstützt unter Anderem zusätzliche Konzepte wie Rollenhierarchien, inverse Eigenschaften und qualifizierte Kardinalitätseinschränkungen. Sie erlaubt zusätzlich die Verwendung von Datentypen, Datenwerten und Datentypeneigenschaften.~\cite{wiki:desclog}
+
 \subsection{Optimierungen}
 \label{subsection:inferenz_pellet_opti}
 Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[Seiten 16 bis 19]{sirin:pellet05}
@@ -332,7 +278,7 @@ Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 
 
 
 \subsection{Unterschiede zwischen Pellet und Prolog}
-\label{}
+\label{subsec:inferenz_pellet_prolog}
 Datalog: in kopf verwendete variablen müssen auch im körper vorkommen. In prolog nicht. Anfragen terminieren in datalog, jede mögliche antwort wird zurückgegeben, in prolog ist dies nicht gegeben, endlosschleifen möglich, die reihenfolge von regeln spielt eine rolle.~\cite[Seite 175]{laemmel}
 
 Ein weiterer, grundlegender Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der Tableau-Algorithmus zum Einsatz.

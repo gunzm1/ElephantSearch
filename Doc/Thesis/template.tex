@@ -182,15 +182,15 @@
 
 % Title Page and Abstract
 %---------------------------------------------------------------------------
-%\include{vorspann/titelseite_ohne_bild}        % activate for Titelseite ohne Bild
 \include{vorspann/titelseite_mit_bild}          % activate for Titelseite mit Bild
+\cleardoublepage{}
+\phantomsection{}
 \include{vorspann/versionen}
-%\cleardoubleemptypage{}
+\phantomsection{}
+\cleardoubleemptypage{}
 \setcounter{page}{1}
 \cleardoublepage{}
 \phantomsection{}
-\addcontentsline{toc}{chapter}{Management Summary}
-\include{vorspann/management_summary}
 \cleardoubleemptypage{}
 %---------------------------------------------------------------------------
 
@@ -210,8 +210,7 @@
 % Table of contents
 %---------------------------------------------------------------------------
 \tableofcontents
-%\cleardoubleemptypage
-%\cleardoublepage
+\cleardoublepage{}
 %---------------------------------------------------------------------------
 
 % Main part:
