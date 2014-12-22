@@ -156,7 +156,7 @@ Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst imple
 Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist genau dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
 Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten, stellen die Eigenschaften dar. %mira ab hier
-Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
+%Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
 
 
 Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
