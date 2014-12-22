@@ -187,22 +187,69 @@ Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgelistet
 \footnotetext{\cite{baumkalkuel}}
 \end{table}
 
-Die Anwendung des Tableau-Kalküles läuft folgendermassen ab:
-%Der generelle Prozess (der Folgerung TODO: wieso der Folgerung??)  läuft wie folgt ab:
+Die Anwendung des Tableau-Kalküles soll mittels dem nachfolgenden Beispiel verdeutlicht werden. Gegeben sind die folgenden Fakten:
 \begin{itemize}
-    \item Umwandlung der Konzepte der Abox in die negierte Normalform (NNF) (die Negation $ \neg $ befindet sich vor Konzeptnamen.)
-    \item Ablegen der umgewandelten Konzepte als $ C_0 $.
-        Der Algorithmus hat also die Datenbasis $ A_0 = {C_0(x_0)} $
-    \item Anwendung der Transformationsregeln auf die Datenbasis.
-    \item Tritt bei der Anwendung der Transformationsregeln auf $C_0$ ein Widerspruch auf, ist die Negation nicht erfüllbar.
+    \item $S: hatStandort(SeilparkBalmberg, Balmberg)$
+    \item $O: hatOrt(Solothurn, Balmberg)$
+\end{itemize}
+Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll nun die \textit{Konklusion} erreicht werden, dass sich der Seilpark in der Region Solothurn befindet:
+\begin{itemize}
+    \item $R: hatRegion(SeilparkBalmberg, Solothurn)$
+\end{itemize}
 
-    $\Rightarrow$ Damit sind die ursprünglichen Konzepte der Abox erfüllbar.
-\end{itemize} (vgl.~\cite{horrocks2012})
+Es soll also $\Gamma \models \varphi$ gelten, wobei $\Gamma$ die Menge der Prämissen und $\varphi$ die Konklusion ist:
+\begin{itemize}
+    \item $\Gamma: \{S \wedge O \rightarrow R, S, O\}$
+    \item $\varphi: \{R\}$
+\end{itemize}
 
-Um die Anwendung des Tableau-Kalküles zu verdeutlichen, sollen die Fakten der Instanz ``Sole Uno'' (welches Sauna und Dampfbad bietet) auf nachfolgende Regel angewendet werden. Dabei soll geprüft werden, dass ``Sole Uno'' Wellness bietet.
+Da das Tableau-Kalkül darauf basiert einen Widerspruch zu erreichen, wird die Negation der Konklusion ($\neg \varphi$) mit der Menge der Prämissen ($\Gamma$) vereinigt:
 
-$bietet(?x, ``Sauna''), bietet(?x, ``Dampfbad'') \rightarrow wellness(?x, true)$
+\begin{itemize}
+    \item $\Gamma \cup \{\neg\varphi\}$
+    \item[] bzw.
+    \item $\{S \wedge O \rightarrow R, S, O\} \cup \{\neg R\}$
+    \item[]
+    \item[] folgt: $\{S \wedge O \rightarrow R, S, O, \neg R\}$
+\end{itemize}
 
+Zur Anwendung des Kalküls werden alle Sätze der Menge untereinander aufgeschrieben:
+\begin{enumerate}[label= (\alph*)]
+    \item $ S \wedge O \rightarrow R $
+    \item $S$
+    \item $O$
+    \item $\neg R$
+\end{enumerate}
+
+Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterkonten bzw. Zweigen expandiert:
+\begin{enumerate}[label= (\alph*)]
+    \setcounter{enumi}{4}
+    \item $ \neg(S \wedge O) $
+    \item $R$
+\end{enumerate}
+
+Nach Bildung des Wurzelknotens wird der Baum anhand der Tiefensuche-Traversierung expandiert. Dies heisst, dass zuerst die Wurzel, anschliessend der linke und schliesslich der rechte Teilbaum durchlaufen wird.
+
+Die Transformationsregeln werden also auf den Wurzelknoten angewendet. Dadurch wird der linke Unterknoten (e) durch einen neu gebildeten Knoten (bestehend aus (g) und (h)) ersetzt, der rechte Unterknoten (f) bleibt bestehen:
+\begin{enumerate}[label= (\alph*)]
+    \setcounter{enumi}{6}
+    \item $\neg S$
+    \item $\neg O$
+\end{enumerate}
+
+Der linke Teilbaum ist nun vollständig expandiert und wird ausgewertet. Dabei müssen die Knoten (b), (c), (d), (g) und (h) (logisch) vereinbar sein. Es fällt auf, dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
+\begin{itemize}
+    \item $(b) \cup (g)$ also $S \cup \neg S = \{\}$
+    \item[] und
+    \item $(c) \cup (h)$ also $O \cup \neg O = \{\}$
+\end{itemize}
+
+An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen und im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss (f) mit (b), (c), (d) (logisch) vereinbar sein. Auch dort herrscht somit ein Widerspruch:
+\begin{itemize}
+    \item $(d) \cup (f)$ also $\neg R \cup R = \{\}$
+\end{itemize}
+
+Es sind nun alle Knoten expandiert und ausgewertet und es konnte kein Modell für $\{S \wedge O \rightarrow R, S, O, \neg R\}$ gebildet werden. Das wiederum bedeutet, dass die Negation $\Gamma \models \neg\varphi$ nicht zutrifft. Somit kann $\Gamma \models \varphi$ bewiesen werden.
 
 \subsubsection{Datentypenprüfung}
 \label{ssubsection:inferenz_pellet_datatypes}
