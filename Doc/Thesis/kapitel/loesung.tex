@@ -16,9 +16,9 @@ Um die oben erwähnten Technologien, Sprachen und Theorien zu erarbeiten und die
 \section{Modellierung}
 \label{sec:loesung_modellierung}
 
-Semantische Datenbanken werden auf Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet ihr Wissen ab. Die Problemdomäne dieser Arbeit ist das Reisen. Es wurde entschieden sich vorerst auf Ausflüge in der Schweiz zu begrenzen. Damit ist es möglich die Mächtigkeit eines Expertensystems aufzuzeigen. Die gesamte Modellierung wurde mithilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL formuliert. Details dazu können im Tutorial nachgelesen werden. TODO ref zu Tutorial
+Semantische Datenbanken werden auf Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet ihr Wissen ab. Die Problemdomäne dieser Arbeit ist das Reisen. Es wurde entschieden sich vorerst auf Ausflüge in der Schweiz zu begrenzen. Damit ist es möglich die Mächtigkeit eines Expertensystems aufzuzeigen. Die gesamte Modellierung wurde mithilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL formuliert. Details dazu können im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 9 nachgelesen werden.
 
-Zur Veranschaulichung wurde jeder Teil der Ontologie und die dazugehörigen Regeln in einem semantischen Netz abgebildet. Sämtliche Grafiken finden sich als Anhang TODO.
+Zur Veranschaulichung wurde jeder Teil der Ontologie und die dazugehörigen Regeln in einem semantischen Netz abgebildet. Sämtliche Grafiken finden sich als Anhang unter~\ref{sec:anhang:grafiken}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/semNetzLoesung.png}}}
@@ -58,12 +58,12 @@ Der zweite Teil ist ein von Protégé automatisch generiertes RDF/XML-Dokument. 
 
 \section{Erstellung von Abfragen}
 \label{sec:loesung_sparql}
-Sowohl während des Abbildens der Problemdomäne, als auch für die endgültige Suche, mussten immer wieder Abfragen erstellt werden. Abfragen müssen in einer semantischen Datenbank mittels SPARQL gestellt werden. Dabei handelt es sich um eine Abfragesprache für Ontologien {\color{red} TODO ref Tutorial}. Die Abfragen sind direkt in der erstellten Benutzeroberfläche integriert. So konnte verhindert werden, dass der Benutzer gezwungen ist, sich die Sprache anzueignen.
+Sowohl während des Abbildens der Problemdomäne, als auch für die endgültige Suche, mussten immer wieder Abfragen erstellt werden. Abfragen müssen in einer semantischen Datenbank mittels SPARQL gestellt werden. Dabei handelt es sich um eine Abfragesprache für Ontologien. Details dazu finden sich im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 10. Die Abfragen sind direkt in der erstellten Benutzeroberfläche integriert. So konnte verhindert werden, dass der Benutzer gezwungen ist, sich die Sprache anzueignen.
 
 \section{Benutzeroberfläche}
 \label{sec:loesung_gui}
 Eine weitere Anforderung an die Lösung lautet ``\ldots Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu \ldots''.~\cite{Aufgabenstellung}
 
-Da klar wurde, dass es in keiner Weise Benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
+Da klar wurde, dass es in keiner Weise benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
 
 In einem ersten Schritt kann der Benutzer entscheiden ob er nur ein Ausflug planen will oder auch nach einem Restaurant sucht. Im zweiten Schritt werden sämtliche gefolgerte Eigenschaften und Beziehungen zu den gewählten Komponenten angeboten. Zum Schluss erhält der Benutzer eine Liste sämtlicher Ergebnisse. Dabei wird aus allen gewählten Eigenschaften dynamisch eine SPARQL-Abfrage generiert. In der Ausgabe sind der Name des Ausflugs, sein Standort und, wenn vorhanden, die URL zu seiner Homepage aufgelistet. Je nach Kriterien ist es natürlich möglich, dass keine Reise gefunden wird. Dies ist der Fall, wenn keine der erfassten Reisen auf die gewählten Kriterien zutrifft. Da nur sehr exemplarisch Reisen erfasst wurden, ist das Risiko für eine leere Antwort relativ hoch.

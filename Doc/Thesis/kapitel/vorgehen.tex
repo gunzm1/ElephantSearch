@@ -96,6 +96,7 @@ Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umse
 \end{itemize}
 
 \subsubsection{Technische Grundlagen}
+\label{ssubsec:vorgehen:grundlagen:technisch}
 Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Anstelle von Apache Stanbol wird die Graphdatenbank Stardog~\footnote{\url{http://www.stardog.com}} eingesetzt. Diese bietet die Möglichkeit Ontologien in diversen Formaten zu importieren und exportieren, Abfragen mittels der SPARQL-Abfragesprache zu stellen sowie eine Komponenten zum Ziehen von Schlüssen bei Abfragen. Die Details dazu werden in~\autoref{chap:komponenten} genauer beschrieben.
 
 Durch die Erarbeitung der Grundlagen war klar, dass die Modellierung der Ontologie mit der Ontologie-Sprache OWL vorgenommen werden sollte. Eine Datei im OWL-Format, welche solch eine Ontologie beinhaltet, wächst mit zunehmendem Umfang der Ontologie sehr schnell an. Zudem ist die Ontologie-Sprache OWL in einer XML-Syntax gehalten. Durch diese beiden Faktoren waren sich die Autoren relativ schnell einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL mit einem Hilfsmittel vorgenommen werden sollte.
