@@ -32,6 +32,20 @@ Durch die Beschränkung der Problemdomäne auf Tages- und Wochenendausflüge in 
 Sowohl ein Restaurant als auch ein Ausflug werden durch Eigenschaften von Bedingungen (Bedingungsproperty) beschrieben. Ein Restaurantbesitzer könnte also dem Betreiber des erstellten Reiseplaners die Qualitäten seines Restaurants angeben. Diese Eigenschaften gehen von der Beschreibung des Ambientes, über kulinarischen Spezialitäten zu den durchschnittlichen Preisen, welche das Restaurant hat. Der Ausflug ist durch andere Werte wie der Anzahl Teilnehmer, den Öffnungszeiten oder was ein Ausflug bietet oder erfordert beschrieben.
 Mittels Regeln ist festgelegt welche Folgerungen aus diesen Eigenschaften abgeleitet werden können.
 
+    \begin{figure}[H]%[htbp]
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/charAusflug.jpg}
+            \caption*{Eigenschaften eines Ausflugs.\label{fig:charAusflug}\protect\footnotemark}
+        \end{minipage}
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/charRestaurant.jpg}
+            \caption*{Eigenschaften eines Restaurants.\label{fig:charRest}\protect\footnotemark[1]}
+        \end{minipage}
+    \end{figure}
+\footnotetext{Eigene Darstellung mittels yEd.}
+
 Um die verschiedenen Möglichkeiten beim Abbilden einer Ontologie aufzuzeigen, wurde für die Spezifikation der Hauptkomponenten jeweils eine andere Umsetzung gewählt. Die Klasse Restaurant hat verschiedene Unterklassen. Der Besucher hat also bei der Suche die Auswahl zwischen verschiedenen Typen von Restaurants zur Verfügung. Je nach gewähltem Typ müssen unterschiedliche Kriterien (Bedinungsproperties) erfüllt sein. So ist zum Beispiel festgelegt, dass eine raffinierte Küche mit frischen und saisonalen Speisen auf ein Gourmetrestaurant schliessen lässt.
 
 Wenn also in diesem Fall der Benutzer auswählt, dass er ein Gourmetrestaurant sucht, würden nur jene Restaurants ermittelt, welche als Eigenschaften raffinierte Küche mit frischen und saisonalen Speisen aufweisen. Das Preissegment ist als Klasse mit Individuen definiert. Jedes Individuum stellt da bei ein Preissegment dar. Liegt der Durchschnittspreis eines Restaurants in einem bestimmten Rahmen so definieren Regeln in welchem Preissegment das Restaurant liegt.  Dies ist durch eine Eigenschaft des Objektes (ObjectProperty) festgelegt. Objekteigenschaften beschreiben die Beziehungen zwischen zwei Individuen.
@@ -39,11 +53,54 @@ Wenn also in diesem Fall der Benutzer auswählt, dass er ein Gourmetrestaurant s
 Bei den Ausflügen werden dem Benutzer des Reiseplaners Schlussfolgerungen angeboten. Mittels der vorher erwähnten Regeln ist festgelegt welche Bedienungen zutreffen müssen um eine gewisse Eigenschaft zu erfüllen. So ist zum Beispiel festgelegt, dass ein Ausflug der Wellness bietet entspannend und romantisch ist.\\
 Sowohl Folgerungen als auch Bedingungen werden in Form von so genannten DataProperties definiert. Diese legen eine Eigenschaft eines Individuums fest.
 
-In beiden Fällen ist zu beachten, dass der Benutzer sich entscheiden kann, ob er entweder eine von der Region oder von dem Ort abhängige Einschränkung für die Suche festlegen möchte. Die Beziehung zwischen den Region/Orten und den konkreten Ausflügen/Restaurants wird mit Hilfe von ObjectProperties erreicht. Es wird also zum Beispiel gesagt, dass ein Ausflug den Standort Bern hat. Als Erweiterung kann der Benutzer festlegen, dass er ein Restaurant sucht, welches sich im gleichen Ort respektive in der gleichen Region befindet wie der Ausflug.
+    \begin{figure}[H]%[htbp]
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/AufbauAusflug.jpg}
+            \caption*{Schlussfolgerungen Ausflug.\label{fig:AufbauAusflug}\protect\footnotemark[1]}
+        \end{minipage}
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/AufbauRest.jpg}
+            \caption*{Restaurant Typen.\label{fig:AufbauRest}\protect\footnotemark[1]}
+        \end{minipage}
+    \end{figure}
+\footnotetext{Eigene Darstellung mittels yEd.}
 
-Eine Besonderheit von Ausflügen ist, dass sie nicht das ganze Jahr über machbar sind. Durch eine Eigenschaft eines Ausfluges (DataProperty) kann der Betreiber festlegen in welchem Zeitraum ein Ausflug machbar ist (offen von bis).Dank geeigneter Regeln wird abgeleitet in welcher Saison ein Ausflugsziel besuchbar ist.
+In beiden Fällen ist zu beachten, dass der Benutzer sich entscheiden kann, ob er entweder eine von der Region oder von dem Ort abhängige Einschränkung für die Suche festlegen möchte. Die Beziehung zwischen den Region/Orten und den konkreten Ausflügen/Restaurants wird mit Hilfe von ObjectProperties erreicht. Es wird also zum Beispiel gesagt, dass ein Ausflug den Standort Bern hat. Als Erweiterung kann der Benutzer festlegen, dass er ein Restaurant sucht, welches sich im gleichen Ort respektive in der gleichen Region befindet wie der Ausflug.\\
 
-Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränkung. Bekanntlich kann dem Lösen von Planungsproblemen, welche NP-vollständig sind, eine ganze Bachelor Thesis gewidmet werden. Erschwerend kommt dazu, dass es bei der Wissensabbildung mittels OWL nur in sehr begrenztem Rahmen möglich ist zu rechnen. Da dies kein wichtiger Teil der Arbeit ist, haben die Autoren entschieden, dass es keinen Sinn macht diese Problematik in Form von Programmlogik zu lösen. Aus diesem Grund fällt die Zeitplanung relativ simpel aus. Es kann festgelegt werden wie viel Zeit ein Ausflug in Anspruch nimmt. In der Verwendung kann der Benutzer des Reiseplaners angeben wie viel Zeit er für einen Ausflug zur Verfügung hat. Zur Auswahl stehen die Kriterien halbtags, ganztags und mehrtägig, wobei die mehrtägigen Ausflüge nicht eingearbeitet wurden. In dieser Version des Reiseplaners werden in der Anfrage immer nur jene Ausflüge ausgegeben, welche der festgelegten Zeiteinheit entsprechen.
+Eine Besonderheit von Ausflügen ist, dass sie nicht das ganze Jahr über machbar sind. Durch eine Eigenschaft eines Ausfluges (DataProperty) kann der Betreiber festlegen in welchem Zeitraum ein Ausflug machbar ist (offen von bis).Dank geeigneter Regeln wird abgeleitet in welcher Saison ein Ausflugsziel für Besucher offen ist. Dazu wurde eine Klasse Jahreszeiten mit entsprechenden Individuen eingeführt.\\
+    \begin{figure}[H]%[htbp]
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/SaisonKlasse.jpg}
+            \caption*{Abbildung der Jahreszeiten.\label{fig:SaisonKlasse}\protect\footnotemark}
+        \end{minipage}
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/SaisonRegeln.jpg}
+            \caption*{Regel zur Bestimmung der Jahreszeiten.\label{fig:SaisonRegeln}\protect\footnotemark[2]}
+        \end{minipage}
+    \end{figure}
+
+
+Ein ähnliches Prinzip wurde angewendet um die Ruhetage eines Ausflug beziehungsweise eines Restaurants abzubilden. Für jede Reisedestination kann der Organisator angegeben, welche Ruhetage sie hat. Regeln legen fest, dass die Reise an einem Tag machbar ist, wenn der Tag kein Ruhetag ist. Dies ist eher umständlich und nicht sehr intuitiv umgesetzt. Vor allem da bei einem Ausflug der täglich ausgeführt werden kann der Ruhetag 8 angegeben werden muss (eine Zahl die nicht zwischen 1-7 also Montag bis Sonntag liegt). Hiermit wollten die Autoren die Einschränkung von Wissensmodellierungen mittels Ontologien aufzeigen, dass in Regeln keine Negationen möglich sind. Auf der Anderen Seite zeigt diese Methode den Vorteil solcher Modellierungen auf. Sie können erweitert werden, ohne das der Programmcode angepasst werden muss. Da es ja möglich ist, die Daten mit eigener Logik zu versehen. 
+
+Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränkung. Bekanntlich kann dem Lösen von Planungsproblemen, welche NP-vollständig sind, eine ganze Bachelor Thesis gewidmet werden. Erschwerend kommt dazu, dass es bei der Wissensabbildung mittels OWL nur in sehr begrenztem Rahmen möglich ist zu rechnen. Da dies kein wichtiger Teil der Arbeit ist, haben die Autoren entschieden, dass es keinen Sinn macht diese Problematik in Form von Programmlogik zu lösen. Aus diesem Grund fällt die Zeitplanung relativ simpel aus. Es kann festgelegt werden wie viel Zeit ein Ausflug in Anspruch nimmt. In der Verwendung kann der Benutzer des Reiseplaners angeben wie viel Zeit er für einen Ausflug zur Verfügung hat. Zur Auswahl stehen die Kriterien halbtags, ganztags und mehrtägig, wobei die mehrtägigen Ausflüge nicht eingearbeitet wurden. In dieser Version des Reiseplaners werden in der Anfrage immer nur jene Ausflüge ausgegeben, welche der festgelegten Zeiteinheit entsprechen. Um die Dauer eines Ausfluges flexibler zu gestalten haben die Autoren entschieden, dass mehrere Male das Dauer-attribut gesetzt werden kann. Mit dieser Erweiterung kann ein Ausflug sowohl als halb als auch als ganztägiger deklariert werden.
+
+    \begin{figure}[H]%[htbp]
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/dauer.jpg}
+            \caption*{Dauer eines Ausflugs festlegen.\label{fig:dauer}\protect\footnotemark[2]}
+        \end{minipage}
+        \begin{minipage}[hbt]{0,49\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{bilder/reiseUmfang.jpg}
+            \caption*{Regel zur Bestimmung des Reiseumfangs.\label{fig:reiseumfang}\protect\footnotemark[2]}
+        \end{minipage}
+    \end{figure}
+\footnotetext{Eigene Darstellung mittels yEd.}
 
 \subsection{Mängel in Stardog}
 \label{subsec:loesung_modellierung_maengel_stardog}
@@ -54,7 +111,7 @@ Also Workround wurde die Modellierung von den Autoren so abgeändert, dass Welln
 \label{subsec:loesung_modellierung_ergebnis}
 Ein Teil des Ergebnisses der Modellierung sind die oben erwähnten semantischen Netze. Diese wurden in drei Grafiken aufgeteilt. Auf der ersten Grafik wird die gesamte Region/Ort-Thematik abgebildet. Auf zwei weiteren Grafiken wurden jeweils die Details zu den Restaurants respektive Ausflügen dargestellt.
 
-Der zweite Teil ist ein von Protégé automatisch generiertes RDF/XML-Dokument. Darin ist die semantische Datenbank im OWL-Format abgelegt. Es handelt sich dabei um die konkreten Daten.
+Der zweite Teil ist ein von Protégé generiertes RDF/XML-Dokument. Darin ist die semantische Datenbank im OWL-Format abgelegt. Es handelt sich dabei um die konkreten Daten.
 
 \section{Erstellung von Abfragen}
 \label{sec:loesung_sparql}
@@ -67,3 +124,8 @@ Eine weitere Anforderung an die Lösung lautet ``\ldots Besondere Bedeutung komm
 Da klar wurde, dass es in keiner Weise benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
 
 In einem ersten Schritt kann der Benutzer entscheiden ob er nur ein Ausflug planen will oder auch nach einem Restaurant sucht. Im zweiten Schritt werden sämtliche gefolgerte Eigenschaften und Beziehungen zu den gewählten Komponenten angeboten. Zum Schluss erhält der Benutzer eine Liste sämtlicher Ergebnisse. Dabei wird aus allen gewählten Eigenschaften dynamisch eine SPARQL-Abfrage generiert. In der Ausgabe sind der Name des Ausflugs, sein Standort und, wenn vorhanden, die URL zu seiner Homepage aufgelistet. Je nach Kriterien ist es natürlich möglich, dass keine Reise gefunden wird. Dies ist der Fall, wenn keine der erfassten Reisen auf die gewählten Kriterien zutrifft. Da nur sehr exemplarisch Reisen erfasst wurden, ist das Risiko für eine leere Antwort relativ hoch.
+\begin{figure}[H]
+\centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/reiseplaner_gui.jpg}}}
+\caption{Ausschnitt der Benutzeroberfläche. Schritt Zwei des Assistenten.\label{fig:gui}\protect\footnotemark}
+\end{figure}
+\footnotetext{http://elephantsearch.bfh.ch:5820/}
