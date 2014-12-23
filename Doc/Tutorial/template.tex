@@ -29,7 +29,7 @@
 \usepackage{etoolbox}                                                   % color manipulation of header and footer
 \usepackage{graphicx}                                                   % integration of images
 \usepackage{float}                                                      % floating objects
-\usepackage{caption}                                                    % for captions of figures and tables
+\usepackage[font=footnotesize]{caption}                                                    % for captions of figures and tables
 \usepackage{booktabs}                                                   % package for nicer tables
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
 \usepackage[square,sort,comma,numbers]{natbib}                          % provides various citation styles
@@ -54,7 +54,9 @@
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 %---------------------------------------------------------------------------
 
-\renewcommand{\footnotesize}{10pt}
+% Set footnote font size
+\renewcommand\footnotesize{\fontsize{8pt}{8pt}\selectfont}
+% Set font size of page numbers
 
 % Load listings package
 % which provides source code formatting
@@ -63,7 +65,7 @@
 % Define XML colors
 \lstdefinelanguage{XML}
 {basicstyle=\ttfamily\footnotesize,
-  morestring=[b]",
+  morestring=[b]'',
   moredelim=[s][\bfseries\color{maroon}]{<}{\ },
   moredelim=[s][\bfseries\color{maroon}]{</}{>},
   moredelim=[l][\bfseries\color{maroon}]{/>},
