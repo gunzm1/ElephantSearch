@@ -87,8 +87,7 @@ Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Ent
 \subsection{Klassen, Subklassen und Individuen}
 \label{sec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Classen}
 
-\textbf{Klassen}
-Klassen werden dazu verwendet um Individuen mit Gemeinsamkeiten zu gruppieren. Klassen stellen daher eine Menge von Individuen dar. In der Modellierung werden Klassen häufig dazu verwendet um ein Konzept der menschlichen Denkweise abzubilden, beispielsweise das Konzept Reise oder das Konzept Abenteuerreise.
+\textbf{Klassen} werden dazu verwendet, um Individuen mit Gemeinsamkeiten zu gruppieren. Klassen stellen daher eine Menge von Individuen dar. Für die Abbildung der menschlichen Denkweise, werden in der Modellierung Klassen verwendet, beispielsweise Reisen oder Abenteuerreisen.
 
 Beispiel: \textit{Abenteuerreise} ist (nach unserer Definition) eine Klasse.
 
@@ -98,7 +97,9 @@ Beispiel: \textit{Abenteuerreise} ist (nach unserer Definition) eine Klasse.
 \end{lstlisting}
 
 \textbf{Subklassen}
-Im obigen Abschnitt wurden die Klassen Reise sowie Abenteuerreise eingeführt. Dem menschlichen Leser ist intuitiv klar, dass es sich bei einer Abenteuerreise auch um eine Reise handelt. In OWL stehen diese beiden Klassen jedoch nicht in Beziehung zueinander. Es handelt sich um zwei unterschiedliche Klassen mit unterschiedlichen Bezeichnungen. Um nun die Schlussfolgerung zuzulassen, dass eine Abenteuerreise auch eine Reise ist, muss dies festgelegt werden. In OWL geschieht dies mit dem Subklassen-Axiom $subClassOf$.
+Im obigen Abschnitt wurden die Klassen Reise sowie Abenteuerreise eingeführt. Der menschliche Leser weiss intuitiv, dass eine Abenteuerreise auch eine Reiseform ist.
+
+In OWL stehen diese beiden Klassen jedoch nicht in Beziehung. Es handelt sich um zwei unterschiedliche Klassen mit unterschiedlichen Bezeichnungen. Um die Schlussfolgerung, eine Abenteuerreise ist auch eine Reise, zu erreichen, muss dies definiert werden. In OWL geschieht dies mit dem Subklassen-Axiom $subClassOf$.
 
 Beispiel: \textit{Landgasthaus} ist (nach unserer Definition) Subklasse von \textit{Restaurant}.
 
@@ -108,10 +109,9 @@ Beispiel: \textit{Landgasthaus} ist (nach unserer Definition) Subklasse von \tex
         <rdfs:subClassOf rdf:resource="&reiseplaner;Restaurant"/>
     </owl:Class>
 \end{lstlisting}
-Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen, sondern auch um Klassenhierarchien zu modellieren. Mittels Subklassen werden also allgemeine Beziehungen der Klassen abgebildet, so zum Beispiel die Relation ``Ein Landgasthaus ist ein Restaurant.''
+Nicht nur zur Darstellung von Abhängigkeiten werden Subklassen verwendet, sondern auch zur Modellierung von Klassenhierarchien. Mittels Subklassen werden allgemeine Beziehungen der Klassen abgebildet, so zum Beispiel die Relation ``ein Landgasthaus ist ein Restaurant.''
 
-\textbf{Individuum}
-Bei Individuen handelt es sich um Instanzen von Klassen. Ein Individuum ist Mitglied der Menge einer Klasse und bildet daher deren Konzept ab. Individuuen können gleichzeitig Mitglied von mehreren Klassen sein.
+Bei \textbf{Individuen} handelt es sich um \textit{Instanzen von Klassen}. Ein Individuum ist Mitglied der Menge einer Klasse und bildet daher deren Konzept ab. Individuuen können gleichzeitig Mitglied von mehreren Klassen sein.
 
 Beispiel: \textit{Seilpark Balmberg} ist (nach unserer Definition) ein Individuum der Klasse \textit{Ausflug}. 
 

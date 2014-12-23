@@ -151,50 +151,56 @@ Möchte man ausdrücken, dass zum Beispiel Objekte, welche einen Durchschnittspr
 
 \section{Open world assumption}
 \label{sec:swrl_openworldassumption}
-SWRL geht, wie auch OWL, von der so genannten \textit{``open world assumption''} aus. Diese sagt aus, dass der Wahrheitswert einer Aussage wahr sein kann, unabhängig davon, ob bekannt ist, dass der Wert effektiv wahr ist.
+Wie auch OWL geht SWRL von der so genannten \textit{``open world assumption''} aus. Diese besagt, der Wahrheitswert einer Aussage kann unabhängig des effektiven Wahrheitwertes wahr sein.
 
-Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, da sie zusammen an einer Publikation arbeiten, ist folgende Regel naheliegend:
-
-\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
-\lstset{language=XML}
-\begin{lstlisting}
-    $ Publication(?p) \wedge hasAuthor(?p,?y) \wedge hasAuthor(?p,?z) \rightarrow collaboratesWith(?y,?z) $
-\end{lstlisting}
-
-Bedingt durch die open world assumption von OWL ist es nicht möglich zu sagen, dass zwei OWL-Individuen automatisch unterschiedlich sind wenn sie sich durch den Namen unterscheiden. Um dieses Problem zu umgehen bietet SWRL die \textit{sameAs} und \textit{differentFrom} Relationen.
-
-Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, wenn sie Mitverfasser einer Arbeiter sind, so kann die \textit{differentFrom} Relation verwendet werden:
+Möchte man zum Beispiel ausdrücken, zwei OWL-Individuen sind Kollaborateure (sie arbeiten zusammen an einer Publikation) gilt folgende Regel:
 
 \lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Publication(?a) \wedge hasAuthor(?x,?y) \wedge hasAuthor(?x,?z) \wedge differentFrom(?y,?z) \rightarrow cooperatedWith(?y,?z) $
+    $ Publication(?p) , hasAuthor(?p,?y) , hasAuthor(?p,?z) \rightarrow collaboratesWith(?y,?z) $
 \end{lstlisting}
 
-Dasselbe gilt für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit \textit{sameAs} gekennzeichnet werden.
+Aufgrund  der ``open world assumption'' von OWL ist es nicht möglich auszusagen, dass zwei OWL-Individuen automatisch unterschiedlich sind, wenn sie verschiedene Namen haben. Mittels den \textit{sameAs}- und \textit{differentFrom}-Relationen bietet SWRL die Lösung des Problemes:
 
-Weiter können z.B. Aufzählungen nicht ohne Weiteres ausgedrückt werden. Möchte man beispielweise sagen, dass es sich bei einer Publikation um eine Publikation mit nur einem Autor handelt, ist dies nicht möglich. Es mag sein, dass aktuell nur Wissen über einen Autor der Publikation vorhanden ist, diese aber noch über weitere --- aktuell unbekannte --- Autoren verfügt.
+\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration mit expliziter Unterscheidung zwischen den Kollaborateuren},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Publication(?p) , hasAuthor(?p, ?y) , hasAuthor(?p, ?z) , differentFrom(?y, ?z) \rightarrow collaboratesWith(?y, ?z) $
+\end{lstlisting}
+
+Analog gilt dies für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit der \textit{sameAs}-Relation gleichgesetzt werden.
+
+Aufzählungen können beispielsweise nicht ohne Umstände ausgedrückt werden: Es ist nicht möglich zu sagen, ob eine Publikation nur von einem einzigen Autor stammt. Es kann durchaus sein, dass nur ein Autor der Publikation bekannt ist, diese aber noch über weitere Autoren verfügt.
+
+Dies bezeichnet den Kern der ``open world assumption''. Der effektive Wahrheitswert ist beispielsweise, die Publikation $?p$  hat mehrere Autoren ($?x, ?y$ und $?z$). Die Aussage, dass die Publikation $?p$ einen bestimmten Autor $?z$ hat, ist dennoch wahr, auch wenn die übrigen Autoren noch nicht bekannt sind.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[5]{l}{0.1\textwidth}
     \vspace{-14pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Mit den in diesem Kapitel eingeführten Regeln ist es nun möglich, die unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Dabei ist zu beachten, dass diese jedoch zuvor als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) zu definieren sind.
+In diesem Kapitel wurden \textit{Regeln} eingeführt, die es ermöglichen die im~\autoref{chap:graph_data} (\nameref{chap:graph_data}) gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Vorgängig müssen diese jedoch als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) definiert werden.
 
-Wir haben die Definition wie folgt gewählt:
+Wir haben die Definition gewählt wie folgt:
+
+Ein Objekt muss über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, erhält ein Objekt automatisch das Attribut \textit{familienfreundlich} mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
 
 \begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{familienfreundlich}},captionpos=b,language=XML]
     alter(?a, ?alter), swrldb:greaterThanOrEqual(?alter, 2) $\Rightarrow$ familienfreundlich(?a, true)
 \end{lstlisting}
 
-Ein Objekt muss also über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, dann erhält ein Objekt automatisch das Attribut familienfreundlich mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
+Ein Objekt gilt dann als \textit{regional}, wenn es über einen Standort verfügt und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist.
 
-\begin{lstlisting}[caption={Beispiel der SWRL-regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
     hatStandort(?ausflug, ?ort), hatRegion(?land, ?region), hatOrt(?region, ?ort), distanzZuAusgangspunkt(?region, ?distanz), swrldb:lessThanOrEqual(?distanz, 50) $\Rightarrow$ regional(?ausflug, true)
 \end{lstlisting}
 
-Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist, dieses Objekt dann das Attribut \textit{regional} erhält.
+Eine Regel kann in SWRL keine ODER-Verknüpfung enthalten, wie in~\autoref{sec:swrl_aufbau} (\nameref{sec:swrl_aufbau}) beschrieben. Die ODER-Verknüpfungen bildet man ab, durch mehrfache Definition derselben Regel. Der Regelkopf (das heisst die Schlussfolgerung) muss immer gleich sein, die Bedingungen (das heisst die Regelköper) dürfen verschieden sein.
+
+Wir wenden an: Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel verursacht. Die Eigenschaft \textit{nervenkitzel} ist ihrerseits eine Folgerung aus der Erfordernis von Mut.
+
+Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
 
 \begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{actionreich}},captionpos=b,language=XML]
     erfordert(?a, "mut") $\Rightarrow$ actionreich(?a, true)
@@ -202,8 +208,8 @@ Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region diese
     erfordert(?a, "geschicklichkeit") $\Rightarrow$ actionreich(?a, true)
 \end{lstlisting}
 
-Wie unter~\nameref{sec:swrl_aufbau} beschrieben, kann eine Regel in SWRL keine ODER-Verknüpfungen enthalten. Diese werden abgebildet, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet. Genau dies ist hier der Fall. Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel mit sich bringt. Die Eigenschaft \textit{nervenkitzel} ist selbst wiederum eine Folgerung, aus der Bedingung, dass sie Mut erfordert. Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
+Es sind jetzt alle Komponenten vorhanden, um Ausflüge abbilden zu können, die den in~\autoref{chap:graph_data} (\nameref{chap:graph_data}) genannten Kriterien entsprechen.
 
-Somit sind nun alle Komponenten vorhanden, um Ausflüge abbilden zu können, welche den unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} genannten Kriterien entsprechen. Doch wie findet man nun effektiv solche Ausflüge? Hierzu benötigt man eine Abfragesprache um Abfragen in der Ontologie vornehmen zu können. Dies wird im kommenden Kapitel erläutert.
+Um nach Ausflügen mit den gewählten Kriterien suchen zu können, benötigt man jedoch eine bestimmte Abfragesprache. Diese wird im kommenden Kapitel aufgezeigt.
 
 \noindent\rule[1ex]{\textwidth}{1pt}

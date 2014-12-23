@@ -1,21 +1,30 @@
 \chapter{SPARQL}
 \label{chap:sparql}
-Das letzte Kapitel ---~\ref{chap:swrl}~\nameref{chap:swrl}--- hat aufzeigt, wie Inferenz in einer Ontologie mittels der Regelsprache SWRL vollumfänglich genutzt werden kann. Nun stellt sich jedoch die Frage wie effektiv Informationen aus der Ontologie und den darauf basierenden Inferenzen abgefragt werden können. Hierfür kann die Abfragesprache SPARQL verwendet werden, welche in diesem Kapitel vorgestellt wird.
+Im letzten Kapitel wurde aufgezeigt, wie Inferenz in einer Ontologie mittels der Regelsprache SWRL vollumfänglich genutzt werden kann.
 
-Das folgende Kapitel basiert, sofern nicht anders vermerkt, auf~\cite{w3sparql_querylang}.
+Wie können Informationen aus der Ontologie und den darauf basierenden Inferenzen abgefragt werden?\\
+Mit SPARQL --- einer Abfragesrprache --- ist es möglich.
 
-Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF, welche es erlaubt Abfragen über mehrere Datenquellen vorzunehmen. Dabei werden Anfragen in Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt zudem Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF Graphen (vgl.~\cite[Abstract]{w3sparql_querylang}).
+Im folgenden Kapitel, welches, sofern nicht anders vermerkt, auf~\cite{w3sparql_querylang} basiert, stellen wir diese Abfragesprache vor.
+
+Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF.\@ Sie erlaubt es, Abfragen in mehreren Datenquellen vorzunehmen. Dabei werden Anfragen über Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt weiter Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte.
+
+Resultate sind entweder eine Menge von Ergebnissen oder RDF-Graphen.
+
+(vgl.~\cite[Abstract]{w3sparql_querylang})
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}[6]{l}{0.1\textwidth}
+\begin{wrapfigure}[7]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Kennt man die Abfragesprache SQL, so erscheint SPARQL auf den ersten Blick recht ähnlich --- der Name lässt dies ja bereits vermuten. Dies ist jedoch nicht ganz der Fall. So sind Klauseln wie \textit{SELECT} und \textit{WHERE} ähnlich, jedoch existiert in SPARQL keine \textit{FROM}-Klausel.
-Der markanteste Unterschied ist jedoch vielleicht die Verwendung von Variablen in SPARQL, diese werden dort für gewöhnlich bei praktisch jeder Abfrage verwendet. Abfragen ohne Variablen kommen in der Praxis --- gemäss unserer Erfahrung --- eher selten vor. In SQL verhält sich dies jedoch eher gegenteilig.
+Kennt man die Abfragesprache SQL, so erscheint SPARQL auf den ersten Blick recht ähnlich --- der Name lässt dies bereits vermuten. Dies ist nur teilweise der Fall. Klauseln wie \textit{SELECT} und \textit{WHERE} sind ähnlich. In SPARQL gibt es jedoch keine \textit{FROM}-Klausel.\\
+Der Hauptunterschied zwischen SPARQL und SQL ist jedoch die Verwendung von Variablen.  Diese werden in SPARQL in der Regel  bei jeder Abfrage verwendet. Abfragen ohne Variablen kommen in der Praxis (gemäss unserer Erfahrung) eher selten vor.\\
+SQL enthält in der Regel sehr wenig Variablen.
+
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
+Eine SPARQL-Abfrage besteht aus folgenden Komponenten:
 \begin{itemize}
     \item Einem oder mehreren Namespaces
     \item Variablen
@@ -29,10 +38,10 @@ Eine Abfrage in SPARQL besteht aus den folgenden Komponenten:
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[2]{l}{0.1\textwidth}
-    \vspace{-21pt}
+    \vspace{-19pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, einer \textit{Select}-Klausel, einer \textit{Where}-Klausel sowie Modifikatoren besteht.
+Für die Praxis besteht eine SPARQL-Abfrage in der Regel aus \textit{Namespaces}, einer \textit{SELECT}-Klausel, einer \textit{WHERE}-Klausel sowie \textit{Modifikatoren}.\\
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
@@ -41,26 +50,25 @@ Informal kann gesagt werden, dass eine SPARQL-Abfrage aus \textit{Namespaces}, e
 
 Gegeben sei die folgende Datenbasis:
 \lstset{caption={Einfache Datenbasis direkt in SPARQL\protect\footnotemark},captionpos=b}
-\lstset{language=XML}
-%%% \begin{lstlisting}
-%%%     $\textless$http://example.org/book/book1$\textgreater$ $\textless$http://purl.org/dc/elements/1.1/title$\textgreater$ "SPARQL Tutorial".
-%%% \end{lstlisting}
+\begin{lstlisting}
+   <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> "SPARQL Tutorial".
+\end{lstlisting}
 \footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
 
 Die Datenbasis beinhaltet das Objekt \textit{book1} mit dem Attribut \textit{title}, welches den Wert \textit{``SPARQL Tutorial''} enthält.
 
-Möchte man nun den Titel des Buches abfragen, so kann dies mit folgender Abfrage vorgenommen werden:
-\lstset{caption={Beispiel einer einfachen SPARQL Abfrage\protect\footnotemark},captionpos=b}
-%%% \begin{lstlisting}
-%%%     SELECT ?title
-%%%     WHERE
-%%%     {
-%%%       $\textless$http://example.org/book/book1$\textgreater$ $\textless$http://purl.org/dc/elements/1.1/title$\textgreater$ ?title .
-%%%     }
-%%% \end{lstlisting}
+Möchte ich nun den Titel des Buches abfragen, so kann ich folgende Abfrage verwenden:
+\lstset{caption={Beispiel einer einfachen SPARQL-Abfrage\protect\footnotemark},captionpos=b}
+\begin{lstlisting}
+    SELECT
+        ?title
+    WHERE {
+        <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> ?title .
+    }
+\end{lstlisting}
 \footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
 
-Die obige Abfrage ergibt folgendes Resultat:
+Sie ergibt folgendes Resultat:
 \noindent\hspace*{15mm}
 \begin{table}[h]
     \centering
@@ -69,14 +77,15 @@ Die obige Abfrage ergibt folgendes Resultat:
         \multicolumn{1}{|c|}{\textbf{title}} \\ \hline
         ``SPARQL Tutorial''                    \\ \hline
     \end{tabular}
-    \caption{Resultat einer einfachen SPARQL Abfrage\protect\footnotemark}
+    \caption{Resultat einer einfachen SPARQL-Abfrage\protect\footnotemark}
 \end{table}
 \footnotetext{\cite[2.1 Writing a Simple Query]{w3sparql_querylang}}
 
 \section{Namespaces}
 \label{sec:sparql_namespaces}
 
-Da es sich bei SPARQL um eine Abfragesprache für RDF handelt und dieses auf XML basiert, sind XML Namespaces auch in SPARQL verfügbar. Bei Namespaces handelt es sich im Prinzip um Module, in Form anderer XML basierter Dokumente, welche referenziert und genutzt werden können. Ein (XML-) Namespace besteht aus einem Kürzel (welches auch leer sein kann), sowie der kompletten Adresse der Ressource (vgl.~\cite[2.1 Introduction]{w3rdf_syntax}).
+SPARQL ist eine Abfragesprach für RDF, das seinerseits auf XML basiert. Dadurch sind XML-Namespaces auch in SPARQL verfügbar. Bei Namespaces handelt es sich um Referenzen auf andere XML-basierte Dokumente, welche modular genutzt werden können.\\
+Ein Namespace besteht aus einem Kürzel (welches auch leer sein kann), sowie aus der kompletten Adresse der Ressource (vgl.~\cite[2.1 Introduction]{w3rdf_syntax}).
 
 \lstset{language=XML,
   caption={Beispiel von Namespaces in RDF\protect\footnotemark},
@@ -102,18 +111,17 @@ Da es sich bei SPARQL um eine Abfragesprache für RDF handelt und dieses auf XML
   belowskip=3em,
   aboveskip=3em
  }
-%%% \begin{lstlisting}
-%%% $\textless$rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  % chktex 1
-%%%          xmlns:dc="http://purl.org/dc/elements/1.1/"
-%%%          xmlns:ex="http://example.org/stuff/1.0/"$\textgreater$
-%%% \end{lstlisting}
+\begin{lstlisting}
+$\textless$rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  % chktex 1
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:ex="http://example.org/stuff/1.0/"$\textgreater$
+\end{lstlisting}
 \footnotetext{\cite[2.6 Completing the Document: Document Element and XML Declaration]{w3rdf_syntax}}
 
 \section{Variablen}
 \label{sec:sparql_variablen}
-
-SPARQL unterstützt die Verwendung von Variablen bei Abfragen, diese können dabei an einer beliebigen Stelle --- also bei (Teil-) Graphen, Gruppierungen, Aggregationen und Modifikatoren --- eingesetzt werden.
-Sie dienen als Platzhalter für abzufragende Objekte, Subjekte oder Prädikate. Variablen beginnen entweder mit einem Dollarzeichen \textit{\$} oder einem Fragezeichen \textit{?}, welche aber nicht Teil der Variable sind.
+Bei Abfragen unterstützt SPARQL die Verwendung von Variablen. Diese können dabei an einer beliebigen Stelle, wie bei (Teil-) Graphen, Gruppierungen, Aggregationen und Modifikatoren eingesetzt werden.\\
+Die Variablen dienen als Platzhalter für abzufragende Objekte, Subjekte und Prädikate. Variablen beginnen entweder mit einem Dollarzeichen \textit{\$} oder einem Fragezeichen \textit{?}, welche selbst nicht Teil der Variable sind.
 
 \lstset{caption={Beispiel einer SPARQL Abfrage mit den Variablen \textit{?object}, \textit{?predicate} und \textit{?subject}.},captionpos=b}
 \begin{lstlisting}
@@ -126,13 +134,13 @@ Sie dienen als Platzhalter für abzufragende Objekte, Subjekte oder Prädikate. 
         10
 \end{lstlisting}
 
-Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.org/}, angewendet, so ergibt dies das folgende Resultat:
+Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.org/}, angewendet, so ergibt dies folgendes Resultat:
 \noindent\hspace*{15mm}
 \begin{table}[h]
     \centering
     \begin{tabular}{l|l|l|}
         \hline
-        \multicolumn{1}{c|}{\textbf{object}}                                & \textbf{predicate}                               & \textbf{subject}                                  \\ \hline
+        \multicolumn{1}{|l|}{\textbf{object}}                                & \textbf{predicate}                               & \textbf{subject}                                  \\ \hline
         \multicolumn{1}{|l|}{http://dbpedia.org/ontology/acceleration}      & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
         \multicolumn{1}{|l|}{http://dbpedia.org/ontology/torqueOutput}      & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
         \multicolumn{1}{|l|}{http://dbpedia.org/ontology/birthDate}         & ... rdf-syntax-ns\#type & ... owl\#FunctionalProperty \\ \hline
@@ -150,17 +158,17 @@ Wird obige Anfrage auf einen SPARQL-Endpunkt, wie z.B. \textit{http://dbpedia.or
 \section{(Teil-) Graphen}
 \label{sec:sparql_graph}
 
-SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Tripel.
+SPARQL basiert auf dem Matching eines (Teil-) Graphen in einem gegebenen Graphen. Dabei ist ein (Teil-) Graph eine Menge von Tripeln.
 
-Es wird zwischen den folgenden Arten von Teilgraphen unterschieden:
+Man unterscheidet zwischen den folgenden Arten von Teilgraphen:
 \begin{itemize}
 \item \textit{Grundlegende Teilgraphen}
 
-Hier muss eine Menge von Tripeln denen in dem gegebenen Graphen entsprechen
+Hierbei muss eine Menge von Tripeln derjenigen im gegebenen Graphen entsprechen
 
 \item \textit{Gruppierende Teilgraphen}
 
-Hier müssen alle Elemente einer Menge von grundlegenden Teilgraphen denen in dem gegebenen Graphen entsprechen
+Hierbei müssen \textit{alle} Elemente einer Menge von Tripeln von grundlegenden Teilgraphen wiederum derjenigen im gegebenen Graphen entsprechen
 
 \item \textit{Optionale Teilgraphen}
 
@@ -168,17 +176,16 @@ Zusätzliche Teilgraphen können die Lösungsmenge erweitern
 
 \item \textit{Alternative Teilgraphen}
 
-Es wird versucht, dass zwei oder mehrere mögliche Teilgraphen denen in dem gegebenen Graphen entsprechen
+Versuch, ob zwei oder mehrere mögliche Teilgraphen denjenigen im gegebenen Graphen entsprechen
 
 \item \textit{Teilgraphen in namensbasierten Graphen}
 
-Es wird versucht Teilgraphen denen in dem gegebenen, namens basierten Graphen zu entsprechen
+Versuch, ob Teilgraphen denjenigen im gegebenen, namensbasierten Graphen entsprechen
 \end{itemize}
 
-Ein grundlegender Teilgraph ist also eine Menge von Tripeln, wobei ein Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt besteht.~\cite[3.1 Triples]{w3rdf}
+Ein grundlegender Teilgraph ist somit eine Menge von Tripeln, wobei jeder Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt bestehen muss.~\cite[3.1 Triples]{w3rdf}
 
 \lstset{caption={Beispiel eines grundlegenden Teilgraphen in SPARQL}}
-\lstset{language=XML}
 \begin{lstlisting}
     ?subject ?predicate ?object.
 \end{lstlisting}
@@ -188,14 +195,14 @@ Ein grundlegender Teilgraph ist also eine Menge von Tripeln, wobei ein Tripel ge
     \vspace{-16pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-Informal kann gesagt werden, dass ein Teilgraph in SPARQL immer zur Gruppierung einer Abfrage verwendet wird, was in der SQL-Sprache der \textit{Where}-Klausel entspricht. Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
+Ein Teilgraph wird in SPARQL immer zur Gruppierung einer Abfrage verwendet. Dies entspricht in der SQL-Sprache der \textit{WHERE}-Klausel.\\
+Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-In einer SPARQL-Abfrage wird ein gruppierender Teilgraph immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppe zu Filtern, dazu wird das \textit{FILTER} Schlüsselwort eingesetzt. Dieses bezieht sich immer auf die Gruppe, in welcher es angewendet wird.
+Ein gruppierender Teilgraph wird in der SPARQL-Abfrag immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppierung zu filtern. Dazu wird \textit{FILTER} als Schlüsselwort verwendet. Dieses bezieht sich immer auf die Gruppierung, in welcher es steht.
 
-\lstset{caption={Beispiel eines gruppierenden Teilgraphen mit \textit{FILTER} Schlüsselwort\protect\footnotemark}}
-\lstset{language=XML}
+\lstset{caption={Beispiel eines gruppierenden Teilgraphen mit dem \textit{FILTER}-Schlüsselwort\protect\footnotemark}}
 \begin{lstlisting}
     {
         ?x foaf:name ?name.
@@ -205,13 +212,23 @@ In einer SPARQL-Abfrage wird ein gruppierender Teilgraph immer mit geschweiften 
 \end{lstlisting}
 \footnotetext{\cite[5.2.2 Scope of Filters]{w3sparql_querylang}}
 
-In obigem Beispiel werden alle Objekte sowie die Werte derer Attribute \textit{name} und \textit{mbox} des Namespaces \textit{foaf} abgefragt. Dabei kann eine komplette leere Menge --- wenn keine Objekte vorhanden sind --- oder aber eine leere Teilmenge --- wenn ein Objekt z.B. nicht über beide Attribute verfügt --- zurückgegeben werden. Die resultierende Menge wird anschliessend gefiltert, so dass nur Objekte zurückbleiben, welche über ein Attribut \textit{foaf:name} verfügen und dessen Inhalt \textit{``Smith''} ist.
+Im obigem Beispiel werden alle Objekte und die Werte ihrer Attribute (\textit{name} und \textit{mbox}, welche im Namespace \textit{foaf} bezeichnet werden) abgefragt.
+
+Dabei kann eine komplette leere Menge --- wenn keine Objekte vorhanden sind --- oder aber eine leere Teilmenge --- wenn ein Objekt z.B. nicht über die beiden Attribute \textit{name} und \textit{mbox} verfügt --- zurückgegeben werden.
+
+Es bleiben nur Objekte zurück, welche über das Attribut \textit{foaf:name} verfügen und dessen Inhalt \textit{``Smith''} ist.
 
 \section{Gruppierungen und Aggregationen}
 \label{sec:sparql_gruppierungenaggregationen}
+Aggregationen bezeichnen eine bestimmte Art der Verbindung zwischen Objekten.~\cite{wiki:aggregation} Aggregationen wenden Ausdrücke bzw. Funktionen auf eine Lösungsmenge an. Dabei enthält eine Lösung normalerweise eine einzelne Gruppe mit allen Lösungen.
 
-Aggregationen wenden Ausdrücke auf eine Lösungsmenge an, wobei eine Lösung normalerweise eine einzelne Gruppe mit allen Lösungen darin enthält. Gruppierungen werden mittels \textit{GROUP BY} angegeben.
-SPARQL unterstützt aktuell die Aggregationen \textit{COUNT}, \textit{SUM}, \textit{MIN}, \textit{MAX}, \textit{AVG}, \textit{GROUP\_CONCAT} und \textit{SAMPLE}. Eine Aggregation kommt dann zum Einsatz, wenn ein Resultat über eine Gruppe von Lösungen berechnet werden soll, wie zum Beispiel den maximalen Wert einer bestimmten Variable (vgl.~\cite[11 Aggregates]{w3sparql_querylang}).
+Gruppierungen werden mittels \textit{GROUP BY} angegeben.
+
+SPARQL unterstützt aktuell die Aggregationen \textit{COUNT}, \textit{SUM}, \textit{MIN}, \textit{MAX}, \textit{AVG}, \textit{GROUP\_CONCAT} und \textit{SAMPLE}.
+
+Die Aggregation wird dann verwendet, wenn ein Resultat über eine Gruppe von Lösungen berechnet werden soll (Beispiel: Maximaler Wert einer bestimmten Variablen).
+
+(vgl.~\cite[11 Aggregates]{w3sparql_querylang})
 
 %%%%% \lstset{caption={Beispiel einer Abfrage mit Gruppierung und Aggregation\protect\footnotemark}}
 %%%%% \lstset{language=SQL}
