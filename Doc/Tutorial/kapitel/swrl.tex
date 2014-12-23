@@ -77,10 +77,9 @@ Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prä
     erfordert(?a, "mut")
 \end{lstlisting}
 
-\newpage
+Wir definieren als praktisches Beispiel ein Individuum als \textit{Teamevent}, wenn es mindestens 4 maximal aber 20 Teilnehmer zulässt. Weiter muss es über die Eigenschaft der Teambildung verfügen. Drückt man dies per SWRL-Regel aus, ergibt sich folgender Ausdruck:
 
-Möchte man nun zum Beispiel ausdrücken, dass die Datentypen-Eigenschaft $ teamevent $ gilt, wenn ein OWL-Individuum über die Relation $ anzahlTeilnehmer $ verfügt, diese grösser oder gleich 4, aber kleiner gleich 20 ist und die Eigenschaft \textit{teambildung} bietet, so geschieht dies mittels:
-\lstset{caption={Beispiel der SWRL-Regel um ein Objekt, \textit{?a}, als Teamevent zu definieren},captionpos=b}
+\lstset{caption={Beispiel der SWRL-Regel um ein Objekt $?a$ als Teamevent zu definieren},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     anzahlTeilnehmer(?a, ?anzahl), greaterThanOrEqual(?anzahl, 4), lessThanOrEqual(?anzahl, 20), bietet(?a, "teambildung") $\rightarrow$ teamevent(?a, true)
@@ -88,7 +87,7 @@ Möchte man nun zum Beispiel ausdrücken, dass die Datentypen-Eigenschaft $ team
 
 \subsubsection{Wertespezifische Eigenschaften}
 \label{ssubsec:swrl_aufbau_atomaretypen_wertespezifischeeigenschaften}
-Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist eine wertespezifische Eigenschaft, das erste Argument ein OWL-Individuum, das zweite Argument ist ein OWL-Datenwert.
+Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist eine wertespezifische Eigenschaft. Das erste Argument ein OWL-Individuum, das zweite Argument ist ein OWL-Datenwert.
 \lstset{caption={Beispiele von Atomen zur Darstellung von wertespezifischen Eigenschaften von Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -96,7 +95,7 @@ Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Pr
     durchschnittspreis(?r, ?preis)
 \end{lstlisting}
 
-Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend) gilt, wenn es Mut erfordert, so kann man dies mittels folgender Regel tun:
+Dass ein Objekt als aufregend (actionreich) gilt, wenn es Mut erfordert, kann mit folgender Regel beschrieben werden:
 \lstset{caption={Beispiel einer Regel, welche ausdrückt, dass ein Objekt actionreich ist, wenn es Mut erfordert},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -105,18 +104,18 @@ Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend
 
 \subsubsection{Unterscheidung von Individuen}
 \label{ssubsec:swrl_aufbau_atomaretypen_unterscheidungvonindividuen}
-Ein Atom, welches die Unterscheidung von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{differentFrom}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+Ein Atom, welches die Unterscheidung von Individuen bezeichnet, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist das \textit{differentFrom}-Prädikat, die Argumente sind OWL-Individuen.
 \lstset{caption={Beispiele von Atomen zur Unterscheidung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     differentFrom(?x,?y)
     differentFrom(Seilpark_Balmberg,Seilpark_Pilatus)
 \end{lstlisting}
-Eine genauere Beschreibung der Verwendung bzw.\ des Zwecks dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
+Eine genauere Beschreibung der Verwendung bzw.\ des Sinnes dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
 
 \subsubsection{Gleichsetzung von Individuen}
 \label{ssubsec:swrl_aufbau_atomaretypen_gleichsetzungvonindividuen}
-Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{sameAs}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+Das Atom, welches die Gleichheit von zwei Individuen kennzeichnet, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist das \textit{sameAs}-Prädikat, die Argumente sind OWL-Individuen.
 \lstset{caption={Beispiele von Atomen zur Gleichsetzung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -126,20 +125,22 @@ Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem 
 
 \subsubsection{Wertebereiche}
 \label{ssubsec:swrl_aufbau_atomaretypen_wertebereiche}
-Ein Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge aus Literalen, sowie genau einem Argument.
-\lstset{caption={Beispiele von Atomen Kennzeichnung eines Wertes},captionpos=b}
+Das Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge von Literalen sowie einem Argument.
+\lstset{caption={Beispiele von Atomen zur Kennzeichnung eines Wertes},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     xsd:int(?x)
     [3, 4, 5](?x)
 \end{lstlisting}
-Im ersten Beispiel ist das Objekt, welches durch die Variable $?x$ gekennzeichnet ist, eine ganze Zahl. Im zweiten Beispiel hat das Objekt den Wert 3, 4 oder 5.
+Im ersten Beispiel ist das Objekt, gekennzeichnet durch die Variable $?x$, eine ganzzahlige Zahl.\\
+Im zweiten Beispiel hat das Objekt einen der Werte 3, 4 oder 5.
 
 \subsubsection{Vordefinierte Atome}
 \label{ssubsec:swrl_aufbau_atomaretypen_vordefinierteatome}
-Bei den vordefinierten Atom handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen und den Wahrheitswert ``richtig'' zurückgeben, sofern alle Argumente dem Prädikat genügen. Dabei haben die vordefinierten Atome den Präfix $ swrldb: $. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{\url{http://www.daml.org/2004/04/swrl/builtins}}.
+Bei den vordefinierten Atomen handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen. Sofern alle Argumente dem Prädikat genügen, geben sie den Wahrheitswert ``richtig'' zurück. Andernfalls ``falsch''.\\
+Die vordefinierten Atome haben das Präfix $swrldb$. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{\url{http://www.daml.org/2004/04/swrl/builtins}}.
 
-Möchte man nun zum Beispiel ausdrücken, dass die alle Objekte, die einen Durchschnittspreis haben und dieser zwischen 20 und 30 ist, die wertespezifische Eigenschaft \textit{preissegment} mit dem Wert ``preiswert'' haben, so geschieht dies mittels:
+Möchte man ausdrücken, dass zum Beispiel Objekte, welche einen Durchschnittspreis zwischen 20 und 30 haben, $preiswert$ (wertespezifische Eigenschaft des Attributes $preissegment$) sind, so geschieht dies mittels der SWRL-Regel:
 \lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass ein Objekt die wertespezifische Eingenschaft \textit{preiswert} hat},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
