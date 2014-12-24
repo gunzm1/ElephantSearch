@@ -62,7 +62,7 @@ function install_traveling-owl() {
   rm -rf backend/node_modules
   rm -rf frontend/node_modules frontend/bower_components
 
-  su vagrant -c 'make install'
+  su vagrant -c 'cd /vagrant/frontend && make install'
 }
 
 install
