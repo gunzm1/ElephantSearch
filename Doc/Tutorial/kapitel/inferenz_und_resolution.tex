@@ -164,11 +164,11 @@ Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Di
 
 Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
 
-Der Tableaux-Algorithmus basiert auf dem Tableau-Kalkül. Dabei soll mittels Widerspruchsbeweis aufgezeigt werden, das eine Interpretation existiert in der sowohl sämtliche Anforderungen (Prämissen) als auch die Negation der Folgerung (Konklusion) wahr ist. Kann ein solches Modell gefunden werden, ist damit beweisen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind also dann Konsistenz, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
+Der Tableaux-Algorithmus basiert auf dem Tableau-Kalkül. Dabei wird mittels Widerspruchsbeweis aufgezeigt, dass eine Interpretation existiert, in der sowohl sämtliche Anforderungen (Prämisse) als auch die Negation der Folgerung (Konklusion) wahr sind. Kann ein solches Modell gefunden werden, ist damit bewiesen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind dann konsistent, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
 
 Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}
 
-Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgelistet.
+Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgezeigt.
 
 \begin{table}[H]
 \centering
@@ -183,16 +183,17 @@ Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgelistet
         P $\rightarrow$ Q   \> I (P) = F oder I (Q) = W oder beides \\
     \end{tabbing}
 \end{minipage}} \hfill
-\captionof{table}{Transformationsregeln \protect\footnotemark}
+\captionof{table}{Transformationsregeln des Talbeau-Kalküls\protect\footnotemark}
 \footnotetext{\cite{baumkalkuel}}
 \end{table}
 
-Die Anwendung des Tableau-Kalküles soll mittels dem nachfolgenden Beispiel verdeutlicht werden. Gegeben sind die folgenden Fakten:
+Mittels nachfolgendem Beispiel soll die Anwendung des Tableau-Kalküles verdeutlicht werden.\\
+Gegeben sind folgende Fakten:
 \begin{itemize}
     \item $S: hatStandort(SeilparkBalmberg, Balmberg)$
     \item $O: hatOrt(Solothurn, Balmberg)$
 \end{itemize}
-Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll nun die \textit{Konklusion} erreicht werden, dass sich der Seilpark in der Region Solothurn befindet:
+Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll der Schluss (\textit{Konklusion}) erreicht werden, dass sich der Seilpark in der Region Solothurn befindet:
 \begin{itemize}
     \item $R: hatRegion(SeilparkBalmberg, Solothurn)$
 \end{itemize}
@@ -203,7 +204,7 @@ Es soll also $\Gamma \models \varphi$ gelten, wobei $\Gamma$ die Menge der Präm
     \item $\varphi: \{R\}$
 \end{itemize}
 
-Da das Tableau-Kalkül darauf basiert einen Widerspruch zu erreichen, wird die Negation der Konklusion ($\neg \varphi$) mit der Menge der Prämissen ($\Gamma$) vereinigt:
+Weil das Tableau-Kalkül darauf basiert, einen Widerspruch zu erreichen, wird die Negation der Konklusion ($\neg \varphi$) mit der Menge der Prämissen ($\Gamma$) vereinigt:
 
 \begin{itemize}
     \item $\Gamma \cup \{\neg\varphi\}$
@@ -213,7 +214,7 @@ Da das Tableau-Kalkül darauf basiert einen Widerspruch zu erreichen, wird die N
     \item[] folgt: $\{S \wedge O \rightarrow R, S, O, \neg R\}$
 \end{itemize}
 
-Zur Anwendung des Kalküls werden alle Sätze der Menge untereinander aufgeschrieben:
+Zur Anwendung des Kalküls werden alle Sätze der gesamten Menge untereinander aufgeschrieben:
 \begin{enumerate}[label= (\alph*)]
     \item $ S \wedge O \rightarrow R $
     \item $S$
@@ -221,35 +222,37 @@ Zur Anwendung des Kalküls werden alle Sätze der Menge untereinander aufgeschri
     \item $\neg R$
 \end{enumerate}
 
-Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterkonten bzw. Zweigen expandiert:
+(a), (b), (c) und (d) bilden zusammen den \textit{Wurzelknoten} des Graphen.
+
+Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterkonten bzw.\ zu zwei Zweigen expandiert:
 \begin{enumerate}[label= (\alph*)]
     \setcounter{enumi}{4}
     \item $ \neg(S \wedge O) $
     \item $R$
 \end{enumerate}
 
-Nach Bildung des Wurzelknotens wird der Baum anhand der Tiefensuche-Traversierung expandiert. Dies heisst, dass zuerst die Wurzel, anschliessend der linke und schliesslich der rechte Teilbaum durchlaufen wird.
+Nach Bildung des Wurzelknotens wird der Baum anhand der Tiefensuche-Traversierung expandiert. Zuerst wird der Wurzelknoten \{(a), (b), (c), (d)\}, danach der linke (e) und schliesslich der rechte Teilbaum (f) durchlaufen.
 
-Die Transformationsregeln werden also auf den Wurzelknoten angewendet. Dadurch wird der linke Unterknoten (e) durch einen neu gebildeten Knoten (bestehend aus (g) und (h)) ersetzt, der rechte Unterknoten (f) bleibt bestehen:
+Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der linke Teilbaum (e) durch einen neu gebildeten Teilbaum (bestehend aus (g) und (h)) ersetzt, der rechte Teilbaum (f) bleibt bestehen:
 \begin{enumerate}[label= (\alph*)]
     \setcounter{enumi}{6}
     \item $\neg S$
     \item $\neg O$
 \end{enumerate}
 
-Der linke Teilbaum ist nun vollständig expandiert und wird ausgewertet. Dabei müssen die Knoten (b), (c), (d), (g) und (h) (logisch) vereinbar sein. Es fällt auf, dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
+Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
 \begin{itemize}
     \item $(b) \cup (g)$ also $S \cup \neg S = \{\}$
     \item[] und
     \item $(c) \cup (h)$ also $O \cup \neg O = \{\}$
 \end{itemize}
 
-An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen und im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss (f) mit (b), (c), (d) (logisch) vereinbar sein. Auch dort herrscht somit ein Widerspruch:
+An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür in den rechten Unterknoten verlagert. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht somit ein Widerspruch:
 \begin{itemize}
     \item $(d) \cup (f)$ also $\neg R \cup R = \{\}$
 \end{itemize}
 
-Es sind nun alle Knoten expandiert und ausgewertet und es konnte kein Modell für $\{S \wedge O \rightarrow R, S, O, \neg R\}$ gebildet werden. Das wiederum bedeutet, dass die Negation $\Gamma \models \neg\varphi$ nicht zutrifft. Somit kann $\Gamma \models \varphi$ bewiesen werden.
+Obwohl alle Knoten expandiert und ausgewertet wurden,  konnte kein Modell für $\{S \wedge O \rightarrow R, S, O, \neg R\}$ gefunden werden. Dies wiederum bedeutet, dass die Negation $\Gamma \models \neg\varphi$ nicht zutrifft. Somit ist $\Gamma \models \varphi$ bewiesen.
 
 \subsubsection{Datentypenprüfung}
 \label{ssubsection:inferenz_pellet_datatypes}
@@ -299,7 +302,7 @@ Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Fo
 
 In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[Seite 5]{sirin:pellet07}
 
-Bei $\mathcal{SHOIQ}(\mathcal{D})$ handelt es sich um eine Erweiterung der Beschreibungslogik $\mathcal{AL}$. $\mathcal{SHOIQ}(\mathcal{D})$ unterstützt unter Anderem zusätzliche Konzepte wie Rollenhierarchien, inverse Eigenschaften und qualifizierte Kardinalitätseinschränkungen. Sie erlaubt zusätzlich die Verwendung von Datentypen, Datenwerten und Datentypeneigenschaften.~\cite{wiki:desclog}
+Bei $\mathcal{SHOIQ}(\mathcal{D})$ handelt es sich um eine Erweiterung der Beschreibungslogik $\mathcal{AL}$. $\mathcal{SHOIQ}(\mathcal{D})$ unterstützt unter anderem zusätzliche Konzepte wie Rollenhierarchien, inverse Eigenschaften und qualifizierte Kardinalitätseinschränkungen. Diese Erweiterung erlaubt zusätzlich die Verwendung von Datentypen, Datenwerten und Datentypeneigenschaften.~\cite{wiki:desclog}
 
 \subsection{Optimierungen}
 \label{subsection:inferenz_pellet_opti}
@@ -333,7 +336,7 @@ Ein weiterer, grundlegender Unterschied ist die Art, wie Schlüsse gezogen werde
 Mit Prolog ist es ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
-\begin{wrapfigure}[14]{l}{0.1\textwidth}
+\begin{wrapfigure}[15]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}

@@ -77,10 +77,9 @@ Ein Atom, welches Eigenschaften von Individuen darstellt, besteht aus einem Prä
     erfordert(?a, "mut")
 \end{lstlisting}
 
-\newpage
+Wir definieren als praktisches Beispiel ein Individuum als \textit{Teamevent}, wenn es mindestens 4 maximal aber 20 Teilnehmer zulässt. Weiter muss es über die Eigenschaft der Teambildung verfügen. Drückt man dies per SWRL-Regel aus, ergibt sich folgender Ausdruck:
 
-Möchte man nun zum Beispiel ausdrücken, dass die Datentypen-Eigenschaft $ teamevent $ gilt, wenn ein OWL-Individuum über die Relation $ anzahlTeilnehmer $ verfügt, diese grösser oder gleich 4, aber kleiner gleich 20 ist und die Eigenschaft \textit{teambildung} bietet, so geschieht dies mittels:
-\lstset{caption={Beispiel der SWRL-Regel um ein Objekt, \textit{?a}, als Teamevent zu definieren},captionpos=b}
+\lstset{caption={Beispiel der SWRL-Regel um ein Objekt $?a$ als Teamevent zu definieren},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     anzahlTeilnehmer(?a, ?anzahl), greaterThanOrEqual(?anzahl, 4), lessThanOrEqual(?anzahl, 20), bietet(?a, "teambildung") $\rightarrow$ teamevent(?a, true)
@@ -88,7 +87,7 @@ Möchte man nun zum Beispiel ausdrücken, dass die Datentypen-Eigenschaft $ team
 
 \subsubsection{Wertespezifische Eigenschaften}
 \label{ssubsec:swrl_aufbau_atomaretypen_wertespezifischeeigenschaften}
-Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist eine wertespezifische Eigenschaft, das erste Argument ein OWL-Individuum, das zweite Argument ist ein OWL-Datenwert.
+Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist eine wertespezifische Eigenschaft. Das erste Argument ein OWL-Individuum, das zweite Argument ist ein OWL-Datenwert.
 \lstset{caption={Beispiele von Atomen zur Darstellung von wertespezifischen Eigenschaften von Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -96,7 +95,7 @@ Ein Atom, welches wertespezifische Eigenschaften darstellt, besteht aus einem Pr
     durchschnittspreis(?r, ?preis)
 \end{lstlisting}
 
-Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend) gilt, wenn es Mut erfordert, so kann man dies mittels folgender Regel tun:
+Dass ein Objekt als aufregend (actionreich) gilt, wenn es Mut erfordert, kann mit folgender Regel beschrieben werden:
 \lstset{caption={Beispiel einer Regel, welche ausdrückt, dass ein Objekt actionreich ist, wenn es Mut erfordert},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -105,18 +104,18 @@ Möchte man zum Beispiel ausdrücken, dass ein Objekt als actionreich (aufregend
 
 \subsubsection{Unterscheidung von Individuen}
 \label{ssubsec:swrl_aufbau_atomaretypen_unterscheidungvonindividuen}
-Ein Atom, welches die Unterscheidung von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{differentFrom}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+Ein Atom, welches die Unterscheidung von Individuen bezeichnet, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist das \textit{differentFrom}-Prädikat, die Argumente sind OWL-Individuen.
 \lstset{caption={Beispiele von Atomen zur Unterscheidung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     differentFrom(?x,?y)
     differentFrom(Seilpark_Balmberg,Seilpark_Pilatus)
 \end{lstlisting}
-Eine genauere Beschreibung der Verwendung bzw.\ des Zwecks dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
+Eine genauere Beschreibung der Verwendung bzw.\ des Sinnes dieses Atoms findet sich unter~\ref{sec:swrl_openworldassumption}.
 
 \subsubsection{Gleichsetzung von Individuen}
 \label{ssubsec:swrl_aufbau_atomaretypen_gleichsetzungvonindividuen}
-Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem Prädikat, sowie genau zwei Argumenten. Das Prädikat ist dabei das \textit{sameAs}-Prädikat, bei den Argumenten handelt es sich um OWL-Individuen.
+Das Atom, welches die Gleichheit von zwei Individuen kennzeichnet, besteht aus einem Prädikat sowie zwei Argumenten. Das Prädikat ist das \textit{sameAs}-Prädikat, die Argumente sind OWL-Individuen.
 \lstset{caption={Beispiele von Atomen zur Gleichsetzung von zwei Individuen},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -126,20 +125,22 @@ Ein Atom, welches die Gleichheit von Individuen kennzeichnet, besteht aus einem 
 
 \subsubsection{Wertebereiche}
 \label{ssubsec:swrl_aufbau_atomaretypen_wertebereiche}
-Ein Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge aus Literalen, sowie genau einem Argument.
-\lstset{caption={Beispiele von Atomen Kennzeichnung eines Wertes},captionpos=b}
+Das Atom, welches einen Wertebereich kennzeichnet, besteht aus einem Datentyp oder einer Menge von Literalen sowie einem Argument.
+\lstset{caption={Beispiele von Atomen zur Kennzeichnung eines Wertes},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
     xsd:int(?x)
     [3, 4, 5](?x)
 \end{lstlisting}
-Im ersten Beispiel ist das Objekt, welches durch die Variable $?x$ gekennzeichnet ist, eine ganze Zahl. Im zweiten Beispiel hat das Objekt den Wert 3, 4 oder 5.
+Im ersten Beispiel ist das Objekt, gekennzeichnet durch die Variable $?x$, eine ganzzahlige Zahl.\\
+Im zweiten Beispiel hat das Objekt einen der Werte 3, 4 oder 5.
 
 \subsubsection{Vordefinierte Atome}
 \label{ssubsec:swrl_aufbau_atomaretypen_vordefinierteatome}
-Bei den vordefinierten Atom handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen und den Wahrheitswert ``richtig'' zurückgeben, sofern alle Argumente dem Prädikat genügen. Dabei haben die vordefinierten Atome den Präfix $ swrldb: $. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{\url{http://www.daml.org/2004/04/swrl/builtins}}.
+Bei den vordefinierten Atomen handelt es sich um Prädikate, welche ein oder mehrere Argumente entgegennehmen. Sofern alle Argumente dem Prädikat genügen, geben sie den Wahrheitswert ``richtig'' zurück. Andernfalls ``falsch''.\\
+Die vordefinierten Atome haben das Präfix $swrldb$. Eine detaillierte Beschreibung aller vordefinierter Atome findet sich unter~\footnote{\url{http://www.daml.org/2004/04/swrl/builtins}}.
 
-Möchte man nun zum Beispiel ausdrücken, dass die alle Objekte, die einen Durchschnittspreis haben und dieser zwischen 20 und 30 ist, die wertespezifische Eigenschaft \textit{preissegment} mit dem Wert ``preiswert'' haben, so geschieht dies mittels:
+Möchte man ausdrücken, dass zum Beispiel Objekte, welche einen Durchschnittspreis zwischen 20 und 30 haben, $preiswert$ (wertespezifische Eigenschaft des Attributes $preissegment$) sind, so geschieht dies mittels der SWRL-Regel:
 \lstset{caption={Beispiel einer SWRL-Regel, welche besagt, dass ein Objekt die wertespezifische Eingenschaft \textit{preiswert} hat},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
@@ -150,50 +151,56 @@ Möchte man nun zum Beispiel ausdrücken, dass die alle Objekte, die einen Durch
 
 \section{Open world assumption}
 \label{sec:swrl_openworldassumption}
-SWRL geht, wie auch OWL, von der so genannten \textit{``open world assumption''} aus. Diese sagt aus, dass der Wahrheitswert einer Aussage wahr sein kann, unabhängig davon, ob bekannt ist, dass der Wert effektiv wahr ist.
+Wie auch OWL geht SWRL von der so genannten \textit{``open world assumption''} aus. Diese besagt, der Wahrheitswert einer Aussage kann unabhängig des effektiven Wahrheitwertes wahr sein.
 
-Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, da sie zusammen an einer Publikation arbeiten, ist folgende Regel naheliegend:
-
-\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
-\lstset{language=XML}
-\begin{lstlisting}
-    $ Publication(?p) \wedge hasAuthor(?p,?y) \wedge hasAuthor(?p,?z) \rightarrow collaboratesWith(?y,?z) $
-\end{lstlisting}
-
-Bedingt durch die open world assumption von OWL ist es nicht möglich zu sagen, dass zwei OWL-Individuen automatisch unterschiedlich sind wenn sie sich durch den Namen unterscheiden. Um dieses Problem zu umgehen bietet SWRL die \textit{sameAs} und \textit{differentFrom} Relationen.
-
-Möchte man zum Beispiel ausdrücken, dass zwei OWL-Individuen Kollaborateure sind, wenn sie Mitverfasser einer Arbeiter sind, so kann die \textit{differentFrom} Relation verwendet werden:
+Möchte man zum Beispiel ausdrücken, zwei OWL-Individuen sind Kollaborateure (sie arbeiten zusammen an einer Publikation) gilt folgende Regel:
 
 \lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    $ Publication(?a) \wedge hasAuthor(?x,?y) \wedge hasAuthor(?x,?z) \wedge differentFrom(?y,?z) \rightarrow cooperatedWith(?y,?z) $
+    $ Publication(?p) , hasAuthor(?p,?y) , hasAuthor(?p,?z) \rightarrow collaboratesWith(?y,?z) $
 \end{lstlisting}
 
-Dasselbe gilt für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit \textit{sameAs} gekennzeichnet werden.
+Aufgrund  der ``open world assumption'' von OWL ist es nicht möglich auszusagen, dass zwei OWL-Individuen automatisch unterschiedlich sind, wenn sie verschiedene Namen haben. Mittels den \textit{sameAs}- und \textit{differentFrom}-Relationen bietet SWRL die Lösung des Problemes:
 
-Weiter können z.B. Aufzählungen nicht ohne Weiteres ausgedrückt werden. Möchte man beispielweise sagen, dass es sich bei einer Publikation um eine Publikation mit nur einem Autor handelt, ist dies nicht möglich. Es mag sein, dass aktuell nur Wissen über einen Autor der Publikation vorhanden ist, diese aber noch über weitere --- aktuell unbekannte --- Autoren verfügt.
+\lstset{caption={Beispiel einer SWRL-Regel zum Ausdrücken von Kollaboration mit expliziter Unterscheidung zwischen den Kollaborateuren},captionpos=b}
+\lstset{language=XML}
+\begin{lstlisting}
+    $ Publication(?p) , hasAuthor(?p, ?y) , hasAuthor(?p, ?z) , differentFrom(?y, ?z) \rightarrow collaboratesWith(?y, ?z) $
+\end{lstlisting}
+
+Analog gilt dies für die Gleichsetzung von zwei Individuen. Diese müssen explizit mit der \textit{sameAs}-Relation gleichgesetzt werden.
+
+Aufzählungen können beispielsweise nicht ohne Umstände ausgedrückt werden: Es ist nicht möglich zu sagen, ob eine Publikation nur von einem einzigen Autor stammt. Es kann durchaus sein, dass nur ein Autor der Publikation bekannt ist, diese aber noch über weitere Autoren verfügt.
+
+Dies bezeichnet den Kern der ``open world assumption''. Der effektive Wahrheitswert ist beispielsweise, die Publikation $?p$  hat mehrere Autoren ($?x, ?y$ und $?z$). Die Aussage, dass die Publikation $?p$ einen bestimmten Autor $?z$ hat, ist dennoch wahr, auch wenn die übrigen Autoren noch nicht bekannt sind.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[5]{l}{0.1\textwidth}
     \vspace{-14pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Mit den in diesem Kapitel eingeführten Regeln ist es nun möglich, die unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Dabei ist zu beachten, dass diese jedoch zuvor als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) zu definieren sind.
+In diesem Kapitel wurden \textit{Regeln} eingeführt, die es ermöglichen die im~\autoref{chap:graph_data} (\nameref{chap:graph_data}) gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Vorgängig müssen diese jedoch als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) definiert werden.
 
-Wir haben die Definition wie folgt gewählt:
+Wir haben die Definition gewählt wie folgt:
+
+Ein Objekt muss über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, erhält ein Objekt automatisch das Attribut \textit{familienfreundlich} mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
 
 \begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{familienfreundlich}},captionpos=b,language=XML]
     alter(?a, ?alter), swrldb:greaterThanOrEqual(?alter, 2) $\Rightarrow$ familienfreundlich(?a, true)
 \end{lstlisting}
 
-Ein Objekt muss also über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, dann erhält ein Objekt automatisch das Attribut familienfreundlich mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
+Ein Objekt gilt dann als \textit{regional}, wenn es über einen Standort verfügt und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist.
 
-\begin{lstlisting}[caption={Beispiel der SWRL-regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
+\begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{regional}},captionpos=b,language=xml]
     hatStandort(?ausflug, ?ort), hatRegion(?land, ?region), hatOrt(?region, ?ort), distanzZuAusgangspunkt(?region, ?distanz), swrldb:lessThanOrEqual(?distanz, 50) $\Rightarrow$ regional(?ausflug, true)
 \end{lstlisting}
 
-Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region dieses Standortes 50 oder weniger Kilometer vom Ausgangspunkt (welcher dynamisch bestimmt sein kann, also abhängig vom Abfragesteller) entfernt ist, dieses Objekt dann das Attribut \textit{regional} erhält.
+Eine Regel kann in SWRL keine ODER-Verknüpfung enthalten, wie in~\autoref{sec:swrl_aufbau} (\nameref{sec:swrl_aufbau}) beschrieben. Die ODER-Verknüpfungen bildet man ab, durch mehrfache Definition derselben Regel. Der Regelkopf (das heisst die Schlussfolgerung) muss immer gleich sein, die Bedingungen (das heisst die Regelköper) dürfen verschieden sein.
+
+Wir wenden an: Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel verursacht. Die Eigenschaft \textit{nervenkitzel} ist ihrerseits eine Folgerung aus der Erfordernis von Mut.
+
+Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
 
 \begin{lstlisting}[caption={Beispiel der SWRL-Regel für die Eigenschaft \textit{actionreich}},captionpos=b,language=XML]
     erfordert(?a, "mut") $\Rightarrow$ actionreich(?a, true)
@@ -201,8 +208,8 @@ Die Regel sagt aus, dass wenn ein Objekt einen Standort hat und die Region diese
     erfordert(?a, "geschicklichkeit") $\Rightarrow$ actionreich(?a, true)
 \end{lstlisting}
 
-Wie unter~\nameref{sec:swrl_aufbau} beschrieben, kann eine Regel in SWRL keine ODER-Verknüpfungen enthalten. Diese werden abgebildet, indem man mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abbildet. Genau dies ist hier der Fall. Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel mit sich bringt. Die Eigenschaft \textit{nervenkitzel} ist selbst wiederum eine Folgerung, aus der Bedingung, dass sie Mut erfordert. Es findet also eine transitive Ableitung statt: $A \sim B \wedge B \sim C \Rightarrow A \sim C$ bzw. $erfordertMut \Rightarrow birgtNervenkitzel \wedge birgtNervenkitzel \Rightarrow istActionreich$ somit gilt $erfordertMut \Rightarrow istActionreich$.
+Es sind jetzt alle Komponenten vorhanden, um Ausflüge abbilden zu können, die den in~\autoref{chap:graph_data} (\nameref{chap:graph_data}) genannten Kriterien entsprechen.
 
-Somit sind nun alle Komponenten vorhanden, um Ausflüge abbilden zu können, welche den unter~\hyperref[elephant_graph_data]{\nameref{chap:graph_data}} genannten Kriterien entsprechen. Doch wie findet man nun effektiv solche Ausflüge? Hierzu benötigt man eine Abfragesprache um Abfragen in der Ontologie vornehmen zu können. Dies wird im kommenden Kapitel erläutert.
+Um nach Ausflügen mit den gewählten Kriterien suchen zu können, benötigt man jedoch eine bestimmte Abfragesprache. Diese wird im kommenden Kapitel aufgezeigt.
 
 \noindent\rule[1ex]{\textwidth}{1pt}

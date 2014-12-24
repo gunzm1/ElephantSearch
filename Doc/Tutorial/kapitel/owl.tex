@@ -87,22 +87,21 @@ Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Ent
 \subsection{Klassen, Subklassen und Individuen}
 \label{sec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Classen}
 
-\textbf{Klassen}
+\textbf{Klassen} werden dazu verwendet, um Individuen mit Gemeinsamkeiten zu gruppieren. Klassen stellen daher eine Menge von Individuen dar. Für die Abbildung der menschlichen Denkweise, werden in der Modellierung Klassen verwendet, beispielsweise Reisen oder Abenteuerreisen.
 
-% TODO: Übersetzen
-In general classes are used to group individuals that have something in common in order to refer to them. Hence, classes essentially represent sets of individuals. In modeling, classes are often used to denote the set of objects comprised by a concept of human thinking, like the concept person or the concept woman. Consequently, we can use the same type of statement to indicate that Mary is a woman by expressing that she is an instance of the class of women
+Beispiel: \textit{Abenteuerreise} ist (nach unserer Definition) eine Klasse.
 
-\begin{lstlisting}[caption={Beispiel einer Klasse}]
+\begin{lstlisting}[caption={Beispiel einer Klasse: Ausflüge}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Ausflug -->
     <owl:Class rdf:about="&reiseplaner;Ausflug"/>
 \end{lstlisting}
 
 \textbf{Subklassen}
+Im obigen Abschnitt wurden die Klassen Reise sowie Abenteuerreise eingeführt. Der menschliche Leser weiss intuitiv, dass eine Abenteuerreise auch eine Reiseform ist.
 
-% TODO: übersetzen
-In the previous section, we were talking about two classes: the class of all persons and that of all women. To the human reader it is clear that these two classes are in a special relationship: Person is more general than Woman, meaning that whenever we know some individual to be a woman, that individual must be a person. However, this correspondence cannot be derived from the labels “Person” and “Woman” but is part of the human background knowledge about the world and our usage of those terms. Therefore, in order to enable a system to draw the desired conclusions, it has to be informed about this correspondence. In OWL 2, this is done by a so-called subclass axiom.
+In OWL stehen diese beiden Klassen jedoch nicht in Beziehung. Es handelt sich um zwei unterschiedliche Klassen mit unterschiedlichen Bezeichnungen. Um die Schlussfolgerung, eine Abenteuerreise ist auch eine Reise, zu erreichen, muss dies definiert werden. In OWL geschieht dies mit dem Subklassen-Axiom $subClassOf$.
 
-\textit{Landgasthaus} ist (nach unserer Definition) Subklasse von \textit{Restaurant}.
+Beispiel: \textit{Landgasthaus} ist (nach unserer Definition) Subklasse von \textit{Restaurant}.
 
 \begin{lstlisting}[caption={Beispiel einer Subklasse}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Landgasthaus -->
@@ -110,11 +109,11 @@ In the previous section, we were talking about two classes: the class of all per
         <rdfs:subClassOf rdf:resource="&reiseplaner;Restaurant"/>
     </owl:Class>
 \end{lstlisting}
-Subklassen werden nicht nur verwendet um Abhängigkeiten darzustellen, sondern auch um Klassenhierarchien zu modellieren. Mittels Subklassen werden also allgemeine Beziehungen der Klassen abgebildet, so zum Beispiel die Relation ``Ein Landgasthaus ist ein Restaurant.''
+Nicht nur zur Darstellung von Abhängigkeiten werden Subklassen verwendet, sondern auch zur Modellierung von Klassenhierarchien. Mittels Subklassen werden allgemeine Beziehungen der Klassen abgebildet, so zum Beispiel die Relation ``ein Landgasthaus ist ein Restaurant.''
 
-\textbf{Individuum}
+Bei \textbf{Individuen} handelt es sich um \textit{Instanzen von Klassen}. Ein Individuum ist Mitglied der Menge einer Klasse und bildet daher deren Konzept ab. Individuuen können gleichzeitig Mitglied von mehreren Klassen sein.
 
-\textit{Seilpark Balmberg} ist ein Individuum der Klasse \textit{Ausflug}. Individuuen können auch von mehreren Klassen gleichzeitig abstammen.
+Beispiel: \textit{Seilpark Balmberg} ist (nach unserer Definition) ein Individuum der Klasse \textit{Ausflug}. 
 
 \begin{lstlisting}[caption={Beispiel eines Individuums}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#Seilpark -->

@@ -96,6 +96,7 @@ Bedingt durch die oben erwähnte Vorarbeit, war das Konzept der technischen Umse
 \end{itemize}
 
 \subsubsection{Technische Grundlagen}
+\label{ssubsec:vorgehen:grundlagen:technisch}
 Wie schon in~\autoref{chap:Aufgabenstellung} erwähnt, fiel die ursprüngliche Wahl für das Backend auf Apache Stanbol~\footnote{\url{http://stanbol.apache.org}}. Es stellte sich jedoch im Verlaufe der Arbeit heraus, dass dies nicht das geeignete Produkt für die geplante Umsetzung ist, da es nicht wie angedacht genutzt werden kann. Anstelle von Apache Stanbol wird die Graphdatenbank Stardog~\footnote{\url{http://www.stardog.com}} eingesetzt. Diese bietet die Möglichkeit Ontologien in diversen Formaten zu importieren und exportieren, Abfragen mittels der SPARQL-Abfragesprache zu stellen sowie eine Komponenten zum Ziehen von Schlüssen bei Abfragen. Die Details dazu werden in~\autoref{chap:komponenten} genauer beschrieben.
 
 Durch die Erarbeitung der Grundlagen war klar, dass die Modellierung der Ontologie mit der Ontologie-Sprache OWL vorgenommen werden sollte. Eine Datei im OWL-Format, welche solch eine Ontologie beinhaltet, wächst mit zunehmendem Umfang der Ontologie sehr schnell an. Zudem ist die Ontologie-Sprache OWL in einer XML-Syntax gehalten. Durch diese beiden Faktoren waren sich die Autoren relativ schnell einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL mit einem Hilfsmittel vorgenommen werden sollte.
@@ -104,9 +105,13 @@ Nach einiger Recherche stelle sich die Anwendung Protégé der Universität Stan
 
 Die gewählte Graphdatenbank nutzt zum Ziehen von Schlüssen den Pellet-Reasoner. Dieser ist auch für Protégé verfügbar. Daher fiel die Entscheidung auf die Verwendung von Pellet als Anwendung zum Ziehen von Schlüssen. Eine detaillierte Beschreibung von Pellet findet sich unter~\autoref{subsec:komponenten_reasoner}.
 
-%TODO: yEd einführen!
+Die Modellierung einer Ontologie ist ein schrittweiser Prozess. Die gewählten Werkzeuge erlauben das schrittweise Modellieren einer Ontologie, bieten allerdings nur bedingt eine grafische Übersicht (Details siehe~\ref{subsec:komponenten_protege_view}). Daher wurde bereits zu Beginn ein geeignetes Werkzeug zur grafischen Modellierung evaluiert. Es handelt sich dabei um den yEd Graph-Editor, in frei verfügbares Werkzeug zur Erstellung und Bearbeitung von Diagrammen. Innerhalb des Werkzeuges wurde eine Konvention zur grafischen Darstellung entwickelt um die Übersichtlichkeit während der Modellierung zu gewahren.
 
-\newpage
+\begin{figure}[H]
+    \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/yed_legende.png}}}
+    \caption{Konvention zur grafischen Darstellung der Ontologie.\label{fig:vorgehen:grundlagen:technisch:yed}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels yEd.}
 
 \subsection{Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie}
@@ -250,7 +255,7 @@ Da es sich hierbei um eine wissenschaftliche Arbeit handelt, haben die Autoren e
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[4]{l}{0.1\textwidth}
     \vspace{-18pt}
-    \includegraphics[width=0.1\textwidth]{bilder/owl.png}\protect\footnotemark
+    \includegraphics[width=0.1\textwidth]{bilder/owl.png}\protect\footnotemark{}
 \end{wrapfigure}
 Durch das Symbol der Eule wird die zweite Herangehensweise im Dokument eingeleitet. Im jeweils danebenstehenden Abschnitt sind praktische Hinweise zur aktuellen Thematik aufgeführt.\\
 
@@ -259,7 +264,7 @@ Durch das Symbol der Eule wird die zweite Herangehensweise im Dokument eingeleit
 
 \begin{wrapfigure}[4]{l}{0.1\textwidth}
     \vspace{-18pt}
-    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}\protect\footnotemark
+    \includegraphics[width=0.1\textwidth]{bilder/elephant.png}\protect\footnotemark{}
 \end{wrapfigure}
 Der letzte Teil des Dokumentes, welcher durch das Symbol des Elefanten gekennzeichnet ist, verkörpert ein Tutorial im klassischen Sinne. Einem pragmatisch veranlagten Leser ist es so möglich, durch Folgen des Symbols, innerhalb von kurzer Zeit ein simples Beispiel eines Expertensystemes aufzubauen.
 
