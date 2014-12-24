@@ -20,18 +20,25 @@
             database: config.sparql.database,
             query: queryString,
             offset: 0
-          }, function(data) {
+          }, function(data, response) {
             if (!data) {
-              reject("Fehler");
+              reject({
+                statusText: 'Die Verbindung zur Datenbank konnte nicht hergestellt werden'
+              });
             }
             else {
-              console.log("Got query results: ", data.results.bindings, typeof(data.results.bindings));
-              var result = {
-                type: type,
-                modelName: modelName,
-                data: data.results.bindings
-              };
-              resolve(result);
+              if (!data.results) {
+                reject(response);
+              }
+              else {
+                console.log("Got query results: ", data.results.bindings, typeof(data.results.bindings));
+                var result = {
+                  type: type,
+                  modelName: modelName,
+                  data: data.results.bindings
+                };
+                resolve(result);
+              }
             }
           });
         });
@@ -45,8 +52,7 @@
       App.ApplicationStore = DS.Store.extend();
 
       App.ErrorView = Ember.View.extend({
-        templateName: "error",
-        errors: []
+        templateName: "error"
       });
 
       App.ReiseModel = DS.Model.extend({
@@ -229,17 +235,24 @@
             return self.store.filter('reiseModel').then(function(models) {
               return models;
             });
-          }).catch(function(data){
-            // TODO Fehlerhandling
-            console.log("catch: ", data);
+          }).catch(function(data) {
+            console.log("error data: ", data);
+            var errorData = {
+              errors: [
+                {message: data.statusText}
+              ]
+            };
+            return Ember.RSVP.reject(errorData);
           });
         },
         actions: {
           step2: function() {
             this.transitionTo('step2');
-          }
+          },
+          error: function(error, transition) {
+            return true;
+          },
         }
-
       });
 
       App.Step2Route = Ember.Route.extend({
@@ -248,7 +261,6 @@
             console.log("Step2: Record: ", travel._attributes);
             return travel.get('isSelected') === true;
           });
-
         },
         actions: {
           step1: function() {
@@ -292,13 +304,21 @@
 
               travel.get('objectAssociations').forEach(function(objectAssoc) {
                 console.log(objectAssoc);
-                objectAssoc.get('objectProperties').forEach(function(objectProp) {
+                var objectProperties = objectAssoc.get('objectProperties');
+
+                objectProperties.forEach(function(objectProp) {
                   if (objectProp.get('isSelected')) {
                     queryString += ' \
-                      ?obj :' + objectAssoc.get('propertyName') + ' :' + objectProp.get('propertyName') + '. \
+                      { ?obj :' + objectAssoc.get('propertyName') + ' :' + objectProp.get('propertyName') + '.} \
+                    UNION \
                     ';
                   }
                 });
+
+                if (objectProperties.content.length > 0) {
+                  console.log('Sersios trimming here..');
+                  queryString = queryString.replace(/UNION\s*$/, '');
+                }
               });
 
               queryString += '}';
@@ -308,19 +328,24 @@
             return Ember.RSVP.all(travelQueries).then(function(foundTravels) {
               console.log("Got res: ", foundTravels);
               return foundTravels;
-            //return performQuery('travels', queryString, 'travels').then(function(foundTravels) {
-              // if (foundTravels.length && !foundTravels.data[0].url) {
-              //   return false;
-              // }
-              // return foundTravels.data;
+            }).catch(function(data) {
+              console.log("error data: ", data);
+              var errorData = {
+                errors: [
+                  {message: data.statusText}
+                ]
+              };
+              return Ember.RSVP.reject(errorData);
             });
-
           });
         },
         actions: {
           step2: function() {
             this.transitionTo('step2');
-          }
+          },
+          error: function(error, transition) {
+            return true;
+          },
         }
       });
     });

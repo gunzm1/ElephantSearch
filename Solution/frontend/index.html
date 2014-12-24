@@ -230,10 +230,9 @@
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span class="sr-only">Fehler:</span>
                 Es ist ein Fehler aufgetreten:
-                {{log view}}
                 <ul>
-                {{#each error in view.errors}}
-                    <li>{{error}}</li>
+                {{#each error in model.errors}}
+                    <li>{{error.message}}</li>
                 {{/each}}
                 </ul>
             </div>
