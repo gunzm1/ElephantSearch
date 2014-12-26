@@ -1,12 +1,17 @@
 \chapter{Schlusswort}
 \label{chap:schlusswort}
 
-% Insert Schlusswort here.
+In der vorliegenden Arbeit haben wir gezeigt, wie ein Knowledge Engineer bei der Modellierung und Formalisierung einer Problemdomäne vorgehen kann. Am Beispiel Reiseplanung haben wir schrittweise ein Expertensystem aufgebaut.
 
-Bei flüchtiger Betrachtung erinnern semantische Datenbanken sehr an relationale Datenbanken. In einer relationalen Datenbank lassen sich vermeintlich dieselben Relationen wie in einer semantischen Datenbank darstellen.
+Dieses Expertensystem beinhaltet eine semantische Datenbank, die ihrerseits auf der Basis einer Ontologie beruht.
 
-Bei genauerer Betrachtung bemerkt man, dass die Modellierung in einer relationalen Datenbank einen viel grösseren Aufwand bedeutet. Der Aufwand ist viel grösser, da sich Relationen nicht so einfach und nicht mit derselben Komplexität darin modellieren lassen.
+Wichtige Erkenntniss: Es eignen sich nur Themengebiete, die aufgrund der Ontologie Inferenz und damit Schlussfolgerungen zulassen.
 
-Ein grosser Vorteil von semantischen Datenbanken liegt in ihrer Flexibilität. Ein neues Attribut kann auf einfache Art definiert und Regeln, Eigenschaften und Individuen zugewiesen werden.
+Andernfalls ist der Mehrwert der Ontolgie gegenüber der herkömmlichen Wissensabbildung nicht gegeben.
 
-Alle Regeln und Eigenschaften, denen dieses Attribut zugewiesen wird, können somit auch neue Individuen betreffen. Möchte man dies in einer relationalen Datenbank umsetzen, ist dies zwar möglich, jedoch mit mehr Aufwand verbunden.
+Während herkömmliche (relationale) Datenbaken nur Beziehungen aufzeigen, liegt der Vorteil der semantischen Datenbank in ihrer Flexibilität und Semantik (Möglichkeit den Relationen eine Bedeutung zu geben).
+
+Nutzt eine Applikation eine semantische Datenbank als Datenmodell, erfordern Anpassungen (Modellierungen) des Datenmodelles keine Programmänderungen --- bei geschickter Programmierung.\\
+Modellierungen sind z.B. das Hinzufügen, Bearbeiten oder Löschen von Entitäten (Klassen, Individuen, Relationen oder Eigenschaften).
+
+Im Gegensatz hierzu benötigen Änderungen in relationalen Datenbanken meistens sehr aufwändige Programmänderungen.
