@@ -326,21 +326,21 @@ Um dennoch akzeptable Leistungen bei Schlussfolgerungen mittels Beschreibungslog
 
 Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 17 bis 19]{sirin:pellet05}.
 
-
 \subsection{Unterschiede zwischen Pellet und Prolog}
 \label{subsec:inferenz_pellet_prolog}
-Datalog: in kopf verwendete variablen müssen auch im körper vorkommen. In prolog nicht. Anfragen terminieren in datalog, jede mögliche antwort wird zurückgegeben, in prolog ist dies nicht gegeben, endlosschleifen möglich, die reihenfolge von regeln spielt eine rolle.~\cite[Seite 175]{laemmel}
+Wie unter~\ref{subsection:inferenz_pellet_swrl} erwähnt, nutzt Pellet einen Datalog-Reasoner als Implementation des $\mathcal{AL}$-Log-Frameworks.\\
+Der wohl wichtigste Unterschied zu Prolog ist daher, dass in Datalog alle Anfragen terminieren und jede mögliche Antwort ausgegeben wird. Eine Reihenfolge der Klauseln spielt daher keine Rolle. Im Gegensatz dazu ist eine Termination von Anfragen in Prolog nicht immer gegeben. So sind Endlosschleifen je nach Reihenfolge der Regeln durchaus möglich.~\cite[Seite 175]{laemmel}
 
-Ein weiterer, grundlegender Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der Tableau-Algorithmus zum Einsatz.
+Ein weiterer Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der unter~\ref{ssubsection:inferenz_pellet_tableaux} erklärte Tableau-Algorithmus zum Einsatz.
 
-Mit Prolog ist es ohne Weiteres möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich unter~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
+Durch den Aufbau von Prolog ist es möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich den Publikationen von~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[15]{l}{0.1\textwidth}
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Das unter TODO (Ref auf Seilpark war hier\ldots) genannte Beispiel beantwortet exakt die unter~\ref{sec:wissensrepFormen_Wissensnetze} gestellte Frage: Wie gelangt man zum Schluss, dass das Individuum \textit{Seilpark Balmberg} in der \textit{Region} \textit{Solothurn} liegt.
+Das unter~\ref{ssubsection:inferenz_pellet_tableaux} genannte Beispiel beantwortet exakt die unter~\ref{sec:wissensrepFormen_Wissensnetze} gestellte Frage: Wie gelangt man zum Schluss, dass das Individuum \textit{Seilpark Balmberg} in der \textit{Region} \textit{Solothurn} liegt.
 
 Wie gelangt man effektiv zu dieser Information? Kann diese durch reine Folgerung erreicht werden?
 
