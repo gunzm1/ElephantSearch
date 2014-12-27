@@ -20,7 +20,7 @@ Protégé ist eine Entwicklungsumgebung für Ontologien. Es wurde von der Univer
 
 \subsection{Merkmale}
 \label{subsec:komponenten_protege_features}
-In Protégé können die Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL oder RDF/XML abgespeichert werden. Protégé erlaubt den Import und Export solcher Dateien. Die Entwicklungsumgebung bietet verschiedene Ansichten auf dieselbe Ontologie. \\
+In Protégé können die Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML, Turtle oder RDF/XML gelesen und abgespeichert werden. Die Dateien tragen jedoch immer die Endung ``.owl''. Protégé hält eingelesene Ontologien als Graphstruktur im Speicher~\footnote{\url{http://protegewiki.stanford.edu/wiki/Protege4Features}} und ermöglicht Reasonern den direkten Zugriff auf diese~\footnote{\url{http://protege.stanford.edu/products.php}}. Die Entwicklungsumgebung bietet verschiedene Ansichten auf dieselbe Ontologie. \\
 Neben dem Anlegen und Bearbeiten einer Ontologie können in Protégé Version 5.0.0 Beta 16 SWRL-Regeln hinzugefügt werden. Diese werden von Protégé direkt in der Ontologie abgelegt. 
 
 Durch das SPARQL-Modul bietet Protégé die Möglichkeiten Abfragen in der Ontologie zu stellen. So können Informationen aus der Ontologie abgefragt werden. Ist zusätzlich ein Reasoner-Modul geladen und aktiviert, kann die Umgebung Inferenzen bei Abfragen einbeziehen. Es können verschiedene Reasoner, so zum Bespiel FACT ++ oder Pellet genutzt werden (siehe:~\ref{subsec:komponenten_reasoner}).
@@ -34,7 +34,7 @@ Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, da
 
 Alle Ansichten sind als Baumstruktur organisiert. Dies bietet eine klare Übersicht und ermöglicht eine hierarchiegetreue Abbildung des dahinterliegenden XML-Dokumentes.
 
-Neben der Darstellung der im XML-Dokument abgespeicherten Informationen bietet Protégé noch andere Ansichten. So kann der Graph einer Ontologie OntoGraf-Ansicht angesehen werden.~\cite{protegeView}
+Neben der Darstellung der im XML-Dokument abgespeicherten Informationen bietet Protégé noch andere Ansichten. So kann der Graph einer Ontologie in der OntoGraf-Ansicht angesehen werden.~\cite{protegeView}
 
 Schlussfolgerungen des gewählten Reasoners werden in allen Ansicht direkt zur Laufzeit ergänzt.
 
