@@ -1,92 +1,113 @@
 \chapter{Lösung}
 \label{chap:loesung}
 % In diesem Kapitel beschreiben Sie Ihre Lösung des Problems. Geben Sie dem Leser genügend Einblick in die Lösung, so dass er Ihre Arbeit entsprechend würdigen kann. Verwenden Sie aber Anhänge für Dinge, die hier nicht unbedingt bis ins letzte Detail verstanden werden müssen.
-Die Aufgabenstellung beschreibt das Ziel dieser Bachelor Thesis mit dem einfachen Satz ``Ziel dieser Arbeit ist die Entwicklung und Anwendung eines Systems zur Speicherung (von Daten) in einer semantischen Datenbank$\cdots$''.~\cite{Aufgabenstellung} Es sollen also Daten in einem Datenspeicher abgelegt werden. Der einzig unbekannte Faktor ist dabei, dass es sich bei der Datenbank um eine semantische Datenbank handeln soll. Bei genauerer Betrachtung wird interessierten Personen bewusst, das sich Einiges dahinter verbirgt.
+Aufgabenstellung: ``Ziel dieser Arbeit ist die Entwicklung und Anwendung eines Systems zur Speicherung (von Daten) in einer semantischen Datenbank$\cdots$''.~\cite{Aufgabenstellung} Kernpunkt: Verwendung einer semantischen Datenbank.
 
-Auf der einen Seite eine Ansammlung von neuen Technologien und Theorien. Auf der anderen Seite eine völlig unbekannte und vor allem ungewohnte Denkweise, welche erst erkannt und dann auch angewendet werden muss. Dies ist gerade für Personen aus der Informatik, speziell mit objektorientiertem Hintergrund eine Herausforderung. Die Erfahrungen und Schwierigkeiten dabei werden im~\autoref{sub:modellierung_der_ontologie} beschrieben.
+Semantik bedeutet einerseits Sammlung von neuen Theorien und neuen Technologien, andererseits beinhaltet sie eine zunächst ungewohnte Denkweise. Dies ist gerade für Personen aus der Informatik, speziell mit objektorientiertem Hintergrund eine Herausforderung. Die Erfahrungen und Schwierigkeiten der Autoren werden im~\autoref{sub:modellierung_der_ontologie} beschrieben.
 
-Eine Anforderung, welche bei der Spezifikation der Meilensteine nicht erwähnt wurde, ist der Anspruch der Autoren innerhalb einer gewissen Wissensdomäne Fragen beantworten zu können. Dies impliziert bereits fundiertes Fachwissen der Thematik, da Fragen anhand der Semantik der Inhalte beantwortet werden sollen. 
+Die Autoren stellten sich die  Anforderung, innerhalb einer bestimmten Wissensdomäne Fragen beantworten zu können (dies wurde bei der Auflistung der Meilensteine nicht erwähnt). Dies setzt bereits fundiertes Fachwissen der Thematik voraus, da Fragen anhand der Bedeutung der Inhalte (Semantik) beantwortet werden sollen.
 
-Die Organisation sowie die Herangehensweise der Autoren wurden im \autoref{chap:administratives} und \autoref{chap:vorgehen} ausführlich beschrieben. In diesem Kapitel liegt der Fokus auf der tatsächlichen Lösung der Anforderungen.
+Die Organisation sowie Vorgehensweise der Autoren wurden im \autoref{chap:administratives} und \autoref{chap:vorgehen} ausführlich beschrieben. Dieses Kapitel beschreibt die tatsächliche Lösung der Aufgabenstellung.
 
 \section{Von der Wissenserarbeitung zum Tutorial}
 \label{sec:loesung_tutorial}
-Um die oben erwähnten Technologien, Sprachen und Theorien zu erarbeiten und diese vor allem mit dem Leser zu teilen, wurde ein Tutorial erarbeitet. Dabei war es schwierig ein einfach nutzbares Tutorial zu erstellen, dem Leser dabei aber auch genügend Hintergrundwissen zu vermitteln. Der Leser soll wirklich verstehen können was hinter einer Wissensmodellierung respektive einem Expertensystem steckt. Daraus entstand ein Dokument, welches die Modellierung aus drei Perspektiven beleuchtet. Diese werden ausführlich im \autoref{subsec:dokumentation_wissensmodellierung_aufbau} beschrieben.
+Zunächst musste ein Tutorial erarbeitet werden, um die Theorien und Technologien zu bestimmen. Dabei war es schwierig, ein einfache, nutzbare Form zu erstellen und dabei dem Leser gleichzeitig genügend Hintergrundwissen zu vermitteln. Der Leser soll wirklich verstehen was Wissensmodellierung respektive ein Expertensystem bedeuten. Es entstand das Tutorialdokument, welches die Modellierung aus drei Perspektiven betrachtet. % TODO: Diese werden ausführlich im \autoref{subsec:dokumentation_wissensmodellierung_aufbau} beschrieben.
 
 \section{Modellierung}
 \label{sec:loesung_modellierung}
+Semantische Datenbanken werden auf der Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet deren Wissen ab. Problemdomäne dieser Arbeit ist das Reisen. Es wurde beschlossen sich auf Tages- und Wochenendausflüge in der Schweiz zu begrenzen. Die gesamte Modellierung wurde mithilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL ausgedrückt. Details dazu können im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 9 nachgelesen werden.
 
-Semantische Datenbanken werden auf Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet ihr Wissen ab. Die Problemdomäne dieser Arbeit ist das Reisen. Es wurde entschieden sich vorerst auf Ausflüge in der Schweiz zu begrenzen. Damit ist es möglich die Mächtigkeit eines Expertensystems aufzuzeigen. Die gesamte Modellierung wurde mithilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL formuliert. Details dazu können im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 9 nachgelesen werden.
-
-Zur Veranschaulichung wurde jeder Teil der Ontologie und die dazugehörigen Regeln in einem semantischen Netz abgebildet. Sämtliche Grafiken finden sich als Anhang unter~\ref{sec:anhang:grafiken}.
+Um die Ontologie zu veranschaulichen, wurde diese grafisch in einem semantischen Netz abgebildet. Zur Vereinfachung wurde die Ontologie aufgeteilt und in entsprechenden semantischen Teilnetzen abgebildet. Sämtliche Grafiken finden sich als Anhang unter~\ref{sec:anhang:grafiken}.
 
 \begin{figure}[H]
-\centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/semNetzLoesung.png}}}
-\caption{Ausschnitt des semantischen Netzes zur Abbildung der Ontologie.\label{fig:semNetzLoesung}\protect\footnotemark}
+    \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/semNetzLoesung.png}}}
+    \caption{Ausschnitt des semantischen Netzes zur Abbildung der Ontologie.\label{fig:semNetzLoesung}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels yEd.}
+
+Mit der Einschränkung der Problemdomäne konnten zwei Hauptklassen gebildet werden (Ausflüge und Restaurants).
+
+Restaurant wie auch Ausflug werden durch Eigenschaften von Bedingungen (Bedingungs-Properties) beschrieben. Zum Beispiel könnte dabei ein Restaurantbesitzer die Qualität (Ambiente, Küche, Durchschnittspreise) seines Restaurants angeben.\\
+Ausflüge werden durch zusätzliche Werte, wie der Anzahl Teilnehmer, den Öffnungszeiten des Ausflugzieles oder was ein Ausflug bietet oder erfordert beschrieben.
+
+Mittels Regeln wurden die Folgerungen aus diesen Eigenschaften vordefiniert.
+
+\begin{figure}[H]%[htbp]
+    \begin{minipage}[hbt]{0,49\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{bilder/charAusflug.jpg}
+        \caption{Eigenschaften eines Ausflugs.\label{fig:charAusflug}\protect\footnotemark}
+    \end{minipage}
+    \begin{minipage}[hbt]{0,49\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{bilder/charRestaurant.jpg}
+        \caption{Eigenschaften eines Restaurants.\label{fig:charRest}\protect\footnotemark[1]}
+    \end{minipage}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
 
-Durch die Beschränkung der Problemdomäne auf Tages- und Wochenendausflüge in der Schweiz, konnten zwei Hauptkomponenten (Ausflüge und Restaurants) extrahiert werden.
+Um die verschiedenen Möglichkeiten beim Abbilden einer Ontologie aufzuzeigen, wurde für die Hauptklassen jeweils eine andere Umsetzung gewählt. Die Hauptklasse Restaurant hat verschiedene Unterklassen. Der Benutzer kann dadurch nach verschiedenen Arten von Restaurants suchen. Je nach gewählter Unterklassen (Art des Restaurants) müssen unterschiedliche Kriterien (Bedinungs-Properties) erfüllt sein. Die von den Autoren definierten Regeln lassen zum Beispiel auf ein Gourmetrestaurant schliessen, wenn dieses über eine raffinierte Küche (in Form von Bedingungsproperties) verfügt.
 
-Sowohl ein Restaurant als auch ein Ausflug werden durch Eigenschaften von Bedingungen (Bedingungsproperty) beschrieben. Ein Restaurantbesitzer könnte also dem Betreiber des erstellten Reiseplaners die Qualitäten seines Restaurants angeben. Diese Eigenschaften gehen von der Beschreibung des Ambientes, über kulinarischen Spezialitäten zu den durchschnittlichen Preisen, welche das Restaurant hat. Der Ausflug ist durch andere Werte wie der Anzahl Teilnehmer, den Öffnungszeiten oder was ein Ausflug bietet oder erfordert beschrieben.
-Mittels Regeln ist festgelegt welche Folgerungen aus diesen Eigenschaften abgeleitet werden können.
+\begin{figure}[H]%[htbp]
+    \centering
+    \includegraphics[scale=0.7]{bilder/loesung_regeln.png}
+    \caption{Folgerung, dass ein Restaurant ein Gourmetrestaurant ist.\label{fig:loesung:regeln}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels Protégé.}
 
-    \begin{figure}[H]%[htbp]
-        \begin{minipage}[hbt]{0,49\textwidth}
-            \centering
-            \includegraphics[scale=0.3]{bilder/charAusflug.jpg}
-            \caption*{Eigenschaften eines Ausflugs.\label{fig:charAusflug}\protect\footnotemark}
-        \end{minipage}
-        \begin{minipage}[hbt]{0,49\textwidth}
-            \centering
-            \includegraphics[scale=0.3]{bilder/charRestaurant.jpg}
-            \caption*{Eigenschaften eines Restaurants.\label{fig:charRest}\protect\footnotemark[1]}
-        \end{minipage}
-    \end{figure}
+In semantischen Datenbaken gibt es zwei Arten von Eigenschaften. Erstens Objekteigenschaften (ObjectProperties) und zweitens Dateneigenschaften (DataProperties). Objekteigenschaften beschreiben eine Beziehung zwischen zwei Individuen, dadurch werden sie verknüpft. Dateneigenschaften beschreiben eine konkrete Eigeschaft eines Individuums. Sie haften diesem an.
+
+In der erstellten Ontologie wurde die Eigenschaft \textit{Preissegment} als Beziehung, also als ObjectProperty (\textit{hatPreis}) zwischen zwei Individiuen definiert. Daher sind die eigentlichen Preissegmente Individuen der Klasse Preissegment. Jedem Restaurant wird ein Preissegment indirekt zugeteilt. Dies geschieht über die definierte Dateneigenschaft (DataProperty) \textit{Durchschnittspreis}. Liegt der Durchschnittspreis eines Restaurants in einem bestimmten Rahmen, so definieren die Regeln in welchem Preissegment ein Restaurant liegt.
+
+[TODO:\ Bild der Regel hier]
+
+Im Gegensatz zu den Restaurants wurden bei Ausflügen Dateneigenschaften zur Schlussfolgerung verwendet. Die gewünschten Dateneigenschaften kann der Benutzer bei der Suche von Ausflügen anwählen. Beispielsweise kann ein Ausflug, der Wellness bietet, entspannend und romantisch sein.
+
+\begin{figure}[H]%[htbp]
+    \begin{minipage}[hbt]{0,49\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{bilder/AufbauAusflug.jpg}
+        \caption{Schlussfolgerungen Ausflug.\label{fig:AufbauAusflug}\protect\footnotemark[1]}
+    \end{minipage}
+    \begin{minipage}[hbt]{0,49\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{bilder/AufbauRest.jpg}
+        \caption{Restaurant-Typen.\label{fig:AufbauRest}\protect\footnotemark[1]}
+    \end{minipage}
+\end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Um die verschiedenen Möglichkeiten beim Abbilden einer Ontologie aufzuzeigen, wurde für die Spezifikation der Hauptkomponenten jeweils eine andere Umsetzung gewählt. Die Klasse Restaurant hat verschiedene Unterklassen. Der Besucher hat also bei der Suche die Auswahl zwischen verschiedenen Typen von Restaurants zur Verfügung. Je nach gewähltem Typ müssen unterschiedliche Kriterien (Bedinungsproperties) erfüllt sein. So ist zum Beispiel festgelegt, dass eine raffinierte Küche mit frischen und saisonalen Speisen auf ein Gourmetrestaurant schliessen lässt.
+Dadurch, dass beide Suchziele (Restaurant und Ausflug) einer Region und einem Ort zugewiesen sind, mussten die Autoren berücksichtigen, dass der Benutzer für beide Suchziele entscheiden kann, ob er entweder eine von der Region oder von dem Ort abhängige Beschränkung für die Suche festlegen möchte. Die Beziehung zwischen den Regionen oder Orten der Ausflüge bzw. Restaurants wurde mit Hilfe von Objekteigenschaften (ObjectProperties) umgesetzt.\\
+Um dem Benutzer die Suche nach Restaurants und Ausflügen in derselben Region bzw.\ demselben Ort zu ermöglichen, haben die Autoren die Objekteigenschaften \textit{gleicherOrt} bzw.\ \textit{gleicheRegion} eingeführt.
 
-Wenn also in diesem Fall der Benutzer auswählt, dass er ein Gourmetrestaurant sucht, würden nur jene Restaurants ermittelt, welche als Eigenschaften raffinierte Küche mit frischen und saisonalen Speisen aufweisen. Das Preissegment ist als Klasse mit Individuen definiert. Jedes Individuum stellt da bei ein Preissegment dar. Liegt der Durchschnittspreis eines Restaurants in einem bestimmten Rahmen so definieren Regeln in welchem Preissegment das Restaurant liegt.  Dies ist durch eine Eigenschaft des Objektes (ObjectProperty) festgelegt. Objekteigenschaften beschreiben die Beziehungen zwischen zwei Individuen.
-
-Bei den Ausflügen werden dem Benutzer des Reiseplaners Schlussfolgerungen angeboten. Mittels der vorher erwähnten Regeln ist festgelegt welche Bedienungen zutreffen müssen um eine gewisse Eigenschaft zu erfüllen. So ist zum Beispiel festgelegt, dass ein Ausflug der Wellness bietet entspannend und romantisch ist.\\
-Sowohl Folgerungen als auch Bedingungen werden in Form von so genannten DataProperties definiert. Diese legen eine Eigenschaft eines Individuums fest.
-
-    \begin{figure}[H]%[htbp]
-        \begin{minipage}[hbt]{0,49\textwidth}
-            \centering
-            \includegraphics[scale=0.3]{bilder/AufbauAusflug.jpg}
-            \caption*{Schlussfolgerungen Ausflug.\label{fig:AufbauAusflug}\protect\footnotemark[1]}
-        \end{minipage}
-        \begin{minipage}[hbt]{0,49\textwidth}
-            \centering
-            \includegraphics[scale=0.3]{bilder/AufbauRest.jpg}
-            \caption*{Restaurant Typen.\label{fig:AufbauRest}\protect\footnotemark[1]}
-        \end{minipage}
-    \end{figure}
-\footnotetext{Eigene Darstellung mittels yEd.}
-
-In beiden Fällen ist zu beachten, dass der Benutzer sich entscheiden kann, ob er entweder eine von der Region oder von dem Ort abhängige Einschränkung für die Suche festlegen möchte. Die Beziehung zwischen den Region/Orten und den konkreten Ausflügen/Restaurants wird mit Hilfe von ObjectProperties erreicht. Es wird also zum Beispiel gesagt, dass ein Ausflug den Standort Bern hat. Als Erweiterung kann der Benutzer festlegen, dass er ein Restaurant sucht, welches sich im gleichen Ort respektive in der gleichen Region befindet wie der Ausflug.\\
-
-Eine Besonderheit von Ausflügen ist, dass sie nicht das ganze Jahr über machbar sind. Durch eine Eigenschaft eines Ausfluges (DataProperty) kann der Betreiber festlegen in welchem Zeitraum ein Ausflug machbar ist (offen von bis).Dank geeigneter Regeln wird abgeleitet in welcher Saison ein Ausflugsziel für Besucher offen ist. Dazu wurde eine Klasse Jahreszeiten mit entsprechenden Individuen eingeführt.\\
+Gewisse Ausflugsziele sind nicht ganzjährig erreichbar (der Seilpark Balmberg ist beispielsweise nur von Frühling bis Herbst geöffnet). Durch die Dateneigenschaften (DataProperties) \textit{offenVon} und \textit{offenBis} eines Ausflugzieles kann festgelegt werden, in welchem Zeitraum ein Ausflug möglich ist. Durch entsprechende Regeln wird festgelegt, in welcher Saison ein Ausflugsziel für Besucher geöffnet ist. Hierfür wurde die Klasse \textit{Jahreszeit} mit den entsprechenden Individuen eingeführt.\\
     \begin{figure}[H]%[htbp]
         \begin{minipage}[hbt]{0,49\textwidth}
             \centering
             \includegraphics[scale=0.3]{bilder/SaisonKlasse.jpg}
-            \caption*{Abbildung der Jahreszeiten.\label{fig:SaisonKlasse}\protect\footnotemark}
+            \caption{Abbildung der Jahreszeiten.\label{fig:SaisonKlasse}\protect\footnotemark}
         \end{minipage}
         \begin{minipage}[hbt]{0,49\textwidth}
             \centering
             \includegraphics[scale=0.3]{bilder/SaisonRegeln.jpg}
-            \caption*{Regel zur Bestimmung der Jahreszeiten.\label{fig:SaisonRegeln}\protect\footnotemark[2]}
+            \caption{Regel zur Bestimmung der Jahreszeiten.\label{fig:SaisonRegeln}\protect\footnotemark[2]}
         \end{minipage}
     \end{figure}
 
 
-Ein ähnliches Prinzip wurde angewendet um die Ruhetage eines Ausflug beziehungsweise eines Restaurants abzubilden. Für jede Reisedestination kann der Organisator angegeben, welche Ruhetage sie hat. Regeln legen fest, dass die Reise an einem Tag machbar ist, wenn der Tag kein Ruhetag ist. Dies ist eher umständlich und nicht sehr intuitiv umgesetzt. Vor allem da bei einem Ausflug der täglich ausgeführt werden kann der Ruhetag 8 angegeben werden muss (eine Zahl die nicht zwischen 1-7 also Montag bis Sonntag liegt). Hiermit wollten die Autoren die Einschränkung von Wissensmodellierungen mittels Ontologien aufzeigen, dass in Regeln keine Negationen möglich sind. Auf der Anderen Seite zeigt diese Methode den Vorteil solcher Modellierungen auf. Sie können erweitert werden, ohne das der Programmcode angepasst werden muss. Da es ja möglich ist, die Daten mit eigener Logik zu versehen. 
+Ein ähnliches Prinzip wurde angewendet, um die Ruhetage eines Ausfluges beziehungsweise eines Restaurants abzubilden. Diese können für jedes Ausflugsziel festgelegt werden. Regeln legen fest, dass der Ausflug an einem bestimmten Tag möglich ist, ausser er sei ein Ruhetag. Diese Festlegung der Ruhetage ist etwas umständlich und nicht sehr intuitiv umgesetzt.
 
-Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränkung. Bekanntlich kann dem Lösen von Planungsproblemen, welche NP-vollständig sind, eine ganze Bachelor Thesis gewidmet werden. Erschwerend kommt dazu, dass es bei der Wissensabbildung mittels OWL nur in sehr begrenztem Rahmen möglich ist zu rechnen. Da dies kein wichtiger Teil der Arbeit ist, haben die Autoren entschieden, dass es keinen Sinn macht diese Problematik in Form von Programmlogik zu lösen. Aus diesem Grund fällt die Zeitplanung relativ simpel aus. Es kann festgelegt werden wie viel Zeit ein Ausflug in Anspruch nimmt. In der Verwendung kann der Benutzer des Reiseplaners angeben wie viel Zeit er für einen Ausflug zur Verfügung hat. Zur Auswahl stehen die Kriterien halbtags, ganztags und mehrtägig, wobei die mehrtägigen Ausflüge nicht eingearbeitet wurden. In dieser Version des Reiseplaners werden in der Anfrage immer nur jene Ausflüge ausgegeben, welche der festgelegten Zeiteinheit entsprechen. Um die Dauer eines Ausfluges flexibler zu gestalten haben die Autoren entschieden, dass mehrere Male das Dauer-attribut gesetzt werden kann. Mit dieser Erweiterung kann ein Ausflug sowohl als halb als auch als ganztägiger deklariert werden.
+Die Ruhetage bei Ausflugszielen werden durch die Dateneigenschaft \textit{ruhetag} definiert. Dies wird mit einer Zahl von 1 bis 7 (was Montag bis Sonntag entspricht) bezeichnet. Hat ein Ausflug aber keine Ruhetage, so muss diesem dennoch ein Ruhetag zugewiesen werden (eine Zahl die nicht zwischen 1 bis 7 also Montag bis Sonntag liegt). Andernfalls liefern Anfragen keine Ausflüge mehr zurück.
+
+Damit wollen die Autoren eine Einschränkung der Wissensmodellierung mittels Ontologien aufzeigen:\\
+Negationen in Regeln sind nicht möglich.\\
+Die zur Umsetzung gewählte Methode zeigt dennoch den Vorteil solch einer Modellierung auf. Sie kann beliebig erweitert werden, ohne Notwendigkeit den Programmcode anzupassen.
+
+Ein grösseres Problem bei der Modellierung war die Abbildung von zeitlicher Beschränkung. Ein Benutzer des Reiseplaners soll festlegen können, wieviel Zeit er für eine Reise aufwenden möchte. Im Idealfall würde das System dann alle möglichen Permutationen von Ausflügen berechnen und auflisten. Der Lösung von Planungsproblemen, welche NP-vollständig sind, kann eine ganze Bachelor-Thesis gewidmet werden. Erschwerend kommt hinzu, dass (arithmetische) Berechnungen mittels OWL nur in sehr begrenztem Rahmen möglich sind. Diese Problematik wäre aber mittels Programmlogik zumindest näherungsweise lösbar.
+
+Um die zeitliche Beschränkung von Ausflügen dennoch zu ermöglich, dies aber kein wichtiger Teil der Arbeit sein sollte, haben die Autoren entschieden diese nur in einer einfachen Form abzubilden. Es kann festgelegt werden, wieviel Zeit ein Ausflug in Anspruch nehmen darf. Zur Auswahl stehen die Kriterien halbtags, ganztags und mehrtägig, wobei die mehrtägigen Ausflüge nicht eingearbeitet wurden.\\
+In der umgesetzten Version des Reiseplaners werden in der Anfrage immer nur jene Ausflüge ausgegeben, welche der gewünschten Zeiteinheit entsprechen. Um die Dauer eines Ausfluges flexibler zu gestalten haben die Autoren entschieden, dass mehrere Male das Dauer-Attribut gesetzt werden kann. Mit dieser Erweiterung kann ein Ausflug sowohl als halb- als auch als ganztägig deklariert werden.
 
     \begin{figure}[H]%[htbp]
         \begin{minipage}[hbt]{0,49\textwidth}
@@ -104,8 +125,11 @@ Eines der grösseren Probleme bei der Modellierung war die zeitliche Beschränku
 
 \subsection{Mängel in Stardog}
 \label{subsec:loesung_modellierung_maengel_stardog}
-Im Laufe der Modellierung sind die Autoren auf ein für sie unerklärliches Phänomen gestossen. So war es dem Reasoner in Stardog nicht möglich von einem DataProperty auf dasselbe DataProperty zu schliessen. Konkret wollten die Autoren aussagen, dass ein Ausflug, der eine Sauna bietet auch Wellness bietet. Diese Regel kann aber von Stardog nicht ausgewertet werden. In Protégé wird die Schlussfolgerung aber richtig angezeigt. Nach längeren Recherchen befanden die Autoren, dass es sich bei dieser Einschränkung wohl um einen technischen Fehler von Stardog handeln muss. Dagegen sprach allerdings, dass beide Werkzeuge den gleichen Reasoner (Pellet) verwenden. Nach dem Melden des Fehlers (Bugreporting) in der Diskussionsgruppe von Stardog, erhielten die Autoren die Information, dass es sich tatsächlich um einen Fehler des Systems handelt. Anscheinend wurde ein zu strenges Ausschlussverfahren in der Programmlogik angewendet um zirkuläre Referenzen zu vermeiden. Dies soll aber im nächsten Release korrigiert werden. \\
-Also Workround wurde die Modellierung von den Autoren so abgeändert, dass Wellness ein DataProperty vom Typ Boolean ist. Da es sich so nicht mehr um dasselbe DataProperty handelt, funktioniert die angepasste Regel.
+Bei der Modellierung stiessen die Autoren auf ein für sie zunächst unerklärliches Phänomen: Dem Reasoner von Stardog war es nicht möglich von einer Dateneigenschaften (DataProperty) auf dieselbe Dateneingeschaft zu schliessen. Konkret wollten die Autoren definieren, dass ein Ausflug, der eine Sauna bietet auch Wellness bietet.\\
+Auswertung dieser Regel ist aber in Stardog nicht möglich, hingegen wird in Protégé die Schlussfolgerung richtig angezeigt.\\
+Nach zahlreichen Recherchen befanden die Autoren, es muss sich bei dieser Einschränkung wohl um einen technischen Fehler in Stardog handeln muss, obwohl beide Werkzeuge den gleichen Reasoner (Pellet) verwenden.\\
+Nach dem Fehlermedlung (Bugreporting) in der Diskussionsgruppe von Stardog, wurde den Autoren mitgeteilt, es handele sich wirklich um einen Systemfehler. Um zirkuläre Referenzen im Vorfeld zu verhindern, wurde in Stardog offenbar ein zu strenges Ausschlussverfahren in der Programmlogik verwendet. Der Fehler wurde bereits in einem erfolgten Release korrigiert.\\
+Um die gewünschte Folgerung dennoch modellieren zu können, wurde Wellness als Dateneigenschaft vom Typen Boolean definiert und die Regel entsprechend angepasst.
 
 \subsection{Ergebnis}
 \label{subsec:loesung_modellierung_ergebnis}
