@@ -54,8 +54,9 @@
 \usepackage[absolute]{textpos}
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{1mm}
-%---------------------------------------------------------------------------                    
-
+%---------------------------------------------------------------------------   
+% PDF als Anhang                 
+\usepackage{pdfpages}
 % Definition of Colors
 %---------------------------------------------------------------------------
 \RequirePackage{color}                          % Color (not xcolor!)
@@ -223,7 +224,7 @@
 \include{kapitel/loesung}
 \include{kapitel/komponenten}
 \include{kapitel/fazit}
-\include{kapitel/schlussbemerkung}
+%\include{kapitel/schlussbemerkung}
 %---------------------------------------------------------------------------
 
 % Selbständigkeitserklärung
@@ -278,7 +279,15 @@
 %---------------------------------------------------------------------------
 \appendix
 \settocdepth{section}
-\include{anhang/anhang}
+%\include{anhang/anhang}
+\includepdfset{pagecommand={\thispagestyle{headings}}}
+\includepdf[pages=-, addtotoc={1,chapter,0,Anforderungsdokument,chap:anf},scale=0.9]{anhang/anforderungen.pdf}
+\include{anhang/schnipsel}
+\includepdf[pages=-, addtotoc={1,chapter,0,Tutorial Wissensmodellierung,chap:tutorial},scale=0.9]{anhang/Tutorial.pdf}
+\includepdf[pages=-, addtotoc={1,chapter,0,Dokumentation Projekt 2,chap:tutorial},scale=0.9]{anhang/DokumentationProjekt2.pdf}
+\include{anhang/benutzerhandbuch}
+\include{anhang/Arbeitsjournal}
+\include{anhang/modellierung}
 %---------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------

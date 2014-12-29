@@ -1984,7 +1984,7 @@ geöffnet<y:LabelModel>
           <y:Geometry height="30.0" width="60.013671875" x="1019.3849963729922" y="1122.148731354626"/>
           <y:Fill color="#CCCCFF" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="14.001953125" x="23.005859375000114" y="5.6494140625">...<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="14.001953125" x="23.005859375" y="5.6494140625">...<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3630,7 +3630,6 @@ massage<y:LabelModel>
       </data>
     </edge>
     <edge id="e53" source="n54" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3807,7 +3806,6 @@ unterhaltung<y:LabelModel>
       </data>
     </edge>
     <edge id="e62" source="n61" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
