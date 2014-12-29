@@ -126,7 +126,7 @@ Eine komplette Unterstützung des OWL-full Profils ist generell nicht möglich, 
 
 Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente, welche die Wissensbasis auf deren Konsistenz prüft. Der Entscheid bei der Entwicklung von Pellet, ausschliesslich OWL-DL zu verwenden, führte zu einer modularen Struktur. Module ihrerseits sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
 
-Hier eine Übersicht der wichtigsten Komponenten von Pellet:
+Hier eine Übersicht der wichtigsten Komponenten von Pellet\cite[S. 4]{sirin:pellet05}:
 \begin{table}[H]
 \centering
 \fbox{\begin{minipage}[t]{0.48\linewidth}%
@@ -274,9 +274,9 @@ Die Schnittstelle zur Wissensdatenbank, wie auch der Rest der Komponenten von Pe
 
 \subsubsection{Abox Query-Engine}
 \label{ssubsection:inferenz_pellet_aboxquery}
-Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[Seiten 10 und 11]{sirin:pellet05}.
+Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S 10-11]{sirin:pellet05}.
 
-Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[Seite 11]{sirin:pellet05}.
+Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[S 11]{sirin:pellet05}.
 
 \begin{figure}[htbp]
     \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/infres_pellet_queryengine.png}}}
@@ -296,17 +296,17 @@ Pellet ermöglicht die Verwendung von Regeln zur Schlussfolgerung. Dies unter Ve
 
 Damit in der Wissensdatenbank gespeicherte Konzepte in Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[Seiten 4 und 5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog}
 
-Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[Seite 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[Seiten 4 und 5]{sirin:pellet07}
+Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[S 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[Seiten 4 und 5]{sirin:pellet07}
 
 Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Formel eine funktionsfreie Hornklausel ist. Im Unterschied zu Prolog muss jede Variable, die im Kopf einer Klausel vorkommt, auch im Körper der Klausel vorkommen. Die Reihenfolge der Klauseln spielt keine Rolle. Alle Anfragen terminieren und jede mögliche Antwort wird ausgegeben.~\cite{datalog}
 
-In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[Seite 5]{sirin:pellet07}
+In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[S 5]{sirin:pellet07}
 
 Bei $\mathcal{SHOIQ}(\mathcal{D})$ handelt es sich um eine Erweiterung der Beschreibungslogik $\mathcal{AL}$. $\mathcal{SHOIQ}(\mathcal{D})$ unterstützt unter anderem zusätzliche Konzepte wie Rollenhierarchien, inverse Eigenschaften und qualifizierte Kardinalitätseinschränkungen. Diese Erweiterung erlaubt zusätzlich die Verwendung von Datentypen, Datenwerten und Datentypeneigenschaften.~\cite{wiki:desclog}
 
 \subsection{Optimierungen}
 \label{subsection:inferenz_pellet_opti}
-Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[Seiten 16 bis 19]{sirin:pellet05}
+Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[S 16-19]{sirin:pellet05}
 
 Beschreibungslogiken, wie $\mathcal{SHOIQ}(\mathcal{D})$ haben im ungünstigsten Fall eine sehr hohe Komplexität. Daher besteht ein grosser Unterschied zwischen Design und praktischer Umsetzung einer Entscheidungsprozedur.
 
@@ -329,11 +329,11 @@ Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 
 \subsection{Unterschiede zwischen Pellet und Prolog}
 \label{subsec:inferenz_pellet_prolog}
 Wie unter~\ref{subsection:inferenz_pellet_swrl} erwähnt, nutzt Pellet einen Datalog-Reasoner als Implementation des $\mathcal{AL}$-Log-Frameworks.\\
-Der wohl wichtigste Unterschied zu Prolog ist daher, dass in Datalog alle Anfragen terminieren und jede mögliche Antwort ausgegeben wird. Eine Reihenfolge der Klauseln spielt daher keine Rolle. Im Gegensatz dazu ist eine Termination von Anfragen in Prolog nicht immer gegeben. So sind Endlosschleifen je nach Reihenfolge der Regeln durchaus möglich.~\cite[Seite 175]{laemmel}
+Der wohl wichtigste Unterschied zu Prolog ist daher, dass in Datalog alle Anfragen terminieren und jede mögliche Antwort ausgegeben wird. Eine Reihenfolge der Klauseln spielt daher keine Rolle. Im Gegensatz dazu ist eine Termination von Anfragen in Prolog nicht immer gegeben. So sind Endlosschleifen je nach Reihenfolge der Regeln durchaus möglich.~\cite[S 175]{laemmel}
 
-Ein weiterer Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][Seite 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der unter~\ref{ssubsection:inferenz_pellet_tableaux} erklärte Tableau-Algorithmus zum Einsatz.
+Ein weiterer Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][S 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der unter~\ref{ssubsection:inferenz_pellet_tableaux} erklärte Tableau-Algorithmus zum Einsatz.
 
-Durch den Aufbau von Prolog ist es möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][Seite 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich den Publikationen von~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
+Durch den Aufbau von Prolog ist es möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][S 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich den Publikationen von~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[15]{l}{0.1\textwidth}
