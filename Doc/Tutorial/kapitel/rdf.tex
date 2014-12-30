@@ -46,7 +46,7 @@ Literale können in einem Tripel nur als Objekt verwendet werden.
 
 \subsection{Leere Knoten (blank nodes)}
 \label{sec:rdf_rdf_dataModel_blankNodes}
-Ein leerer Knoten stellt eine Ressource ohne URI dar. Der Vorteil davon ist, dass diese Knoten keinen globalen Identifier benötigen. Leere Knoten können mit einer einfachen Variablen in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert irrelevant ist.
+Ein leerer Knoten stellt eine Ressource ohne URI dar. Als Vorteil benötigen diese Knoten keinen globalen Identifier. Leere Knoten können mit einer einfachen Variablen in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert irrelevant ist.
 
 Leere Knoten können in einem Tripel Subjekt oder Objekt darstellen.
 
@@ -55,17 +55,17 @@ Leere Knoten können in einem Tripel Subjekt oder Objekt darstellen.
 Eine der neuesten Erweiterung von RDF sind multipe Graphen. Diese wurden eingeführt, um Teilmengen einer Tripelsammlung zu definieren. Ursprünglich stammt dieser Mechanismus von der Abfragesprache SPARQL (siehe~\ref{chap:sparql}~\nameref{chap:sparql}). Man unterscheidet zwischen benannten (named) und unbenannten (unnamed) Graphen. Bei unbenannten Graphen enthalten die Tripel jeweils die gesamte URI.\@
 
 \begin{lstlisting}[caption={Beispiel eines unbenannten (unnamed) Graphen}]
-	<http://example.org/bob> <is published by> <http://example.org>.
+    <http://example.org/bob> <is published by> <http://example.org>.
 \end{lstlisting}
 
 Bei benannten Graphen wird ein Identifikator (identifier) hinzugefügt, auf welchen referenziert wird.
 
 \begin{lstlisting}[caption={Beispiel eines benannten (named) Graphen}]
 Identifier: 
-		http://example.org/bob
+        http://example.org/bob
 Graph:
-		<Bob> <is a> <person>.
-		<Bob> <is a friend of> <Alice>.
+        <Bob> <is a> <person>.
+        <Bob> <is a friend of> <Alice>.
 \end{lstlisting}
 
 Multipe Graphen eines RDF-Dokumentes stellen eine Datenmenge dar. Sie bestehen standartmässig aus einem unbenannten (unnamed) Graphen und mehreren benannten (named) Graphen. Dabei ist der unbenannte Graph der sog. Basisgraph (default).
