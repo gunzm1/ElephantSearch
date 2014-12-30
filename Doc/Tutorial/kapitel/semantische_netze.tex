@@ -2,7 +2,7 @@
 \label{chap:wissensrepFormen}
 
 Nach Darstellung der Grundlage von Graphen und Graphdatenbanken im letzten Kapitel, wollen wir jetzt Repräsentationsformen von Wissen analysieren.\\
-In der Wissensmodellierung (knowledge engineering) gibt es verschiedene Formen der Wissensrepräsentation um Wissen in wissensbasierten Systemen formal abzubilden. Auf diese Art abgelegte Informationen werden als Wissensdatenbank bzw. Wissensbasis bezeichnet.~\cite{wikiWissensrep}
+In der Wissensmodellierung (knowledge engineering) gibt es verschiedene Formen der Wissensrepräsentation um Wissen in wissensbasierten Systemen formal abzubilden. Auf diese Art abgelegte Informationen werden als Wissensdatenbank bzw. Wissensbasis bezeichnet (vgl.~\cite{wikiWissensrep}).
 
 Das folgende Kapitel basiert auf~\cite[S. 85 - 90]{laemmel} und beschreibt einige klassische Formen der Wissensrepräsentation, nämlich semantische Netze, Wissensnetze und Frames.
 
@@ -21,22 +21,22 @@ Folgende Beziehungen werden unterschieden:
 
         Es handelt sich um Ober- und Unterklassen.
 
-        Beispiel: \textit{Ein Baum ist eine Pflanze.}
+        Beispiel: \textit{Eine Abenteuerreise ist eine Reise.}
 
     \item ``Instanz von'' Relation
 
-        Die Relation sagt aus von welchem Typ ein Individum ist.
+        Die Relation sagt aus von welchem Typ ein Individuum ist.
 
-        Beispiel: \textit{Birke ist eine Instanz der Klasse Baum.}
+        Beispiel: \textit{Seilpark Balmberg ist eine Instanz der Klasse Ausflug.}
 
     \item Eigenschaft
 
         Klassen und Objekte haben Eigenschaften.
 
-        Beispiel: \textit{Pflanzen erzeugen Sauerstoff.}
+        Beispiel: \textit{Ein Ausflug hat einen Standort.}
 \end{itemize}
 
-Eigenschaften sind transitiv: Ist also ein Hund ein Tier und ein Tier ein Lebewesen, ist auch ein Hund ein Lebewesen. Weiter unterliegen Eigenschaften de, Gesetz der Vererbung. Ein Tier benötigt Sauerstoff, damit benötigt auch ein Hund Sauerstoff.
+Eigenschaften sind transitiv: Ist also Riverrafting eine Abenteuerreise und eine Abenteuerreise eine Reise, ist auch Riverrafting eine Reise. Weiter unterliegen Eigenschaften dem Gesetz der Vererbung. Ein Reise hat einen Reiseführer, damit hat auch Riverrafting einen Reiseführer.
 
 In semantischen Netzen werden Objekte und Klassen als Knoten abgebildet. Beziehungen und Eigenschaften werden als Kanten dargestellt.
 Aussagen wie Existenzaussagen und Oder-Aussagen können mit semantischen Netzen nicht abgebildet werden.
@@ -69,7 +69,7 @@ Wissen wird in Wissensnetzen objektorientiert oder mittels Frames abgebildet. Ei
 
 ``In einer Wissenslandkarte repräsentiert die Entfernung zweier Begriffe oder Wissensinhalte deren inhaltliche Nähe zueinander. Ein Wissensnetz ist somit ein Informationssystem, in dem zusätzlich die semantischen Beziehungen der Begriffe untereinander verwaltet werden. Diese Meta-Ebene ermöglicht eine \textbf{semantische Suche} – eine Suche, die über das Auffinden reiner Zeichenketten weit hinausgeht.''~\cite[S. 89]{laemmel}.
 
-Die Knoten erhalten die Bedeutung von Instanzen (Individuen) oder Klassen. Das Problem der Mehrfachvererbung durch Einführung des Rollenkonzeptes umgangen. Durch Erweiterung der Klassen kann eine Instanz dann eine bestimmte Rolle einnehmen.
+Die Knoten erhalten die Bedeutung von Instanzen (Individuen) oder Klassen. Das Problem der Mehrfachvererbung wird durch Einführung des Rollenkonzeptes umgangen. Durch Erweiterung der Klassen kann eine Instanz dann eine bestimmte Rolle einnehmen.
 
 Wissensnetze haben alle Voraussetzungen, um effektives Wissensmanagement zu bieten. Dafür muss das Wissen aber immer aktuell und umfassend sein.
 
@@ -92,9 +92,9 @@ An dieser Stelle scheint es uns wichtig zu erwähnen, dass das semantische Netz 
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/elephant.png}
 \end{wrapfigure}
-Möchte man ein semantisches Netz als Hilfsmittel zum Aufbau der Ontologie eines Reiseplaners nützen, ist das Vorgehen demjenigen der Graphdatenbank sehr ähnlich.
+Möchte man ein semantisches Netz als Hilfsmittel zum Aufbau der Ontologie eines Reiseplaners nützen, ist das Vorgehen des Aufbaues demjenigen der Graphdatenbank sehr ähnlich.
 
-Für den Aufbau wichtig sind weiterhin die zuvor gemachten Überlegungen, das heisst auch die Klassen, Individuen und deren Relationen. Aktuell sind dies die \textit{Klassen} Ausflug, Land, Region und Ort, die \textit{Individuen} Schweiz, Solothurn, Bern und Seilpark Balmberg sowie die \textit{Relationen} hatRegion und hatOrt.
+Für den Aufbau wichtig sind weiterhin die zuvor gemachten Überlegungen, das heisst die Klassen, Individuen und deren Relationen. Aktuell sind dies die \textit{Klassen} Ausflug, Land, Region und Ort, die \textit{Individuen} Schweiz, Solothurn, Bern und Seilpark Balmberg sowie die \textit{Relationen} hatRegion und hatOrt.
 
 Wie ist das weitere Vorgehen? Was unterscheidet ein semantisches Netz von einer Graphdatenbank?\\
 Im Kapitel Graphdatenbanken wurde bereits eine wichtige Entität vorweggenommen, die den Hauptunterschied zwischen einem semantischen Netz und einer Graphdatenbank darstellt: Individuen. Diese lassen sich in Graphdatenbanken zwar abbilden, aber weniger intuitiv und aufwändiger.

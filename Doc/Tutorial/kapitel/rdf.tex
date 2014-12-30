@@ -1,14 +1,14 @@
 \chapter{RDF}
 \label{chap:rdf}
-Das folgende Kapitel basiert, fals im Text nicht anderst vermerkt auf der Spezifikation von W3C~\cite{w3rdf}.
+Das folgende Kapitel basiert, sofern nicht nicht anders vermerkt, auf~\cite{w3rdf}.
 
 Die bisherigen Kapitel bieten einen Überblick über die verschiedenen Methoden und Angehensweisen des knowledge engineerings. Die wichtigsten theoretischen Grundlagen wurden in den vorigen Kapiteln erklärt. Im Kapitel~\ref{chap:ontologien}, ``~\nameref{chap:ontologien}'', wurde gezeigt, dass für die Darstellung von Ontologien verschiedene Sprachen entwickelt wurden. 
 
-Wir haben uns für OWL (in der Version 2) entschieden, da es sich um die meistbenutzte Ontologiesprache handelt. OWL wird in der RDF-Syntax verfasst wird, wollen wir letztere erklären.
+Wir haben uns für OWL (in der Version 2) entschieden, da es sich um die am meisten benutzte Ontologiesprache handelt. Da OWL in der RDF-Syntax verfasst wird, wollen wir letztere erklären.
 
-Das ``Resource Description Framework'' (RDF) ist ein Framework um Informationen aus Ressourcen zu formulieren. Als Ressourcen können Dokumente, Leute, Objekte aber auch abstrakte Inhalte dienen. Im Web können Informationen mit RDF auch verarbeitet werden, anstatt diese nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne dabei die Bedeutung der Informationen zu verändern.
+Das ``Resource Description Framework'' (RDF) ist ein Framework um Informationen aus Ressourcen zu formulieren. Als Ressourcen können Dokumente, Leute, Objekte aber auch abstrakte Inhalte dienen. Im Web können Informationen mit RDF verarbeitet werden, anstatt diese nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne dabei die Bedeutung der Informationen zu verändern.
 
-RDF ist die Grundlage des sematic Web, welches die Flexibilität von RDF vollumfänglich ausnutzt. Alle Daten im semantic Web werden in RDF abgebildet. RDF ermöglicht die Verknüpfung von Daten. Dadurch werden für eine Ressource mehr Informationen zusammen gefügt.\cite{cambSemRDF}
+RDF ist die Grundlage des semantischen Webs, welches die Flexibilität von RDF vollumfänglich ausnutzt. Alle Daten im semantischen Web werden in RDF abgebildet. RDF ermöglicht die Verknüpfung von Daten. Dadurch werden für eine Ressource mehr Informationen zusammen gefügt.\cite{cambSemRDF}
 
 \section{RDF Data Model}
 \label{sec:rdf_rdf_dataModel}
@@ -19,7 +19,7 @@ In RDF werden Informationen als Aussagen abgebildet. Der Aufbau dieser ist immer
     <Subjekt> <Prädikat> <Objekt>
 \end{lstlisting}
 
-Eine RDF Aussage bildet eine Beziehung zwischen zwei Ressourcen (Entitäten) nämlich Subjekt und Objekt ab. Das Prädikat repräsentiert die Beziehung zwischen den zwei Ressourcen. Die Beziehung wird in RDF als Eigenschaft (Property) abgebildet.
+Eine RDF Aussage bildet eine Beziehung zwischen zwei Ressourcen (Entitäten) nämlich Subjekt und Objekt ab. Das Prädikat repräsentiert die Beziehung zwischen den zwei Ressourcen. Die Beziehung wird in RDF als Eigenschaft (Property) bezeichnet.
 
 \lstset{caption={Beispiel einer RDF-Aussage},captionpos=b}
 \begin{lstlisting}
@@ -29,12 +29,6 @@ Eine RDF Aussage bildet eine Beziehung zwischen zwei Ressourcen (Entitäten) nä
 Eine Entität kann in mehreren Tripeln referenziert werden. Zudem ist es möglich die gleiche Ressource in einer Aussage als Objekt, in einer anderen Aussage als Subjekt zu verwenden. Damit werden Verbindungen zwischen mehreren Tripeln möglich. Dies ist ein wichtiger Aspekt von RDF.\@
 
 Tripel werden in sogenannten RDF-Graphen abgebildet. Diese bestehen aus Knoten und Pfeilen. Subjekte und Objekte werden als Knoten, Prädikate als Pfeile dargestellt. Genaueres dazu findet sich im~\autoref{chap:graph_data}, ``\nameref{chap:graph_data}''.
-
-\begin{figure}[H]
-\centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/rdf_reiseplaner_ontologie.png}}}
-\caption{Ausschnitt der Ontologie des Reisplaners\label{fig:rdf_reiseplaner_ontologie}\protect\footnotemark}
-\end{figure}
-\footnotetext{Eigene Darstellung mittels yEd.}
 
 Man unterscheidet drei Typen von RDF-Daten, welche in Tripeln auftreten: Ressource-Knoten (IRIs), leere Knoten (Blank) und Literale.
 
@@ -48,11 +42,11 @@ Die genaue Spezifikation von IRIs findet sich unter~\href{http://www.ietf.org/rf
 \label{sec:rdf_rdf_dataModel_literal}
 Beim Begriff Literal handelt es sich um ein Synonym für Werte. Literale sind Basiswerte, die nicht IRIs entsprechen. Für die richtige Werteinterpretation wird den Literalen ein Datentyp zugeordnet. Dies können Strings, Datumswerte oder auch Nummern sein. Einem String kann zusätzlich eine Sprache zugewiesen werden.
 
-Literale können in einem Tripel können nur als Objekt verwendet werden.
+Literale können in einem Tripel nur als Objekt verwendet werden.
 
 \subsection{Leere Knoten (blank nodes)}
 \label{sec:rdf_rdf_dataModel_blankNodes}
-Ein leerer Knoten stellt eine Ressource ohne URI dar. Vorteil:  Diese Knoten benötigen keinen globalen Identifier. Leere Knoten können mit einer einfachen Variablen in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert irrelevant ist.
+Ein leerer Knoten stellt eine Ressource ohne URI dar. Der Vorteil davon ist, dass diese Knoten keinen globalen Identifier benötigen. Leere Knoten können mit einer einfachen Variablen in der Algebra verglichen werden. Sie bilden ein Objekt ab, wobei der Wert irrelevant ist.
 
 Leere Knoten können in einem Tripel Subjekt oder Objekt darstellen.
 
@@ -88,10 +82,10 @@ Mit der RDF-Schema-Sprache können Hierarchien im Bereich der Klassen und Sub-Kl
 
 \section{RDF Formen}
 \label{sec:rdf_rdf_formen}
-RDF kann in verschiedenen Formen niedergeschrieben werden. Sie alle führen zu den exakt selben Tripeln, sind also logisch äquivalent. Die Einsatzgebiete sind jedoch unterschiedlich.
+RDF kann in verschiedenen Formen dargestellt werden. Sie alle führen zu den exakt selben Tripeln, sind also logisch äquivalent. Die Einsatzgebiete sind jedoch unterschiedlich.
 Formen von RDF sind: Turtle-Schreibweise (N-Triples, Turtle, TriG und N-Quads), JSON-LD, RDFa und RDF/XML.\@
 
-Da wir letztere Schreibweise in unserem Beispiel verwendet haben, werden wir sie genauer vorgestellen.
+Da wir letztere Schreibweise in unserem Beispiel verwendet haben, werden wir sie genauer vorstellen.
 
 \subsection{RDF/XML}
 \label{sec:rdf_rdf_formen_xmlRdf}

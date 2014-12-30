@@ -3,7 +3,7 @@
 
 Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite{linkeddatatools}.
 
-Graphen bilden eine der Grundlagen für semantische Daten, besonders für semantische Netze. In diesem Zusammenhang spricht man auch von Graphdatenbanken.
+Graphen bilden eine der Grundlagen zur Darstellung von semantischen Daten, besonders für semantische Netze. In diesem Zusammenhang spricht man auch von Graphdatenbanken.
 
 Der Unterschied gegenüber den gängigen Datenbanken, wie zum Beispiel den relationalen oder hierarchischen Datenbanken, liegt vorallem darin, dass Objekte beliebig verknüpft werden können.
 
@@ -15,7 +15,7 @@ Die Knoten einer Graphdatenbank repräsentieren Entitäten. Eigenschaften sind a
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/datenbanktypen.png}}}
 \caption{Darstellung der verschiedenen Datenbanktypen.\label{fig:datenbanktypen}\protect\footnotemark}
 \end{figure}
-\footnotetext{Eigene Darstellung mittels yEd}
+\footnotetext{Eigene Darstellung mittels yEd, basierend auf~\cite{linkeddatatools}}
 
 \newpage
 
@@ -46,15 +46,15 @@ In der Graphdatenbank existieren also zwei Objekte, \textit{``Objekt1''} und \te
 \label{elephant_graph_data}
 Möchte man eine Graphdatenbank als Grundlage für eine semantische Datenbank aufbauen, so empfiehlt es sich, zuerst die wichtigsten Klassen und Individuen zu definieren. Es ist lohnen schon zu Beginn des Aufbaus schrittweise vorzugehen.
 
-Nimmt man das Beispiel des Reispeplaners, ist es sinnvoll nicht von Anfang an eine komplette Reise abzubilden, sondern zuerst mit der Abbildung lokaler Ausflüge zu beginnen. Später können diese mittels Logik zu einer Reise kombiniert werden.
+Nimmt man das Beispiel des Reiseplaners, ist es sinnvoll nicht von Anfang an eine komplette Reise abzubilden, sondern zuerst mit der Abbildung lokaler Ausflüge zu beginnen. Später können diese mittels Logik zu einer Reise kombiniert werden.
 
 Nach Überlegung ergeben sich die Klassen \textit{Ausflug}, \textit{Land}, \textit{Region} und \textit{Ort}. Doch wie gelangt man zu diesen Klassen? Nach unserer Erfahrung lohnt es sich, konkrete Fragen zu stellen, welche die semantische Datenbank schliesslich beantworten können sollte. Es ist zudem hilfreich, sich praktische Beispiele von der Anwendung solch einer Datenbank zu überlegen.
 
-So könnte eine konkrete Anwendung eine Familie sein, welche einen eintägigen Ausflug planen möchte und deren Kinder bereits in einem Alter sind, in dem sie Beschäftigung benötigen. Dies führt schliesslich zu den Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}. Dies sind ausschliesslich Überlegungen für die spätere Entwicklung des Modelles. Eine Graphdatenbank kann nicht ohne Weiteres komplexe Anfragen im Sinne der genannten Kriterien oder Inhalte beantworten. Die Zusammenhänge könnte man durch Zuweisung von Kriterien an die Objekte statisch modellieren. Dies würde jedoch den Vorteil einer semantischen Datebank zu Nichte machen, nämlich die Gewinnung von Schlüssen aus komplexen Zusammenhängen.
+So könnte eine konkrete Anwendung eine Familie sein, welche einen eintägigen Ausflug planen möchte und deren Kinder bereits in einem Alter sind, in dem sie Beschäftigung benötigen. Dies führt schliesslich zu den Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}. Dies sind ausschliesslich Überlegungen für die spätere Entwicklung des Modelles. Eine Graphdatenbank kann nicht ohne Weiteres komplexe Anfragen im Sinne der genannten Kriterien oder Inhalte beantworten. Die Zusammenhänge könnte man durch Zuweisung von Kriterien an die Objekte statisch modellieren. Dies würde jedoch den Vorteil einer semantischen Datenbank zu Nichte machen, nämlich die Gewinnung von Schlüssen aus komplexen Zusammenhängen.
 
 Hat man Klassen und Kriterien definiert, fällt auf, dass damit noch keine konkreten Anfragen beantwortet werden können. Es fehlen die Individuen und die Relationen.\\
 Daher wird für einen Ausflug das ``Individuum \textit{Seilpark Balmberg''} erstellt. Der Seilpark befindet sich in der Ortschaft \textit{Balmberg}, welche in der Region \textit{Solothurn} und damit in der \textit{Schweiz} liegt.\\
-Damit erscheint es logisch, wenn ein Land in Regionen unterteilt ist, diese wiederum Orte beinhalten. Daher werden für Länder, Regionen und Orte ebenso Individuen erstellt.
+Damit erscheint es logisch, dass wenn ein Land in Regionen unterteilt ist, diese wiederum Orte beinhalten. Daher werden für Länder, Regionen und Orte ebenso Individuen erstellt.
 
 Dies kann über die Relationen \textit{hatRegion} und \textit{hatOrt} abgebildet werden.
 

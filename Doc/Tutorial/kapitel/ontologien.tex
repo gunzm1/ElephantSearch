@@ -2,11 +2,11 @@
 \label{chap:ontologien}
 
 Die bisherigen Kapitel bieten einen groben Überblick über Objekte und deren Anwendung. Um bei der Wissensmodellierung von Nutzen zu sein, müssen sie aber in eine geeignete Form gebracht werden.\\
-Wissen wird im knowledge engineering meist in Form von Ontologien abgelegt.
+Wissen wird im Knowledge-Engineering zum Beispiel in Form von Ontologien abgelegt.
 
 Der Begriff Ontologie wird in verschiedenen wissenschaftlichen Bereichen verwendet, so zum Beispiel in der Philosophie, der Psychologie und der Informatik. In diesem Dokument soll nur der Aspekt der Informatik erklärt werden.
 
-Das folgende Kapitel basiert auf dem Artikel ``Was bedeutet eigentlich Ontologie?''~\cite{IspekOntoBedeutung} sowie dem Artikel ``Eine kurze Geschichte der Ontologie''~\cite{ISpekOntoGeschichte}.
+Sofern nicht anders vermerkt, basiert das folgende Kapitel auf~\cite{IspekOntoBedeutung} sowie~\cite{ISpekOntoGeschichte}.
 
 In der Informatik steht Ontologie für ``\ldots eine formale Beschreibung des Wissens in einer Domäne in der Form von Konzepten der Domäne, deren Beziehung untereinander und der Eigenschaft dieser Konzepte und Beziehungen, sowie der in der Domäne gültigen Axiome und Prinzipien.''~\cite[S. 310]{ISpekOntoGeschichte}.
 
@@ -47,7 +47,7 @@ Eine Anwendung für das semantische Web besteht aus der Gewinnung von zusätzlic
 Eine Abenteuerreise ist eine Reise.
 \end{lstlisting}
 
-In der einfachsten Anwendung kann das abgelegte Wissen direkt abgefragt werden. Bei komplexeren Anfragen sind die Funktionalitäten einer \textit{Inferenzmaschine} notwendig. Mittels Inferenzregeln ist diese fähig Schlussfolgerungen zu ziehen und dadurch neue, komplexe Aussagen zu treffen.
+In der einfachsten Anwendung kann das abgelegte Wissen direkt abgefragt werden. Bei komplexeren Anfragen sind die Funktionalitäten einer \textit{Inferenzmaschine} notwendig. Mittels Inferenzregeln ist diese fähig Schlussfolgerungen zu ziehen und dadurch neue, komplexe Aussagen zu generieren.
 
 Die Transitivitätsregel ist eine einfache, von der Inferenzmaschine verwendete Regel: ``Wird eine Relation $p$ als transitiv deklariert und es gilt $x p y$ und $y p z$, dann kann $x p z$ gefolgert werden.''~\cite[S. 289]{IspekOntoBedeutung}
 Dem Entwickler ist es möglich, neben den vorhandenen Regeln, wissensdomänenspezifische Regeln zu spezifizieren. Die Inferenzmaschine berücksichtigt diese bei ihrer Auswertung.

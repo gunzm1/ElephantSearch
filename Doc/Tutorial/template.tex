@@ -32,7 +32,7 @@
 \usepackage[font=footnotesize]{caption}                                                    % for captions of figures and tables
 \usepackage{booktabs}                                                   % package for nicer tables
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
-\usepackage[square,sort,comma,numbers]{natbib}                          % provides various citation styles
+\usepackage[square,sort,comma,authoryear]{natbib}                       % provides various citation styles
 \usepackage{wrapfig}                                                    % provides floating of text around images
 \usepackage{nameref}                                                    % provides printing names of references
 \usepackage{scrhack}                                                    % Remove float errors and warnings
@@ -161,9 +161,9 @@
 %
 % for futher informations go to http://ewus.de/tipp-1029.html
 %---------------------------------------------------------------------------
-\usepackage[nonumberlist]{glossaries}
-\makeglossaries{}
-\include{datenbanken/glossar}
+% \usepackage[nonumberlist]{glossaries}
+% \makeglossaries{}
+% \include{datenbanken/glossar}
 %---------------------------------------------------------------------------
 
 % Intro:
@@ -227,15 +227,15 @@
 
 % Make sure Umlauts are getting displayed correctly.
 \lstset{literate=%
-    {Ö}{\textcolor{red}{\"O}}1
+    {Ö}{\textcolor{black}{\"O}}1
     {Ä}{{\"A}}1
     {Ü}{{\"U}}1
     {ß}{{\ss}}1
     {ü}{{\"u}}1
-    {ä}{{\textcolor{red}{\"a}}}1
-    {ö}{{\textcolor{red}{\"o}}}1
+    {ä}{{\textcolor{black}{\"a}}}1
+    {ö}{{\textcolor{black}{\"o}}}1
     {~}{{\textasciitilde}}1
-    {?}{{\textcolor{red}{?}}}1
+    {?}{{\textcolor{black}{?}}}1
 }
 
 % Title Page and Abstract
