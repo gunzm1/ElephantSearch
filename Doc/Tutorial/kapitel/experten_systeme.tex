@@ -1,11 +1,11 @@
 \chapter{Expertensysteme}
 \label{chap:experten_systeme}
 
-Bei Expertensystemen handelt es sich um Systeme zur Wissenrepräsentation, welche in einem sehr eingeschränkten (Teil-) Gebiet die Leistung eines menschlichen Experten ersetzen  oder diese sogar übertreffen können.Entwicklung und Erfolg von Expertensystemen führten zu einem standardisierten Prozess der Wissensdarstellung und zu Ontologien. Dies vereinfachte die Entwicklung von Expertensystemen in neuen, unerforschten Themengebieten erheblich.~\cite[S. 257]{russel}
+Bei Expertensystemen handelt es sich um Systeme zur Wissenrepräsentation, welche in einem sehr eingeschränkten (Teil-) Gebiet die Leistung eines menschlichen Experten ersetzen  oder diese sogar übertreffen können. Entwicklung und Erfolg von Expertensystemen führten zu einem standardisierten Prozess der Wissensdarstellung und zu Ontologien. Dies vereinfachte die Entwicklung von Expertensystemen in neuen, unerforschten Themengebieten erheblich (vgl.~\cite[S. 257]{russel}).
 
 \section{Komponenten}
 \label{sec:experten_systeme_komponenten}
-Um ein Expertensystem aufbauen zu können, muss zuerst das Wissen über einen Problembereich formalisiert werden.~\cite[S. 23]{laemmel}
+Um ein Expertensystem aufbauen zu können, muss zuerst das Wissen über einen Problembereich formalisiert werden.
 
 Die dazu benötigten Komponenten sind:
 \begin{itemize}
@@ -17,7 +17,9 @@ Die dazu benötigten Komponenten sind:
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/aufbau_expertensysteme.png}}}
 \caption{Aufbau eines Expertensystems.\label{fig:aufbau_expertensysteme}\protect\footnotemark}
 \end{figure}
-\footnotetext{\cite[S. 23]{laemmel}}
+\footnotetext{Eigene Darstellung mittels yEd, basierend auf~\cite[S. 23]{laemmel}}
+
+(vgl.~\cite[S. 23]{laemmel})
 
 \newpage
 
@@ -32,15 +34,19 @@ Bei der Problemlösung, wird typischerweise in folgenden Schritten vorgegangen:
     \item Interpretation der Antworten
 \end{itemize}
 
-Für die symbolische Repräsentation der Objekte ist es notwendig, eine geeignete Sprache zu wählen. Diese kann beispielsweise aus mathematischen Relationen oder Logik bestehen, oder eine Programmiersprache selbst sein.
+Für die symbolische Repräsentation der Objekte ist es notwendig, eine geeignete Sprache zu wählen. Diese Sprache kann beispielsweise aus mathematischen Relationen oder Logik bestehen, oder eine Programmiersprache sein.
 
-In der Informatik wird das Wissen über ein Problem üblicherweise direkt mittels Lösungsalgorithmen programmiert. Bei der künstlichen Intelligenz hingegen, wird das Wissen von der Verarbeitungskomponente getrennt dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt, die Verarbeitungskomponente jedoch bestehen bleiben kann. Ein Programm in Form eines Expertensystems kann somit also für unterschiedliche Anwendungen verwendet werden. (vgl.~\cite[S.  28 - 30]{laemmel})
+In der Informatik wird das Wissen über ein Problem üblicherweise direkt mittels Lösungsalgorithmen programmiert. Bei der künstlichen Intelligenz hingegen, wird das Wissen von der Verarbeitungskomponente getrennt dargestellt. Dies hat den Vorteil, dass die Wissensbasis jederzeit ausgewechselt, die Verarbeitungskomponente jedoch bestehen bleiben kann. Ein Programm in Form eines Expertensystems kann somit also für unterschiedliche Anwendungen verwendet werden.
+
+(vgl.~\cite[S. 28 - 30]{laemmel})
 
 Eine Problemlösung geht immer von dem vorhandenen, expliziten Wissen aus, z.B. in Form von Fakten.\\
-Aus dem expliziten kann implizites Wissen gewonnen werden, es können damit Aussagen impliziert werden. Die Aufgabe der Verarbeitungskomponente besteht darin, das implizite Wissen abzuleiten. (vgl.~\cite[S. 30 - 31]{laemmel}) Die Sprache der Wissensrepräsentation und die zugehörige Verarbeitungskomponente müssen gewissen Kriterien erfüllen, Details siehe~\cite[S. 31]{laemmel}.
+Aus dem expliziten kann implizites Wissen gewonnen werden, es können damit also Aussagen impliziert werden. Die Aufgabe der Verarbeitungskomponente besteht darin, das implizite Wissen abzuleiten (vgl.~\cite[S. 30 - 31]{laemmel}). Die Sprache der Wissensrepräsentation und die zugehörige Verarbeitungskomponente müssen gewissen Kriterien erfüllen, Details siehe~\cite[S. 31]{laemmel}.
 
 \section{Wissensarten}
 \label{sec:experten_systeme_wissensarten}
+Sofern nicht anders vermerkt, basiert der folgende Abschnitt auf~\cite[S. 30 - 31]{laemmel}.
+
 Um Wissen abzubilden, benützt der Mensch mehrere Arten:
 \begin{itemize}
     \item Relationales Wissen
@@ -52,7 +58,7 @@ Um Wissen abzubilden, benützt der Mensch mehrere Arten:
 
 \subsection{Relationales Wissen}
 \label{subsec:relationales_wissen}
-Relationales Wissen wiederspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten abgebildet werden können, nicht aber logischen Abhängigkeiten.
+Relationales Wissen widerspiegelt einfache Beziehungen zwischen Objekten. Ein Nachteil am relationalen Wissen ist, dass nur Fakten abgebildet werden können, nicht aber logischen Abhängigkeiten.
 
 \begin{lstlisting}[caption={Einfaches Beispiel von relationalem Wissen.}]
      Abenteuerreisen sind Reisen.
@@ -104,12 +110,13 @@ Bei logischem Wissen geht es im Grunde genommen um eine logische Implikation. Au
 \end{wrapfigure}
 Möchte man darstellen, dass ein Ausflug teambildend ist, müssen folgende Voraussetzungen erfüllt sein: Für eine gewisse Anzahl Teilnehmer geeignet und gute Zusammenarbeit fördernd.
 
-Formal ausgedrückt: $A \wedge B \rightarrow C$. Hierbei beudetet $A$: geeignet für eine gewisse Anzahl Teilnehmer und $B$: Förderung der Zusammenarbeit.\\
+Formal ausgedrückt: $A \wedge B \rightarrow C$. Hierbei beudetet $A$: geeignet für eine gewisse Anzahl Teilnehmer, $B$: Förderung der Zusammenarbeit und $C$: ist teambildend.\\
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
 \section{Wissensrepräsentationsformalismen}
 \label{sec:wissensrepräsentationsformalismen}
+Sofern nicht anders vermerkt, basiert der folgende Abschnitt auf~\cite[S. 32]{laemmel}.
 
 Formalisiert man die unter~\ref{itm:wissensarten} genannten Arten des Wissens, so gelangt man zu den folgenden Wissenrepräsentationsformalismen:
 \begin{itemize}

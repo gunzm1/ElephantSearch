@@ -33,7 +33,7 @@ Prädikate können OWL-Klassen, -Eigenschaften oder -Datentypen sein. Argumente 
     \vspace{-12pt}
     \includegraphics[width=0.1\textwidth]{bilder/owl.png}
 \end{wrapfigure}
-In SRWL können Atome ausschliesslich mit UND-verknüpft werden. Eine ODER-Verknüpfung gibt es nicht. Die UND-Verknüpfung wird mittels eines Kommas \textit{,} vorgenommen. Eine ODER-Verknüpfung wird duch mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abgebildet.
+In SRWL können Atome ausschliesslich mit UND verknüpft werden. Eine ODER-Verknüpfung gibt es nicht. Die UND-Verknüpfung wird mittels eines Kommas \textit{,} vorgenommen. Eine ODER-Verknüpfung wird duch mehrere Regeln mit unterschiedlichen Regelkörpern, aber gleichen Regelköpfen (Schlussfolgerungen) abgebildet.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
@@ -182,7 +182,7 @@ Dies bezeichnet den Kern der ``open world assumption''. Der effektive Wahrheitsw
 \end{wrapfigure}
 In diesem Kapitel wurden \textit{Regeln} eingeführt, die es ermöglichen die im~\autoref{chap:graph_data} (\nameref{chap:graph_data}) gefundenen Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich} als Schlussfolgerungen zu definieren. Vorgängig müssen diese jedoch als Attribute bzw. DataProperties (sepzifischer Datenwert eines Objektes) definiert werden.
 
-Wir haben die Definition gewählt wie folgt:
+Wir haben die Definition wie folgt gewählt:
 
 Ein Objekt muss über das Attribut \textit{alter} verfügen und der Wert dieses Attributes muss grösser oder gleich der Zahl zwei sein. Ist dies gegeben, erhält ein Objekt automatisch das Attribut \textit{familienfreundlich} mit dem Wahrheitswert (Boolean) \textit{wahr} bzw. \textit{true}.
 
@@ -196,7 +196,7 @@ Ein Objekt gilt dann als \textit{regional}, wenn es über einen Standort verfüg
     hatStandort(?ausflug, ?ort), hatRegion(?land, ?region), hatOrt(?region, ?ort), distanzZuAusgangspunkt(?region, ?distanz), swrldb:lessThanOrEqual(?distanz, 50) $\Rightarrow$ regional(?ausflug, true)
 \end{lstlisting}
 
-Eine Regel kann in SWRL keine ODER-Verknüpfung enthalten, wie in~\autoref{sec:swrl_aufbau} (\nameref{sec:swrl_aufbau}) beschrieben. Die ODER-Verknüpfungen bildet man ab, durch mehrfache Definition derselben Regel. Der Regelkopf (das heisst die Schlussfolgerung) muss immer gleich sein, die Bedingungen (das heisst die Regelköper) dürfen verschieden sein.
+Eine Regel kann in SWRL keine ODER-Verknüpfung enthalten, wie in~\autoref{sec:swrl_aufbau} (\nameref{sec:swrl_aufbau}) beschrieben. Die ODER-Verknüpfungen bildet man ab, durch mehrfache Definition von Regeln für die selbe Schlussfolgerung. Der Regelkopf (das heisst die Schlussfolgerung) muss immer gleich sein, die Bedingungen (das heisst die Regelköper) dürfen verschieden sein.
 
 Wir wenden an: Ein Objekt erhält das Attribut \textit{actionreich}, wenn es Mut oder Geschicklichkeit erfordert oder wenn es Nervenkitzel verursacht. Die Eigenschaft \textit{nervenkitzel} ist ihrerseits eine Folgerung aus der Erfordernis von Mut.
 

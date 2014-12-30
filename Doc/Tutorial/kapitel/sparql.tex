@@ -11,7 +11,7 @@ Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF.\@ Sie erlaubt e
 
 Resultate sind entweder eine Menge von Ergebnissen oder RDF-Graphen.
 
-(vgl.~\cite[Abstract]{w3sparql_querylang})
+% (vgl.~\cite[Abstract]{w3sparql_querylang})
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[7]{l}{0.1\textwidth}
@@ -34,7 +34,7 @@ Eine SPARQL-Abfrage besteht aus folgenden Komponenten:
     \item Abfragearten
     \item Ausdrücken und Wertevergleichen
 \end{itemize}
-(vgl.~\cite[18.1.10 SPARQL Query]{w3sparql_querylang})
+% (vgl.~\cite[18.1.10 SPARQL Query]{w3sparql_querylang})
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[2]{l}{0.1\textwidth}
@@ -112,7 +112,7 @@ Ein Namespace besteht aus einem Kürzel (welches auch leer sein kann), sowie aus
   aboveskip=3em
  }
 \begin{lstlisting}
-$\textless$rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  % chktex 1
+$\textless$rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:ex="http://example.org/stuff/1.0/"$\textgreater$
 \end{lstlisting}
@@ -183,7 +183,7 @@ Versuch, ob zwei oder mehrere mögliche Teilgraphen denjenigen im gegebenen Grap
 Versuch, ob Teilgraphen denjenigen im gegebenen, namensbasierten Graphen entsprechen
 \end{itemize}
 
-Ein grundlegender Teilgraph ist somit eine Menge von Tripeln, wobei jeder Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt bestehen muss.~\cite[3.1 Triples]{w3rdf}
+Ein grundlegender Teilgraph ist somit eine Menge von Tripeln, wobei jeder Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt bestehen muss (vgl.~\cite[3.1 Triples]{w3rdf}).
 
 \lstset{caption={Beispiel eines grundlegenden Teilgraphen in SPARQL}}
 \begin{lstlisting}
@@ -200,7 +200,7 @@ Ein Teilgraph wird immer mit dem Punkt-Operator beendet.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 
-Ein gruppierender Teilgraph wird in der SPARQL-Abfrag immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppierung zu filtern. Dazu wird \textit{FILTER} als Schlüsselwort verwendet. Dieses bezieht sich immer auf die Gruppierung, in welcher es steht.
+Ein gruppierender Teilgraph wird in der SPARQL-Abfrage immer mit geschweiften Klammern \textit{\{\}} umschlossen. Es ist möglich die Resultate einer Gruppierung zu filtern. Dazu wird \textit{FILTER} als Schlüsselwort verwendet. Dieses bezieht sich immer auf die Gruppierung, in welcher es steht.
 
 \lstset{caption={Beispiel eines gruppierenden Teilgraphen mit dem \textit{FILTER}-Schlüsselwort\protect\footnotemark}}
 \begin{lstlisting}
@@ -228,8 +228,6 @@ SPARQL unterstützt aktuell die Aggregationen \textit{COUNT}, \textit{SUM}, \tex
 
 Die Aggregation wird dann verwendet, wenn ein Resultat über eine Gruppe von Lösungen berechnet werden soll (Beispiel: Maximaler Wert einer bestimmten Variablen).
 
-(vgl.~\cite[11 Aggregates]{w3sparql_querylang})
-
 \lstset{caption={Beispiel einer Abfrage mit Gruppierung und Aggregation\protect\footnotemark}}
 \lstset{language=SQL}
 \begin{lstlisting}
@@ -249,7 +247,7 @@ Die Aggregation wird dann verwendet, wenn ein Resultat über eine Gruppe von Lö
     
 \section{Modifikatoren}
 \label{sec:sparql_modifikatoren}
-Abfragen mittels SPARQL generieren eine ungeordnete Menge von Lösungen. Jede dieser Lösungen stellt eine Funktion von Variablen zu RDF-Termen dar. So gewonnene Lösungen werden als Sequenz von Lösungen behandelt, zunächst ohne spezifische Ordnung.~\cite[15 Solution Sequences and Modifiers]{w3sparql_querylang}
+Abfragen mittels SPARQL generieren eine ungeordnete Menge von Lösungen. Jede dieser Lösungen stellt eine Funktion von Variablen zu RDF-Termen dar. So gewonnene Lösungen werden als Sequenz von Lösungen behandelt, zunächst ohne spezifische Ordnung.
 
 Um eine Sequenz von Lösungen zu ordnen, werden Modifikatoren verwendet.\\
 Dabei unterscheidet man zwischen folgenden Modifikatoren:
@@ -281,7 +279,7 @@ Dabei unterscheidet man zwischen folgenden Modifikatoren:
 
 \end{itemize}
 
-Die \textit{Modifikatoren} werden in der Reihenfolge der obigen Liste angewendet.~\cite[vgl. 15 Solution Sequences and Modifiers]{w3sparql_querylang}
+Die \textit{Modifikatoren} werden in der Reihenfolge der obigen Liste angewendet.
 
 
 \section{Abfragearten}
@@ -447,7 +445,7 @@ In SPARQL kann jede Abfrage in SPARQL mit einem Filter versehen werden. Dabei wi
 
 Jedes RDF-Literal kann durch einen bestimmten Datentyp definiert sein, wie zum Beispiel Wahrheitswerte (Boolean) oder Datum und Uhrzeit (DateTime). Der Filter in SPARQL erlaubt dabei den Wertevergleich auf typisierte RDF-Literale. Die dabei verwendeten Operanden und Datentypen finden sich unter~\footnote{http://www.w3.org/TR/xpath-functions/} und~\footnote{http://www.w3.org/TR/sparql11-query/\#operandDataTypes}.
 
-Eine SPARQL-Abfrage unter Verwendung eines Filters kann aussehen wie folgt:
+Eine SPARQL-Abfrage unter Verwendung eines Filters kann wie folgt aussehen:
 \lstset{caption={Beispiel einer einfachen SPARQL-Abfrage unter Verwendung eines Filters},captionpos=b}
 \begin{lstlisting}
     ...

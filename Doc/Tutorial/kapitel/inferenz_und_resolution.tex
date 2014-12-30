@@ -3,12 +3,14 @@
 
 \section{Inferenz}
 \label{sec:inferenz}
-Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mit Hilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und der Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.~\cite[S. 163]{russel}.
+Sofern nicht anders vermerkt, basiert der folgende Abschnitt auf~\cite[S. 163 - 165]{russel}.
+
+Grundsätzlich geht es bei Inferenz um den Prozess von Schlussfolgerungen mit Hilfe von Resolution (siehe~\ref{sec:resolution}). Die logische Inferenz ist ein Prozess der Inferenz und der Resolution, welcher die Folgebeziehungen zwischen Sätzen zum Ausdruck bringt.
 
 \subsection{Inferenz in Computern}
 \label{subsec:inferenz-in-computer}
 
-Das grundsätzliche Problem bei Computern im Bezug auf Inferenz ist, dass ein Computer keine Interpretation vornehmen kann und nichts über die (Um-) Welt weiss, bzw.\ nur, was in seiner Wissensdatenbank gespeichert ist (vgl.~\citet[S. 164]{russel}).
+Das grundsätzliche Problem bei Computern im Bezug auf Inferenz ist, dass ein Computer keine Interpretation vornehmen kann und nichts über die (Um-) Welt weiss, bzw.\ nur, was in seiner Wissensdatenbank gespeichert ist.
 
 
 Angenommen, man möchte einen Computer fragen:
@@ -25,18 +27,19 @@ so weiss der Computer weder was ein Abenteuerreise ist, noch kennt er das Konzep
     ``Eine Abenteuerreise ist eine Reise.''
 \end{lstlisting}
 
-Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S. 164]{russel}).
+Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen.
 
-Zusammenfassend ist die formale Inferenz in der Lage, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
+Zusammenfassend ist die formale Inferenz in der Lage, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch.
 
 \section{Resolution}
 \label{sec:resolution}
+Sofern nicht anders vermerkt, basiert der folgende Abschnitt auf~\cite[S. 277 - 279]{russel}.
 
-Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens~\cite[S. 279]{russel}. Der Modus ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[S. 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
+Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens. Der Modus Ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[S. 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
 
-Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.~\cite[S. 277]{russel}
+Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.
 
-Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.~\cite[S. 278]{russel}
+Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.
 
 \section{Inferenz und Resolution zur Ziehung von Schlüssen}
 \label{sec:inferenz_praktisch}
@@ -124,7 +127,7 @@ Eine komplette Unterstützung des OWL-full Profils ist generell nicht möglich, 
 \end{figure}
 \footnotetext{\cite[S. 6]{sirin:pellet05}}
 
-Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableaux-Reasoner die Kernkomponente, welche die Wissensbasis auf deren Konsistenz prüft. Der Entscheid bei der Entwicklung von Pellet, ausschliesslich OWL-DL zu verwenden, führte zu einer modularen Struktur. Module ihrerseits sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
+Die obenstehende Abbildung zeigt die Hauptkomponenten von Pellet. Dabei ist der Tableau-Reasoner die Kernkomponente, welche die Wissensbasis auf deren Konsistenz prüft. Der Entscheid bei der Entwicklung von Pellet, ausschliesslich OWL-DL zu verwenden, führte zu einer modularen Struktur. Module ihrerseits sind z.B.\ ein Reasoner zur Datentypenprüfung eines XML-Schemas oder eine ``Query-Engine''. Genaueres dazu wird in den nachfolgenden Abschnitten beschrieben.
 
 Hier eine Übersicht der wichtigsten Komponenten von Pellet\cite[S. 4]{sirin:pellet05}:
 \begin{table}[H]
@@ -132,7 +135,7 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet\cite[S. 4]{sirin:pel
 \fbox{\begin{minipage}[t]{0.48\linewidth}%
     \begin{tabbing}
         Abkürzung \= Bezeichnung ******** \= Beschreibung \kill \\
-        ---           \> Tableaux-Reasoner  \> Komponente, zum Ziehen von Schlüssen durch Konsistenzprüfung \\
+        ---           \> Tableau-Reasoner  \> Komponente, zum Ziehen von Schlüssen durch Konsistenzprüfung \\
                       \>                    \> einer Ontolgie.  \\
         \textbf{Abox} \> Assertional Box    \> Komponente, welche Aussagen zu Individuen enthält, \\
                       \>                    \> d.h. OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz. \\
@@ -148,25 +151,24 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet\cite[S. 4]{sirin:pel
 
 \subsection{Vorgehen des Pellet-Reasoners}
 \label{subsection:inferenz_pellet_vorgehen}
-Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden durch verschiedene Optimierungsverfahren vereinfacht (siehe~\ref{subsection:inferenz_pellet_opti}) und anschliessend in den Tableaux-Reasoner eingespiesen.
+Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bezüglich OWL-DL geprüft. Während des Ladens werden Klassenaxiome in der Tbox, Aussagen über Individuen in der Abox abgelegt. Die Axiome der Tbox werden durch das Standardverfahren von OWL-DL-Reasonern vorverarbeitet. Sie werden durch verschiedene Optimierungsverfahren vereinfacht (siehe~\ref{subsection:inferenz_pellet_opti}) und anschliessend in den Tableau-Reasoner eingespiesen.
 
 \subsubsection{Laden und Parsen der Daten}
 \label{ssubsection:inferenz_pellet_parsing}
 Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser. Es ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen zur Beantwortung von Anfragen der Werkzeuge zur Verfügung.
 
-\subsubsection{Tableaux-Reasoner}
+\subsubsection{Tableau-Reasoner}
 \label{ssubsection:inferenz_pellet_tableaux}
-Der Tableaux-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist dann konsistent, wenn nur eine Interpretation der Ontologie existiert und sie alle Fakten und Axiome dieser erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
+Der Tableau-Reasoner hat nur eine Funktion: Eine Ontologie auf ihre Konsistenz zu prüfen. Eine Ontologie ist dann konsistent, wenn eine Interpretation der Ontologie existiert, welche alle Fakten und Axiome der Ontologie erfüllt.~\cite{w3owlsemantics} Solch eine Interpretation wird als Modell der Ontologie bezeichnet.
 
-Der Tableaux-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut.Dieses Vorgehen wird Tableaxu-Algorithmus genannt. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten stellen die Eigenschaften dar. %mira ab hier
+Der Tableau-Reasoner sucht nach solch einem Modell durch Vervollständigung. Dieses wird inkrementell als eine Art Tafel (eben, Tableau) aufgebaut. Dieses Vorgehen wird Tableau-Algorithmus genannt. Die Vervollständigung beginnt mit einem initialen Graphen der Abox. Dabei repräsentieren die Knoten Individuen und Literale (z.B. Zeichenketten, Datumswerte oder auch Nummern). Jedem Knoten wird der entsprechende (Daten-) Typ zugewiesen. Die gerichteten Kanten zwischen den Knoten stellen die Eigenschaften dar. %mira ab hier
 %Dem initialen Graphen wird die Negation der Folgerung hinzugefügt.
 
+Durch wiederholtes Anwenden der Transformationsregeln (siehe Tabelle~\ref{fig:tableau:regeln}) zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
 
-Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der Reasoner einen widerspruchsfreien Graphen zu bilden. Dies tut er solange bis entweder ein Widerspruch (Kontradiktion) auftritt oder keine Regeln mehr anwendbar sind.
+Der Tableau-Algorithmus basiert auf dem Tableau-Kalkül. Dabei wird mittels Widerspruchsbeweis aufgezeigt, dass eine Interpretation existiert, in der sowohl sämtliche Anforderungen (Prämisse) als auch die Negation der Folgerung (Konklusion) wahr sind. Kann ein solches Modell gefunden werden, ist damit bewiesen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind dann konsistent, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
 
-Der Tableaux-Algorithmus basiert auf dem Tableau-Kalkül. Dabei wird mittels Widerspruchsbeweis aufgezeigt, dass eine Interpretation existiert, in der sowohl sämtliche Anforderungen (Prämisse) als auch die Negation der Folgerung (Konklusion) wahr sind. Kann ein solches Modell gefunden werden, ist damit bewiesen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind dann konsistent, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
-
-Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}. Die Beschreibung des Tableau-Kalkül basiert, wenn nicht anders vermerkt auf \cite{baumkalkuel}.
+Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}. Die Beschreibung des Tableau-Kalküles basiert, wenn nicht anders vermerkt, auf~\cite{baumkalkuel}.
 
 Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgezeigt.
 
@@ -183,7 +185,8 @@ Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgezeigt.
         P $\rightarrow$ Q   \> I (P) = F oder I (Q) = W oder beides \\
     \end{tabbing}
 \end{minipage}} \hfill
-\captionof{table}{Transformationsregeln des Talbeau-Kalküls\protect\footnotemark}
+\captionof{table}{Transformationsregeln des Tableau-Kalküls\protect\footnotemark}
+\label{fig:tableau:regeln}
 \footnotetext{\cite{baumkalkuel}}
 \end{table}
 
@@ -198,7 +201,7 @@ Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls
     \item $R: hatRegion(SeilparkBalmberg, Solothurn)$
 \end{itemize}
 
-Es soll also $\Gamma \models \varphi$ gelten, wobei $\Gamma$ die Menge der Prämissen und $\varphi$ die Konklusion ist:
+Es soll $\Gamma \models \varphi$ gelten, wobei $\Gamma$ die Menge der Prämissen und $\varphi$ die Konklusion ist:
 \begin{itemize}
     \item $\Gamma: \{S \wedge O \rightarrow R, S, O\}$
     \item $\varphi: \{R\}$
@@ -211,7 +214,7 @@ Weil das Tableau-Kalkül darauf basiert, einen Widerspruch zu erreichen, wird di
     \item[] bzw.
     \item $\{S \wedge O \rightarrow R, S, O\} \cup \{\neg R\}$
     \item[]
-    \item[] folgt: $\{S \wedge O \rightarrow R, S, O, \neg R\}$
+    \item[] ergibt: $\{S \wedge O \rightarrow R, S, O, \neg R\}$
 \end{itemize}
 
 Zur Anwendung des Kalküls werden alle Sätze der gesamten Menge untereinander aufgeschrieben:
@@ -224,7 +227,7 @@ Zur Anwendung des Kalküls werden alle Sätze der gesamten Menge untereinander a
 
 (a), (b), (c) und (d) bilden zusammen den \textit{Wurzelknoten} des Graphen.
 
-Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterkonten bzw.\ zu zwei Zweigen expandiert:
+Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterknoten bzw.\ zu zwei Zweigen expandiert:
 \begin{enumerate}[label= (\alph*)]
     \setcounter{enumi}{4}
     \item $ \neg(S \wedge O) $
@@ -233,7 +236,7 @@ Durch Anwendung der Transformationsregeln wird der Knoten (a) zu zwei Unterkonte
 
 Nach Bildung des Wurzelknotens wird der Baum anhand der Tiefensuche-Traversierung expandiert. Zuerst wird der Wurzelknoten \{(a), (b), (c), (d)\}, danach der linke (e) und schliesslich der rechte Teilbaum (f) durchlaufen.
 
-Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der linke Teilbaum (e) durch einen neu gebildeten Teilbaum (bestehend aus (g) und (h)) ersetzt, der rechte Teilbaum (f) bleibt bestehen:
+Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der linke Teilbaum (e) durch einen neu gebildeten Teilbaum (bestehend aus (g) und (h)) ersetzt, der rechte Teilbaum (f) bleibt unverändert:
 \begin{enumerate}[label= (\alph*)]
     \setcounter{enumi}{6}
     \item $\neg S$
@@ -247,7 +250,7 @@ Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei
     \item $(c) \cup (h)$ also $O \cup \neg O = \{\}$
 \end{itemize}
 
-An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür in den rechten Unterknoten verlagert. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht somit ein Widerspruch:
+An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
 \begin{itemize}
     \item $(d) \cup (f)$ also $\neg R \cup R = \{\}$
 \end{itemize}
@@ -260,7 +263,7 @@ In OWL werden Datentypen in einem XML-Schema beschrieben. Dadurch sind viele ein
 
 Das Modul zur Datentypenprüfung zeigt auf ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
 
-Der Tableaux-Reasoner nutzt dieses Modul um zu prüfen, ob die Schnittmenge aller Datentypen für jeden Literal-Knoten des Graphens erfüllbar ist.
+Der Tableau-Reasoner nutzt dieses Modul um zu prüfen, ob die Schnittmenge aller Datentypen für jeden Literal-Knoten des Graphens erfüllbar ist.
 
 \subsubsection{Schnittstelle zur Wissensdatenbank (KB)}
 \label{ssubsection:inferenz_pellet_kb}
@@ -292,7 +295,7 @@ Diese Umwandlung ist jedoch nur in gewissen Fällen möglich, so z.B.\ bei gleic
 
 \subsection{Behandlung von Regeln in Pellet}
 \label{subsection:inferenz_pellet_swrl}
-Pellet ermöglicht die Verwendung von Regeln zur Schlussfolgerung. Dies unter Verwendung der SWRL-Regelsprache.
+Pellet ermöglicht die Verwendung von Regeln zur Schlussfolgerung unter Verwendung der SWRL-Regelsprache.
 
 Damit in der Wissensdatenbank gespeicherte Konzepte in Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[S. 4,5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog}
 
@@ -314,7 +317,7 @@ Um dennoch akzeptable Leistungen bei Schlussfolgerungen mittels Beschreibungslog
 
 \begin{itemize}
     \item \textbf{Normalisierung und Vereinfachung}\\
-        Alle Konzepte der Wissensdatenbank werden in eine Form gebracht, die hilft, dass Widersprüche bei der Tableaux-Erweiterung möglichst früh erkannt werden. Die Konzepte werden in die Normalform gebracht.\\
+        Alle Konzepte der Wissensdatenbank werden in eine Form gebracht, die hilft, Widersprüche bei der Tableau-Erweiterung möglichst früh zu erkennen. Die Konzepte werden in die Normalform gebracht.\\
         Diese Vereinfachung erkennt offensichtliche Fehler während der Normalisierung. Mehrfaches Vorkommen eines gleichen Konzeptes wird eliminiert.
 
     \item \textbf{Tbox-Absorption}\\
@@ -324,7 +327,7 @@ Um dennoch akzeptable Leistungen bei Schlussfolgerungen mittels Beschreibungslog
         Der Prozess des dependency-directed Backjumpings eliminiert unproduktive Backtracking-Suchen, indem er Verzweigungspunkte identifiziert welche Konflikte verursachen. Er springt zurück und überspringt dabei die Konfliktpunkte ohne nach Alternativen zu suchen.
 \end{itemize}
 
-Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 17 bis 19]{sirin:pellet05}.
+Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 17 - 19]{sirin:pellet05}.
 
 \subsection{Unterschiede zwischen Pellet und Prolog}
 \label{subsec:inferenz_pellet_prolog}
