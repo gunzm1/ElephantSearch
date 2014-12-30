@@ -25,14 +25,14 @@ so weiss der Computer weder was ein Abenteuerreise ist, noch kennt er das Konzep
     ``Eine Abenteuerreise ist eine Reise.''
 \end{lstlisting}
 
-Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S.164]{russel}).
+Findet der Computer diese Aussage in der Wissensdatenbank, so spielt es keine Rolle, dass er das Konzept der Abenteuerreise oder des Reisens nicht kennt. Die Schlussfolgerung, dass eine Abenteuerreise eine Reise ist, trifft unter allen Gegebenheiten und Interpretationen zu, welche für die Wissensdatenbank zutreffen (vgl.~\cite[S. 164]{russel}).
 
 Zusammenfassend ist die formale Inferenz in der Lage, gültige Schlussfolgerungen zu ziehen, auch wenn der Computer die Interpretationen des Anwenders nicht kennt. Der Computer zieht immer logisch gültige Schlüsse, unabhängig von der (menschlichen) Interpretation. Da der Mensch in der Regel die Interpretation kennt, erscheinen die Schlüsse dem Menschen logisch (vgl.~\cite[S. 165]{russel}).
 
 \section{Resolution}
 \label{sec:resolution}
 
-Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens~\cite[S. 279]{russel}. Der Modus ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[Seite 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
+Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens~\cite[S. 279]{russel}. Der Modus ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[S. 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
 
 Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.~\cite[S. 277]{russel}
 
@@ -40,7 +40,7 @@ Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann
 
 \section{Inferenz und Resolution zur Ziehung von Schlüssen}
 \label{sec:inferenz_praktisch}
-Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Das beduetet, automatische Prozeduren, in Form von so genannten \textit{Reasonern}, leiten neue Beziehungen ab. Wie die neuen Beziehungen generiert werden, ist eine Frage der Implementation, z.B. durch Hinzufügen zu den vorhandenen Daten oder durch einfache Rückgabe derselben (vgl.~\cite[Abschnitt 1]{w3inference}).
+Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Das beduetet, automatische Prozeduren, in Form von so genannten \textit{Reasonern}, leiten neue Beziehungen ab. Wie  die neuen Beziehungen generiert werden, ist eine Frage der Implementation, z.B. durch Hinzufügen zu den vorhandenen Daten oder durch einfache Rückgabe derselben (vgl.~\cite[Abschn. 1]{w3inference}).
 
 Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es, aus explizitem Wissen in Form einer Ontologie implizites Wissen zu gewinnen.
 
@@ -116,7 +116,7 @@ Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite
 
 Bei Pellet handelt es sich um einen Reasoner auf Basis von Beschreibungslogik. OWL ist eine syntaktische Variante der Beschreibungslogik.\@ Bei der Entwickelung von Pellet wurde von Anfang an nur die OWL-DL~\footnote{\url{http://www.w3.org/TR/owl-ref/\#OWLDL}}-Sprache berücksichtigt. Diese ist wiederum eine Teilsprache von OWL-full, siehe~\autoref{chap:owl}.
 
-Eine komplette Unterstützung des OWL-full Profils ist generell nicht möglich, da dieses nicht entscheidbar ist. Daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[Seite 13]{sirin:pellet05}
+Eine komplette Unterstützung des OWL-full Profils ist generell nicht möglich, da dieses nicht entscheidbar ist. Daher beschränkt sich Pellet auf die Verwendung von OWL-DL\@.~\cite[S. 13]{sirin:pellet05}
 
 \begin{figure}[htbp]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/pellet_komponenten.png}}}
@@ -166,7 +166,7 @@ Durch wiederholtes Anwenden der Regeln zur Erweiterung des Graphen, versucht der
 
 Der Tableaux-Algorithmus basiert auf dem Tableau-Kalkül. Dabei wird mittels Widerspruchsbeweis aufgezeigt, dass eine Interpretation existiert, in der sowohl sämtliche Anforderungen (Prämisse) als auch die Negation der Folgerung (Konklusion) wahr sind. Kann ein solches Modell gefunden werden, ist damit bewiesen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind dann konsistent, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
 
-Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}
+Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}. Die Beschreibung des Tableau-Kalkül basiert, wenn nicht anders vermerkt auf \cite{baumkalkuel}.
 
 Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgezeigt.
 
@@ -274,9 +274,9 @@ Die Schnittstelle zur Wissensdatenbank, wie auch der Rest der Komponenten von Pe
 
 \subsubsection{Abox Query-Engine}
 \label{ssubsection:inferenz_pellet_aboxquery}
-Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S 10-11]{sirin:pellet05}.
+Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S. 10 - 11]{sirin:pellet05}.
 
-Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[S 11]{sirin:pellet05}.
+Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[S. 11]{sirin:pellet05}.
 
 \begin{figure}[htbp]
     \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/infres_pellet_queryengine.png}}}
@@ -294,19 +294,19 @@ Diese Umwandlung ist jedoch nur in gewissen Fällen möglich, so z.B.\ bei gleic
 \label{subsection:inferenz_pellet_swrl}
 Pellet ermöglicht die Verwendung von Regeln zur Schlussfolgerung. Dies unter Verwendung der SWRL-Regelsprache.
 
-Damit in der Wissensdatenbank gespeicherte Konzepte in Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[Seiten 4 und 5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog}
+Damit in der Wissensdatenbank gespeicherte Konzepte in Regeln verfügbar sind, wird das $\mathcal{AL}$-Log-Framework eingesetzt. Dieses verbindet Beschreibungslogik mit Regeln.~\cite[S. 4,5]{sirin:pellet07} $\mathcal{AL}$-Log ist ein integriertes System zur Repräsentation von Wissen, welches auf der Beschreibungslogik $\mathcal{AL}$ und der deduktiven Datenbanksprache Datalog basiert.~\cite{allog}
 
-Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[S 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[Seiten 4 und 5]{sirin:pellet07}
+Bei $\mathcal{AL}$ handelt es sich um eine minimale Sprache der Beschreibungslogik, Details siehe~\cite[S. 51]{dl:baader2003}. Als Implementation des $\mathcal{AL}$-Log-Frameworks nutzt Pellet einen Datalog-Reasoner.~\cite[S. 4 - 5]{sirin:pellet07}
 
 Bei Datalog handelt es sich um eine deklarative Logiksprache, in welcher jede Formel eine funktionsfreie Hornklausel ist. Im Unterschied zu Prolog muss jede Variable, die im Kopf einer Klausel vorkommt, auch im Körper der Klausel vorkommen. Die Reihenfolge der Klauseln spielt keine Rolle. Alle Anfragen terminieren und jede mögliche Antwort wird ausgegeben.~\cite{datalog}
 
-In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[S 5]{sirin:pellet07}
+In der Pellet-Implementation wird das $\mathcal{AL}$-Log-Framework dahingehend erweitert, dass es die $\mathcal{SHOIQ}(\mathcal{D})$ Variante  der $\mathcal{AL}$-Beschreibungslogik nutzen kann. Zusätzlich erlaubt die Erweiterung die Verwendung von OWL-Datentypen und SWRL-Funktionen im Körper von Datalog-Regeln.~\cite[S. 5]{sirin:pellet07}
 
 Bei $\mathcal{SHOIQ}(\mathcal{D})$ handelt es sich um eine Erweiterung der Beschreibungslogik $\mathcal{AL}$. $\mathcal{SHOIQ}(\mathcal{D})$ unterstützt unter anderem zusätzliche Konzepte wie Rollenhierarchien, inverse Eigenschaften und qualifizierte Kardinalitätseinschränkungen. Diese Erweiterung erlaubt zusätzlich die Verwendung von Datentypen, Datenwerten und Datentypeneigenschaften.~\cite{wiki:desclog}
 
 \subsection{Optimierungen}
 \label{subsection:inferenz_pellet_opti}
-Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[S 16-19]{sirin:pellet05}
+Dieser Abschnitt basiert, sofern nicht anders im Text vermerkt, auf~\cite[S. 16 - 19]{sirin:pellet05}
 
 Beschreibungslogiken, wie $\mathcal{SHOIQ}(\mathcal{D})$ haben im ungünstigsten Fall eine sehr hohe Komplexität. Daher besteht ein grosser Unterschied zwischen Design und praktischer Umsetzung einer Entscheidungsprozedur.
 
@@ -329,11 +329,11 @@ Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 
 \subsection{Unterschiede zwischen Pellet und Prolog}
 \label{subsec:inferenz_pellet_prolog}
 Wie unter~\ref{subsection:inferenz_pellet_swrl} erwähnt, nutzt Pellet einen Datalog-Reasoner als Implementation des $\mathcal{AL}$-Log-Frameworks.\\
-Der wohl wichtigste Unterschied zu Prolog ist daher, dass in Datalog alle Anfragen terminieren und jede mögliche Antwort ausgegeben wird. Eine Reihenfolge der Klauseln spielt daher keine Rolle. Im Gegensatz dazu ist eine Termination von Anfragen in Prolog nicht immer gegeben. So sind Endlosschleifen je nach Reihenfolge der Regeln durchaus möglich.~\cite[S 175]{laemmel}
+Der wohl wichtigste Unterschied zu Prolog ist daher, dass in Datalog alle Anfragen terminieren und jede mögliche Antwort ausgegeben wird. Eine Reihenfolge der Klauseln spielt daher keine Rolle. Im Gegensatz dazu ist eine Termination von Anfragen in Prolog nicht immer gegeben. So sind Endlosschleifen je nach Reihenfolge der Regeln durchaus möglich.~\cite[S. 175]{laemmel}
 
-Ein weiterer Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][S 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der unter~\ref{ssubsection:inferenz_pellet_tableaux} erklärte Tableau-Algorithmus zum Einsatz.
+Ein weiterer Unterschied ist die Art, wie Schlüsse gezogen werden. Prolog basiert auf dem SLD-Resolutionsverfahren~\citep[Details siehe][S. 68]{laemmel}. Im Gegensatz dazu kommt bei Pellet der unter~\ref{ssubsection:inferenz_pellet_tableaux} erklärte Tableau-Algorithmus zum Einsatz.
 
-Durch den Aufbau von Prolog ist es möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][S 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich den Publikationen von~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
+Durch den Aufbau von Prolog ist es möglich so genannte Constraint-Satisfaction-Probleme (Bedingungserfüllungsprobleme) zu lösen~\citep[Details siehe][S. 148]{laemmel}. Mit Pellet bzw. Ontologien und Regeln ist dies nicht der Fall. Versuche dazu finden sich den Publikationen von~\citet{xiong2008constraint},~\citet{staab2006constraint} und~\citet{bramer2007constraint}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[15]{l}{0.1\textwidth}
