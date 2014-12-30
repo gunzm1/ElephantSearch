@@ -1,34 +1,38 @@
-\chapter{Fazit und Ausblick}
+\chapter{Fazit und Erweiterungsmöglickeiten}
 \label{chap:fazit}
 
 % In diesem Kapitel legen Sie Ihre kritische Betrachtung Ihrer Arbeit dar. Zeigen Sie, was Sie erreicht haben. Hinterfragen Sie das Ergebnis auf objektive Art und Weise.
 
-Im Kapitel Lösung wurde bereits festgestellt, dass sämtliche Ziele der Arbeit erreicht wurden. Dabei ist wichtig, dass wir im Laufe der Arbeit die Problemdomäne geändert haben. Die ursprünglich gewählte Domäne des Erlernens des Programmierens anhand der Programmiersprache Prolog stellte sich als nicht geeignet heraus.
+Die Ziele der Arbeit konnten erreicht werden, wie im~\autoref{chap:loesung} dargestellt. Zu erwähnen ist, dass wir im Verlaufe der Arbeit die Problemdomäne ändern mussten. Das Erlernen des Programmierens anhand der Programmiersprache Prolog stellte sich als ungeeignet heraus.
 
-Als wir dieses Gebiet auswählten, wussten wir noch zu wenig über die Wissensmodellierung mittels Ontologien. So war uns nicht bewusst, dass sich diese vor allem für solche Gebiete eignet, in denen viele Fakten vorhanden sind. Das Erlernen des Programmierens anhand Prolog ist ein sehr theoretisches Gebiet mit Abläufen und Verallgemeinerungen. Im Gegensatz dazu ist das Planen von Reisen viel besser geeignet. Damit war es uns möglich die verschiedenen Spezialitäten eines Expertensystems herauszufinden und die Mächtigkeit von semantischen Datenbanken aufzuzeigen.
+Bei der Auswahl hatten wir noch geringe Kenntnisse über die Wissensmodellierung mittels Ontologien. Uns war nicht bewusst, dass sich diese Form der Wissensmodellierung vor allem für solche Gebiete eignet, die aufgrund der Ontologie Inferenz und damit Schlussfolgerungen zulassen. Die usprünglich gewählte Problemdomäne, das Erlernen des Programmierens anhand Prolog lag auf einer zu hohen Abstraktionsebene. Im Gegensatz dazu ist die schliesslich gewählte Problemdomäne, das Planen von Reisen viel besser geeignet. Damit war es uns möglich die verschiedenen Spezialitäten eines Expertensystems herauszufinden und die Mächtigkeit von semantischen Datenbanken aufzuzeigen.
 
-Insgesamt ist es uns in dieser Arbeit gelungen einen Überblick über das Thema zu erhalten. Wie geplant konnten wir ein mögliches Vorgehen bei der Modellierung von Wissens mittels Ontologien analysieren und Umsetzten. Ein Stärke von Wissensmodellierung auf Basis von Ontologien mittels OWL ist, dass es einige Werkzeuge gibt, welche die Modellierung unterstützten. So können mithilfe von Protégé auf eine übersichtliche Art Fakten abgebildet werden. Dies wird noch unterstützt durch die Tatsache, dass in OWL eine klare Klassen - Eigenschaft - Beziehungstrennung besteht. Dies führt zu einem Raster welches zu einer verbesserten Trennung führt.\\
-Andererseits sind die Werkzeuge noch nicht wirklich ausgereift. An den verwendeten Werkzeugen haben wir Fehler gefunden. Durch eine Kombination von zwei Werkzeugen ist es uns aber gelungen die Funktionalitäten abzubilden. Im Laufe der Arbeit haben wir festgestellt, dass sich das ursprüngliche gewählte Tool nicht für unsere Arbeit eignet.\\
-Semantischen Netze bieten eine entwicklungsfreundliche Möglichkeit Wissen zu Modellierung. Einerseits bieten sie einen Überblick während der Entwicklung. Auf der Anderen Seite ist die Abbildung in Form von solchen Netzen auch für "`Leien"' gut lesbar.\\
-Da in semantischen Datenbanken Wissen mit Logik versehen wird, ist es in gewissen Situationen möglich Änderungen eines Programms nur durch Anpassung der Daten vorzunehmen. Dadurch kann verhindert werden, dass Codeänderungen nötig werden, welche zu einer neuen Auslieferung führen würde. \\
-Ein Nachteil dieser Art von Wissensabbildung ist sicher, dass es sinnlos ist ganze Prozesse und Abläufe abzubilden. Solche Vorgänge lassen sich einfach durch andere Sprachen abbilden. 
+Durch diese Arbeit erhielten wir einen Überblick über das Thema semantische Datenbanken. Dabei konnten wir eine mögliche Vorgehensweise bei der Modellierung von Wissen mittels Ontologien analysieren und umsetzten.
 
-Bei unserer Arbeit lag der Fokus nicht auf einem genau definierten Endprodukt. Viel mehr stand der gesamte Prozess der Wissenserarbeitung im Vordergrund. Ein wichtiger Teil war die Modellierung einer Ontologie. Hierbei war es schwierig ein sinnvolles, allgemeines Vorgehen zu finden und definieren. Wir sehen die verschiedenen Schwierigkeiten, auf welche wir während des Prozesses gestossen sind, nicht als Nachteil sondern als Erfahrung an.
+Mit Hilfe von den genannten Werkzeugen konnte die Modellierung im gewünschten Sinne umgesetzt werden. Hilfreich war beispielsweise die Strukturierung der Daten durch Protégé.
+Überraschenderweise fanden wir in den beiden Werkzeugen Protégé und Stardog jedoch Fehler (was uns zunächst erhebliche Schwierigkeiten bereitete). Durch die Kombination der beiden Werkzeuge jedoch, wurden die Fehler aufgehoben.
 
-Wir haben uns bewusst für ein für uns eher unbekanntes Thema der Thesis entschieden. Dies vor allem, weil wir in der Erarbeitung der Bachelor Thesis eine Chance sahen zu forschen und zu experimentieren. In der Berufswelt, welche jetzt auf uns wartet wird dies wahrscheinlich nur noch begrenzt möglich sein. Uns ist aber erst beim Reflektieren der Arbeit richtig bewusst geworden, dass wir ein Themengebiet gewählt haben bei dem wir ausser einigen simplen Grundlagen alles neu erarbeiten mussten. Es war uns nur sehr bedingt möglich, vorhandenes Wissen anzuwenden. Dies führte zu einer sehr spannenden und intensiven Arbeit.
+Semantischen Netze bieten eine entwicklungsfreundliche Möglichkeit Wissen zu modellieren. Einerseits bieten sie einen Überblick während der Entwicklung, andererseits ist die Abbildung des Wissens in solchen Netzen auch für Laien gut verständlich.
+
+Nutzt eine Applikation eine semantische Datenbank als Datenmodell, erfordern Anpassungen (Modellierungen) des Datenmodelles keine Programmänderungen --- bei geschickter Programmierung. Modellierungen sind z.B.\ das Hinzufügen, Bearbeiten oder Löschen von Entitäten (Klassen, Individuen, Relationen oder Eigenschaften). Im Gegensatz hierzu benötigen Änderungen in relationalen Datenbanken meistens sehr aufwändige Programmänderungen.\\
+Eine eher ungünstige Eigenart dieser Wissensabbildung ist, dass gesamte Prozesse und Abläufe nur schwer abzubilden sind. Dies kann durch andere Sprachen einfacher geschehen.
+
+Bei unserer Arbeit lag der Fokus nicht auf einem definierten Endprodukt. Im Vordergrund stand viel mehr der gesamte Prozess der Wissenserarbeitung. Ein wichtiger Teil der Arbeit bestand in der Modellierung einer Ontologie. Hierbei war es schwierig, ein sinnvolles und allgemein gültiges Vorgehen zu finden und zu definieren.\\
+Verschiedenen Schwierigkeiten, auf welche wir während des Prozesses der Wissenserarbeitung gestossen sind, erachten wir als Bereicherung unserer Erfahrung.
+
+Für die Bachelor-Thesis fiel unsere Entscheidung bewusst auf ein für uns unbekanntes Thema. Wir hofften dadurch, in der Erarbeitung der Bachelor-Thesis forschen und experimentieren zu können. Mit Eintritt in die Berufswelt wird dies wahrscheinlich nur noch begrenzt möglich sein.\\
+Erst bei der Reflexion der Arbeit wurde uns richtig bewusst, ein Themengebiet gewählt zu haben, bei dem wir ausser einigen einfachen Grundlagen alles neu erarbeiten mussten. Dies führte zu einer sehr spannenden und intensiven Arbeit.
 
 % - Zusammenfassung des Resultats
 % - Würdigung des Resultats
 % - Evtl. Empfehlungen zum weiteren Vorgehen
 
-\section{Ausblick}
+\section{Erweiterungsmöglickeiten}
 \label{sec:fazit_subchap}
 Bei dem aktuellen Modell der Ontologie sowie der Benutzeroberfläche handelt es sich um einen Nachweis der Machbarkeit in Form von Prototypen. Der Funktionsumfang dieser beschränkt sich daher nur auf das Nötigste und entspricht nicht einer realen Anwendung.
 
-Wollte man das Umgesetzte einer praxisrelevanten Anwendung nutzen, so müsste dies erweitert werden. Die Ontologie verfügt nur über einige wenige, exemplarische Entitäten. Um interessante Abfragemöglichkeiten bieten zu können, wäre sicherlich eine starke Erweiterung der Ontologie nötig.
+Für eine praxisrelevante Anwendung müsste das Umgesetzte erweitert werden. Um interessante Abfragemöglichkeiten anbieten zu können, müsste die umgesetzte Ontologie stark erweitert werden.
 
-Weiter könnte die Anwendung mit Benutzerprofilen versehen werden, welche den Standort des Benutzers speichern. Mittels einer Geoinformationssoftware könnte so die Distanz zu Entitäten (z.B. Restaurants und Ausflüge) dynamisch berechnet werden.
+Die Anwendung könnte beispielsweise mit Benutzerprofilen versehen werden, welche Standort des Benutzers speichern und mittels Geoinformationssoftware die Distanz zu den Entitäten (Restaurants und Ausflüge) berechnen.
 
-Das Modell unterstützt aktuell nur eine Zeitauflösung von einem halben Tag, einem ganzen Tag sowie mehr als einem Tag. Eine feinere Zeitauflösung, etwa in Form von Fliesskommawerten, liesse eine genauere Planung von Reisen zu. Dies müsste jedoch in Form von Applikationslogik und nicht durch den Reasoner umgesetzt werden, da dieser, wie im Tutorial erwähnt, keine Bedingungserfüllungsprobleme lösen kann.
-
-
+Bei der Zeitauflösung beschränkt sich das Modell auf halbtägige, ganztägige sowie mehrtägige Ausflüge. Eine feinere Zeitauflösung, zum Beispiel in Form von Fliesskommawerten, würde eine genauere Planung ermöglichen. Da ein Reasoner keine Bedingungserfüllungsprobleme lösen kann, müsste dies in der Applikation umgesetzt werden.

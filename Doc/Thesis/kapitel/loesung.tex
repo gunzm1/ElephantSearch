@@ -127,23 +127,32 @@ Um die gewünschte Folgerung dennoch modellieren zu können, wurde Wellness als 
 
 \subsection{Ergebnis}
 \label{subsec:loesung_modellierung_ergebnis}
-Ein Teil des Ergebnisses der Modellierung sind die oben erwähnten semantischen Netze. Diese wurden in drei Grafiken aufgeteilt. Auf der ersten Grafik wird die gesamte Region/Ort-Thematik abgebildet. Auf zwei weiteren Grafiken wurden jeweils die Details zu den Restaurants respektive Ausflügen dargestellt.
-
-Der zweite Teil ist ein von Protégé generiertes RDF/XML-Dokument. Darin ist die semantische Datenbank im OWL-Format abgelegt. Es handelt sich dabei um die konkreten Daten.
+Die Ergebnisse der Modellierung sind:
+\begin{itemize}
+    \item Semantisches Netz
+    \item Ein (durch Protégé) generiertes RDF/XML-Dokument
+\end{itemize}
+Das semantische Netz stellt die Modellierung grafisch dar. Zur besseren Übersicht wurde es in Teilnetze aufgeteilt, wie oben bereits beschrieben. Im RDF/XML-Dokument ist die semantische Datenbank in Form von konkreten Daten abgelegt.
 
 \section{Erstellung von Abfragen}
 \label{sec:loesung_sparql}
-Sowohl während des Abbildens der Problemdomäne, als auch für die endgültige Suche, mussten immer wieder Abfragen erstellt werden. Abfragen müssen in einer semantischen Datenbank mittels SPARQL gestellt werden. Dabei handelt es sich um eine Abfragesprache für Ontologien. Details dazu finden sich im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 10. Die Abfragen sind direkt in der erstellten Benutzeroberfläche integriert. So konnte verhindert werden, dass der Benutzer gezwungen ist, sich die Sprache anzueignen.
+Für die Modellierung, wie auch für die Datenbankabfragen durch die Benutzeroberfläche (``Suche''), mussten wiederholt Abfragen erstellt werden. Bei einer semantischen Datenbank müssen diese mittels SPARQL gestellt werden. SPARQL ist eine Abfragesprache für Ontologien (Details dazu finden sich im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 10). Durch direkte Integrierung der Abfragen in die erstellte Benutzeroberfläche konnte vermieden werden, dass der Benutzer weder Sprache noch Ontologie kennen muss.
 
 \section{Benutzeroberfläche}
 \label{sec:loesung_gui}
-Eine weitere Anforderung an die Lösung lautet ``\ldots Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu \ldots''.~\cite{Aufgabenstellung}
+Weitere Aufgabe: ``Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu.''~\cite{Aufgabenstellung}
 
-Da klar wurde, dass es in keiner Weise benutzerfreundlich ist, Abfragen mittels SPARQL zu schreiben, wurde eine Webapplikation zur Reiseplanung entwickelt. Dabei wird der Benutzer des Reiseplaners mit Hilfe eines Assistenten durch die Auswahl geführt. Neben der Vermeidung von SPARQL während der Benutzung, ist so sichergestellt, dass der Benutzer nur Abfragen stellen kann, welche wenigstens in der Theorie Sinn ergeben.
+Den Autoren wurde bewusst, Abfragen mittels SPARQL sind in keiner Weise benutzerfreundlich. Daher wurde eine Webapplikation zur Reiseplanung entwickelt.\\
+Da es für SPARQL keinen Ersatz gibt, musste zur Verständlichkeit ein Assistent entwickelt werden. SPARQL wird weiterhin als Abfragesprache verwendet. 
+In der Webapplikation kann der Benutzer mit Hilfe des Assistenten schrittweise Ausflugskriterien wählen. Dadurch ist sichergestellt, dass nur Abfragen gestellt werden können, welche semantisch eine sinnvolle Kombination darstellen.
 
-In einem ersten Schritt kann der Benutzer entscheiden ob er nur ein Ausflug planen will oder auch nach einem Restaurant sucht. Im zweiten Schritt werden sämtliche gefolgerte Eigenschaften und Beziehungen zu den gewählten Komponenten angeboten. Zum Schluss erhält der Benutzer eine Liste sämtlicher Ergebnisse. Dabei wird aus allen gewählten Eigenschaften dynamisch eine SPARQL-Abfrage generiert. In der Ausgabe sind der Name des Ausflugs, sein Standort und, wenn vorhanden, die URL zu seiner Homepage aufgelistet. Je nach Kriterien ist es natürlich möglich, dass keine Reise gefunden wird. Dies ist der Fall, wenn keine der erfassten Reisen auf die gewählten Kriterien zutrifft. Da nur sehr exemplarisch Reisen erfasst wurden, ist das Risiko für eine leere Antwort relativ hoch.
+In einem ersten Schritt kann der Benutzer entscheiden, ob er nur ein Ausflug planen will oder gleichzeitig nach einem Restaurant sucht.\\
+Im zweiten Schritt werden dem Benutzer sämtliche Eigenschaften und Beziehungen der zuvor gewählten Ausflugsarten als Auswahl angeboten.\\
+Schliesslich erhält der Benutzer eine Liste, die sämtliche den gewählten Kriterien entsprechende Ausflüge enthält. In der Liste sind der Name des Ausflugs, sein Standort und die URL zu seiner Homepage aufgeführt.
+
+Je nach gewählten Kriterien ist es möglich, dass keine Reise gefunden wird. Da nur einige, exemplarische Reisen erfasst wurden, ist bei der Anwendung dieser Webapplikation das Risiko für eine leere Antwort relativ gross.
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/reiseplaner_gui.jpg}}}
-\caption{Ausschnitt der Benutzeroberfläche. Schritt Zwei des Assistenten.\label{fig:gui}\protect\footnotemark}
+\caption{Ausschnitt der Benutzeroberfläche. Schritt zwei des Assistenten.\label{fig:gui}\protect\footnotemark}
 \end{figure}
 \footnotetext{http://elephantsearch.bfh.ch:5820/}

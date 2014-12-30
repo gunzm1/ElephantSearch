@@ -1,76 +1,95 @@
 \chapter{Komponenten}
 \label{chap:komponenten}
+Ein Expertensystem besteht aus drei Komponenten, wie im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 2 beschrieben.\\
+Die Komponenten sind:
+\begin{itemize}
+    \item Wissensdatenbank: Enthält die Fakten des Problembereiches in formaler Sprache
+    \item Inferenz-Maschine: Verarbeitungsmechanismus zum automatischen Ziehen von Schlüssen
+    \item Benutzerschnittstelle
+\end{itemize}
+Wie in~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt, ist die Verwendung von Werkzeugen zur Modellierung einer Ontologie sinnvoll.\\
+Dabei gibt es Überschneidungen: \textbf{Komponenten können auch Werkzeuge sein.}
 
-Ein Expertensystem besteht, wie im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 2 beschrieben, aus mehreren Komponenten. Es sind dies eine Wissensdatenbank, welche die Fakten des Problembereiches in formaler Sprache enthält, ein Verarbeitungsmechanismus zum automatischen Ziehen von Schlüssen (Inferenz-Maschine) sowie eine Benutzerschnittstelle. Wie in~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt, ist die Verwendung eines Werkzeuges zur Modellierung einer Ontologie sinnvoll.
+Das folgende Kapitel beschreibt die während dieser Arbeit verwendeten Komponenten und Werkzeuge.
 
-Das nachfolgende Kapitel gibt einen Überblick über die während dieser Arbeit verwendeten Komponenten und Werkzeuge.
+Die Wissensmodellierung sollte ursprünglich mit Hilfe von Apache Stanbol umgesetzt werden, wie unter~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt. Während der Arbeit wurde erkannt, dass diese Technologie für die vorgesehene Aufgabe nur bedingt sinnvoll ist. In Apache Stanbol ist es zwar möglich die modellierte Wissensdomäne zu importieren. Das importierte Modell wird als Ontologie in Form von Tripeln gespeichert. Die Objekte, ihre Eigenschaften sowie Relationen lassen sich jedoch nicht verwalten.
 
-Wie in der Aufgabenstellung erwähnt, sollte die Wissensmodellierung ursprünglich mit Hilfe von Apache Stanbol umgesetzt werden. Während der Arbeit wurde erkannt, dass diese Technologie für die vorgesehene Aufgabe nur bedingt sinnvoll ist. In Apache Stanbol ist es möglich die modellierte Wissensdomäne zu importieren. Das Modell wird als Ontologie in Form von Tripeln gespeichert. Die Objekte, deren Eigenschaften sowie Relationen lassen sich allerdings nicht verwalten.
+Für Anfragen an die Wissensdatenbank ist eine entsprechende Schnittstelle notwendig. Von Apache Stanbol wird diese Schnittstelle in Form eines SPARQL-Endpoints zur Verfügung gestellt. Der SPARQL-Endpoint nutzt jedoch die ContentHub-Komponente von Apache Stanbol als Datenbasis. Diese stellt nur Wissen zur Verfügung, welches aus angereicherten Inhalten abgeleitet ist. Mittels Ontologien und Regeln werden diese Inhalte angereichert.
 
-Um Fragen an die Wissensdatenbank stellen zu können, ist eine entsprechende Schnittstelle notwendig. Diese wird von Stanbol in Form eines SPARQL-Endpoints zur Verfügung gestellt. Der SPARQL-Endpoint nutzt jedoch die ContentHub-Komponente von Stanbol als Datenbasis und diese stellt nur gewonnenes Wissen durch angereicherte Inhalte, aufgrund von Ontologien und Regeln, zur Verfügung.
+Eine aufwändige Recherche ergab: Anderen Datenquellen können für den SPARQL-Endpoint genutzt werden. Dies bedeutet jedoch einen erheblichen Mehraufwand in Form einer eigenen Implementation.
 
-Nach einiger Recherche stellt sich heraus, dass es zwar möglich ist andere Datenquellen für den SPARQL-Endpoint zu nutzen, dies würde jedoch erheblichen Mehraufwand in Form einer eigenen Implementation bedeuten.
-
-Somit ist Stanbol für diese Arbeit nicht das geeignete Produkt. Nach einigen Recherchen wurden zwei Werkzeuge gefunden, welche als Ersatz für Stanbol genutzt werden können: \textit{Protégé} der Universität Stanford sowie \textit{Stardog} der Firma Clark \& Parsia. Mit einer Kombination der im nächsten Abschnitt beschriebenen Werkzeuge können alle Bedürfnisse abgedeckt werden.
-
+Damit war Apache Stanbol nicht das geeignete Werkzeug für diese Arbeit. Bei weiteren Recherchen wurden weitere Werkzeuge gefunden, welche als Ersatz für Apache Stanbol genutzt werden konnten: \textit{Protégé} der Universität Stanford sowie \textit{Stardog} der Firma Clark \& Parsia.
 
 \section{Stanford Protégé}
 \label{sec:komponenten_protege}
-Protégé ist eine Entwicklungsumgebung für Ontologien. Es wurde von der Universität Stanford entwickelt und findet in der Fachwelt häufig Anwendung. Protégé unterstützt sowohl die Modellierung von Ontologien, wie auch das Reasoning mittels verschiedener Reasoner.
+Protégé ist eine Entwicklungsumgebung für Ontologien und wurde von den Autoren als \textit{Werkzeug} verwendet. Entwickelt von der Universität Stanford findet es in der Fachwelt häufig Anwendung.\\
+Es unterstützt sowohl die Modellierung von Ontologien, wie auch mittels verschiedener Reasoner das Reasoning.
 
 \subsection{Merkmale}
 \label{subsec:komponenten_protege_features}
-In Protégé können die Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML, Turtle oder RDF/XML gelesen und abgespeichert werden. Die Dateien tragen jedoch immer die Endung ``.owl''. Protégé hält eingelesene Ontologien als Graphstruktur im Speicher~\footnote{\url{http://protegewiki.stanford.edu/wiki/Protege4Features}} und ermöglicht Reasonern den direkten Zugriff auf diese~\footnote{\url{http://protege.stanford.edu/products.php}}. Die Entwicklungsumgebung bietet verschiedene Ansichten auf dieselbe Ontologie. \\
-Neben dem Anlegen und Bearbeiten einer Ontologie können in Protégé Version 5.0.0 Beta 16 SWRL-Regeln hinzugefügt werden. Diese werden von Protégé direkt in der Ontologie abgelegt. 
+In Protégé können Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML, Turtle oder RDF/XML eingelesen und abgespeichert werden. Die Dateien tragen immer die Endung ``.owl''. Protégé hält eingelesene Ontologien als Graphstruktur im Speicher~\footnote{\url{http://protegewiki.stanford.edu/wiki/Protege4Features}} und ermöglicht Reasonern den direkten Zugriff auf die Graphstruktur~\footnote{\url{http://protege.stanford.edu/products.php}}.\\
+Die Entwicklungsumgebung zeigt verschiedene Ansichten für dieselbe Ontologie. \\
+Ausser Anlegen und Bearbeiten einer Ontologie können in Protégé (ab Version 5.0.0 Beta-16) SWRL-Regeln verwaltet werden. Diese werden von Protégé direkt in der Ontologie abgelegt.
 
-Durch das SPARQL-Modul bietet Protégé die Möglichkeiten Abfragen in der Ontologie zu stellen. So können Informationen aus der Ontologie abgefragt werden. Ist zusätzlich ein Reasoner-Modul geladen und aktiviert, kann die Umgebung Inferenzen bei Abfragen einbeziehen. Es können verschiedene Reasoner, so zum Bespiel FACT ++ oder Pellet genutzt werden (siehe:~\ref{subsec:komponenten_reasoner}).
+Durch das SPARQL-Modul bietet Protégé die Möglichkeit Informationen der Ontologie mittels Abfragen zu gewinnen. Ist zusätzlich ein Reasoner-Modul geladen und aktiviert, kann die Umgebung bei Abfragen Inferenzen einbeziehen. Es können verschiedene Reasoner, wie beispielsweise FACT++ oder Pellet genutzt werden (siehe~\ref{subsec:komponenten_reasoner}).
 
 (vgl.~\cite{protegeFeatures})
 
 \subsection{Ansichten}
 \label{subsec:komponenten_protege_view}
 
-Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, dass verschiedene Sichten auf eine Ontologie geboten werden. Neben der Entitätsansicht (Entity-View, diese enthält sämtliche Elemente einer Ontologie) existiert für alle Elementtypen wie Klassen, Dateneigenschaften und Individuen eine eigene Ansicht.
+Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, dass verschiedene Sichten auf eine Ontologie geboten werden. Neben der Entitätsansicht (Entity-View, diese enthält sämtliche Elemente einer Ontologie) existiert für alle Elementtypen wie Klassen, Dateneigenschaften, Objekteigenschaften und Individuen eine eigene Ansicht.
 
-Alle Ansichten sind als Baumstruktur organisiert. Dies bietet eine klare Übersicht und ermöglicht eine hierarchiegetreue Abbildung des dahinterliegenden XML-Dokumentes.
+Alle Ansichten sind als Baumstruktur organisiert. Dadurch entsteht eine klare Übersicht. Diese wiederum ermöglicht eine Hierarchie-getreue Abbildung des zu Grunde liegenden XML-Dokumentes.
 
-Neben der Darstellung der im XML-Dokument abgespeicherten Informationen bietet Protégé noch andere Ansichten. So kann der Graph einer Ontologie in der OntoGraf-Ansicht angesehen werden.~\cite{protegeView}
+Protégé bietet weitere Ansichten. Beispielsweise kann der Graph einer Ontologie in der OntoGraf-Ansicht betrachtet werden (vgl.~\cite{protegeView}).
+[TODO:\ Bild OntoGraf hier]
 
-Schlussfolgerungen des gewählten Reasoners werden in allen Ansicht direkt zur Laufzeit ergänzt.
+Schlussfolgerungen werden in allen Ansichten direkt zur Laufzeit des Reasoners bei allen Elementtypen ergänzt.
 
 \section{Clark \& Parsia Stardog}
 \label{sec:komponenten_stardog}
-Bei Stardog handelt es sich um eine Graphdatenbank mit Unterstüztung des RDF-Graphenmodells. Sie bietet den Import und Export von Ontologien in diversen Format an und die Möglichkeit Informationen einer Ontologie mittels SPARQL abzufragen. Des Weiteren unterstützt sie OWL sowie SWRL-Regeln. Eine zentrale Komponente zur Schlussfolgerung bildet dabei Pellet, welcher direkt mit Stardog geliefert wird. Stardog bietet vielerlei Schnittstellen, so z.b. HTTP und SNARL.\ Programmierschnittstellen sind für zahlreiche Sprache, so beispielsweise Java, JavaScript oder Python vorhanden.~\cite{stardogDocu}
+Bei Stardog handelt es sich um eine Graphdatenbank mit Unterstüztung des RDF-Graphenmodelles. Sie bietet den Import und Export von Ontologien in diversen Format an und die Möglichkeit Informationen einer Ontologie mittels SPARQL abzufragen. Des Weiteren unterstützt Stardog die Sprache OWL sowie SWRL-Regeln.\\
+Pellet, in Stardog enthalten, bildet eine zentrale Komponente für die Schlussfolgerung.
 
-Stardog unterscheidet drei Versionen der Lizenzierung: Community, Developer und Enterprise. Die Versionen unterscheiden sich durch die maximale Anzahl der verwaltbaren Datenbanken und Tripel pro Datenbank, die Anzahl gleichzeitiger Verbindungen, die Anzahl Benutzer und Rollen sowie Kundenbetreuung seitens des Herstellers.~\cite{stardogDocu}
+Stardog bietet viele Kommunikationsschnittstellen, so z.B. HTTP und SNARL.\\
+Programmierschnittstellen sind für zahlreiche Sprachen, so beispielsweise Java, JavaScript oder Python vorhanden.
+(vgl.~\cite{stardogDocu})
+
+Stardog unterscheidet drei Versionen der Lizenzierung: Community, Developer und Enterprise. Die Versionen unterscheiden sich durch maximale Anzahl der verwaltbaren Datenbanken und der möglichen Tripel pro Datenbank, Anzahl gleichzeitiger Verbindungen und durch Anzahl Benutzer und Rollen. Je nach gewählter Lizenzierung leistet der Hersteller eine Kundenbetreuung.
+(vgl.~\cite{stardogDocu})
 
 \subsection{Reasoner}
 \label{subsec:komponenten_reasoner}
-Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ bieten. Es handelt es sich um eine Art ``Verstehen'' durch Maschinen. Ziel ist es, aus explizitem Wissen in Form einer Ontologie implizites Wissen zu gewinnen.
+Reasoner sind Komponenten,  die Folgerungen von implizitem Wissen zulassen bzw.\ anbieten. Es handelt es sich um eine Art ``Verstehen'' der Maschinen. Ziel ist es, aus explizitem Wissen in Form einer Ontologie implizites Wissen zu gewinnen.
 
-Wie bereits unter~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt, wurde Pellet als Anwendung zum Ziehen von Schlüssen gewählt. Eine detaillierte Beschreibung von Pellet findet sich im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Abschnitt 6.4.
+Wie bereits unter~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt, wurde Pellet als Reasoner (Anwendung zum Ziehen von Schlüssen) gewählt. Eine detaillierte Beschreibung von Pellet findet sich im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Abschnitt 6.4.
 
 \subsection{Konkrete Anwendung der Komponenten zur Modellierung der Ontologie}
 \label{subsec:komponenten_anwendung}
-Im Laufe der Arbeit hat sich herausgestellt, dass das Schlussfolgern in Protégé nicht einwandfrei funktioniert. Konkret wurden gewisse SPARQL-Anfragen nicht erwartungsgemäss beantwortet.
+Im Laufe der Arbeit hat sich herausgestellt, dass das Schlussfolgern in Protégé nicht einwandfrei funktioniert. Gewisse SPARQL-Anfragen wurden nicht erwartungsgemäss beantwortet.
 
 Da sowohl Protégé als auch Stardog dieselbe Komponente für Schlussfolgerungen (den Pellet-Reasoner) verwenden, muss es sich bei dem Fehlverhalten um einen Fehler bei der Aufbereitung der Abfragen handeln.
 
-In Protégé existiert zudem keine HTTP-Schnittstelle. Es existiert eine Programmierschnittstelle mit welcher eine HTTP-Schnittstelle geschaffen werden könnte, dies wurde jedoch aufgrund der begrenzt verfügbaren Zeit verworfen.
+In Protégé existiert zudem keine HTTP-Schnittstelle. Es existiert zwar eine Programmierschnittstelle mit welcher eine HTTP-Schnittstelle geschaffen werden kann. Dies wurde aus zeitlichen Gründen verworfen.
 
-Aus den oben genannten Gründen wurde der Arbeitsablauf so gewählt, dass die Ontologie in Protégé erstellt und bearbeitet wurde. Die Weiterverarbeitung der Ontolgie fand schliesslich mit Stardog statt. Dazu wird in Stardog eine Datenbank erstellt, in welche die in Protégé vorbereitete Ontologie im RDF/XML-Format eingespielt wird. Stardog bietet dann die Möglichkeit Anfragen per REST bzw. HTTP zu stellen. Dabei ist ein komplettes und zuverlässiges Reasoning gewährleistet.
+Angesichts der Funktionsstörung und mangelnder HTTP-Schnittstelle, wurde die Ontologie in Protégé erstellt und bearbeitet. Die Weiterverarbeitung der Ontolgie erfolgte mittels Stardog, da Stardog die SPARQL-Anfragen korrekt beantwortet und ausserdem eine HTTP- und REST-Schnittstelle bietet.
 
-Stardog geht bei der Verwendung des Reasoners sogar noch einen Schritt weiter als die anderen Werkzeuge (wie zum Beispiel Protégé). Es bietet die Möglichkeit Schlussfolgerungen mittels einer Kombination von RDFS-, QL-, RL- und EL-Axiomen sowie zusätzlich SWRL-Regeln. Details finden sich unter~\footnote{\url{http://docs.stardog.com/\#_reasoning_levels}}.
+Dafür musste in Stardog eine neue Datenbank erstellt werden. In diese wurde die mittels Protégé vorbereitete Ontologie im RDF/XML-Format eingespielt.
 
-Durch die Kombination der beiden Werkzeuge konnte eine zuverlässige Modellierung und Verwendung der Ontologie sichergestellt werden.
+Stardog bietet bei der Verwendung des Reasoners mehr Möglichkeiten als die anderen Werkzeuge (wie zum Beispiel Protégé). Schlussfolgerungen mittels einer Kombination von RDFS-, QL-, RL- und EL-Axiomen sowie zusätzlich SWRL-Regeln gezogen werden. Details finden sich unter~\footnote{\url{http://docs.stardog.com/\#_reasoning_levels}}.
+
+
+Durch die Kombination dieser beiden Werkzeuge Protégé und Stardog konnte eine zuverlässige Modellierung und Verwendung der Ontologie erreicht werden.
 
 \section{Benuzteroberfläche}
 \label{sec:komponenten:ember}
-Wie bereits unter~\autoref{sec:loesung_gui} erwähnt, wurde eine Webapplikation zur Reiseplanung entwickelt. Diese ermöglicht das Planen einer Reise mithilfe eines Assistenten. Der Benutzer kann die gewünschten Reisekriterien auswählen und erhält schliesslich eine Auswahl an Reiseobjekten, welche seinen Kriterien entsprechen.
+Ein Teil der Aufgabe bestand darin, eine möglichst benutzerfreundliche Schnittstelle zwischen Mensch und System zu entwickeln.\\
+Als Schnittstelle haben die Autoren eine Webapplikation zur Reiseplanung entwickelt, wie im~\autoref{sec:loesung_gui} ausgeführt. Diese ermöglicht das Planen einer Reise mit Hilfe eines Assistenten. Der Benutzer kann die gewünschten Reisekriterien auswählen und erhält schliesslich eine Auswahl an Reiseobjekten, welche seinen Kriterien entsprechen.
 
-\subsection{Komponenten}
+\subsection{Komponenten der Benutzeroberfläche}
 \label{subsec:komponenten:gui:komponenten}
-Als Komponenten zur Umsetzung der Benutzeroberfläche wurden die folgenden gewählt. Die Auswahl erfolgte aufgrund der beruflichen Erfahrungen der Autoren.
+Folgende Komponenten wurden zur Umsetzung der Benutzeroberfläche gewählt:
 \begin{itemize}
     \item \textit{Vagrant}\footnote{\url{http://www.vagrantup.com}}\\
         Virtualisierungslösung
@@ -81,30 +100,31 @@ Als Komponenten zur Umsetzung der Benutzeroberfläche wurden die folgenden gewä
     \item \textit{Bootstrap}\footnote{\url{http://getbootstrap.com}}\\
         HTML-, CSS- und JavaScript-Framwork von Twitter
 \end{itemize}
+(Die Auswahl erfolgte aufgrund beruflicher Erfahrungen der Autoren.)
 
 \subsubsection{Vagrant}
 \label{ssubsec:komponenten:gui:komponenten:vagrant}
 Bei Vagrant handelt es sich um ein Werkzeug zur Erstellung von vollständigen Entwicklungsumgebungen basierend auf Virtualisierung. Details dazu finden sich unter~\footnote{http://www.vagrantup.com/about.html}.~\cite{vagrant}
 
-Vagrant wurde zur Bereitstellung einer (virtuellen) Entwicklungsumgebung genutzt. Dabei wird die eigentliche Anwendung von der Entwicklungsumgebung getrennt, so dass die Entwicklungsumgebung jederzeit mittels weniger Befehle wiederaufgebaut werden kann.
+In der vorliegend Arbeit wurde Vagrant zur Bereitstellung einer (virtuellen) Entwicklungsumgebung genutzt. Dabei wird die eigentliche Anwendung von der Entwicklungsumgebung getrennt. Dadurch kann die Entwicklungsumgebung jederzeit mittels weniger Befehle wieder neu aufgebaut werden.
 
 \subsubsection{nginx}
 \label{ssubsec:komponenten:gui:komponenten:nginx}
-nginx (``engine x'' ausgesprochen) ist ein freier open-source Webserver. Seine Stärken liegen unter Anderem  auf hoher Leistung, hoher Nebenläufigkeit und geringem Speicherverbrauch. Er ist der am zweithäufigsten eingesetzte Webserver.~\cite{nginx}
+nginx (``engine x'' ausgesprochen) ist ein freier open-source Webserver. Seine Stärken liegen unter anderem  auf hoher Leistung, hoher Nebenläufigkeit und geringem Speicherverbrauch. Er ist der am zweithäufigsten eingesetzte Webserver.~\cite{nginx}
 
 nginx wurde innerhalb der (virtuellen) Entwicklungsumgebung zur Bereitstellung der Applikation genutzt. So kann die Applikation innerhalb eines Rechners wie eine externe Webseite angesprochen werden.
 
 \subsubsection{Ember.js}
 \label{ssubsec:komponenten:gui:komponenten:emberjs}
-Bei Ember.js handelt es sich um ein clientseitiges open-source Framework für Webapplikationen. Es setzt auf dem Model-View-Controller (MVC) Softwarearchitektur-Muster auf. Es erlaubt die Erstellung von skalierbaren Anwendungen mittels einer einzigen Datei und bietet dabei deklarative Datenbindung, dynamische Eigenschaften, automatisch aktualisierte Templates sowie eine Zustandsverwaltung der Applikations mittels einer Router-Komponente.~\cite{ember}
+Ember.js ist ein clientseitiges open-source Framework zur Erstellung von Webapplikationen. Es baut auf dem Model-View-Controller (MVC) Softwarearchitektur-Muster auf. Es erlaubt die Erstellung von skalierbaren Anwendungen mittels einer einzigen Datei und bietet dabei deklarative Datenbindung, dynamische Eigenschaften, automatisch aktualisierte Templates sowie eine Zustandsverwaltung der Applikations mittels einer Router-Komponente.~\cite{ember}
 
 Ember.js wurde für die Umsetzung der Applikationslogik der Benutzeroberfläche eingesetzt.
 
 \subsubsection{Bootstrap}
 \label{ssubsec:komponenten:gui:komponenten:bootstrap}
-Bootstrap der Firma Twitter ist eine Sammlung von Werkzeugen um Webseiten und Webapplikationen zu erstlelen. Sie bietet unter Anderem diverse, auf HTML und CSS basierende Vorlagen für Typographie, Formulare, Schaltflächen und Navigation.~\cite{bootstrap}
+Bootstrap der Firma Twitter ist eine Sammlung von Werkzeugen um Webseiten und Webapplikationen zu erstellen. Bootstrap bietet unter anderem verschiedene, auf HTML und CSS basierende Vorlagen für Typographie, Formulare, Schaltflächen und Navigation.~\cite{bootstrap}
 
-Bootstrap wurde zur grafischen Gestaltung der Benutzeroberfläche verwendet.
+Bootstrap wurde zur grafischen Gestaltung der Benutzeroberfläche eingesetzt.
 
 \subsection{Architektur}
 \label{subsec:komponenten:gui:architektur}
@@ -114,20 +134,26 @@ Bootstrap wurde zur grafischen Gestaltung der Benutzeroberfläche verwendet.
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Die obenstehende Abbildung~\ref{fig:architektur:gui} zeigt die Architektur der Benutzeroberfläche, bestehend aus einem Frontend und einem Backend. Bei dem Frontend ist die Applikation selbst gemeint, bei dem Backend handelt es sich um Stardog.
+Die obenstehende Abbildung~\ref{fig:architektur:gui} zeigt die Architektur der Benutzeroberfläche, bestehend aus einem Frontend und einem Backend. Mit Frontend ist die Applikation selbst (Benutzeroberfläche) gemeint, mit Backend der Stardog-Server.
 
-Die Applikation besteht aus \textit{Models}, \textit{Views} und \textit{Routen}.
+Die Applikation besteht aus \textit{Modellen}, \textit{Ansichten} und \textit{Routen}.
 
-Die \textit{Models} sind \textit{Reisen}, \textit{Dateneigenschaften} sowie \textit{Objektrelationen}. Die \textit{Models} entsprechen \textit{Individuen}, \textit{DataProperties} und \textit{ObjectProperties} der Ontologie.
+\textit{Modelle} sind \textit{Reisen}, \textit{Dateneigenschaften} und \textit{Objektrelationen}.\\
+\hangindent=1.5cm Das \textit{Modell} \textit{Reise} entspricht \textit{Individuen}, das \textit{Modell} \textit{Dateneigenschaft} \textit{DataProperties} und\\
+das \textit{Modell} \textit{Objektrelation} den \textit{ObjectProperties} der Ontologie.
 
-Die \textit{Routen} definieren, wie deren Name sagt, den Ablauf der Applikation. Der Einstiegspunkt der Applikation ist die \textit{Welcome}-Rotue. Von dieser aus werden die \textit{Routen} \textit{Step1}, \textit{Step2} und \textit{Step3} nacheinander in Form eines Schritt-für-Schritt-Assistenten durchlaufen. In Schritt 1 wird die Art der Ausflüge gewählt. Da in diesem Schritt nur bestimmte Individuen der Ontologie angezeigt werden sollen, wurden diese in der Ontologie mit der \textit{Dateneigenschaft} ``reise'' gekennzeichnet. So können explizit diese Individuen abgefragt werden. In Schritt 2 werden die \textit{Dateneigenschaften} sowie die \textit{Objektrelationen} pro zuvor gewählter Art der Ausflüge gewählt. Schritt 3 gibt alle Instanzen zurück, welche den gewählten Kriterien entsprechen.
+\textit{Routen} definieren, entsprechend ihrem Namen, den Ablauf der Applikation.\\
+\hangindent=1.5cm \textit{Welcome}-Route ist der Einstieg der Applikation. Von der \textit{Welcome}-Route aus werden die \textit{Routen} \textit{Step1}, \textit{Step2} und \textit{Step3} nacheinander in Form eines Schritt-für-Schritt-Assistenten durchlaufen.\\
+In Schritt 1 wird die Art der Ausflüge gewählt.\\
+In Schritt 2 werden die \textit{Dateneigenschaften} sowie die \textit{Objektrelationen} pro zuvor gewählter Art der Ausflüge gewählt.\\
+Schritt 3 gibt alle Instanzen zurück, welche den gewählten Kriterien entsprechen.\\
+\\
+Da in Schritt 1 nur bestimmte Individuen der Ontologie angezeigt werden sollen, wurden in der Ontologie diese Individuen mit der \textit{Dateneigenschaft} ``reise'' gekennzeichnet. Dadurch beschränkt sich die Abfrage von Schritt 1 nur auf diese Individuen.
 
 Die \textit{Views} kombinieren die Gestaltung (das Layout) der Seite mit der Ansicht der aktuellen Route.
 
-Die Applikation verfügt über keine dedizierte Datenbank zur Speicherung von Entitäten, zum Beispiel im üblichen Sinne eines Backends. Dies war ein bewusster Entscheid, da in diesem Falle die Ontologie das Backend bzw.\ die Datenbank darstellt und die Ontologie daher hätte verändert werden können. Alternativ dazu hätte die Ontologie nach dem Abfüllen in Objekte gespeichert werden können. Dies bedeutet jedoch viel Aufwand zur Synchronisation bei Änderungen der Ontologie und wurde daher verworfen.
+Die gewählte Graphdatenbank Stardog bietet externen Zugriff via REST-Protokoll. Das gewählte Framework Ember.js bietet REST-Unterstützung via REST-Adapter an. Der REST-Adapter implementiert standardmässig Lesen und Schreiben einer REST-Schnittstelle.
 
-Da die Applikation mit Ember.js umgesetzt wurde und es sich dabei um ein clientseitiges Framework handelt, wird die Applikation bei jedem Aufruf an den Client (Benutzer) übertragen und dort (lokal) ausgeführt. Dies hat zur Folge, dass bei jedem Aufruf der Applikation ein Zugriff auf die Ontologie erfolgt. Die zurückgegebene Ontologie wird lokal zwischengespeichert. Der Zugriff auf die Ontolgie erfolgt per REST-Schnittstelle über das HTTPS-Protokoll via Internet.
+Da das Ziel der Arbeit nicht eine vollständige Umsetzung (Lesen und Schreiben) der Ontologie war, wurde der Zugriff auf die Datenbank nur lesend implementiert. Dadurch kann die umgesetzte Applikation und somit der Benutzer Daten der Ontologie nur lesen (und nicht ändern). Daher musste das Standardverhalten des REST-Adapters von Ember.js durch Nutzung der lokalen Datenbank von Ember.js umgangen werden.
 
-Bedingt durch die genannten Gegebenheiten erfolgt der Datenaustausch via Internet. Damit der Benutzer nicht auf den Datenaustausch warten muss und die Applikation blockiert wird, findet der Datenaustausch asynchron statt. Während die Anfrage im Hintergrund läuft, kann die Applikation weiterhin benützt werden. Dabei werden die \textit{Models} an die \textit{Views} gebunden. 
-
-Erhält die Applikation die Daten eines Models, wird automatisch deren \textit{View} dargestellt bzw. aktualisiert.
+Beim initialen Aufruf der Applikation wird die gesamte Ontologie via REST-Protokoll vom Server abgerufen und nur in der lokalen Datenbank von Ember.js in Form der \textit{Modelle} abgelegt. Damit der Benutzer beim initialen Aufruf der Applikation nicht auf den Datenaustausch warten muss und die Applikation nicht blockiert wird, findet der Datenaustausch asynchron statt. Trotz im  Hintergrund laufender Anfragen kann die Applikation benützt werden. Dabei werden die \textit{Modelle} an die \textit{Ansicht} gebunden. Das heisst, erhält die Applikation Daten eines Modells, wird automatisch dessen \textit{Ansicht} dargestellt bzw.\ aktualisiert.
