@@ -42,10 +42,18 @@ Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, da
 
 Alle Ansichten sind als Baumstruktur organisiert. Dadurch entsteht eine klare Übersicht. Diese wiederum ermöglicht eine Hierarchie-getreue Abbildung des zu Grunde liegenden XML-Dokumentes.
 
-Protégé bietet weitere Ansichten. Beispielsweise kann der Graph einer Ontologie in der OntoGraf-Ansicht betrachtet werden (vgl.~\cite{protegeView}).
-[TODO:\ Bild OntoGraf hier]
+Protégé bietet weitere Ansichten. Beispielsweise kann der Graph einer Ontologie in der OntoGraf-Ansicht betrachtet werden.
+
+\begin{figure}[H]%[htbp]
+    \centering
+    \includegraphics[scale=0.7]{bilder/OntoGraf.png}
+    \caption{Beispiel der OntoGraf-Ansicht.\label{fig:kompo:ontograf}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels Protégé.}
 
 Schlussfolgerungen werden in allen Ansichten direkt zur Laufzeit des Reasoners bei allen Elementtypen ergänzt.
+
+(vgl.~\cite{protegeView})
 
 \section{Clark \& Parsia Stardog}
 \label{sec:komponenten_stardog}
@@ -54,9 +62,9 @@ Pellet, in Stardog enthalten, bildet eine zentrale Komponente für die Schlussfo
 
 Stardog bietet viele Kommunikationsschnittstellen, so z.B. HTTP und SNARL.\\
 Programmierschnittstellen sind für zahlreiche Sprachen, so beispielsweise Java, JavaScript oder Python vorhanden.
-(vgl.~\cite{stardogDocu})
 
 Stardog unterscheidet drei Versionen der Lizenzierung: Community, Developer und Enterprise. Die Versionen unterscheiden sich durch maximale Anzahl der verwaltbaren Datenbanken und der möglichen Tripel pro Datenbank, Anzahl gleichzeitiger Verbindungen und durch Anzahl Benutzer und Rollen. Je nach gewählter Lizenzierung leistet der Hersteller eine Kundenbetreuung.
+
 (vgl.~\cite{stardogDocu})
 
 \subsection{Reasoner}
@@ -104,25 +112,25 @@ Folgende Komponenten wurden zur Umsetzung der Benutzeroberfläche gewählt:
 
 \subsubsection{Vagrant}
 \label{ssubsec:komponenten:gui:komponenten:vagrant}
-Bei Vagrant handelt es sich um ein Werkzeug zur Erstellung von vollständigen Entwicklungsumgebungen basierend auf Virtualisierung. Details dazu finden sich unter~\footnote{http://www.vagrantup.com/about.html}.~\cite{vagrant}
+Bei Vagrant handelt es sich um ein Werkzeug zur Erstellung von vollständigen Entwicklungsumgebungen basierend auf Virtualisierung (vgl.~\cite{vagrant}). Details dazu finden sich unter~\footnote{http://www.vagrantup.com/about.html}.
 
 In der vorliegend Arbeit wurde Vagrant zur Bereitstellung einer (virtuellen) Entwicklungsumgebung genutzt. Dabei wird die eigentliche Anwendung von der Entwicklungsumgebung getrennt. Dadurch kann die Entwicklungsumgebung jederzeit mittels weniger Befehle wieder neu aufgebaut werden.
 
 \subsubsection{nginx}
 \label{ssubsec:komponenten:gui:komponenten:nginx}
-nginx (``engine x'' ausgesprochen) ist ein freier open-source Webserver. Seine Stärken liegen unter anderem  auf hoher Leistung, hoher Nebenläufigkeit und geringem Speicherverbrauch. Er ist der am zweithäufigsten eingesetzte Webserver.~\cite{nginx}
+nginx (``engine x'' ausgesprochen) ist ein freier open-source Webserver. Seine Stärken liegen unter anderem  auf hoher Leistung, hoher Nebenläufigkeit und geringem Speicherverbrauch. Er ist der am zweithäufigsten eingesetzte Webserver (vgl.~\cite{nginx}).
 
 nginx wurde innerhalb der (virtuellen) Entwicklungsumgebung zur Bereitstellung der Applikation genutzt. So kann die Applikation innerhalb eines Rechners wie eine externe Webseite angesprochen werden.
 
 \subsubsection{Ember.js}
 \label{ssubsec:komponenten:gui:komponenten:emberjs}
-Ember.js ist ein clientseitiges open-source Framework zur Erstellung von Webapplikationen. Es baut auf dem Model-View-Controller (MVC) Softwarearchitektur-Muster auf. Es erlaubt die Erstellung von skalierbaren Anwendungen mittels einer einzigen Datei und bietet dabei deklarative Datenbindung, dynamische Eigenschaften, automatisch aktualisierte Templates sowie eine Zustandsverwaltung der Applikations mittels einer Router-Komponente.~\cite{ember}
+Ember.js ist ein clientseitiges open-source Framework zur Erstellung von Webapplikationen. Es baut auf dem Model-View-Controller (MVC) Softwarearchitektur-Muster auf. Es erlaubt die Erstellung von skalierbaren Anwendungen mittels einer einzigen Datei und bietet dabei deklarative Datenbindung, dynamische Eigenschaften, automatisch aktualisierte Templates sowie eine Zustandsverwaltung der Applikation mittels einer Router-Komponente (vgl.~\cite{ember}).
 
 Ember.js wurde für die Umsetzung der Applikationslogik der Benutzeroberfläche eingesetzt.
 
 \subsubsection{Bootstrap}
 \label{ssubsec:komponenten:gui:komponenten:bootstrap}
-Bootstrap der Firma Twitter ist eine Sammlung von Werkzeugen um Webseiten und Webapplikationen zu erstellen. Bootstrap bietet unter anderem verschiedene, auf HTML und CSS basierende Vorlagen für Typographie, Formulare, Schaltflächen und Navigation.~\cite{bootstrap}
+Bootstrap der Firma Twitter ist eine Sammlung von Werkzeugen um Webseiten und Webapplikationen zu erstellen. Bootstrap bietet unter anderem verschiedene, auf HTML und CSS basierende Vorlagen für Typographie, Formulare, Schaltflächen und Navigation (vgl.~\cite{bootstrap}).
 
 Bootstrap wurde zur grafischen Gestaltung der Benutzeroberfläche eingesetzt.
 
@@ -150,7 +158,7 @@ Schritt 3 gibt alle Instanzen zurück, welche den gewählten Kriterien entsprech
 \\
 Da in Schritt 1 nur bestimmte Individuen der Ontologie angezeigt werden sollen, wurden in der Ontologie diese Individuen mit der \textit{Dateneigenschaft} ``reise'' gekennzeichnet. Dadurch beschränkt sich die Abfrage von Schritt 1 nur auf diese Individuen.
 
-Die \textit{Views} kombinieren die Gestaltung (das Layout) der Seite mit der Ansicht der aktuellen Route.
+Die \textit{Ansichten} kombinieren die Gestaltung (das Layout) der Seite mit der Ansicht der aktuellen Route.
 
 Die gewählte Graphdatenbank Stardog bietet externen Zugriff via REST-Protokoll. Das gewählte Framework Ember.js bietet REST-Unterstützung via REST-Adapter an. Der REST-Adapter implementiert standardmässig Lesen und Schreiben einer REST-Schnittstelle.
 

@@ -48,6 +48,7 @@ build/
 # *.ps
 # *.eps
 *template.pdf
+*book.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl

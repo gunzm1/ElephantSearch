@@ -32,12 +32,13 @@
 \usepackage[font={footnotesize,it}]{caption}                                                    % for captions of figures and tables
 \usepackage{booktabs}                                                   % package for nicer tables
 \usepackage{tocvsec2}                                                   % provides means of controlling the sectional numbering
-\usepackage[square,sort,comma,numbers]{natbib}                           % provides various citation styles
+\usepackage[square,sort,comma,authoryear]{natbib}                           % provides various citation styles
 \usepackage{wrapfig}                                                    % provides floating of text around images
 \usepackage{nameref}                                                    % provides printing names of references
 \usepackage{colortbl}                                                   % Colored tables
 \usepackage{scrhack}                                                    % Remove float errors and warnings
 \usepackage{pgfgantt}                                                   % Provides GANTT charts
+\usepackage{array}
 %---------------------------------------------------------------------------
 
 % Load Math Packages
@@ -87,7 +88,9 @@
   stringstyle=\color{darkblue},
   identifierstyle=\color{red}
 }
-
+% Change captions of listings
+\renewcommand{\lstlistingname}{Auflistung}
+\renewcommand{\lstlistlistingname}{Auflistungsverzeichnis}
 %---------------------------------------------------------------------------
 
 % Hyperref Package (Create links in a pdf)
@@ -197,15 +200,15 @@
 
 % Make sure Umlauts are getting displayed correctly.
 \lstset{literate=%
-    {Ö}{\textcolor{red}{\"O}}1
+    {Ö}{\textcolor{black}{\"O}}1
     {Ä}{{\"A}}1
     {Ü}{{\"U}}1
     {ß}{{\ss}}1
     {ü}{{\"u}}1
-    {ä}{{\textcolor{red}{\"a}}}1
-    {ö}{{\textcolor{red}{\"o}}}1
+    {ä}{{\textcolor{black}{\"a}}}1
+    {ö}{{\textcolor{black}{\"o}}}1
     {~}{{\textasciitilde}}1
-    {?}{{\textcolor{red}{?}}}1
+    {?}{{\textcolor{black}{?}}}1
 }
 
 % Table of contents
@@ -238,18 +241,17 @@
 % Glossary
 %---------------------------------------------------------------------------
 %\cleardoublepage
-\phantomsection{}
-\addcontentsline{toc}{chapter}{Glossar}
-\renewcommand{\glossaryname}{Glossar}
-\printglossary{}
+%\phantomsection{}
+%\addcontentsline{toc}{chapter}{Glossar}
+%\renewcommand{\glossaryname}{Glossar}
+%\printglossary{}
 %---------------------------------------------------------------------------
 
 % Bibliography
 %---------------------------------------------------------------------------
 %\cleardoublepage
-%\phantomsection{}
-%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
-%\bibliographystyle{unsrtdin}
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{unsrtnat}
 \bibliography{datenbanken/bibliography}{}
 %---------------------------------------------------------------------------
@@ -264,6 +266,10 @@
 %\phantomsection{}
 %\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 %\listoftables
+%\cleardoublepage
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Auflistungsverzeichnis}
+\lstlistoflistings
 %---------------------------------------------------------------------------
 
 % Index
@@ -277,18 +283,10 @@
 
 % Attachment:
 %---------------------------------------------------------------------------
-\appendix
+%\appendix
 \settocdepth{section}
 \include{anhang/anhang}
-\includepdfset{pagecommand={\thispagestyle{headings}}}
-\includepdf[pages=-, addtotoc={1,chapter,0,Anforderungsdokument,chap:anf},scale=0.9]{anhang/anforderungen.pdf}
-\include{anhang/schnipsel}
-\includepdf[pages=-, addtotoc={1,chapter,0,Tutorial Wissensmodellierung,chap:tutorial},scale=0.9]{anhang/Tutorial.pdf}
-\includepdf[pages=-, addtotoc={1,chapter,0,Dokumentation Projekt 2,chap:tutorial},scale=0.9]{anhang/DokumentationProjekt2.pdf}
-\include{anhang/benutzerhandbuch}
-\includepdf[pages=-, addtotoc={1,chapter,0,Arbeitsjournal ,chap:arbeitsjournal},scale=0.9]{anhang/Journal.pdf}
-%\include{anhang/Arbeitsjournal}
-\include{anhang/modellierung}
+
 %---------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------

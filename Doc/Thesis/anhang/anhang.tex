@@ -1,3 +1,4 @@
+
 \begin{titlepage}
 
 
@@ -6,7 +7,9 @@
     \begin{center}
         \begin{minipage}{.6\textwidth}
             \fontsize{26pt}{28pt}\selectfont
-            Anhang
+            \chapter*{Anhang}
+						\label{chap:anhang}
+						\addcontentsline{toc}{chapter}{Anhang}
         \end{minipage}
     \end{center}
     \vfill % equivalent to \vspace{\fill}
@@ -30,34 +33,12 @@
 
 \appendix
 
-% \section*{Anforderungen}
-% \label{sec:anhang:anforderungen}
-% \href{anhang/anforderungen.pdf}{Anforderungsdokument}
-% 
-% \section*{Beispiele}
-% \label{sec:anhang:sparql_beispiele}
-% \href{anhang/schnipsel.pdf}{Dokument mit diversen Abfragebeispielen}
-% 
-% \section*{Dokumentation Wissensmodellierung}
-% \label{sec:anhang:tutorial_dokument}
-% \href{../Tutorial/template.pdf}{Dokumentation Wissensmodellierung}
-% 
-% \section*{Dokumentation BTI7302 --- Projekt2}
-% \label{sec:anhang:projekt2}
-% \href{../Extern/EigeneDokumente/DokumentationProjekt2.pdf}{Dokumentation BTI7302 - Projekt2}
-% 
-% \section*{Arbeitsjournal}
-% \label{sec:anhang:journal}
-% TODO:\@ Journal hier einfügen.
-% 
-% \section*{Benuterhandbuch}
-% \label{sec:anhang:handbuch}
-% TODO:\@ Handbuch hier einfügen.
-% 
-% \section*{Grafiken}
-% \label{sec:anhang:grafiken}
-% TODO:\@ Grafiken hier einfügen.
-% 
-% \section*{Reiseplaner}
-% \label{sec:anhang:reiseplaner}
-% TODO:\@ Reiseplaner hier einfügen.
+\includepdfset{pagecommand={\thispagestyle{headings}}}
+\includepdf[pages=-, addtotoc={1,chapter,0,Anforderungsdokument,chap:anf},scale=0.9]{anhang/anforderungen.pdf}
+\includepdf[pages=-, addtotoc={1,chapter,0,Tutorial Wissensmodellierung,chap:tutorial},scale=0.9]{anhang/Tutorial.pdf}
+%\input{../Tutorial/template}
+\input{anhang/schnipsel}
+\input{anhang/modellierung}
+\input{anhang/benutzerhandbuch}
+\includepdf[pages=-, addtotoc={1,chapter,0,Arbeitsjournal ,chap:arbeitsjournal},scale=0.9]{anhang/Journal.pdf}
+\includepdf[pages=-, addtotoc={1,chapter,0,Dokumentation Projekt 2,chap:proj2},scale=0.9]{anhang/DokumentationProjekt2.pdf}
