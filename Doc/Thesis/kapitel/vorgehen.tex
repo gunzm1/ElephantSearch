@@ -7,7 +7,7 @@
 Im Vordergrund dieser Diplomarbeit stehen der Prozess der Entstehung eines Expertensystemes sowie die Analyse der dazu benötigten Grundlagen. Der Fokus liegt dabei absichtlich nicht in der Softwareentwicklung. Traditionelle Methoden der Projektorganisation wie HERMES oder Scrum wurden daher nicht gewählt.\\
 Der Organisation wurden die im Voraus definierten Meilensteine (Teilziele) zu Grunde gelegt. Jeder dieser Meilensteine wurde zeitlich determiniert. Zugleich wurden die Tätigkeiten für jeden Meilenstein durch eine individuelle Liste verteilt. Der benötigte Zeitaufwand sowie die Tätigkeiten wurden durch ein gemeinsames Journal erfasst, siehe~\ref{chap:arbeitsjournal}.
 
-Ein wichtiger Teil der Arbeit ist das Dokument, welches gewonnene Erkenntnisse festhält. In diesem Dokument wurden Erfolge und Misserfolge beschrieben und analysiert. Es bildet schliesslich die Grundlage für das vorliegende Abschlussdokument, siehe~\ref{sec:anhang:reiseplaner}.
+Ein wichtiger Teil der Arbeit ist das Dokument, welches gewonnene Erkenntnisse festhält. In diesem Dokument wurden Erfolge und Misserfolge beschrieben und analysiert. Es bildet schliesslich die Grundlage für das vorliegende Abschlussdokument (bei Anfrage jederzeit verfügbar).
 
 \subsection{Regelmässige Treffen}
 \label{sec:vorgehen_orga_treffen}
@@ -67,20 +67,20 @@ In der ersten Phase wurden die Meilensteine der Arbeit identifiziert und skizzie
 
 \subsection{Anforderungen}
 \label{subsec:anforderungen}
-In dieser Phase wurde Ziel dieser Bachelor-Thesis festgelegt. Vom Ziel ausgehend wurden die dazu erforderlichen Projektphasen festgelegt. Siehe Dokument in Anhang~\ref{sec:anhang:anforderungen}.
+In dieser Phase wurde Ziel dieser Bachelor-Thesis festgelegt. Vom Ziel ausgehend wurden die dazu erforderlichen Projektphasen festgelegt. Siehe Dokument in Anhang~\ref{chap:anf}.
 
 \subsection{Formale und technische Grundlagen}
 \label{sub:formale_und_technische_grundlagen}
-Im Vorprojekt zu dieser Bachelor-Thesis --- BTI7302, Projekt 2 --- wurden die Grundlagen für die Erstellung und Modellierung von Ontologien teilweise erarbeitet. Erforderliche Technologien wurden während dieser Bachelor-Thesis vollständig erarbeitet.
+Im Vorprojekt zu dieser Bachelor-Thesis (BTI7302, Projekt 2; siehe~\ref{chap:proj2}) wurden die Grundlagen für die Erstellung und Modellierung von Ontologien teilweise erarbeitet. Erforderliche Technologien wurden während dieser Bachelor-Thesis vollständig erarbeitet.
 
 \subsubsection{Formale Grundlagen}
 Als formale Grundlagen dienen:
 \begin{itemize}
-    \item Aufbau und Modellierung von Ontologien~\cite{IspekOntoBedeutung} sowie~\cite{ISpekOntoGeschichte}
-    \item RDF-Syntax~\cite{w3rdf} und~\cite{w3rdf_syntax}
-    \item Ontologie-Sprache OWL~\cite{w3owl}
-    \item Regel-Sprache SWRL~\cite{swrl}
-    \item SPARQL-Abfragesprache~\cite{w3sparql_querylang},~\cite{w3sparql_overview}
+    \item Aufbau und Modellierung von Ontologien~\citep{IspekOntoBedeutung} sowie~\citep{ISpekOntoGeschichte}
+    \item RDF-Syntax~\citep{w3rdf} und~\citep{w3rdf_syntax}
+    \item Ontologie-Sprache OWL~\citep{w3owl}
+    \item Regel-Sprache SWRL~\citep{swrl}
+    \item SPARQL-Abfragesprache~\citep{w3sparql_querylang},~\citep{w3sparql_overview}
 \end{itemize}
 
 Das Konzept der technischen Umsetzung war durch die oben erwähnte Vorarbeit bereits gegeben.
@@ -121,7 +121,7 @@ Die Modellierung einer Ontologie ist ein schrittweiser Prozess. Die gewählten W
 
 Es bedeuten:
 \begin{table}[H]
-    \begin{tabular}{lrlrlr}
+    \begin{tabular}{m{5em}m{5em}m{5em}m{5em}m{5em}m{5em}}
         \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/yed_konvention_klasse.png}}} & Klasse & 
         \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/yed_konvention_objectprop.png}}} & Objekt-Eigenschaft & \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/yed_konvention_regel.png}}} & Regel \\
         \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/yed_konvention_instanz.png}}} & Individuum &
@@ -152,7 +152,7 @@ Angesichts dieser Erkenntnis wurde die Modellierung mit Individuen erweitert. Di
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Aufgrund der erstellten, bisherige Ontologie konnten konkrete Fragen nicht beantwortet werden. Es zeigten sich Unvollständigkeiten in der Modellierung. Zum Beispiel waren umständlichen Abfragen nötig, um einfache Fakten zu erhalten. Details hierzu finden sich im Anhang unter~\ref{sec:anhang:sparql_beispiele}.
+Aufgrund der erstellten, bisherige Ontologie konnten konkrete Fragen nicht beantwortet werden. Es zeigten sich Unvollständigkeiten in der Modellierung. Zum Beispiel waren umständlichen Abfragen nötig, um einfache Fakten zu erhalten. Details hierzu finden sich im Anhang unter~\ref{chap:anh_beispiele}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.6}[0.6]{\includegraphics{bilder/sparql_beispiel.png}}}
@@ -177,7 +177,7 @@ der Ontologie von Prolog erzielt werden.
 
 Die verbesserte Modellierung bedeutete jedoch keinen Mehrwert in Form von Inferenz. In mehreren Gesprächen bemängelte Herr Prof.\ Dr.\ Eckerle das Fehlen von Regeln in der Ontologie. Um von der objektorientierten Denkweise loszukommen und die Anwendung besser zu verstehen, wurde versucht eine Modellierung der Ontologie direkt in Prolog vorzunehmen. Durch die Struktur von Prolog war die Definition und Anwendung von Regeln einfacher zu verstehen. In Prolog zeigte rasch, dass eine Abfrage nach Fakten (ohne Regeln) keinen Mehrwert bringt.
 
-Nach mehreren erfolglosen Versuchen, wurden keine Regeln für die Ontologie gefunden. Daraufhin versuchten die Autoren am Beispiel eines Familienstammbaumes eine neue Ontologie mit geeigneten Regeln aufzubauen. In diesem ``klassischen'' Beispiel~\cite[Seite 152]{laemmel} wurde der Mehrwert der Wissensmodellierung mittels Ontologien sogleich ersichtlich.
+Nach mehreren erfolglosen Versuchen, wurden keine Regeln für die Ontologie gefunden. Daraufhin versuchten die Autoren am Beispiel eines Familienstammbaumes eine neue Ontologie mit geeigneten Regeln aufzubauen. In diesem ``klassischen'' Beispiel~\cite[S. 152]{laemmel} wurde der Mehrwert der Wissensmodellierung mittels Ontologien sogleich ersichtlich.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.15}[0.15]{\includegraphics{bilder/familien_netz.png}}}
@@ -273,7 +273,7 @@ Die gesamte Ontologie wird im~\autoref{sec:loesung_modellierung} genauer erläut
 
 \subsection{Tutorialdokument}
 \label{subsec:dokumentation_wissensmodellierung}
-Gleichzeitig mit der Modellierung der Ontologie entstand ein Tutorial. Das Tutorial zeigt, wie ein Knowledge-Engineer vorgeht um eine Problemdomäne systematisch zu modellieren und formalisieren. Das Tutorial findet sich im Anhang unter~\ref{sec:anhang:tutorial_dokument}. Da dieses  Tutorial im Gegensatz zu herkömmlichen Tutorials einen grossen Theorieanteil enthält, wurde es nach drei Aspekte aufgeteilt, als da sind:
+Gleichzeitig mit der Modellierung der Ontologie entstand ein Tutorial. Das Tutorial zeigt, wie ein Knowledge-Engineer vorgeht um eine Problemdomäne systematisch zu modellieren und formalisieren. Das Tutorial findet sich im Anhang unter~\ref{chap:tutorial}. Da dieses  Tutorial im Gegensatz zu herkömmlichen Tutorials einen grossen Theorieanteil enthält, wurde es nach drei Aspekte aufgeteilt, als da sind:
 \begin{itemize}
     \item Theoretisches Hintergrundwissen zur Wissensmodellierung:
 

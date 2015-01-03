@@ -15,7 +15,7 @@ Zunächst musste ein Tutorial erarbeitet werden, um die Theorien und Technologie
 
 \section{Modellierung}
 \label{sec:loesung_modellierung}
-Semantische Datenbanken werden auf der Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet deren Wissen ab. Problemdomäne dieser Arbeit ist das Reisen. Es wurde beschlossen sich auf Tages- und Wochenendausflüge in der Schweiz zu begrenzen. Die gesamte Modellierung wurde mithilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL ausgedrückt. Details dazu können im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 9 nachgelesen werden.
+Semantische Datenbanken werden auf der Basis von Ontologien gebildet. Eine Ontologie wird für eine Problemdomäne erstellt und bildet deren Wissen ab. Problemdomäne dieser Arbeit ist das Reisen. Es wurde beschlossen sich auf Tages- und Wochenendausflüge in der Schweiz zu begrenzen. Die gesamte Modellierung wurde mit Hilfe von OWL formuliert. Bei OWL handelt es sich um eine Ontologieabbildungssprache. Benötigte Regeln werden in der Regelsprache SWRL ausgedrückt. Details dazu können im~\hyperref[sec:anhang:tutorial_dokument]{Tutorial} unter Kapitel 9 nachgelesen werden.
 
 Um die Ontologie zu veranschaulichen, wurde diese grafisch in einem semantischen Netz abgebildet. Zur Vereinfachung wurde die Ontologie aufgeteilt und in entsprechenden semantischen Teilnetzen abgebildet. Sämtliche Grafiken finden sich als Anhang unter~\ref{chap:anh_modell_graph}.
 
@@ -54,7 +54,13 @@ In semantischen Datenbaken gibt es zwei Arten von Eigenschaften. Erstens Objekte
 
 In der erstellten Ontologie wurde die Eigenschaft \textit{Preissegment} als Beziehung, also als ObjectProperty (\textit{hatPreis}) zwischen zwei Individiuen definiert. Daher sind die eigentlichen Preissegmente Individuen der Klasse Preissegment. Jedem Restaurant wird ein Preissegment indirekt zugeteilt. Dies geschieht über die definierte Dateneigenschaft (DataProperty) \textit{Durchschnittspreis}. Liegt der Durchschnittspreis eines Restaurants in einem bestimmten Rahmen, so definieren die Regeln in welchem Preissegment ein Restaurant liegt.
 
-[TODO:\ Bild der Regel hier]
+
+\begin{figure}[H]%[htbp]
+    \centering
+    \includegraphics[scale=0.7]{bilder/SWRLBeispiel.png}
+    \caption{Regel zur Bestimmung des Preissegmentes ``preiswert''.\label{fig:loesung:regeln_bsp}\protect\footnotemark}
+\end{figure}
+\footnotetext{Eigene Darstellung mittels Protégé.}
 
 Im Gegensatz zu den Restaurants wurden bei Ausflügen Dateneigenschaften zur Schlussfolgerung verwendet. Die gewünschten Dateneigenschaften kann der Benutzer bei der Suche von Ausflügen anwählen. Beispielsweise kann ein Ausflug, der Wellness bietet, entspannend und romantisch sein.
 
@@ -62,12 +68,12 @@ Im Gegensatz zu den Restaurants wurden bei Ausflügen Dateneigenschaften zur Sch
     \begin{minipage}[hbt]{0,49\textwidth}
         \centering
         \includegraphics[scale=0.3]{bilder/AufbauAusflug.jpg}
-        \caption{Schlussfolgerungen Ausflug.\label{fig:AufbauAusflug}\protect\footnotemark[1]}
+        \caption{Schlussfolgerungen Ausflug.\label{fig:AufbauAusflug}\protect\footnotemark}
     \end{minipage}
     \begin{minipage}[hbt]{0,49\textwidth}
         \centering
         \includegraphics[scale=0.3]{bilder/AufbauRest.jpg}
-        \caption{Restaurant-Typen.\label{fig:AufbauRest}\protect\footnotemark[1]}
+        \caption{Restaurant-Typen.\label{fig:AufbauRest}\protect\footnotemark[4]}
     \end{minipage}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
@@ -85,7 +91,7 @@ Gewisse Ausflugsziele sind nicht ganzjährig erreichbar (der Seilpark Balmberg i
         \begin{minipage}[hbt]{0,49\textwidth}
             \centering
             \includegraphics[scale=0.3]{bilder/SaisonRegeln.jpg}
-            \caption{Regel zur Bestimmung der Jahreszeiten.\label{fig:SaisonRegeln}\protect\footnotemark[2]}
+            \caption{Regel zur Bestimmung der Jahreszeiten.\label{fig:SaisonRegeln}\protect\footnotemark[5]}
         \end{minipage}
     \end{figure}
 
@@ -107,12 +113,12 @@ In der umgesetzten Version des Reiseplaners werden in der Anfrage immer nur jene
         \begin{minipage}[hbt]{0,49\textwidth}
             \centering
             \includegraphics[scale=0.3]{bilder/dauer.jpg}
-            \caption*{Dauer eines Ausflugs festlegen.\label{fig:dauer}\protect\footnotemark[2]}
+            \caption*{Dauer eines Ausflugs festlegen.\label{fig:dauer}\protect\footnotemark[5]}
         \end{minipage}
         \begin{minipage}[hbt]{0,49\textwidth}
             \centering
             \includegraphics[scale=0.3]{bilder/reiseUmfang.jpg}
-            \caption*{Regel zur Bestimmung des Reiseumfangs.\label{fig:reiseumfang}\protect\footnotemark[2]}
+            \caption*{Regel zur Bestimmung des Reiseumfangs.\label{fig:reiseumfang}\protect\footnotemark[5]}
         \end{minipage}
     \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
