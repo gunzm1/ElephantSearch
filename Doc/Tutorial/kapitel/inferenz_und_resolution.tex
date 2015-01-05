@@ -37,13 +37,13 @@ Sofern nicht anders vermerkt, basiert der folgende Abschnitt auf~\cite[S. 277 - 
 
 Resolution, aus dem Lateinischen ``resolutio'', zu Deutsch ``Auflösung'', ist eine Verallgemeinerung des Modus Ponens. Der Modus Ponens ``\ldots stellt eine universelle Schlussregel dar, die unabhängig vom jeweiligen Problem angewandt werden kann.''~\cite[S. 41]{laemmel} Beispiel: \textit{Regen = nasse Strasse. Regen gegeben, also muss die Strasse nass sein.}
 
-Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus der Theorembeweisung für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.
+Die Methode der Resolution wurde 1965 von J. A. Robinson entwickelt. Dabei handelt es sich um einen vollständigen Algorithmus des Theorembeweises für Prädikatenlogik erster Stufe.~\cite[S. 18]{russel} In der einfachsten Form der Resolution handelt es sich um eine Inferenz-Regel der Aussagenlogik.
 
 Eine Verallgemeinerung der einfachen Form der Inferenz-Regel zur Resolution kann als Regel zur kompletten Inferenz der Prädikatenlogik erster Stufe genutzt werden.
 
 \section{Inferenz und Resolution zur Ziehung von Schlüssen}
 \label{sec:inferenz_praktisch}
-Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Das beduetet, automatische Prozeduren, in Form von so genannten \textit{Reasonern}, leiten neue Beziehungen ab. Wie  die neuen Beziehungen generiert werden, ist eine Frage der Implementation, z.B. durch Hinzufügen zu den vorhandenen Daten oder durch einfache Rückgabe derselben (vgl.~\cite[Abschn. 1]{w3inference}).
+Inferenz in der Semantik kann grundsätzlich als das Entdecken von neuen Beziehungen zwischen Entitäten beschrieben werden. Das bedeutet, automatische Prozeduren, in Form von so genannten \textit{Reasonern}, leiten neue Beziehungen ab. Wie  die neuen Beziehungen generiert werden, ist eine Frage der Implementation, z.B. durch Hinzufügen zu den vorhandenen Daten oder durch einfache Rückgabe derselben (vgl.~\cite[Abschn. 1]{w3inference}).
 
 Reasoner sind Komponenten, welche eine Folgerung von implizitem Wissen zulassen bzw.\ anbieten. Es handelt sich um eine Art ``Verstehen'' der Maschinen. Ziel ist es, aus explizitem Wissen in Form einer Ontologie implizites Wissen zu gewinnen.
 
@@ -52,7 +52,7 @@ Eine detaillierte Beschreibung, wie man einen Reasoner in der Praxis umsetzt, fi
 \subsection{Beschreibungslogik}
 \label{subsubsection:beschreibungslogik}
 Beschreibungslogiken sind Formalismen um Wissen darzustellen. Sie sind dabei eine Teilmenge der Prädikatenlogik und stellen den Kern von Wissensrepräsentationssystemen dar.
-Sie sind eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur Folgerung (vgl.~\cite{dl:baader2003}).
+Sie sind eine Struktur für eine Wissensbasis und den damit verbundenen Methoden zur semantischen Folgerung (vgl.~\cite{dl:baader2003}) von neuem Wissen aus der Wissensbasis.
 
 Die Struktur, welche Beschreibungslogiken als Wissensbasis bereitstellt, besteht aus einem Schema (Tbox, Regeln) und aus Daten (Abox, Fakten).
 
@@ -357,6 +357,6 @@ Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielswei
 
 Wenn man den Relationen die entsprechenden Eigenschaften wie Symmetrie oder Transitivität gibt, ist diese Folgerung durchaus möglich. Bei unserem Beispiel haben wir die Eigenschaften bewusst weggelassen, da andernfalls irreführende Folgerungen auftreten. So wäre z.B.\ ein Ort auch ein Land und umgekehrt.
 
-Die eigentliche Folgerung haben wir mittels einer Regel vorgenommen. Zu einem späteren Zeitpunkt erklären wir genauer, siehe~\autoref{chap:swrl}.
+Die eigentliche Folgerung haben wir mittels einer Regel vorgenommen. Zu einem späteren Zeitpunkt erklären wir dies genauer, siehe~\autoref{chap:swrl}.
 
 \noindent\rule[1ex]{\textwidth}{1pt}

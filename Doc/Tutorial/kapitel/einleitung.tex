@@ -2,13 +2,13 @@
 \label{chap:einleitung}
 Die relationale Datenspeicherung ist ein klassischer Ansatz zur Wissensabbildung. Häufig wird diese Art der Datenspeicherung in der objektorientierten Programmierung verwendet. Experten aus einer Fachrichtung sind dadurch fähig, die Daten zu interpretieren und Schlüsse zu ziehen. In der heutigen Zeit möchte man Zugang zum Wissen auch ohne die Hilfe von Experten haben. 
 
-Daher möchten wir eine neue, eher wenig bekannte Art der Wissensabbildung vorstellen, nämlich die Wissensmodellierung (Knowledge-Engineering) bzw. Expertensysteme. Diese berücksichtigt das Abbilden von Objekteigenschaften und -verhalten und kann mit Hilfe von Schlussfolgerungen die Rolle des Experten einnehmen. Sie ist auch Teilgebiet der künstlichen Intelligenz.
+Daher möchten wir eine neue, eher wenig bekannte Art der Wissensabbildung vorstellen, nämlich die Wissensmodellierung (Knowledge-Engineering) und deren Verwendung in Expertensysteme. Diese berücksichtigt das Abbilden von Objekteigenschaften und -verhalten und kann mit Hilfe von Schlussfolgerungen die Rolle des Experten einnehmen. Sie ist auch Teilgebiet der künstlichen Intelligenz.
 
 Grundsätzlich geht es beim Knowledge-Engineering darum, nicht nur Informationen, sondern auch Wissen abzubilden. Es handelt sich um eine Wissensrepräsentation, welche zusätzliche Verarbeitungsmöglichkeiten aufweist zum Beispiel logisches Schlussfolgern oder Beweisführungen. Ein wichtiger Aspekt ist die Darstellung in einer von Maschinen lesbaren Form (vgl.~\cite[S. 308]{ISpekOntoGeschichte}).
 
 Ein wichtiges Einsatzgebiet dieser Form der Wissensabbildung ist das semantische Web. Auch bei diesem geht es in erster Linie darum, Informationen mit ihrer Bedeutung (der sogenannten Semantik) zu verbinden.
 
-Das nachfolgenden Dokument zeigt, wie Wissen in einem wissensbasierten System abgebildet und genutzt werden kann. Anhand unseres Beispieles eines Reiseplaners wollen wir zeigen, welche Schritte eine Wissensmodellierung beinhaltet. Weiter zeigen wir formale Aspekte für die Wissensmodellierung auf, wie zum Beispiel verschiedene Sprachen. Aufgrund unserer Erfahrung geben wir praktische Tipps für die direkte Umsetzung.
+Das nachfolgenden Dokument zeigt, wie Wissen in einem wissensbasierten System abgebildet und genutzt werden kann. Anhand unseres Beispieles eines Reiseplaners wollen wir zeigen, welche Schritte eine Wissensmodellierung beinhaltet. Dafür werden wir zuerst die theoretischen Grundlagen wie Expertensystemen, Wissensrepräsentationsformen und Ontologien einführen. Zudem erklären wir im Kapitel Inferenz und Resolution wie in solchen Systemen Wissen ermittelt wird. Weiter zeigen wir formale Aspekte für die Wissensmodellierung auf, wie zum Beispiel der Einsatz verschiedener formaler Sprachen. Auf der einen Seite die Modellierungssprachen RDF und OWL. Weiter die Regelsprache SWRL und schlussendlich die Abfragesprache SPARQL. Aufgrund unserer Erfahrung geben wir praktische Tipps für die direkte Umsetzung.
 
 \noindent\rule[1ex]{\textwidth}{1pt}
 \begin{wrapfigure}[2]{l}{0.1\textwidth}
@@ -33,7 +33,7 @@ Das Symbol Elefant dient um Beispiele zu geben, wie ein Thema in der Praxis umge
 
 \section{Wissen}
 \label{chap:einleitung_wissen}
-Ein Knowledge-Engineer betreibt Wissenakquise mit Hilfe von Experten aus der entsprechenden Fachwelt. Dafür müssen Wissensbestände eines Sachgebietes aufgebaut werden. \\
+Ein Knowledge-Engineer betreibt Wissensakquise mit Hilfe von Experten aus der entsprechenden Fachwelt. Dafür müssen Wissensbestände eines Sachgebietes aufgebaut werden. \\
 Die Kommunikation von Wissensbeständen ist ebenso wichtig wie ihr Vorhandensein. In der Fachwelt hängt die Wissenskommunikation sehr von der Anerkennung der Wissensmodellierung ab.
 
 Je nach Situation ist eine andere Form der Wissensabbildung geeignet. Wenn man sich für eine bestimmte Wissensabbildung entschieden hat, muss diese eine spezielle Aufgabe erfüllen. Hierbei muss der Nutzen der Abbildung im Mittelpunkt stehen.
