@@ -89,7 +89,7 @@ ambiente(?r, "traditionell")<y:LabelModel>
               <y:Geometry height="82.19999999999993" width="181.2734375" x="318.19385506591243" y="213.89999999999998"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="171.2734375" x="5.0" y="17.048242187500023">küche(?r, "raffiniert") ||
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="171.2734375" x="5.0" y="17.048242187499966">küche(?r, "raffiniert") ||
 küche(?r, "feinschmecker")
 küche(?r,"für hohe Ansprüche")<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -129,7 +129,7 @@ küche(?r,"für hohe Ansprüche")<y:LabelModel>
               <y:Geometry height="63.600000000000136" width="208.0390625" x="309.8479465350165" y="795.0"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="177.419921875" x="15.3095703125" y="7.748242187500182">durchschnittspreis(?r, ?preis),
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="177.419921875" x="15.3095703125" y="7.748242187500068">durchschnittspreis(?r, ?preis),
 greaterOrEqualThan(?preis, 20),
 lessOrEqualThan(?preis, 30)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -301,10 +301,10 @@ range(a) = Ausflug<y:LabelModel>
         <node id="n0::n13">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.attribute">
-              <y:Geometry height="46.834032573289846" width="128.697265625" x="671.195427246093" y="803.3829837133553"/>
+              <y:Geometry height="46.834032573289846" width="130.02734375" x="670.530388183593" y="803.3829837133553"/>
               <y:Fill color="#FFFF99" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="118.697265625" x="5.0" y="14.066430349144866">hatPreis(?r,preiswert)<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="120.02734375" x="5.0" y="14.066430349144866">hatPreis(?r,Preiswert)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -376,11 +376,11 @@ range(a) = Ausflug<y:LabelModel>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="80.69921875" x="5.0" y="-1.1023139311887462">Preissegment:
-exklusiv
-gehoben
-mittel
-günstig
-preiswert<y:LabelModel>
+Exklusiv
+Gehoben
+Mittel
+Günstig
+Preiswert<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>

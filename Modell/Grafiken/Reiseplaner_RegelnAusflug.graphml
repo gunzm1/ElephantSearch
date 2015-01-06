@@ -88,7 +88,7 @@
               <y:Geometry height="76.11428571428576" width="276.974609375" x="223.009838169643" y="317.5037682748556"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="266.974609375" x="5.0" y="28.70655691964282">alter(?x,"&gt;2"), alter(?x, &lt;6), anzahlTeilnehmer &gt; 3<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="266.974609375" x="5.0" y="28.70655691964288">alter(?x,"&gt;2"), alter(?x, &lt;6), anzahlTeilnehmer &gt; 3<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -107,7 +107,7 @@
               <y:Geometry height="30.0" width="62.90234375" x="578.0319084821424" y="487.9837682748556"/>
               <y:Fill color="#999900" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="46.697265625" x="8.1025390625" y="5.649414062499886">regional<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="46.697265625" x="8.1025390625" y="5.6494140625">regional<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -126,7 +126,7 @@
               <y:Geometry height="56.0" width="280.912109375" x="220.26726004464217" y="474.9837682748556"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="241.474609375" x="19.71875" y="3.9482421874998863">hatRegion(?x, ?region),
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="241.474609375" x="19.71875" y="3.9482421875">hatRegion(?x, ?region),
 distanzZuAusgangspunkt(?region, ?distanz),
 smallerThanOrEqual(?distanz, 50)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -248,7 +248,7 @@ bietet(?x, "zeitdruck")<y:LabelModel>
               <y:Geometry height="46.09142857142865" width="243.20703125" x="239.11979910714217" y="846.9542857142858"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="201.9296875" x="20.638671875" y="13.695128348214439">erfordert(?x, "gute Zusammenarbeit")<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="201.9296875" x="20.638671875" y="13.695128348214325">erfordert(?x, "gute Zusammenarbeit")<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -517,7 +517,7 @@ GreaterThan(?dauer,1)<y:LabelModel>
               <y:Geometry height="82.14857142857147" width="283.6484375" x="219.672924107143" y="227.03350041771262"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="273.6484375" x="5.0" y="31.723699776785793">alter(?x,"&gt;6"), alter(?x, &lt;12), anzahlTeilnehmer &gt; 3<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="273.6484375" x="5.0" y="31.723699776785736">alter(?x,"&gt;6"), alter(?x, &lt;12), anzahlTeilnehmer &gt; 3<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -643,7 +643,7 @@ GreaterThan(?dauer,1)<y:LabelModel>
               <y:Geometry height="54.10292397660828" width="121.390625" x="733.6076136591114" y="1627.4392147034266"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="111.390625" x="5.0" y="10.350290113304254">ähnliche Regeln
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="111.390625" x="5.0" y="10.350290113304027">ähnliche Regeln
 für alle Jahreszeiten<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
@@ -657,10 +657,10 @@ für alle Jahreszeiten<y:LabelModel>
         <node id="n0::n32">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.attribute">
-              <y:Geometry height="30.0" width="156.04296875" x="587.33984375" y="1610.6051223320717"/>
+              <y:Geometry height="30.0" width="158.046875" x="586.337890625" y="1610.6051223320717"/>
               <y:Fill color="#999900" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="146.04296875" x="5.0" y="5.6494140625">hatJahreszeit(?x, sommer)<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="148.046875" x="5.0" y="5.6494140625">hatJahreszeit(?x, Sommer)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -968,7 +968,7 @@ geöffnet<y:LabelModel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="51.553456508091585" y="28.000019793009415">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="51.052479945591585" y="28.000019793009415">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
