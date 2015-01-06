@@ -11,7 +11,7 @@ Die Organisation sowie Vorgehensweise der Autoren wurden im \autoref{chap:admini
 
 \section{Von der Wissenserarbeitung zum Tutorial}
 \label{sec:loesung_tutorial}
-Zunächst musste ein Tutorial erarbeitet werden, um die Theorien und Technologien zu bestimmen. Dabei war es schwierig, ein einfache, nutzbare Form zu erstellen und dabei dem Leser gleichzeitig genügend Hintergrundwissen zu vermitteln. Der Leser soll wirklich verstehen was Wissensmodellierung respektive ein Expertensystem bedeuten. Es entstand das Tutorialdokument, welches die Modellierung aus drei Perspektiven betrachtet. % TODO: Diese werden ausführlich im \autoref{subsec:dokumentation_wissensmodellierung_aufbau} beschrieben.
+Zunächst musste ein Tutorial erarbeitet werden, um die Theorien und Technologien zu bestimmen. Dabei war es schwierig, eine einfache, nutzbare Form zu erstellen und dabei dem Leser gleichzeitig genügend Hintergrundwissen zu vermitteln. Der Leser soll wirklich verstehen was Wissensmodellierung respektive ein Expertensystem bedeuten. Es entstand das Tutorialdokument, welches die Modellierung aus drei Perspektiven betrachtet. % TODO: Diese werden ausführlich im \autoref{subsec:dokumentation_wissensmodellierung_aufbau} beschrieben.
 
 \section{Modellierung}
 \label{sec:loesung_modellierung}
@@ -50,7 +50,7 @@ Um die verschiedenen Möglichkeiten beim Abbilden einer Ontologie aufzuzeigen, w
 \end{figure}
 \footnotetext{Eigene Darstellung mittels Protégé.}
 
-In semantischen Datenbaken gibt es zwei Arten von Eigenschaften. Erstens Objekteigenschaften (ObjectProperties) und zweitens Dateneigenschaften (DataProperties). Objekteigenschaften beschreiben eine Beziehung zwischen zwei Individuen, dadurch werden sie verknüpft. Dateneigenschaften beschreiben eine konkrete Eigeschaft eines Individuums. Sie haften diesem an.
+In semantischen Datenbanken gibt es zwei Arten von Eigenschaften. Erstens Objekteigenschaften (ObjectProperties) und zweitens Dateneigenschaften (DataProperties). Objekteigenschaften beschreiben eine Beziehung zwischen zwei Individuen, dadurch werden sie verknüpft. Dateneigenschaften beschreiben eine konkrete Eigenschaft eines Individuums. Sie haften diesem an.
 
 In der erstellten Ontologie wurde die Eigenschaft \textit{Preissegment} als Beziehung, also als ObjectProperty (\textit{hatPreis}) zwischen zwei Individiuen definiert. Daher sind die eigentlichen Preissegmente Individuen der Klasse Preissegment. Jedem Restaurant wird ein Preissegment indirekt zugeteilt. Dies geschieht über die definierte Dateneigenschaft (DataProperty) \textit{Durchschnittspreis}. Liegt der Durchschnittspreis eines Restaurants in einem bestimmten Rahmen, so definieren die Regeln in welchem Preissegment ein Restaurant liegt.
 
@@ -128,14 +128,14 @@ In der umgesetzten Version des Reiseplaners werden in der Anfrage immer nur jene
 Bei der Modellierung stiessen die Autoren auf ein für sie zunächst unerklärliches Phänomen: Dem Reasoner von Stardog war es nicht möglich von einer Dateneigenschaften (DataProperty) auf dieselbe Dateneingeschaft zu schliessen. Konkret wollten die Autoren definieren, dass ein Ausflug, der eine Sauna bietet auch Wellness bietet.\\
 Auswertung dieser Regel ist aber in Stardog nicht möglich, hingegen wird in Protégé die Schlussfolgerung richtig angezeigt.\\
 Nach zahlreichen Recherchen befanden die Autoren, es muss sich bei dieser Einschränkung wohl um einen technischen Fehler in Stardog handeln muss, obwohl beide Werkzeuge den gleichen Reasoner (Pellet) verwenden.\\
-Nach dem Fehlermedlung (Bugreporting) in der Diskussionsgruppe von Stardog, wurde den Autoren mitgeteilt, es handele sich wirklich um einen Systemfehler. Um zirkuläre Referenzen im Vorfeld zu verhindern, wurde in Stardog offenbar ein zu strenges Ausschlussverfahren in der Programmlogik verwendet. Der Fehler wurde bereits in einem erfolgten Release korrigiert.\\
+Nach dem Fehlermeldung (Bugreporting) in der Diskussionsgruppe von Stardog, wurde den Autoren mitgeteilt, es handele sich wirklich um einen Systemfehler. Um zirkuläre Referenzen im Vorfeld zu verhindern, wurde in Stardog offenbar ein zu strenges Ausschlussverfahren in der Programmlogik verwendet. Der Fehler wurde bereits in einem erfolgten Release korrigiert.\\
 Um die gewünschte Folgerung dennoch modellieren zu können, wurde Wellness als Dateneigenschaft vom Typen Boolean definiert und die Regel entsprechend angepasst.
 
 \subsection{Ergebnis}
 \label{subsec:loesung_modellierung_ergebnis}
 Die Ergebnisse der Modellierung sind:
 \begin{itemize}
-    \item Semantisches Netz
+    \item Ein semantisches Netz
     \item Ein (durch Protégé) generiertes RDF/XML-Dokument
 \end{itemize}
 Das semantische Netz stellt die Modellierung grafisch dar. Zur besseren Übersicht wurde es in Teilnetze aufgeteilt, wie oben bereits beschrieben. Im RDF/XML-Dokument ist die semantische Datenbank in Form von konkreten Daten abgelegt.
@@ -148,7 +148,7 @@ Für die Modellierung, wie auch für die Datenbankabfragen durch die Benutzerobe
 \label{sec:loesung_gui}
 Weitere Aufgabe: ``Besondere Bedeutung kommt dabei der Schnittstelle zwischen Mensch und System zu.''~\cite{Aufgabenstellung}
 
-Den Autoren wurde bewusst, Abfragen mittels SPARQL sind in keiner Weise benutzerfreundlich. Daher wurde eine Webapplikation zur Reiseplanung entwickelt.\\
+Den Autoren wurde bewusst, dass Abfragen mittels SPARQL sind in keiner Weise benutzerfreundlich. Daher wurde als Benutzerschnittstelle eine Webapplikation zur Reiseplanung entwickelt.\\
 Da es für SPARQL keinen Ersatz gibt, musste zur Verständlichkeit ein Assistent entwickelt werden. SPARQL wird weiterhin als Abfragesprache verwendet. 
 In der Webapplikation kann der Benutzer mit Hilfe des Assistenten schrittweise Ausflugskriterien wählen. Dadurch ist sichergestellt, dass nur Abfragen gestellt werden können, welche semantisch eine sinnvolle Kombination darstellen.
 
@@ -156,7 +156,7 @@ In einem ersten Schritt kann der Benutzer entscheiden, ob er nur ein Ausflug pla
 Im zweiten Schritt werden dem Benutzer sämtliche Eigenschaften und Beziehungen der zuvor gewählten Ausflugsarten als Auswahl angeboten.\\
 Schliesslich erhält der Benutzer eine Liste, die sämtliche den gewählten Kriterien entsprechende Ausflüge enthält. In der Liste sind der Name des Ausflugs, sein Standort und die URL zu seiner Homepage aufgeführt.
 
-Je nach gewählten Kriterien ist es möglich, dass keine Reise gefunden wird. Da nur einige, exemplarische Reisen erfasst wurden, ist bei der Anwendung dieser Webapplikation das Risiko für eine leere Antwort relativ gross.
+Je nach gewählten Kriterien ist es möglich, dass keine Reise gefunden wird. Da nur einige, exemplarische Reisen erfasst wurden, ist bei der Verwendung dieser Webapplikation das Risiko für eine leere Antwort relativ gross.
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/reiseplaner_gui.jpg}}}
 \caption{Ausschnitt der Benutzeroberfläche. Schritt zwei des Assistenten.\label{fig:gui}\protect\footnotemark}

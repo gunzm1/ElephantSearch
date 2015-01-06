@@ -12,11 +12,11 @@ Dabei gibt es Überschneidungen: \textbf{Komponenten können auch Werkzeuge sein
 
 Das folgende Kapitel beschreibt die während dieser Arbeit verwendeten Komponenten und Werkzeuge.
 
-Die Wissensmodellierung sollte ursprünglich mit Hilfe von Apache Stanbol umgesetzt werden, wie unter~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt. Während der Arbeit wurde erkannt, dass diese Technologie für die vorgesehene Aufgabe nur bedingt sinnvoll ist. In Apache Stanbol ist es zwar möglich die modellierte Wissensdomäne zu importieren. Das importierte Modell wird als Ontologie in Form von Tripeln gespeichert. Die Objekte, ihre Eigenschaften sowie Relationen lassen sich jedoch nicht verwalten.
+Die Wissensmodellierung sollte ursprünglich mit Hilfe von Apache Stanbol umgesetzt werden, wie unter~\autoref{ssubsec:vorgehen:grundlagen:technisch} erwähnt. Während der Arbeit wurde erkannt, dass diese Technologie für die vorgesehene Aufgabe nur bedingt sinnvoll ist. In Apache Stanbol ist es möglich die modellierte Wissensdomäne zu importieren. Das importierte Modell wird als Ontologie in Form von Tripeln gespeichert. Die Objekte, ihre Eigenschaften sowie Relationen lassen sich jedoch nicht verwalten.
 
 Für Anfragen an die Wissensdatenbank ist eine entsprechende Schnittstelle notwendig. Von Apache Stanbol wird diese Schnittstelle in Form eines SPARQL-Endpoints zur Verfügung gestellt. Der SPARQL-Endpoint nutzt jedoch die ContentHub-Komponente von Apache Stanbol als Datenbasis. Diese stellt nur Wissen zur Verfügung, welches aus angereicherten Inhalten abgeleitet ist. Mittels Ontologien und Regeln werden diese Inhalte angereichert.
 
-Eine aufwändige Recherche ergab: Anderen Datenquellen können für den SPARQL-Endpoint genutzt werden. Dies bedeutet jedoch einen erheblichen Mehraufwand in Form einer eigenen Implementation.
+Eine aufwendige Recherche ergab: Anderen Datenquellen können für den SPARQL-Endpoint genutzt werden. Dies bedeutet jedoch einen erheblichen Mehraufwand in Form einer eigenen Implementation.
 
 Damit war Apache Stanbol nicht das geeignete Werkzeug für diese Arbeit. Bei weiteren Recherchen wurden weitere Werkzeuge gefunden, welche als Ersatz für Apache Stanbol genutzt werden konnten: \textit{Protégé} der Universität Stanford sowie \textit{Stardog} der Firma Clark \& Parsia.
 
@@ -29,7 +29,7 @@ Es unterstützt sowohl die Modellierung von Ontologien, wie auch mittels verschi
 \label{subsec:komponenten_protege_features}
 In Protégé können Ontologien in unterschiedlichen Schreibweisen, wie zum Beispiel OWL/XML, Turtle oder RDF/XML eingelesen und abgespeichert werden. Die Dateien tragen immer die Endung ``.owl''. Protégé hält eingelesene Ontologien als Graphstruktur im Speicher~\footnote{\url{http://protegewiki.stanford.edu/wiki/Protege4Features}} und ermöglicht Reasonern den direkten Zugriff auf die Graphstruktur~\footnote{\url{http://protege.stanford.edu/products.php}}.\\
 Die Entwicklungsumgebung zeigt verschiedene Ansichten für dieselbe Ontologie. \\
-Ausser Anlegen und Bearbeiten einer Ontologie können in Protégé (ab Version 5.0.0 Beta-16) SWRL-Regeln verwaltet werden. Diese werden von Protégé direkt in der Ontologie abgelegt.
+Ausser dem Anlegen und Bearbeiten einer Ontologie können in Protégé (ab Version 5.0.0 Beta-16) SWRL-Regeln verwaltet werden. Diese werden von Protégé direkt in der Ontologie abgelegt.
 
 Durch das SPARQL-Modul bietet Protégé die Möglichkeit Informationen der Ontologie mittels Abfragen zu gewinnen. Ist zusätzlich ein Reasoner-Modul geladen und aktiviert, kann die Umgebung bei Abfragen Inferenzen einbeziehen. Es können verschiedene Reasoner, wie beispielsweise FACT++ oder Pellet genutzt werden (siehe~\ref{subsec:komponenten_reasoner}).
 
@@ -37,8 +37,9 @@ Durch das SPARQL-Modul bietet Protégé die Möglichkeit Informationen der Ontol
 
 \subsection{Ansichten}
 \label{subsec:komponenten_protege_view}
-
-Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, dass verschiedene Sichten auf eine Ontologie geboten werden. Neben der Entitätsansicht (Entity-View, diese enthält sämtliche Elemente einer Ontologie) existiert für alle Elementtypen wie Klassen, Dateneigenschaften, Objekteigenschaften und Individuen eine eigene Ansicht.
+%Die Benutzerfreundlichkeit von Protégé wird unter Anderem dadurch erreicht, dass verschiedene Sichten auf eine Ontologie geboten werden. 
+Protégé bietet benutzerfreundlich mehrere Sichten auf eine Ontologie an.\\
+Neben der Entitätsansicht (Entity-View, diese enthält sämtliche Elemente einer Ontologie) existiert für alle Elementtypen wie Klassen, Dateneigenschaften, Objekteigenschaften und Individuen eine eigene Ansicht.
 
 Alle Ansichten sind als Baumstruktur organisiert. Dadurch entsteht eine klare Übersicht. Diese wiederum ermöglicht eine Hierarchie-getreue Abbildung des zu Grunde liegenden XML-Dokumentes.
 
@@ -58,7 +59,7 @@ Schlussfolgerungen werden in allen Ansichten direkt zur Laufzeit des Reasoners b
 \section{Clark \& Parsia Stardog}
 \label{sec:komponenten_stardog}
 Bei Stardog handelt es sich um eine Graphdatenbank mit Unterstüztung des RDF-Graphenmodelles. Sie bietet den Import und Export von Ontologien in diversen Format an und die Möglichkeit Informationen einer Ontologie mittels SPARQL abzufragen. Des Weiteren unterstützt Stardog die Sprache OWL sowie SWRL-Regeln.\\
-Pellet, in Stardog enthalten, bildet eine zentrale Komponente für die Schlussfolgerung.
+Pellet, in Stardog enthalten, bildet eine zentrale Komponente für die Schlussfolgerungen.
 
 Stardog bietet viele Kommunikationsschnittstellen, so z.B. HTTP und SNARL.\\
 Programmierschnittstellen sind für zahlreiche Sprachen, so beispielsweise Java, JavaScript oder Python vorhanden.
@@ -79,16 +80,16 @@ Im Laufe der Arbeit hat sich herausgestellt, dass das Schlussfolgern in Protég�
 
 Da sowohl Protégé als auch Stardog dieselbe Komponente für Schlussfolgerungen (den Pellet-Reasoner) verwenden, muss es sich bei dem Fehlverhalten um einen Fehler bei der Aufbereitung der Abfragen handeln.
 
-In Protégé existiert zudem keine HTTP-Schnittstelle. Es existiert zwar eine Programmierschnittstelle mit welcher eine HTTP-Schnittstelle geschaffen werden kann. Dies wurde aus zeitlichen Gründen verworfen.
+In Protégé existiert zudem keine HTTP-Schnittstelle. Es existiert zwar eine Programmierschnittstelle mit welcher eine HTTP-Schnittstelle geschaffen werden kann, dies wurde aber aus zeitlichen Gründen verworfen.
 
 Angesichts der Funktionsstörung und mangelnder HTTP-Schnittstelle, wurde die Ontologie in Protégé erstellt und bearbeitet. Die Weiterverarbeitung der Ontolgie erfolgte mittels Stardog, da Stardog die SPARQL-Anfragen korrekt beantwortet und ausserdem eine HTTP- und REST-Schnittstelle bietet.
 
 Dafür musste in Stardog eine neue Datenbank erstellt werden. In diese wurde die mittels Protégé vorbereitete Ontologie im RDF/XML-Format eingespielt.
 
-Stardog bietet bei der Verwendung des Reasoners mehr Möglichkeiten als die anderen Werkzeuge (wie zum Beispiel Protégé). Schlussfolgerungen mittels einer Kombination von RDFS-, QL-, RL- und EL-Axiomen sowie zusätzlich SWRL-Regeln gezogen werden. Details finden sich unter~\footnote{\url{http://docs.stardog.com/\#_reasoning_levels}}.
+Stardog bietet bei der Verwendung des Reasoners mehr Möglichkeiten als die anderen Werkzeuge (wie zum Beispiel Protégé). Schlussfolgerungen werden mittels einer Kombination von RDFS-, QL-, RL- und EL-Axiomen sowie zusätzlich SWRL-Regeln gezogen. Details finden sich unter~\footnote{\url{http://docs.stardog.com/\#_reasoning_levels}}.
 
 
-Durch die Kombination dieser beiden Werkzeuge Protégé und Stardog konnte eine zuverlässige Modellierung und Verwendung der Ontologie erreicht werden.
+Durch die Kombination der Werkzeuge Protégé und Stardog konnte eine zuverlässige Modellierung und Verwendung der Ontologie erreicht werden.
 
 \section{Benuzteroberfläche}
 \label{sec:komponenten:ember}
@@ -106,7 +107,7 @@ Folgende Komponenten wurden zur Umsetzung der Benutzeroberfläche gewählt:
     \item \textit{Ember.js}\footnote{\url{http://emberjs.com}}\\
         Applikations-Framework
     \item \textit{Bootstrap}\footnote{\url{http://getbootstrap.com}}\\
-        HTML-, CSS- und JavaScript-Framwork von Twitter
+        HTML-, CSS- und JavaScript-Framework von Twitter
 \end{itemize}
 (Die Auswahl erfolgte aufgrund beruflicher Erfahrungen der Autoren.)
 
