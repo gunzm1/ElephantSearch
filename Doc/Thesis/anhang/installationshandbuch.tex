@@ -104,18 +104,26 @@ Nach dem Herunterladen der Dateien findet sich das Frontend im Unterordner \text
 Um das Frontend zu starten werden folgende Befehle verwendet:
 \begin{lstlisting}[language=bash]
     ~/ElephantSearch/Solution $ vagrant ssh
-    ~/ElephantSearch/Solution $ sudo service nginx restart
+       vagrant@traveling-owl:~$ sudo service nginx restart
+       vagrant@traveling-owl:~$ exit
 \end{lstlisting}
 Nach dem Aufruf des Befehles steht das Frontend auf dem eigenen Rechner via HTTP-Schnittstelle unter \textit{http://traveling-owl.vm} zur Verfügung. So kann das Frontend per Browser genutzt werden.
 
 \textit{Hinweis: Ab der zweiten Verwendung des Frontends (z.B. nach Herunterfahren des Rechners) muss die virtuelle Umgebung zuerst gestartet werden:}
 \begin{lstlisting}[language=bash]
     ~/ElephantSearch/Solution $ vagrant up
-    ~/ElephantSearch/Solution $ vagrant ssh
-    ~/ElephantSearch/Solution $ sudo service nginx restart
+       vagrant@traveling-owl:~$ vagrant ssh
+       vagrant@traveling-owl:~$ sudo service nginx restart
+       vagrant@traveling-owl:~$ exit
 \end{lstlisting}
 
 Um das Frontend schliesslich zu beenden wird folgender Befehl verwendet:
 \begin{lstlisting}[language=bash]
     ~/ElephantSearch/Solution $ vagrant halt
 \end{lstlisting}
+
+\subsection{Konfiguration des Frontends}
+\label{chap:anh:ihb:frontend:config}
+Die Konfiguration des Frontends erfolgt über die Datei \textit{Solution/frontend/js/config.js}. Es handelt sich um eine Datei im JSON-Format. Es wird empfohlen nur die Sektionen \textit{appName} und \textit{sparql} anzupassen. Die restlichen Sektionen betreffen rein die Applikation (in Form von Abhängigkeiten der JavaScript-Bibliotheken).
+
+Die Sektion \textit{appName} definiert den internen Namen der Applikation. Dies hat \textit{nichts} mit dem Server-Namen der virtuellen Umgebung zu tun. Die Sektion \textit{sparql} definiert die Parameter für die Verbindung zum Backend.
