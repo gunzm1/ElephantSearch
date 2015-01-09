@@ -4,7 +4,7 @@ build:
 	pdflatex template.tex
 	bibtex template.aux
 	pdflatex template.tex
-	makeglossaries template.glo
+	makeglossaries template
 	pdflatex template.tex
 
 clean:
