@@ -245,14 +245,14 @@ Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der
 
 Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
 \begin{itemize}
-    \item $(b) \cup (g)$ also $S \cup \neg S = \{\}$
+    \item $(b) \cup (g)$ also $S \wedge \neg S = \{\}$
     \item[] und
-    \item $(c) \cup (h)$ also $O \cup \neg O = \{\}$
+    \item $(c) \cup (h)$ also $O \wedge \neg O = \{\}$
 \end{itemize}
 
 An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
 \begin{itemize}
-    \item $(d) \cup (f)$ also $\neg R \cup R = \{\}$
+    \item $(d) \cup (f)$ also $\neg R \wedge R = \{\}$
 \end{itemize}
 
 Obwohl alle Knoten expandiert und ausgewertet wurden,  konnte kein Modell für $\{S \wedge O \rightarrow R, S, O, \neg R\}$ gefunden werden. Dies wiederum bedeutet, dass die Negation $\Gamma \models \neg\varphi$ nicht zutrifft. Somit ist $\Gamma \models \varphi$ bewiesen.
