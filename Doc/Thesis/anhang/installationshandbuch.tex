@@ -1,0 +1,121 @@
+\chapter{Installationhandbuch}
+\label{chap:anh:ihb}
+Das nachfolgende Dokument beschreibt die Installation der Lösung zur Bachelor-Thesis ``Semantische Datenbanken'' von Mira Günzburger und Sven Osterwalder. Bedingt durch die Projektstruktur ist das Dokument in die Kapitel \textit{Frontend} sowie \textit{Backend} gegliedert. Mit Backend ist die semantische Datenbank in Form des Produktes Stardog gemeint. Mit Frontend die umgesetzte Webapplikation zur Reiseplanung, bestehend aus Webserver und Applikation.
+
+\textbf{Bei diesem Handbuch wird als Basis für das Backend als auch das Frontend Debian Linux in der Version 7.7 angenommen.}
+
+\section{Backend}
+\label{chap:anh:ihb:backend}
+Beim Backend handelt es sich um die Graphdatenbank Stardog der Firma Clark \& Parsia. Diese steht unter~\href{http://www.stardog.com/#download}{Stardog.com} zur Verfügung. Es wird die Verwendung der Community-Variante empfohlen. Diese deckt alle benötigten Anforderungen und ist kostenlos verfügbar.
+
+\subsection{Anforderungen}
+\label{chap:anh:ihb:backend:req}
+Als Grundlage für das Backend kann ein beliebiger auf Unix (Linux und Apple Mac OS X) oder Microsoft Windows basierender Server zum Einsatz kommen. Die Architektur kann dabei 32- als auch 64-Bit sein.
+
+Stardog benötigt Oracle Java in der Version 6, 7 oder 8.
+Die Installation und Konfiguration von Oracle Java ist nicht Teil dieses Benutzerhandbuches.
+
+\subsection{Installation}
+\label{chap:anh:ihb:backend:inst}
+Nach dem Herunterladen von Stardog in Form eines ZIP-Archives muss in einen beliebigen Ordner entpackt werden. Als Beispiel wird \textit{/opt/stardog} verwendet.
+\begin{lstlisting}[language=bash]
+    $ mkdir /opt/stardog
+    $ unzip ~/downloads/stardog-2.2.6.zip /opt/stardog
+\end{lstlisting}
+
+Weiter muss die Umgebungsvariable \textit{STARDOG\_HOME} auf das zuvor erstellte Verzeichnis gesetzt werden:
+\begin{lstlisting}[language=bash]
+    $ export STARDOG_HOME=/opt/stardog
+\end{lstlisting}
+
+Schliesslich muss der mit der Registrierung erhaltene Lizenzschlüssel in das \textit{STARDOG\_HOME}-Verzeichnis kopiert werden:
+\begin{lstlisting}[language=bash]
+    $ cp ~/downloads/stardog-license-key.bin $STARDOG_HOME
+\end{lstlisting}
+
+\subsection{Starten und Beenden des Backends}
+\label{chap:anh:ihb:backend:start}
+Um das Backend zu starten wird folgender Befehl verwendet:
+\begin{lstlisting}[language=bash]
+                    $ cd $STARDOG_HOME/bin
+    /opt/stardog/bin$ ./stardog-admin server start
+\end{lstlisting}
+Nach dem Aufruf des Befehles steht der Server via SNARL- und HTTP-Schnittstellen unter Port 5820 zur Verfügung. So kann der Server z.B.\ mittels \textit{http://www.servername.tld:5820} angesprochen werden.
+
+Um das Backend schliesslich wieder zu beenden, wird folgender Befehl verwendet:
+\begin{lstlisting}[language=bash]
+                    $ cd $STARDOG_HOME/bin
+    /opt/stardog/bin$ ./stardog-admin server stop
+\end{lstlisting}
+
+Der Status des Backends kann mittels dem folgenden Befehl abgefragt werden:
+\begin{lstlisting}[language=bash]
+                    $ cd $STARDOG_HOME/bin
+    /opt/stardog/bin$ ./stardog-admin server status
+\end{lstlisting}
+
+\subsection{Importieren der Daten}
+\label{chap:anh:ihb:backend:import}
+Um die mitgelieferte Datenbank nutzen zu können, wird mit folgendem Befehl eine Datenbank erstellt und die Daten importiert:
+\begin{lstlisting}[language=bash]
+                    $ cd $STARDOG_HOME/bin
+    /opt/stardog/bin$ ./stardog-admin db create -n reiseplaner reiseplaner.owl
+\end{lstlisting}
+Nach dem Import der Datei steht die Datenbank unter \textit{http://www.servername.tld:5820/reiseplaner} zur Verfügung.
+
+\subsection{Verwaltung}
+\label{chap:anh:ihb:backend:mgmt}
+Um die Graphdatenbank zu verwalten kann entweder die Kommandozeile oder die grafische Oberfläche verwendet werden. Eine genaue Beschreibung hierzu findet sich unter~\href{http://docs.stardog.com/#_adminstering_stardog}{docs.stardog.com}\footnote{\url{http://docs.stardog.com/#_adminstering_stardog}}.
+
+
+\section{Frontend}
+\label{chap:anh:ihb:frontend}
+Beim Frontend handelt es sich um eine Webapplikation, welche einen lauffähigen Webserver benötigt. Um die Installation des Frontends möglichst benutzerfreundlich zu gestalten, wurde eine virtuelle Umgebung basierend auf Vagrant geschaffen. Mittels dieser kann das Frontend durch wenige Befehle initialisiert und verwendet werden. Das Frontend kann jedoch auch ohne virtuelle Umgebung genutzt werden. Nachfolgend wird jedoch nur die Nutzung mittels der virtuellen Umgebung beschrieben.
+
+\subsection{Anforderungen}
+\label{chap:anh:ihb:frontend:req}
+Um das Frontend (und die virtuelle Umgebung) nutzen zu können, werden die folgenden Komponenten benötigt. Die Installation und Konfiguration dieser ist nicht Teil dieses Benutzerhandbuches.
+\begin{itemize}
+    \item \textit{\href{http://git-scm.com/}{SCM Git}}; eine frei verfügbare Software zur Versionskontrolle
+    \item \textit{\href{https://www.virtualbox.org/wiki/Downloads}{Oracle VirtualBox}}; eine frei verfügbare Software zur Virtualisierung
+    \item \textit{\href{https://www.vagrantup.com/downloads.html}{HashiCorp Vagrant}}; eine frei verfügbare Software zur Automation von Virtualisierungslösungen
+\end{itemize}
+
+\subsection{Installation}
+\label{chap:anh:ihb:frontend:install}
+Alle benötigten Dateien des Frontends befinden sich unter Versionskontrolle und sind unter~\href{https://github.com/gunzm1/ElephantSearch}{GitHub.com} verfügbar. Das Frontend kann, bedingt durch die Nutzung der virtuellen Umgebung, auf einem beliebigen Rechner installiert und genutzt werden --- sofern die genannten Anforderungen erfüllt sind.
+
+Die benötigten Dateien werden mittels den folgenden Befehlen heruntergeladen:
+\begin{lstlisting}[language=bash]
+    $ cd $HOME
+    $ git clone https://github.com/gunzm1/ElephantSearch
+    $ cd ElephantSearch
+\end{lstlisting}
+
+Nach dem Herunterladen der Dateien findet sich das Frontend im Unterordner \textit{Solution}. Die virtuelle Umgebung wird durch die Datei \textit{Vagrantfile} definiert und mittels folgenden Befehlen aufgesetzt:
+\begin{lstlisting}[language=bash]
+                              $ cd $HOME/ElephantSearch/Solution
+    ~/ElephantSearch/Solution $ vagrant up
+\end{lstlisting}
+\textit{Hinweis: Je nach verwendeter Hardware und verfügbarer Internetverbindung nimmt der Prozess bis zu ca. 15 Minuten in Anspruch.}
+
+\subsection{Starten und Beenden des Frontends}
+\label{chap:anh:ihb:frontend:start}
+Um das Frontend zu starten werden folgende Befehle verwendet:
+\begin{lstlisting}[language=bash]
+    ~/ElephantSearch/Solution $ vagrant ssh
+    ~/ElephantSearch/Solution $ sudo service nginx restart
+\end{lstlisting}
+Nach dem Aufruf des Befehles steht das Frontend auf dem eigenen Rechner via HTTP-Schnittstelle unter \textit{http://traveling-owl.vm} zur Verfügung. So kann das Frontend per Browser genutzt werden.
+
+\textit{Hinweis: Ab der zweiten Verwendung des Frontends (z.B. nach Herunterfahren des Rechners) muss die virtuelle Umgebung zuerst gestartet werden:}
+\begin{lstlisting}[language=bash]
+    ~/ElephantSearch/Solution $ vagrant up
+    ~/ElephantSearch/Solution $ vagrant ssh
+    ~/ElephantSearch/Solution $ sudo service nginx restart
+\end{lstlisting}
+
+Um das Frontend schliesslich zu beenden wird folgender Befehl verwendet:
+\begin{lstlisting}[language=bash]
+    ~/ElephantSearch/Solution $ vagrant halt
+\end{lstlisting}
