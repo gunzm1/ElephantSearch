@@ -1,8 +1,33 @@
+/**
+ * @fileoverview Traveling-OWL application.
+ * This application provides a lightweight and intuitive way
+ * to plan excursions. It is built upon Ember.js and handelbars.
+ * As backend it uses a semantic database based on Stardog.
+ *
+ * @author gunzm1@bfh.ch (Mira Günzburger)
+ * @author ostes2@bfh.ch (Sven Osterwalder)
+ */
+
+/**
+ * Main entry point of the application.
+ *
+ * @constructor
+ */
 (function(root) {
   require(['config'], function(config) {
     requirejs.config(config);
 
     require(['ember', 'stardog','ember-data'], function(Ember, stardog,DS) {
+      /**
+       * Performs an asynchronous query for given model
+       * by given query string while indicating the type.
+       *
+       * @function
+       *
+       * @param {string} modelName   Name of the model for querying
+       * @param {string} queryString Query to perform
+       * @param {string} type        Type of the returned object
+       */
       function performQuery(modelName, queryString, type) {
         return new Ember.RSVP.Promise(function(resolve, reject) {
           var connection = new Stardog.Connection();
@@ -51,10 +76,20 @@
       App = Ember.Application.create();
       App.ApplicationStore = DS.Store.extend();
 
+      /**
+       * View for displaying errors.
+       *
+       * @extends Ember.View
+       */
       App.ErrorView = Ember.View.extend({
         templateName: "error"
       });
 
+      /**
+       * Model representing a travel.
+       *
+       * @extends DS.Model
+       */
       App.ReiseModel = DS.Model.extend({
         routeName: DS.attr('string'),
         isSelected: DS.attr('boolean'),
