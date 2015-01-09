@@ -6,7 +6,7 @@ Das nachfolgende Dokument beschreibt die Installation der Lösung zur Bachelor-T
 
 \section{Backend}
 \label{chap:anh:ihb:backend}
-Beim Backend handelt es sich um die Graphdatenbank Stardog der Firma Clark \& Parsia. Diese steht unter~\href{http://www.stardog.com/#download}{Stardog.com} zur Verfügung. Es wird die Verwendung der Community-Variante empfohlen. Diese deckt alle benötigten Anforderungen und ist kostenlos verfügbar.
+Beim Backend handelt es sich um die Graphdatenbank Stardog der Firma Clark \& Parsia. Diese steht unter~\href{http://www.stardog.com/\#download}{Stardog.com} zur Verfügung. Es wird die Verwendung der Community-Variante empfohlen. Diese deckt alle benötigten Anforderungen und ist kostenlos verfügbar.
 
 \subsection{Anforderungen}
 \label{chap:anh:ihb:backend:req}
@@ -17,7 +17,7 @@ Die Installation und Konfiguration von Oracle Java ist nicht Teil dieses Benutze
 
 \subsection{Installation}
 \label{chap:anh:ihb:backend:inst}
-Nach dem Herunterladen von Stardog in Form eines ZIP-Archives muss in einen beliebigen Ordner entpackt werden. Als Beispiel wird \textit{/opt/stardog} verwendet.
+Nach dem Herunterladen von Stardog in Form eines ZIP-Archivs muss in einen beliebigen Ordner entpackt werden. Als Beispiel wird \textit{/opt/stardog} verwendet.
 \begin{lstlisting}[language=bash]
     $ mkdir /opt/stardog
     $ unzip ~/downloads/stardog-2.2.6.zip /opt/stardog
@@ -40,7 +40,7 @@ Um das Backend zu starten wird folgender Befehl verwendet:
                     $ cd $STARDOG_HOME/bin
     /opt/stardog/bin$ ./stardog-admin server start
 \end{lstlisting}
-Nach dem Aufruf des Befehles steht der Server via SNARL- und HTTP-Schnittstellen unter Port 5820 zur Verfügung. So kann der Server z.B.\ mittels \textit{http://www.servername.tld:5820} angesprochen werden.
+Nach dem Aufruf des Befehls steht der Server via SNARL- und HTTP-Schnittstellen unter Port 5820 zur Verfügung. So kann der Server z.B.\ mittels \textit{http://www.servername.tld:5820} angesprochen werden.
 
 Um das Backend schliesslich wieder zu beenden, wird folgender Befehl verwendet:
 \begin{lstlisting}[language=bash]
@@ -65,7 +65,7 @@ Nach dem Import der Datei steht die Datenbank unter \textit{http://www.servernam
 
 \subsection{Verwaltung}
 \label{chap:anh:ihb:backend:mgmt}
-Um die Graphdatenbank zu verwalten kann entweder die Kommandozeile oder die grafische Oberfläche verwendet werden. Eine genaue Beschreibung hierzu findet sich unter~\href{http://docs.stardog.com/#_adminstering_stardog}{docs.stardog.com}\footnote{\url{http://docs.stardog.com/#_adminstering_stardog}}.
+Um die Graphdatenbank zu verwalten kann entweder die Kommandozeile oder die grafische Oberfläche verwendet werden. Eine genaue Beschreibung hierzu findet sich unter~\href{http://docs.stardog.com/\#_adminstering_stardog}{docs.stardog.com}\footnote{\url{http://docs.stardog.com/\#_adminstering_stardog}}.
 
 
 \section{Frontend}
@@ -78,7 +78,7 @@ Um das Frontend (und die virtuelle Umgebung) nutzen zu können, werden die folge
 \begin{itemize}
     \item \textit{\href{http://git-scm.com/}{SCM Git}}; eine frei verfügbare Software zur Versionskontrolle
     \item \textit{\href{https://www.virtualbox.org/wiki/Downloads}{Oracle VirtualBox}}; eine frei verfügbare Software zur Virtualisierung
-    \item \textit{\href{https://www.vagrantup.com/downloads.html}{HashiCorp Vagrant}}; eine frei verfügbare Software zur Automation von Virtualisierungslösungen
+    \item \textit{\href{https://www.vagrantup.com/downloads.html}{HashiCorp Vagrant}}; eine frei verfügbare Software zur Automatisierung von Virtualisierungslösungen
 \end{itemize}
 
 \subsection{Installation}
