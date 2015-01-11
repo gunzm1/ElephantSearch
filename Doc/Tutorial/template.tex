@@ -37,6 +37,8 @@
 \usepackage{nameref}                                                    % provides printing names of references
 \usepackage{scrhack}                                                    % Remove float errors and warnings
 \usepackage{enumitem}                                                   % Alpha numeric enumerations
+\usepackage{framed}                                                     % Provides borders around things
+\usepackage{soul}                                                       % Provides strike-through text
 %---------------------------------------------------------------------------
 
 % Definition of Colors
@@ -169,6 +171,12 @@
  \include{datenbanken/glossar}
 %---------------------------------------------------------------------------
 
+% Tikz and tikz-qtree
+%---------------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+%---------------------------------------------------------------------------
+
 % Intro:
 %---------------------------------------------------------------------------
 %\begin{document}                                % Start Document
@@ -201,6 +209,7 @@
 \renewcommand*{\footfont}{\normalfont}
 %---------------------------------------------------------------------------
 
+\color{black}
 \begin{document}
 
 \lstset{%language=XML,
