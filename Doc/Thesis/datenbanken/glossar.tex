@@ -1,46 +1,65 @@
-\newglossaryentry{Relationale Datenbank}{name={Relationale Datenbank},description={Reasoner ...}}
-\newglossaryentry{Relationale Datenspeicherung}{name={Relationale Datenspeicherung},description={Reasoner ...}}
-\newglossaryentry{Semantische Datenbank}{name={Semantische Datenbank},description={Reasoner ...}}
-\newglossaryentry{Expertensystem}{name={Expertensystem},description={Reasoner ...}}
-\newglossaryentry{Ontologie}{name={Ontologie},description={...}}
-\newglossaryentry{Domaene}{name={Domaene},description={Reasoner ...}}
-\newglossaryentry{Wissensdomaene}{name={Wissensdomaene},description={Reasoner ...}}
-\newglossaryentry{Problemdomaene}{name={Problemdomaene},description={Reasoner ...}}
-\newglossaryentry{Reasoner}{name={Reasoner},description={Reasoner ...}}
-\newglossaryentry{Inferenzmaschine}{name={Inferenzmaschine},description={Reasoner ...}}
-\newglossaryentry{Tutorial}{name={Tutorial},description={Reasoner ...}}
-\newglossaryentry{RDF/XML}{name={RDF/XML},description={...}}
-\newglossaryentry{OWL/XML}{name={OWL/XML},description={...}}
+\newglossaryentry{OWL}{name={OWL},description={
+    Web Ontology Language;
+    Ontologiesprache für das semantische Web.
+    Mit dieser Sprache können Ontologien beschrieben werden. (vgl.~\cite{cambSemOWL})
+}}
 
-\newglossaryentry{Semantik}{name={Semantik},description={...}}
-\newglossaryentry{Knowledge-Engineering}{name={Knowledge-Engineering},description={...}}
-\newglossaryentry{Knowledge-Engineer}{name={Knowledge-Engineer},description={Analytiker, Informationsmanager mit entsprechender Methodik und entsprechenden Werkzeugen}}
-\newglossaryentry{HERMES}{name={HERMES},description={...}}
-\newglossaryentry{Scrum}{name={Scrum},description={...}}
-\newglossaryentry{RDF}{name={RDF},description={...}}
-\newglossaryentry{OWL}{name={OWL},description={...}}
-\newglossaryentry{Ontologie-Sprache}{name={Ontologie-Sprache},description={...}}
-\newglossaryentry{SWRL}{name={SWRL},description={...}}
-\newglossaryentry{SPARQL}{name={SPARQL},description={...}}
-\newglossaryentry{W3C}{name={W3C},description={...}}
-\newglossaryentry{Apache Stanbol}{name={Apache Stanbol},description={...}}
-\newglossaryentry{Stanford Protege}{name={Stanford Protege},description={...}}
-\newglossaryentry{Clark & Parsia Stardog}{name={Clark & Parsia Stardog},description={...}}
-\newglossaryentry{XML}{name={XML},description={...}}
-\newglossaryentry{Graphdatenbank}{name={Graphdatenbank},description={Reasoner ...}}
-\newglossaryentry{yWorks yEd}{name={yWorks yEd},description={Reasoner ...}}
-\newglossaryentry{Unifikation}{name={Unifikation},description={Reasoner ...}}
-\newglossaryentry{Semantisches Netz}{name={Semantisches Netz},description={...}}
-\newglossaryentry{NP-vollstaendig}{name={NP-vollstaendig},description={...}}
-\newglossaryentry{URL}{name={URL},description={...}}
-\newglossaryentry{Turtle}{name={Turtle},description={...}}
-\newglossaryentry{FACT++}{name={FACT++},description={...}}
-\newglossaryentry{Pellet}{name={Pellet},description={Reasoner ...}}
-\newglossaryentry{SNARL}{name={SNARL},description={Reasoner ...}}
-\newglossaryentry{HTTP-Schnittstelle}{name={HTTP-Schnittstelle},description={Reasoner ...}}
-\newglossaryentry{REST-Schnittstelle}{name={REST-Schnittstelle},description={Reasoner ...}}
-\newglossaryentry{Vagrant}{name={Vagrant},description={Reasoner ...}}
-\newglossaryentry{Nginx}{name={Nginx},description={Reasoner ...}}
-\newglossaryentry{Ember.js}{name={Ember.js},description={Reasoner ...}}
-\newglossaryentry{Bootstrap}{name={Bootstrap},description={Reasoner ...}}
-\newglossaryentry{MVC}{name={MVC},description={Model View Controller ...}}
+\newglossaryentry{RDF}{name={RDF},description={
+    Resource Description Framework;
+    Framework um Informationen aus Ressourcen zu formulieren. Im Web können Informationen mit RDF verarbeitet werden, anstatt diese nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne dabei die Bedeutung der Informationen zu verändern. (vgl.~\cite{w3rdf})
+}}
+
+\newglossaryentry{SPARQL}{name={SPARQL},description={
+    SPARQL Protocol And RDF Query Language;
+    Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF. Sie erlaubt es, Abfragen in mehreren Datenquellen vorzunehmen. Dabei werden Anfragen über Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt weiter Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF-Graphen.
+    (vgl.~\cite{w3sparql_querylang})
+}}
+
+\newglossaryentry{SWRL}{name={SWRL},description={
+    Semantic Web Rule Language;
+    Bei SWRL handelt es sich um eine auf OWL und RuleML basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet dadurch vielfältige Möglichkeiten der Inferenz.
+    (vgl.~\cite{swrl})
+}}
+
+\newglossaryentry{RDFS}{name={RDFS},description={
+    Resource Description Framework Schema;
+    RDF Schema bietet ein Vokabular zur Datenmodellierung von RDF-Daten.
+    Es stellt eine Erweiterung des RDF-Vokabulars dar.
+    (vgl.~\cite{w3rdfs})
+}}
+
+\newglossaryentry{Abox}{name={Abox},description={
+    Assertional Box;
+    Komponente eines Tableau-Reasoners, welche Aussagen zu Individuen enthält, d.h.\ OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz.
+    (vgl.~\cite{sirin:pellet05})
+}}
+
+\newglossaryentry{Tbox}{name={Tbox},description={
+    Terminological Box;
+    Komponente eines Tableau-Reasoners, welche Klassenaxiome enthält, d.h. OWL-Axiome wie z.B. Unterklassen, Gleichheit von Klassen und Klasseneinschränkungen.
+    (vgl.~\cite{sirin:pellet05})
+}}
+
+\newglossaryentry{KB}{name={KB},description={
+    Knowledge Base;
+    Eine Kombination einer Abox und Tbox, damit eine komplette OWL-Ontologie.
+    (vgl.~\cite{sirin:pellet05})
+}}
+
+\newglossaryentry{RDQL}{name={RDQL},description={
+    RDF Data Query Language;
+    Abfragesprache um Informationen von RDF-Graphen zu extrahieren.
+    Die Syntax ist der SPARQL-Syntax sehr ähnlich.
+    (vgl.~\cite{w3rdql})
+}}
+
+\newglossaryentry{RuleML}{name={RuleML},description={
+    Rule Markup Language;
+    XML-Sprache zur Beschreibung von Regeln.
+    (vgl.~\cite{w3rdql})
+}}
+
+\newglossaryentry{SQL}{name={SQL},description={
+    Structured Query Language;
+    ``SQL ist eine Datenbanksprache zur Definition von Datenstrukturen in relationalen Datenbanken sowie zum Bearbeiten (Einfügen, Verändern, Löschen) und Abfragen von darauf basierenden Datenbeständen.''~\cite{wiki:sql}
+}}

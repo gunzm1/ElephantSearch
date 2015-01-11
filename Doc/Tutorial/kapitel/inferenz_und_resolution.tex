@@ -334,9 +334,9 @@ Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der
 
 Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint \textcircled{$\cup$}. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch ($\mathsf{F}$) mit den Knoten (b) und (c) bilden:
 \begin{itemize}
-    \item $(b) \textcircled{$\cup$} (g)$ also $S \wedge \neg S = \mathsf{F}$
+    \item $(b)$ \textcircled{$\cup$} $(g)$ also $S \wedge \neg S = \mathsf{F}$
     \item[] und
-    \item $(c) \textcircled{$\cup$} (h)$ also $O \wedge \neg O = \mathsf{F}$
+    \item $(c)$ \textcircled{$\cup$} $(h)$ also $O \wedge \neg O = \mathsf{F}$
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -367,7 +367,7 @@ Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei
 
 An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
 \begin{itemize}
-    \item $(d) \textcircled{$\cup$} (f)$ also $\neg R \wedge R = \mathsf{F}$
+    \item $(d)$ \textcircled{$\cup$} $(f)$ also $\neg R \wedge R = \mathsf{F}$
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -418,7 +418,7 @@ Die Schnittstelle zur Wissensdatenbank, wie auch der Rest der Komponenten von Pe
 
 \subsubsection{Abox Query-Engine}
 \label{ssubsection:inferenz_pellet_aboxquery}
-Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RQDL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S. 10 - 11]{sirin:pellet05}.
+Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RDQL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S. 10 - 11]{sirin:pellet05}.
 
 Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[S. 11]{sirin:pellet05}.
 

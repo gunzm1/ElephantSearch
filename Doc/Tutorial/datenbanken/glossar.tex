@@ -1,39 +1,65 @@
-% gemäss Thomas sollten wir unterscheiden zwischen Stichwort Verzeichniss und Abkürzungsverzeichnis. Ich mach hier einfach mal ale sachen rein die ich finde, wir können das ja morgen noch aufteilen.
-%\newglossaryentry{UML}{name={UML},description={Unified Modeling Language;}}
-%\newglossaryentry{URI}{name={URI},description={Unified Resource Identifier; Einheitlicher Bezeichner für Ressourcen}}
-\newglossaryentry{OWL}{name={OWL},description={Web Ontology Language;...}}
-\newglossaryentry{RDF}{name={RDF},description={Resource Description Framework;}}
-\newglossaryentry{SPARQL}{name={SPARQL},description={SPARQL Protocol And RDF Query Language;...}}
-\newglossaryentry{SWRL}{name={SWRL},description={Semantic Web Rule Language;}}
-\newglossaryentry{RDFS}{name={RDFS},description={Das Resource Description Framework Schema; ...}}
-%\newglossaryentry{XML}{name={XML},description={Extensible Markup Language; ...}}
-\newglossaryentry{Abox}{name={Abox},description={Assertional Box ...}}
-\newglossaryentry{Tbox}{name={Tbox},description={Terminological Box; ...}}
-\newglossaryentry{KB}{name={KB},description={Knowledge Base; ...}}
-%\newglossaryentry{W3C}{name={W3C},description={World Wide Web Consortium ...}}
-\newglossaryentry{RQDL}{name={RQDL},description={Relational Query Description Language}}
-%\newglossaryentry{OWL-DL}{name={Beschreibungslogik },description={Reasoner ...}}
-%\newglossaryentry{OWL-Lite}{name={Beschreibungslogik },description={Reasoner ...}}
-%\newglossaryentry{OWL-full}{name={Wissensmodellierung},description={...}}
-%\newglossaryentry{OWL2 QL}{name={Beschreibungslogik },description={Reasoner ...}}
-%\newglossaryentry{OWL2 EL}{name={Beschreibungslogik },description={Reasoner ...}}
-%\newglossaryentry{OWL2 RL}{name={Wissensmodellierung},description={...}}
-%\newglossaryentry{OWL2 DL}{name={Beschreibungslogik },description={Reasoner ...}}
-%\newglossaryentry{OWL2 full}{name={Beschreibungslogik },description={Reasoner ...}}
-\newglossaryentry{RuleML}{name={RuleML},description={Rule Markup Language}}
-\newglossaryentry{SQL}{name={SQL},description={Structured Query Language ...}}
+\newglossaryentry{OWL}{name={OWL},description={
+    Web Ontology Language;
+    Ontologiesprache für das semantische Web.
+    Mit dieser Sprache können Ontologien beschrieben werden. (vgl.~\cite{cambSemOWL})
+}}
 
+\newglossaryentry{RDF}{name={RDF},description={
+    Resource Description Framework;
+    Framework um Informationen aus Ressourcen zu formulieren. Im Web können Informationen mit RDF verarbeitet werden, anstatt diese nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne dabei die Bedeutung der Informationen zu verändern. (vgl.~\cite{w3rdf})
+}}
 
+\newglossaryentry{SPARQL}{name={SPARQL},description={
+    SPARQL Protocol And RDF Query Language;
+    Bei SPARQL handelt es sich sich um eine Abfragesprache für RDF. Sie erlaubt es, Abfragen in mehreren Datenquellen vorzunehmen. Dabei werden Anfragen über Graphen vollzogen, auch entlang derer Konjunktionen und Disjunktionen. SPARQL unterstützt weiter Aggregation, Unterabfragen, Negation sowie die Nutzung von Ausdrücken als Werte. Resultate sind entweder eine Menge von Ergebnissen oder RDF-Graphen.
+    (vgl.~\cite{w3sparql_querylang})
+}}
 
+\newglossaryentry{SWRL}{name={SWRL},description={
+    Semantic Web Rule Language;
+    Bei SWRL handelt es sich um eine auf OWL und RuleML basierende Regelsprache. Sie erlaubt es Regeln in Form von OWL-Konzepten auszudrücken und bietet dadurch vielfältige Möglichkeiten der Inferenz.
+    (vgl.~\cite{swrl})
+}}
 
+\newglossaryentry{RDFS}{name={RDFS},description={
+    Resource Description Framework Schema;
+    RDF Schema bietet ein Vokabular zur Datenmodellierung von RDF-Daten.
+    Es stellt eine Erweiterung des RDF-Vokabulars dar.
+    (vgl.~\cite{w3rdfs})
+}}
 
+\newglossaryentry{Abox}{name={Abox},description={
+    Assertional Box;
+    Komponente eines Tableau-Reasoners, welche Aussagen zu Individuen enthält, d.h.\ OWL-Fakten wie Typen, Eigenschaftswerte und logische Äquivalenz.
+    (vgl.~\cite{sirin:pellet05})
+}}
 
+\newglossaryentry{Tbox}{name={Tbox},description={
+    Terminological Box;
+    Komponente eines Tableau-Reasoners, welche Klassenaxiome enthält, d.h. OWL-Axiome wie z.B. Unterklassen, Gleichheit von Klassen und Klasseneinschränkungen.
+    (vgl.~\cite{sirin:pellet05})
+}}
 
+\newglossaryentry{KB}{name={KB},description={
+    Knowledge Base;
+    Eine Kombination einer Abox und Tbox, damit eine komplette OWL-Ontologie.
+    (vgl.~\cite{sirin:pellet05})
+}}
 
+\newglossaryentry{RDQL}{name={RDQL},description={
+    RDF Data Query Language;
+    Abfragesprache um Informationen von RDF-Graphen zu extrahieren.
+    Die Syntax ist der SPARQL-Syntax sehr ähnlich.
+    (vgl.~\cite{w3rdql})
+}}
 
+\newglossaryentry{RuleML}{name={RuleML},description={
+    Rule Markup Language;
+    XML-Sprache zur Beschreibung von Regeln.
+    (vgl.~\cite{w3rdql})
+}}
 
-
-
-
-
-
+\newglossaryentry{SQL}{name={SQL},description={
+    Structured Query Language;
+    ``SQL ist eine Datenbanksprache zur Definition von Datenstrukturen in relationalen Datenbanken sowie zum Bearbeiten (Einfügen, Verändern, Löschen) und Abfragen von darauf basierenden Datenbeständen.''~\cite{wiki:sql}
+}}
