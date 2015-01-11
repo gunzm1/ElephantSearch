@@ -262,11 +262,11 @@ Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der
     \item $\neg O$
 \end{enumerate}
 
-Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint \textcircled{$\cup$}. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
+Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint \textcircled{$\cup$}. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch ($\mathsf{F}$) mit den Knoten (b) und (c) bilden:
 \begin{itemize}
-    \item $(b) \textcircled{$\cup$} (g)$ also $S \wedge \neg S = \{\}$
+    \item $(b) \textcircled{$\cup$} (g)$ also $S \wedge \neg S = \mathsf{F}$
     \item[] und
-    \item $(c) \textcircled{$\cup$} (h)$ also $O \wedge \neg O = \{\}$
+    \item $(c) \textcircled{$\cup$} (h)$ also $O \wedge \neg O = \mathsf{F}$
 \end{itemize}
 
 An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
