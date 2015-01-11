@@ -113,6 +113,19 @@ Es ist erforderlich, ``\dots dass das Folgern von Formeln auf der Ebene der Gül
 \end{lstlisting}
 \footnotetext{\cite[S. 43]{laemmel}}
 
+\subsubsection{Äquivalenz von semantischer Folgerung und Widerspruchsbeweis}
+\label{subsubsection:beschreibungslogik_widersp}
+Um zu überprüfen, ob eine Formel wahr ist, kann getestet werden, ob Ihre Negation falsch ist. Es wird also ein Widerspruchsbeweis durchgeführt.
+~\cite[vgl. S. 47]{laemmel}
+
+\begin{lstlisting}[caption={Äquivalenz von semantischer Folgerung und Widerspruchsbeweis}]
+		Folgende Aussagen sind äquivalent:
+				X $X \models Y$ Y
+		X $\land$ $\lnot$ Y ist widersprüchlich
+\end{lstlisting}
+\footnotetext{\cite[S. 47]{laemmel}}
+
+
 \section{Pellet}
 \label{sec:inferenz_pellet}
 Sofern im Text nicht anders vermerkt, basiert das nachfolgende Kapitel auf~\cite{sirin:pellet05}.
@@ -196,10 +209,16 @@ Gegeben sind folgende Fakten:
     \item $S: hatStandort(SeilparkBalmberg, Balmberg)$
     \item $O: hatOrt(Solothurn, Balmberg)$
 \end{itemize}
-Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll der Schluss (\textit{Konklusion}) erreicht werden, dass sich der Seilpark in der Region Solothurn befindet:
+Ausserdem existiert die Regel:
+\begin{itemize}
+    \item $hatStandort(?ausflug, ?standort), hatOrt(?region, ?standort) -> hatRegion(?ausflug, ?region)$
+\end{itemize}
+Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll der Schluss (\textit{Konklusion}) bewiesen werden, dass sich der Seilpark in der Region Solothurn befindet. Die Regel wird also für die Fakten angewendet:
 \begin{itemize}
     \item $R: hatRegion(SeilparkBalmberg, Solothurn)$
 \end{itemize}
+
+Um diese Konklusion zu belegen soll ein Widerspruchsbeweis angewendet werden. Dazu wird die Negation der Folgerung (also SeilparkBalmberg hatRegion Solothurn) hinzugefügt. Konkret heisst das also es wird versucht mit den vorhandenen Fakten \textit{SeilparkBalmberg hat den Standort Balmberg} und \textit{Solothurn (welches eine Region ist) hat den Ort Balmberg} zu beweisen, dass der Seilpark \textbf{NICHT} in der Region Solothurn liegt. Bei diesem simplen Beispiel ist für den Leser sichtbar, dass dies zu einem Widerspruch führen wird. Damit kann die ursprüngliche Annahme bestätigt werden. Durch Anwendet des Tableau-Kalkül kann dies aber auch mathematisch bewiesen werden:
 
 Es soll $\Gamma \models \varphi$ gelten, wobei $\Gamma$ die Menge der Prämissen und $\varphi$ die Konklusion ist:
 \begin{itemize}
@@ -243,16 +262,16 @@ Die Transformationsregeln werden auf den Wurzelknoten angewendet. Dabei wird der
     \item $\neg O$
 \end{enumerate}
 
-Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
+Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei werden die Knoten (b), (c), (d), (g) und (h) (logisch) vereint \textcircled{$\cup$}. Dabei ergibt sich,  dass die Knoten (g) und (h) einen Widerspruch mit den Knoten (b) und (c) bilden:
 \begin{itemize}
-    \item $(b) \cup (g)$ also $S \wedge \neg S = \{\}$
+    \item $(b) \textcircled{$\cup$} (g)$ also $S \wedge \neg S = \{\}$
     \item[] und
-    \item $(c) \cup (h)$ also $O \wedge \neg O = \{\}$
+    \item $(c) \textcircled{$\cup$} (h)$ also $O \wedge \neg O = \{\}$
 \end{itemize}
 
 An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
 \begin{itemize}
-    \item $(d) \cup (f)$ also $\neg R \wedge R = \{\}$
+    \item $(d) \textcircled{$\cup$} (f)$ also $\neg R \wedge R = \{\}$
 \end{itemize}
 
 Obwohl alle Knoten expandiert und ausgewertet wurden,  konnte kein Modell für $\{S \wedge O \rightarrow R, S, O, \neg R\}$ gefunden werden. Dies wiederum bedeutet, dass die Negation $\Gamma \models \neg\varphi$ nicht zutrifft. Somit ist $\Gamma \models \varphi$ bewiesen.
