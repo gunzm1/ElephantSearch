@@ -211,7 +211,7 @@ Gegeben sind folgende Fakten:
 \end{itemize}
 Weiter ist die folgende Regel gegeben:
 \begin{itemize}
-    \item $hatStandort(?ausflug, ?standort), hatOrt(?region, ?standort) -> hatRegion(?ausflug, ?region)$
+    \item $hatStandort(?ausflug, ?standort), hatOrt(?region, ?standort) \rightarrow hatRegion(?ausflug, ?region)$
 \end{itemize}
 Die genannten Fakten bilden die \textit{Prämisse}. Durch Anwendung des Kalküls soll der Schluss (\textit{Konklusion}) bewiesen werden, dass sich der Seilpark in der Region Solothurn befindet. Die Regel wird also für die Fakten angewendet:
 \begin{itemize}
@@ -367,7 +367,7 @@ Der linke Teilbaum ist somit vollständig expandiert und wird ausgewertet. Dabei
 
 An dieser Stelle wird die Tiefensuche im linken Unterknoten abgebrochen, dafür im rechten Unterknoten fortgesetzt. Dieser ist bereits expandiert und wird ausgewertet. Dazu muss Knoten (f) mit den Knoten (b), (c) und (d) (logisch) vereinbar sein. Auch dort herrscht ein Widerspruch:
 \begin{itemize}
-    \item $(d) \textcircled{$\cup$} (f)$ also $\neg R \wedge R = \{\}$
+    \item $(d) \textcircled{$\cup$} (f)$ also $\neg R \wedge R = \mathsf{F}$
 \end{itemize}
 
 \begin{figure}[htbp]
