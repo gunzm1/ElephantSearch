@@ -2,13 +2,13 @@
 \label{chap:rdf}
 Das folgende Kapitel basiert, sofern nicht nicht anders vermerkt, auf~\cite{w3rdf}.
 
-Die bisherigen Kapitel bieten einen Überblick über die verschiedenen Methoden und Angehensweisen des Knowledge-Engineerings. Die wichtigsten theoretischen Grundlagen wurden in den vorigen Kapiteln erklärt. Im Kapitel~\ref{chap:ontologien}, ``~\nameref{chap:ontologien}'', wurde gezeigt, dass für die Darstellung von Ontologien verschiedene Sprachen entwickelt wurden. 
+Die bisherigen Kapitel bieten einen Überblick über die verschiedenen Methoden und Angehensweisen des Knowledge-Engineerings. Die wichtigsten theoretischen Grundlagen wurden in den vorigen Kapiteln erklärt. Im Kapitel~\ref{chap:ontologien}, ``\nameref{chap:ontologien}'', wurde gezeigt, dass für die Darstellung von Ontologien verschiedene Sprachen entwickelt wurden. 
 
 Wir haben uns für OWL (in der Version 2) entschieden, da es sich um die am meisten benutzte Ontologiesprache handelt. Da OWL in der RDF-Syntax verfasst wird, wollen wir letztere erklären.
 
 Das ``Resource Description Framework'' (RDF) ist ein Framework um Informationen aus Ressourcen zu formulieren. Als Ressourcen können Dokumente, Leute, Objekte aber auch abstrakte Inhalte dienen. Im Web können Informationen mit RDF verarbeitet werden, anstatt diese nur anzuzeigen. RDF bietet ein gemeinsames Framework um die Informationen zwischen Anwendungen auszutauschen ohne dabei die Bedeutung der Informationen zu verändern.
 
-RDF ist die Grundlage des semantischen Webs, welches die Flexibilität von RDF vollumfänglich ausnutzt. Alle Daten im semantischen Web werden in RDF abgebildet. RDF ermöglicht die Verknüpfung von Daten. Dadurch werden für eine Ressource mehr Informationen zusammen gefügt.\cite{cambSemRDF}
+RDF ist die Grundlage des semantischen Webs, welches die Flexibilität von RDF vollumfänglich ausnutzt. Alle Daten im semantischen Web werden in RDF abgebildet. RDF ermöglicht die Verknüpfung von Daten. Dadurch werden für eine Ressource mehr Informationen zusammen gefügt.~\cite{cambSemRDF}
 
 \section{RDF Data Model}
 \label{sec:rdf_rdf_dataModel}
@@ -30,11 +30,11 @@ Eine Entität kann in mehreren Tripeln referenziert werden. Zudem ist es möglic
 
 Tripel werden in sogenannten RDF-Graphen abgebildet. Diese bestehen aus Knoten und Pfeilen. Subjekte und Objekte werden als Knoten, Prädikate als Pfeile dargestellt. Genaueres dazu findet sich im~\autoref{chap:graph_data}, ``\nameref{chap:graph_data}''.
 
-Man unterscheidet drei Typen von RDF-Daten, welche in Tripeln auftreten: Ressource-Knoten (IRIs), leere Knoten (Blank) und Literale.
+Man unterscheidet drei Typen von RDF-Daten, welche in Tripeln auftreten: Ressourcen-Knoten (IRIs), leere Knoten (Blank) und Literale.
 
 \subsection{IRIs (International Resource Identifier)}
 \label{sec:rdf_rdf_dataModel_iris}
-Wie der Name besagt, stellt ein IRI eine Ressource dar. Dabei handelt es sich um einen globalen Identifier, IRIs können also von verschiedenen Nutzern wiederverwendet werden. Es gibt verschieden Formen von IRIs. Zum Beispiel werden URLs als Web-Adresse verwendet werden. Eine andere Form der IRIs bietet eine Kennung einer Ressource ohne deren Standort oder Zugriff preiszugeben. IRIs können in allen drei Positionen eines Tripels auftreten.
+Wie der Name besagt, stellt ein IRI eine Ressource dar. Dabei handelt es sich um einen globalen Identifier, IRIs können also von verschiedenen Nutzern wiederverwendet werden. Es gibt verschieden Formen von IRIs. Zum Beispiel werden URLs als Web-Adresse verwendet. Eine andere Form der IRIs bietet eine Kennung einer Ressource ohne deren Standort oder Zugriff preiszugeben. IRIs können in allen drei Positionen eines Tripels auftreten.
 
 Die genaue Spezifikation von IRIs findet sich unter~\href{http://www.ietf.org/rfc/rfc3987.txt}{RFC 3987}.
 
@@ -52,7 +52,7 @@ Leere Knoten können in einem Tripel Subjekt oder Objekt darstellen.
 
 \section{Multiple Graphs}
 \label{sec:owlRdf_rdf_dataModel_multipleGraphs}
-Eine der neuesten Erweiterung von RDF sind multipe Graphen. Diese wurden eingeführt, um Teilmengen einer Tripelsammlung zu definieren. Ursprünglich stammt dieser Mechanismus von der Abfragesprache SPARQL (siehe~\ref{chap:sparql}~\nameref{chap:sparql}). Man unterscheidet zwischen benannten (named) und unbenannten (unnamed) Graphen. Bei unbenannten Graphen enthalten die Tripel jeweils die gesamte URI.\@
+Eine der neuesten Erweiterung von RDF sind multiple Graphen. Diese wurden eingeführt um Teilmengen einer Tripelsammlung zu definieren. Ursprünglich stammt dieser Mechanismus von der Abfragesprache SPARQL (siehe~\ref{chap:sparql}~\nameref{chap:sparql}). Man unterscheidet zwischen benannten (named) und unbenannten (unnamed) Graphen. Bei unbenannten Graphen enthalten die Tripel jeweils die gesamte URI.\@
 
 \begin{lstlisting}[caption={Beispiel eines unbenannten (unnamed) Graphen}]
     <http://example.org/bob> <is published by> <http://example.org>.
@@ -68,7 +68,7 @@ Graph:
         <Bob> <is a friend of> <Alice>.
 \end{lstlisting}
 
-Multipe Graphen eines RDF-Dokumentes stellen eine Datenmenge dar. Sie bestehen standardmässig aus einem unbenannten (unnamed) Graphen und mehreren benannten (named) Graphen. Dabei ist der unbenannte Graph der sog. Basisgraph (default).
+Multipe Graphen eines RDF-Dokumentes stellen eine Datenmenge dar. Sie bestehen standardmässig aus einem unbenannten (unnamed) Graphen und mehreren benannten (named) Graphen. Dabei ist der unbenannte Graph der sogenannte Basisgraph (default).
 
 \section{RDF Vokabular}
 \label{sec:rdf_rdf_voca}
@@ -76,7 +76,7 @@ RDF wird typischerweise in Kombination mit einem Vokabular oder anderen Konventi
 
 Um Vokabulare zu definieren, bietet RDF die RDF-Schema-Sprache. Erst diese ermöglicht es semantische Eigenschaften von RDF-Daten zu definieren. Damit kann beispielsweise festgelegt werden, welche Ressourcen an welcher Position eines Tripels verwendet werden sollen.
 
-RDF verwendet den Klassen-Bezeichner (class) um Kategorien zu definieren, welche die Klassifizierung von Ressourcen erlauben. Die Beziehung zwischen einer Instanz und ihrer Klasse wird durch den Typen-Bezeichern (type) ausgedrückt. 
+RDF verwendet den Klassen-Bezeichner (class) um Kategorien zu definieren, welche die Klassifizierung von Ressourcen erlauben. Die Beziehung zwischen einer Instanz und ihrer Klasse wird durch den Typen-Bezeichner (type) ausgedrückt. 
 
 Mit der RDF-Schema-Sprache können Hierarchien im Bereich der Klassen und Sub-Klassen sowie der Eigenschaften und Untereigenschaften gebildet werden. Auf Subjekten bzw. Objekten können Typeneinschränkungen mittels dem Domänen- (domain) bzw.\ dem Bereichs-Bezeichner (range) vorgenommen werden.~\footnote{http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/\#section-rdfa~\cite{w3rdf}}
 
@@ -89,18 +89,18 @@ Da wir letztere Schreibweise in unserem Beispiel verwendet haben, werden wir sie
 
 \subsection{RDF/XML}
 \label{sec:rdf_rdf_formen_xmlRdf}
-Bei RDF/XML handelt es sich um eine Schreibweise von RDF, welche die XML-Syntax verwendet. Bei der Entwicklung von RDF in den 1990er Jahren, war RDF/XML die einzig existierende Schreibweise.
+Bei RDF/XML handelt es sich um eine Schreibweise von RDF, welche die XML-Syntax verwendet. Bei der Entwicklung von RDF in den 1990er Jahren war RDF/XML die einzig existierende Schreibweise.
 
-In RDF/XML werden Tripel in dem XML-Element, \textit{rdf:RDF}, spezifizert. Das XML-Element \textit{rdf:description} definiert eine Menge von Tripeln, welche als Subjekt den IRI ihres \textit{about}-Attributes haben.
+In RDF/XML werden Tripel in dem XML-Element \textit{rdf:RDF} spezifiziert. Das XML-Element \textit{rdf:description} definiert eine Menge von Tripeln, welche als Subjekt den IRI ihres \textit{about}-Attributes haben.
 
 Ein Description-Element kann Unterelemente beinhalten. Der Name des Unterelementes ist ein IRI, welcher in der RDF-Eigenschaft \textit{rdf:type} abgebildet ist. Dabei repräsentiert jedes Unterelement ein Tripel.
 
 Handelt es sich bei dem Objekt eines Tripels auch um einen IRI, hat das Unterelement keinen Inhalt und der Objekt-IRI-Knoten wird durch das \textit{rdf:resource}-Attribut beschrieben.
 
 Ist das Objekt eines Tripels ein Literal, wird der Inhalt der RDF-Eigenschaft zum Literalwert.\\
-Der Datentyp der RDF-Eigenschaft wird durch als Attribut angegeben. Bei Fehlen von Datentyp und Sprache wird angenommen, dass der Literal vom Datentyp ``String'' ist.
+Der Datentyp der RDF-Eigenschaft wird als Attribut angegeben. Bei Fehlen von Datentyp und Sprache wird angenommen, dass der Literal vom Datentyp ``String'' ist.
 
-\begin{lstlisting}[caption={Beispiel RDF Elemente\protect\footnotemark}]
+\begin{lstlisting}[caption={Beispiel RDF-Elemente\protect\footnotemark}]
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >

@@ -62,7 +62,7 @@ Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
 \label{subsubsection:beschreibungslogik_Interpretation}
 ``Man bezeichnet die Zuordnung von Ereignissen aus einer realen Welt zu aussagenlogischen Variablen als Interpretation.''~\cite[S. 36]{laemmel}
 
-\begin{lstlisting}[caption={Definition einer Interpretation \protect\footnotemark}]
+\begin{lstlisting}[caption={Definition Interpretation \protect\footnotemark}]
     Sei M die Menge aller aussagenlogischen Formeln. Eine Funktion
         $I : M \rightarrow \{ W , F \}$
     heisst Interpretation.
@@ -76,6 +76,8 @@ Details zu Beschreibungslogiken finden sich unter~\cite{dl:baader2003}.
     Ist $X$ unter $I$ wahr, so bezeichnet man $I$ als Modell von $X$.
 \end{lstlisting}
 \footnotetext{\cite[S. 37]{laemmel}}
+
+\newpage
 
 \subsubsection{Semantische Folgerung}
 \label{subsubsection:beschreibungslogik_semfol}
@@ -118,10 +120,10 @@ Es ist erforderlich, ``\dots dass das Folgern von Formeln auf der Ebene der Gül
 Um zu überprüfen, ob eine Formel wahr ist, kann getestet werden, ob Ihre Negation falsch ist. Es wird also ein Widerspruchsbeweis durchgeführt.
 ~\cite[vgl. S. 47]{laemmel}
 
-\begin{lstlisting}[caption={Äquivalenz von semantischer Folgerung und Widerspruchsbeweis}]
-		Folgende Aussagen sind äquivalent:
-				X $X \models Y$ Y
-		X $\land$ $\lnot$ Y ist widersprüchlich
+\begin{lstlisting}[caption={Äquivalenz von semantischer Folgerung und Widerspruchsbeweis\protect\footnotemark}]
+    Folgende Aussagen sind äquivalent:
+        X $X \models Y$ Y
+        X $\land$ $\lnot$ Y ist widersprüchlich
 \end{lstlisting}
 \footnotetext{\cite[S. 47]{laemmel}}
 
@@ -158,8 +160,8 @@ Hier eine Übersicht der wichtigsten Komponenten von Pellet\cite[S. 4]{sirin:pel
     \end{tabbing}
 \end{minipage}}\hfill
 \captionof{table}{Beschreibung der wichtigsten Komponenten von Pellet\protect\footnotemark}
-\footnotetext{\cite[S. 4]{sirin:pellet05}}
 \end{table}
+\footnotetext{\cite[S. 4]{sirin:pellet05}}
 
 
 \subsection{Vorgehen des Pellet-Reasoners}
@@ -168,7 +170,7 @@ Wird eine Ontologie mittels Parser geladen, wird diese auf deren Gültigkeit bez
 
 \subsubsection{Laden und Parsen der Daten}
 \label{ssubsection:inferenz_pellet_parsing}
-Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser. Es ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen zur Beantwortung von Anfragen der Werkzeuge zur Verfügung.
+Pellet bietet diverse Schnittstellen um Ontologien zu laden. Pellet selbst implementiert keinen RDF/OWL-Parser. Er ist aber in verschiedenen RDF/OWL-Werkzeugen, welche solch einen Parser anbieten, integriert. Dabei unterstützt Pellet die unterschiedlichen Datenstrukturen der Werkzeuge. Weiter stellt der Reasoner Schnittstellen zur Beantwortung von Anfragen der Werkzeuge zur Verfügung.
 
 \subsubsection{Tableau-Reasoner}
 \label{ssubsection:inferenz_pellet_tableaux}
@@ -181,7 +183,8 @@ Durch wiederholtes Anwenden der Transformationsregeln (siehe Tabelle~\ref{fig:ta
 
 Der Tableau-Algorithmus basiert auf dem Tableau-Kalkül. Dabei wird mittels Widerspruchsbeweis aufgezeigt, dass eine Interpretation existiert, in der sowohl sämtliche Anforderungen (Prämisse) als auch die Negation der Folgerung (Konklusion) wahr sind. Kann ein solches Modell gefunden werden, ist damit bewiesen, dass die ursprüngliche ``Formel'' falsch ist. Die in der Abox definierten Daten sind dann konsistent, wenn beim Aufbau des Baumes inklusive der Negation der Folgerung ein Widerspruch auftritt.~\cite{baumkalkuel}
 
-Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.\cite{baumkalkuel}. Die Beschreibung des Tableau-Kalküles basiert, wenn nicht anders vermerkt, auf~\cite{baumkalkuel}.
+Für das Tableau-Kalkül werden Transformationsregeln benötigt. Mit diesen Regeln wird ein Argument unter einer Interpretation wahr gemacht. Es wird also ein Modell erzeugt.~\cite{baumkalkuel}.\\
+Die Beschreibung des Tableau-Kalküles basiert, sofern nicht anders vermerkt, auf~\cite{baumkalkuel}.
 
 Nachfolgend sind die Transformationsregeln zum Erzeugen von Modellen aufgezeigt.
 
@@ -266,7 +269,7 @@ Zur Anwendung des Kalküls werden alle Sätze der gesamten Menge untereinander a
             \end{tabular}
         \end{framed}
     }
-    \caption{Wurzelkonten des Graphen}
+    \caption{Wurzelknoten des Graphen}
 \end{figure}
 
 \newpage
@@ -402,7 +405,7 @@ Obwohl alle Knoten expandiert und ausgewertet wurden,  konnte kein Modell für $
 \label{ssubsection:inferenz_pellet_datatypes}
 In OWL werden Datentypen in einem XML-Schema beschrieben. Dadurch sind viele einfache Datentypen wie numerische Datentypen (Ganz- und Fliesskommazahlen) und Zeichenketten gegeben. Zudem kann OWL eigene Datentypen definieren.
 
-Das Modul zur Datentypenprüfung zeigt auf ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
+Das Modul zur Datentypenprüfung zeigt auf, ob die Schnittmenge von Datentypen konsistent ist. Eine Schnittmenge von Datentypen ist dann inkonsistent, wenn diese keine Elemente gemeinsam haben.
 
 Der Tableau-Reasoner nutzt dieses Modul um zu prüfen, ob die Schnittmenge aller Datentypen für jeden Literal-Knoten des Graphens erfüllbar ist.
 
@@ -420,7 +423,7 @@ Die Schnittstelle zur Wissensdatenbank, wie auch der Rest der Komponenten von Pe
 \label{ssubsection:inferenz_pellet_aboxquery}
 Die Schnittstelle zur Wissensdatenbank wird mit der Abox-Query-Engine verbunden. Diese beantwortet konjunktive (verknüpfte) Anfragen. Das Modul unterstützt in SPARQL oder RDQL~\footnote{\url{http://www.w3.org/Submission/RDQL/}} geschriebene Anfragen. Dabei bestehen jedoch gewisse Einschränkungen, Details siehe~\cite[S. 10 - 11]{sirin:pellet05}.
 
-Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf, siehe~\cite[S. 11]{sirin:pellet05}.
+Die Abox-Query-Engine besteht im Grunde aus mehreren Query-Engines, welche Anfragen beantworten. Dabei gibt es eine zentrale Query-Engine, welche Anfragen vorverabeitet und für die Beantwortung die entsprechende Query-Engine auswählt. Details zum Ablauf siehe~\cite[S. 11]{sirin:pellet05}.
 
 \begin{figure}[htbp]
     \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/infres_pellet_queryengine.png}}}
@@ -465,7 +468,7 @@ Um dennoch akzeptable Leistungen bei Schlussfolgerungen mittels Beschreibungslog
         Bei dem Prozess der Tbox-Absorption wird ebenfalls versucht, gleichartige Konzepte (GCI --- General Concept Inclusion) zu eliminieren, dies mittels Ersatz durch atomare Konzepte.
 
     \item \textbf{Dependency-directed Backjumping}\\
-        Der Prozess des dependency-directed Backjumpings eliminiert unproduktive Backtracking-Suchen, indem er Verzweigungspunkte identifiziert welche Konflikte verursachen. Er springt zurück und überspringt dabei die Konfliktpunkte ohne nach Alternativen zu suchen.
+        Der Prozess des dependency-directed Backjumpings eliminiert unproduktive Backtracking-Suchen, indem er Verzweigungspunkte identifiziert, welche Konflikte verursachen. Er springt zurück und überspringt dabei die Konfliktpunkte ohne nach Alternativen zu suchen.
 \end{itemize}
 
 Weitere Verfahren zur Optimierung sowie mehr Details finden sich unter~\cite[S. 17 - 19]{sirin:pellet05}.
@@ -488,7 +491,7 @@ Das unter~\ref{ssubsection:inferenz_pellet_tableaux} genannte Beispiel beantwort
 
 Wie gelangt man effektiv zu dieser Information? Kann diese durch reine Folgerung erreicht werden?
 
-Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielsweise in Protégé und unter Benützung des Pellet-Reasoners für Schlussfolgerungen, so nimmt man an, dass er dies finden kann. Aufgrund seiner Möglichkeiten sollte der Reasoner dies beantworten können. Die nachfolgende Grafik zeigt jedoch, dass dies nicht immer der Fall ist.
+Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielsweise in Protégé und nutzt den Pellet-Reasoner für Schlussfolgerungen, so nimmt man an, dass er dies finden kann. Aufgrund seiner Möglichkeiten sollte der Reasoner dies beantworten können. Die nachfolgende Grafik zeigt jedoch, dass dies nicht immer der Fall ist.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.5}[0.5]{\includegraphics{bilder/inferenz_protege.png}}}
@@ -496,7 +499,7 @@ Die Antwort hierzu lautet ja und nein. Modelliert man die Situation beispielswei
 \end{figure}
 \footnotetext{Eigene Darstellung mittels Stanford Protégé Version 5.0.0 beta 15}
 
-Wenn man den Relationen die entsprechenden Eigenschaften wie Symmetrie oder Transitivität gibt, ist diese Folgerung durchaus möglich. Bei unserem Beispiel haben wir die Eigenschaften bewusst weggelassen, da andernfalls irreführende Folgerungen auftreten. So wäre z.B.\ ein Ort auch ein Land und umgekehrt.
+Wenn man den Relationen die entsprechenden Eigenschaften wie Symmetrie oder Transitivität gibt, ist diese Folgerung durchaus möglich. Bei unserem Beispiel haben wir die Eigenschaften bewusst weggelassen, da andernfalls irreführende Folgerungen auftreten. So wäre dann z.B.\ ein Ort auch ein Land und umgekehrt.
 
 Die eigentliche Folgerung haben wir mittels einer Regel vorgenommen. Zu einem späteren Zeitpunkt erklären wir dies genauer, siehe~\autoref{chap:swrl}.
 

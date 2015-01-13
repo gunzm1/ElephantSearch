@@ -20,7 +20,7 @@ Die Knoten einer Graphdatenbank repräsentieren Entitäten. Eigenschaften sind a
 \newpage
 
 Gegeben seien die folgenden Aussagen über Hotels:
-\lstset{caption={Aussagen über Hotels\protect\footnotemark},captionpos=b}
+\lstset{caption={Aussagen über Hotels},captionpos=b}
 \begin{lstlisting}
     Ein Wellnesshotel ist ein Hotel.
     Ein Familienhotel ist ein Hotel.
@@ -46,14 +46,14 @@ In der Graphdatenbank existieren also zwei Objekte, \textit{``Objekt1''} und \te
 \label{elephant_graph_data}
 Möchte man eine Graphdatenbank als Grundlage für eine semantische Datenbank aufbauen, so empfiehlt es sich, zuerst die wichtigsten Klassen und Individuen zu definieren. Es ist lohnend schon zu Beginn des Aufbaus schrittweise vorzugehen.
 
-Nimmt man das Beispiel des Reiseplaners ist es sinnvoll, nicht von Beginn an eine komplette Reise abzubilden, sondern zunächst mit der Abbildung lokaler Ausflüge zu beginnen. Später können diese mittels Logik zu einer Reise kombiniert werden.
+Nimmt man das Beispiel des Reiseplaners, ist es sinnvoll, nicht von Beginn an eine komplette Reise abzubilden, sondern zunächst mit der Abbildung lokaler Ausflüge zu beginnen. Später können diese mittels Logik zu einer Reise kombiniert werden.
 
 Nach Überlegung ergeben sich die Klassen \textit{Ausflug}, \textit{Land}, \textit{Region} und \textit{Ort}. Doch wie gelangt man zu diesen Klassen? Nach unserer Erfahrung lohnt es sich, konkrete Fragen zu stellen, welche die semantische Datenbank schliesslich beantworten können sollte. Es ist zudem hilfreich, sich praktische Beispiele von der Anwendung solch einer Datenbank zu überlegen.
 
 So könnte eine konkrete Anwendung eine Familie sein, welche einen eintägigen Ausflug planen möchte und deren Kinder bereits in einem Alter sind, in dem sie Beschäftigung benötigen. Dies führt schliesslich zu den Kriterien \textit{familienfreundlich}, \textit{regional} und \textit{actionreich}. Dies sind ausschliesslich Überlegungen für die spätere Entwicklung des Modelles. Eine Graphdatenbank kann nicht ohne Weiteres komplexe Anfragen im Sinne der genannten Kriterien oder Inhalte beantworten. Die Zusammenhänge könnte man durch Zuweisung von Kriterien an die Objekte statisch modellieren. Dies würde jedoch den Vorteil einer semantischen Datenbank zu Nichte machen, nämlich die Gewinnung von Schlüssen aus komplexen Zusammenhängen.
 
 Hat man Klassen und Kriterien definiert, fällt auf, dass damit noch keine konkreten Anfragen beantwortet werden können. Es fehlen die Individuen und die Relationen.\\
-Daher wird für einen Ausflug das ``Individuum \textit{Seilpark Balmberg''} erstellt. Der Seilpark befindet sich in der Ortschaft \textit{Balmberg}, welche in der Region \textit{Solothurn} und damit in der \textit{Schweiz} liegt.\\
+Daher wird für einen Ausflug das Individuum \textit{``Seilpark Balmberg''} erstellt. Der Seilpark befindet sich in der Ortschaft \textit{Balmberg}, welche in der Region \textit{Solothurn} und damit in der \textit{Schweiz} liegt.\\
 Damit erscheint es logisch, dass wenn ein Land in Regionen unterteilt ist, diese wiederum Orte beinhalten. Daher werden für Länder, Regionen und Orte ebenso Individuen erstellt.
 
 Dies kann über die Relationen \textit{hatRegion} und \textit{hatOrt} abgebildet werden.
@@ -64,7 +64,7 @@ Dies kann über die Relationen \textit{hatRegion} und \textit{hatOrt} abgebildet
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd\footnote{\url{http://www.yworks.com/en/products/yfiles/yed/}}}
 
-Wie aus der Grafik ersichtlich, hat das Individuum \textit{Seilpark Balmberg} noch keine Relationen zu anderen Individuen. Daher ist zum jetzigen Zeitpunkt die Verknüpfung für Mehrwert bei Abfragen unklar.
+Wie aus der Grafik ersichtlich ist, hat das Individuum \textit{Seilpark Balmberg} noch keine Relationen zu anderen Individuen. Daher ist zum jetzigen Zeitpunkt die Verknüpfung für Mehrwert bei Abfragen unklar.
 
 \vspace{0.1pt}
 \noindent\rule[1ex]{\textwidth}{1pt}

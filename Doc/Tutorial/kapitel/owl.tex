@@ -5,7 +5,7 @@ Im vorherigen Kapitel wurden Voraussetzungen geschaffen um die eigentliche Ontol
 
 Bei OWL (Web Ontology Language) handelt es sich um eine Ontologiesprache für das semantische Web. Mit dieser Sprache können Ontologien beschrieben werden.~\cite{cambSemOWL} Wie RDF wurde auch OWL nicht nur für die Anzeige sondern auch für die Verarbeitung von Informationen entwickelt.
 
-Durch zusätzliches Vokabular, wie Beziehungen zwischen Klassen, erweiterter formaler Semantik hat der Benutzer mehr Möglichkeiten als bei RDF/XML oder auch XML.\@
+Durch zusätzliches Vokabular, wie Beziehungen zwischen Klassen, und erweiterter formaler Semantik hat der Benutzer mehr Möglichkeiten als bei RDF/XML oder auch XML.\@
 
 \section{OWL Syntax}
 \label{sec:owl_owl_syntax}
@@ -13,10 +13,10 @@ Für OWL stehen verschiedene Schreibweisen zur Verfügung, welche für verschied
 \begin{itemize}
 	\item \textit{RDF/XML Syntax für OWL}
 
-        Entspricht der RDF/XML Syntax mit einer spezifischen Übersetzung für OWL-Konstrukte. Es ist die einzige Syntax, welche von allen OWL2-Werkzeugen unterstützt wird (OWL2 ist die letzte Version von OWL).
+        Entspricht der RDF/XML Syntax mit einer spezifischen Übersetzung für OWL-Konstrukte. Es ist die einzige Syntax, welche von allen OWL2-Werkzeugen unterstützt wird (OWL2 ist die aktuellste Version von OWL).
 	\item \textit{OWL/XML Syntax}
 
-        XML Syntax für OWL.\@
+        XML-Syntax für OWL.\@
 	\item \textit{Functional-Style Syntax}
 
         Sie dient der Vereinfachung der ursprünglichen Spezifikation. Sie unterstützt Grundlagen zur Implementation von OWL2 durch APIs und Reasoners.
@@ -43,7 +43,7 @@ Bei OWL handelt es sich nicht um eine Schemasprache. Im Gegensatz zu XML beschre
 
 \section{Wissen modellieren}
 \label{sec:owl_owl_wissenModellieren}
-Bei OWL handelt ist eine wissensbasierte Repräsentationssprache. Sie widerspiegelt das Wissen einer spezifischen Domäne. Dabei wird versucht eine Domäne mittels OWL so abzubilden, dass sie Teilen des menschlichen Wissens entspricht. Eine Möglichkeit alle Aspekte des menschlichen Wissens abzubilden besteht aber nicht. Trotzdem kann OWL als potente Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung ist eine Ontologie, wie bereits ausgeführt.
+OWL ist eine wissensbasierte Repräsentationssprache. Sie widerspiegelt das Wissen einer spezifischen Domäne. Dabei wird versucht eine Domäne mittels OWL so abzubilden, dass sie Teilen des menschlichen Wissens entspricht. Eine Möglichkeit alle Aspekte des menschlichen Wissens abzubilden besteht aber nicht. Trotzdem kann OWL als potente Modellierungssprache bezeichnet werden. Das Ergebnis einer solchen Modellierung ist eine Ontologie, wie bereits ausgeführt.
 
 Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Entitäten und Ausdrücke (Expressions) benutzt.
 
@@ -53,7 +53,7 @@ Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Ent
 
         Grundlegende Aussage.
 
-        Grundaussagen  oder Basispropositionen wie ``Abenteuerreisen sind Reisen'' werden in OWL Axiome genannt. Es handelt sich  um ``Teile des Wissens'', welche je nach Sachlage wahr oder falsch sein können. Dies ist ein essentieller Unterschied zu Entitäten und Ausdrücken.
+        Grundaussagen  oder Basispropositionen, wie ``Abenteuerreisen sind Reisen'' werden in OWL Axiome genannt. Es handelt sich  um ``Teile des Wissens'', welche je nach Sachlage wahr oder falsch sein können. Dies ist ein essentieller Unterschied zu Entitäten und Ausdrücken.
 
     \item \textit{Entitäten}
 
@@ -87,7 +87,7 @@ Für die Wissensabbildung über OWL werden grundlegende Konzepte wie Axiome, Ent
 \subsection{Klassen, Subklassen und Individuen}
 \label{sec:owlRdf_owl_wissenModellieren_wichtigsteElemente_Classen}
 
-\textbf{Klassen} werden dazu verwendet, um Individuen mit Gemeinsamkeiten zu gruppieren. Klassen stellen daher eine Menge von Individuen dar. Für die Abbildung der menschlichen Denkweise, werden in der Modellierung Klassen verwendet, beispielsweise Reisen oder Abenteuerreisen.
+\textbf{Klassen} werden dazu verwendet, um Individuen mit Gemeinsamkeiten zu gruppieren. Klassen stellen daher eine Menge von Individuen dar. Für die Abbildung der menschlichen Denkweise werden in der Modellierung Klassen verwendet, beispielsweise Reisen oder Abenteuerreisen.
 
 Beispiel: \textit{Abenteuerreise} ist (nach unserer Definition) eine Klasse.
 
@@ -200,7 +200,7 @@ Analog zu Subklassen lassen sich Untereigenschaften (Subproperties) definieren.
 
 \textbf{Datentypen-Eigenschaften (DataProperties)}
 
-Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert eines Individuums. Dies können beispielsweise das Alter oder die Grösse einer Person sein. Datentypen-Eigenschaft können frei definiert werden und, bei Bedarf, an vordefinierte Wertetypen gebunden werden. Eine Auflistung vordefinierter Wertetypen findet sich unter der Webseite~\href{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}{w3.org}\footnote{\url{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}}.
+Datentypen-Eigenschaften definieren und beschreiben einen spezifischen Datenwert eines Individuums. Dies können beispielsweise das Alter oder die Grösse einer Person sein. Datentypen-Eigenschaft können frei definiert werden und, bei Bedarf an vordefinierte Wertetypen gebunden werden. Eine Auflistung vordefinierter Wertetypen findet sich unter der Webseite~\href{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}{w3.org}\footnote{\url{http://www.w3.org/TR/owl2-syntax/\#Datatype_Maps}}.
 
 \begin{lstlisting}[caption={Beispiel der Datentypen-Eigenschaft \textit{anzahlTeilnehmer} und deren Anwendung bei einem Individuum}]
     <!-- http://www.semanticweb.org/sosterwalder/ontologies/2014/10/reiseplaner#anzahlTeilnehmer -->
@@ -268,7 +268,7 @@ Die drei wichtigsten Unterklassen werden nachfolgend kurz vorgestellt.
 
     \item{\textit{OWL full}}
 
-        Bietet das Maximum an Ausdrucksmöglichkeiten und die syntaktische Freiheit von RDF aber ohne Garantien betreffend Vollständigkeit und Entscheidbarkeit.''~\cite{w3owl}
+        ``Bietet das Maximum an Ausdrucksmöglichkeiten und die syntaktische Freiheit von RDF aber ohne Garantien betreffend Vollständigkeit und Entscheidbarkeit.''~\cite{w3owl}
 
 \end{itemize}
 

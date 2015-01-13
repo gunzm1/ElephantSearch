@@ -112,9 +112,9 @@ Ein Namespace besteht aus einem Kürzel (welches auch leer sein kann), sowie aus
   aboveskip=3em
  }
 \begin{lstlisting}
-$\textless$rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    \textless rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dc="http://purl.org/dc/elements/1.1/"
-         xmlns:ex="http://example.org/stuff/1.0/"$\textgreater$
+         xmlns:ex="http://example.org/stuff/1.0/"\textgreater
 \end{lstlisting}
 \footnotetext{\cite[2.6 Completing the Document: Document Element and XML Declaration]{w3rdf_syntax}}
 
@@ -183,7 +183,7 @@ Versuch, ob zwei oder mehrere mögliche Teilgraphen denjenigen im gegebenen Grap
 Versuch, ob Teilgraphen denjenigen im gegebenen, namensbasierten Graphen entsprechen
 \end{itemize}
 
-Ein grundlegender Teilgraph ist somit eine Menge von Tripeln, wobei jeder Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt bestehen muss (vgl.~\cite[3.1 Triples]{w3rdf}).
+Ein grundlegender Teilgraph ist somit eine Menge von Tripeln, wobei jedes Tripel gemäss RDF-Spezifikation immer aus Subjekt, Prädikat und Objekt bestehen muss (vgl.~\cite[3.1 Triples]{w3rdf}).
 
 \lstset{caption={Beispiel eines grundlegenden Teilgraphen in SPARQL}}
 \begin{lstlisting}
@@ -231,7 +231,7 @@ Die Aggregation wird dann verwendet, wenn ein Resultat über eine Gruppe von Lö
 \lstset{caption={Beispiel einer Abfrage mit Gruppierung und Aggregation\protect\footnotemark}}
 \lstset{language=SQL}
 \begin{lstlisting}
-    PREFIX books: $\textless$http://books.example/$\textgreater$
+    PREFIX books: \textless http://books.example/\textgreater 
     SELECT (
         SUM(?lprice) AS ?totalPrice
     )
@@ -241,7 +241,7 @@ Die Aggregation wird dann verwendet, wenn ein Resultat über eine Gruppe von Lö
       ?book books:price ?lprice .
     }
     GROUP BY ?org
-    HAVING (SUM(?lprice) $\textgreater$ 10)
+    HAVING (SUM(?lprice) \textgreater  10)
 \end{lstlisting}
 \footnotetext{\cite[11.1 Aggregate Example]{w3sparql_querylang}}
     
@@ -339,9 +339,9 @@ Die \textit{CONSTRUCT}-Abfrageart gibt als Antwort einen einzigen, durch eine Vo
 
 \lstset{caption={Beispiel einer SPARQL-Abfrage unter Nutzung der \textit{CONSTRUCT}-Abfrageart\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-PREFIX foaf:    $\textless$http://xmlns.com/foaf/0.1/$\textgreater$
-PREFIX vcard:   $\textless$http://www.w3.org/2001/vcard-rdf/3.0#$\textgreater$
-CONSTRUCT   { $\textless$http://example.org/person#Alice$\textgreater$ vcard:FN ?name }
+PREFIX foaf:    \textless http://xmlns.com/foaf/0.1/\textgreater 
+PREFIX vcard:   \textless http://www.w3.org/2001/vcard-rdf/3.0#\textgreater 
+CONSTRUCT   { \textless http://example.org/person#Alice\textgreater  vcard:FN ?name }
 WHERE       { ?x foaf:name ?name }
 \end{lstlisting}
 \footnotetext{\cite[16.2 CONSTRUCT]{w3sparql_querylang}}
@@ -349,9 +349,9 @@ WHERE       { ?x foaf:name ?name }
 Die obige Abfrage erzeugt folgende Ausgabe:
 \lstset{caption={Beispiel der Ausgabe einer SPARQL-Abfrage unter Nutzung der \textit{CONSTRUCT}-Abfrageart\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-@prefix vcard: $\textless$http://www.w3.org/2001/vcard-rdf/3.0#$\textgreater$ .
+@prefix vcard: \textless http://www.w3.org/2001/vcard-rdf/3.0#\textgreater  .
 
-$\textless$http://example.org/person#Alice$\textgreater$ vcard:FN "Alice" .
+\textless http://example.org/person#Alice\textgreater  vcard:FN "Alice" .
 \end{lstlisting}
 \footnotetext{\cite[16.2 CONSTRUCT]{w3sparql_querylang}}
 
@@ -360,8 +360,8 @@ Enthält die Vorlage eines Graphen Tripel ohne Variablen, erscheinen diese denno
 
 \lstset{caption={Beispiel einer SPARQL Abfrage mit Nutzung der \textit{CONSTRUCT}-Abfrageart unter Verwendung leerer Knoten\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-PREFIX foaf:    $\textless$http://xmlns.com/foaf/0.1/$\textgreater$
-PREFIX vcard:   $\textless$http://www.w3.org/2001/vcard-rdf/3.0#$\textgreater$
+PREFIX foaf:    \textless http://xmlns.com/foaf/0.1/\textgreater 
+PREFIX vcard:   \textless http://www.w3.org/2001/vcard-rdf/3.0#\textgreater 
 
 CONSTRUCT { ?x  vcard:N _:v .
             _:v vcard:givenName ?gname .
@@ -377,7 +377,7 @@ WHERE
 Die obige Abfrage erzeugt folgende Ausgabe:
 \lstset{caption={Beispiel der Ausgabe einer SPARQL Abfrage mit Nutzung der \textit{CONSTRUCT}-Abfrageart unter Verwendung leerer Knoten\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-@prefix vcard: $\textless$http://www.w3.org/2001/vcard-rdf/3.0#$\textgreater$ .
+@prefix vcard: \textless http://www.w3.org/2001/vcard-rdf/3.0#\textgreater  .
 
 _:v1 vcard:N         _:x .
 _:x vcard:givenName  "Alice" .
@@ -397,13 +397,13 @@ Gegeben sei die folgende Datenbasis:
 \lstset{caption={Einfache Datenbasis direkt in SPARQL\protect\footnotemark},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-@prefix foaf:       $\textless$http://xmlns.com/foaf/0.1/$\textgreater$ .
+@prefix foaf:       \textless http://xmlns.com/foaf/0.1/\textgreater  .
 
 _:a  foaf:name       "Alice" .
-_:a  foaf:homepage   $\textless$http://work.example.org/alice/$\textgreater$ .
+_:a  foaf:homepage   \textless http://work.example.org/alice/\textgreater  .
 
 _:b  foaf:name       "Bob" .
-_:b  foaf:mbox       $\textless$mailto:bob@work.example$\textgreater$ .
+_:b  foaf:mbox       \textless mailto:bob@work.example\textgreater  .
 \end{lstlisting}
 \footnotetext{\cite[16.3 ASK]{w3sparql_querylang}}
 
@@ -411,7 +411,7 @@ Wird nun folgende Abfrage getätigt:
 \lstset{caption={Beispiel einer SPARQL-Abfrage mit Nutzung der \textit{ASK}-Abfrageart\protect\footnotemark},captionpos=b}
 \lstset{language=XML}
 \begin{lstlisting}
-    PREFIX foaf:    $\textless$http://xmlns.com/foaf/0.1/$\textgreater$
+    PREFIX foaf:    \textless http://xmlns.com/foaf/0.1/\textgreater 
     ASK  { 
         ?x foaf:name  "Alice"
     }
@@ -441,7 +441,7 @@ WHERE {
 
 \section{Ausdrücke und Wertevergleiche}
 \label{sec:sparql_ausdruecke}
-In SPARQL kann jede Abfrage in SPARQL mit einem Filter versehen werden. Dabei wird versucht ein bestimmtes Muster (durch Beschränkungen) auf Graphen anzuwenden um so die Graphen einzuschränken (filtern).
+In SPARQL kann jede Abfrage mit einem Filter versehen werden. Dabei wird versucht ein bestimmtes Muster (durch Beschränkungen) auf Graphen anzuwenden um so die Graphen einzuschränken (filtern).
 
 Jedes RDF-Literal kann durch einen bestimmten Datentyp definiert sein, wie zum Beispiel Wahrheitswerte (Boolean) oder Datum und Uhrzeit (DateTime). Der Filter in SPARQL erlaubt dabei den Wertevergleich auf typisierte RDF-Literale. Die dabei verwendeten Operanden und Datentypen finden sich unter den Webseiten~\href{http://www.w3.org/TR/xpath-functions/}{w3.org/TR/xpath-functions}\footnote{\url{http://www.w3.org/TR/xpath-functions/}} und~\href{http://www.w3.org/TR/sparql11-query/\#operandDataTypes}{w3.org/TR/sparql11-query/}\footnote{\url{http://www.w3.org/TR/sparql11-query/\#operandDataTypes}}.
 
@@ -454,7 +454,7 @@ Eine SPARQL-Abfrage unter Verwendung eines Filters kann wie folgt aussehen:
     WHERE {
       ?book :isInLibrary :BerneUniversityLibrary
       ?book :hasAmount ?amount
-      FILTER (?amount $\textgreater$ xsd:integer(10))
+      FILTER (?amount \textgreater  xsd:integer(10))
     }
 \end{lstlisting}
 In diesem Beispiel wird eine Datenbank nach mehrfachen Vorkommen (mindestens 10 Mal) eines Buchexemplares in der Bibliothek der Universität Bern abgefragt. Die Anzahl der Exemplare eines Buches wird durch die Variable $?amount$ zurückgegeben.
@@ -468,11 +468,12 @@ Ist man in obigem Beispiel nicht sicher, welchem Datentyp die Variable $?amount$
     WHERE {
       ?book :isInLibrary :BerneUniversityLibrary
       ?book :hasAmount ?amount
-      FILTER (xsd:integer(?amount) $\textgreater$ xsd:integer(10))
+      FILTER (xsd:integer(?amount) \textgreater  xsd:integer(10))
     }
 \end{lstlisting}
 
-Die genaue Auswertung eines Filters lassen sich unter der Webseite~\href{http://www.w3.org/TR/sparql11-query/\#evaluation}{w3.org/TR/sparql11-query/\#evaluation}\footnote{\url{http://www.w3.org/TR/sparql11-query/\#evaluation}}, die interne Verwendung und Auswertung von Operatoren unter der Webseite~\href{http://www.w3.org/TR/sparql11-query/\#OperatorMapping}{w3.org/TR/sparql11-query/\#OperatorMapping}\footnote{\url{http://www.w3.org/TR/sparql11-query/\#OperatorMapping}} nachlesen.
+Die genaue Auswertung eines Filters lassen sich unter der Webseite~\href{http://www.w3.org/TR/sparql11-query/\#evaluation}{w3.org/TR/sparql11-query/\#evaluation}\footnote{\url{http://www.w3.org/TR/sparql11-query/\#evaluation}}, die interne Verwendung und Auswertung von Operatoren unter der Webseite\\
+\href{http://www.w3.org/TR/sparql11-query/\#OperatorMapping}{w3.org/TR/sparql11-query/\#OperatorMapping}\footnote{\url{http://www.w3.org/TR/sparql11-query/\#OperatorMapping}} nachlesen.
 
 \subsection{Funktionen}
 \label{subsec:sparql_ausdruecke_funktionen}
@@ -486,9 +487,9 @@ Mittels \textit{BOUND} lässt sich prüfen, ob ein Objekt eine Wert-Bindung hat.
 Möchte man zum Beispiel wissen, welche Personen über eine Relation zu einem Datum (z.B. ihr Erfassungsdatum) haben, so bestimmt man dies mittels:
 \lstset{caption={Beispiel einer simplen Ontologie zur Nutzung der \textit{BOUND}-Funktion in einer Abfrage\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-@prefix foaf:        $\textless$http://xmlns.com/foaf/0.1/$\textgreater$ .
-@prefix dc:          $\textless$http://purl.org/dc/elements/1.1/$\textgreater$ .
-@prefix xsd:          $\textless$http://www.w3.org/2001/XMLSchema#$\textgreater$ .
+@prefix foaf:        \textless http://xmlns.com/foaf/0.1/\textgreater  .
+@prefix dc:          \textless http://purl.org/dc/elements/1.1/\textgreater  .
+@prefix xsd:          \textless http://www.w3.org/2001/XMLSchema#\textgreater  .
 
 _:a  foaf:givenName  "Alice".
 
@@ -499,9 +500,9 @@ _:b  dc:date         "2005-04-04T04:04:04Z"^^xsd:dateTime .
 
 \lstset{caption={Beispiel einer SPARQL-Abfrage zur Nutzung der \textit{BOUND}-Funktion\protect\footnotemark},captionpos=b}
 \begin{lstlisting}
-    PREFIX foaf: $\textless$http://xmlns.com/foaf/0.1/$\textgreater$
-    PREFIX dc:   $\textless$http://purl.org/dc/elements/1.1/$\textgreater$
-    PREFIX xsd:   $\textless$http://www.w3.org/2001/XMLSchema#$\textgreater$
+    PREFIX foaf: \textless http://xmlns.com/foaf/0.1/\textgreater 
+    PREFIX dc:   \textless http://purl.org/dc/elements/1.1/\textgreater 
+    PREFIX xsd:   \textless http://www.w3.org/2001/XMLSchema#\textgreater 
     SELECT
         ?givenName
     WHERE {
