@@ -4,14 +4,14 @@
 
 \section{Arbeitsorganisation}
 \label{sec:vorgehen_orga}
-Im Vordergrund dieser Diplomarbeit stehen der Prozess der Entstehung eines Expertensystemes sowie die Analyse der dazu benötigten Grundlagen. Der Fokus liegt dabei absichtlich nicht in der Softwareentwicklung. Traditionelle Methoden der Projektorganisation wie HERMES oder Scrum wurden daher nicht gewählt.\\
+Im Vordergrund dieser Bachelor-Thesis stehen der Prozess der Entstehung eines Expertensystemes sowie die Analyse der dazu benötigten Grundlagen. Der Fokus liegt dabei absichtlich nicht in der Softwareentwicklung. Traditionelle Methoden der Projektorganisation wie HERMES oder Scrum wurden daher nicht gewählt.\\
 Der Organisation wurden die im Voraus definierten Meilensteine (Teilziele) zu Grunde gelegt. Jeder dieser Meilensteine wurde zeitlich determiniert. Zugleich wurden die Tätigkeiten für jeden Meilenstein durch eine individuelle Liste verteilt. Der benötigte Zeitaufwand sowie die Tätigkeiten wurden durch ein gemeinsames Journal erfasst, siehe~\ref{chap:arbeitsjournal}.
 
-Ein wichtiger Teil der Arbeit ist das Dokument, welches gewonnene Erkenntnisse festhält. In diesem Dokument wurden Erfolge und Misserfolge beschrieben und analysiert. Es bildet schliesslich die Grundlage für das vorliegende Abschlussdokument (bei Anfrage jederzeit verfügbar).
+Ein wichtiger Teil der Arbeit ist das Dokument, welches gewonnene Erkenntnisse festhält (Dokument Arbeitserkenntnisse). In diesem Dokument wurden Erfolge und Misserfolge beschrieben und analysiert. Es bildet schliesslich die Grundlage für das vorliegende Abschlussdokument (bei Anfrage jederzeit verfügbar).
 
 \subsection{Regelmässige Treffen}
 \label{sec:vorgehen_orga_treffen}
-Regelmässige Besprechungen mit dem Betreuer der Arbeit halfen die gesteckten Ziele zu erreichen und Fehlentwicklungen zu vermeiden. Der Betreuer unterstützte die Autoren dabei mit Vorschlägen. Die Treffen fanden mindestens alle zwei Wochen statt und sie wurden in Form eines Protokolles festgehalten (bei Anfrage jederzeit verfügbar).
+Regelmässige Besprechungen mit dem Betreuer der Arbeit halfen die gesteckten Ziele zu erreichen und Fehlentwicklungen zu vermeiden. Der Betreuer unterstützte die Autoren dabei mit Vorschlägen. Die Treffen fanden mindestens alle zwei Wochen statt, sie wurden in Form eines Protokolles festgehalten (bei Anfrage jederzeit verfügbar).
 
 \section{Projektphasen}
 \label{sec:projektphasen}
@@ -51,12 +51,6 @@ Die gewonnen theoretischen Grundlagen wurden in das Tutorial eingebaut. Sie konn
         \ganttbar{Umsetzung Prototyp}{9}{14} \\
         \ganttbar{Dokumentation}{1}{2} \ganttbar{}{9}{16} \\
         \ganttbar{Präsentation/Verteidigung vorbereiten}{13}{16}
-
-        % \ganttlink{elem1}{elem2}
-        % \ganttlink{elem1}{elem2}
-        % \ganttlink{elem2}{elem3}
-        % \ganttlink{elem3}{elem4}
-        % \ganttlink{elem4}{elem8}
     \end{ganttchart}
     \caption{Zeitplan; Der Titel stellt Jahreszahlen, der Untertitel Semesterwochen dar}
 \end{figure}
@@ -67,7 +61,7 @@ In der ersten Phase wurden die Meilensteine der Arbeit identifiziert und skizzie
 
 \subsection{Anforderungen}
 \label{subsec:anforderungen}
-In dieser Phase wurde Ziel dieser Bachelor-Thesis festgelegt. Vom Ziel ausgehend wurden die dazu erforderlichen Projektphasen festgelegt. Siehe Dokument in Anhang~\ref{chap:anf}.
+In dieser Phase wurde das Ziel dieser Bachelor-Thesis festgelegt. Vom Ziel ausgehend wurden die dazu erforderlichen Projektphasen festgelegt. Siehe Dokument in Anhang~\ref{chap:anf}.
 
 \subsection{Formale und technische Grundlagen}
 \label{sub:formale_und_technische_grundlagen}
@@ -105,8 +99,8 @@ Hingegen erlaubt die Verwendung der Graphdatenbank Stardog~\footnote{\url{http:/
 \end{itemize}
 Die Details dazu sind in~\autoref{chap:komponenten} genauer beschrieben.
 
-Bei der Erarbeitung der Grundlagen einigten sich die Autoren, die Modellierung der Ontologie mittels OWL, der meist verwendeten Standard-Sprache vorzunehmen. Eine Ontologie-Datei im OWL-Format wächst gegeben durch ihre Syntax mit zunehmendem Umfang der Ontologie sehr schnell an. Ausserdem ist deren Syntax XML-basiert und damit nicht sehr leserlich.\\
-Angesichts dieser beiden Nachteile waren sich die Autoren einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL nur über ein Hilfsmittel vorgenommen werden sollte.
+Bei der Erarbeitung der Grundlagen einigten sich die Autoren, die Modellierung der Ontologie mittels OWL, einer häufig verwendeten Standard-Sprache vorzunehmen. Eine Ontologie-Datei im OWL-Format wächst, gegeben durch ihre Syntax mit zunehmendem Umfang der Ontologie sehr schnell an. Ausserdem ist deren Syntax XML-basiert und damit nicht sehr leserlich.\\
+Angesichts dieser beiden Nachteile waren sich die Autoren einig, dass eine Modellierung der Ontologie in der Ontologie-Sprache OWL über ein Hilfsmittel vorgenommen werden sollte.
 
 Die Anwendung Protégé der Universität Stanford erwies sich bei der Recherche am geeignetsten. Protégé erlaubt die Modellierung einer Ontologie in Form von Baumstrukturen und den Export der Ontologie in diverse (Datei-) Formate. Weiter bietet Protégé die Möglichkeit, Informationen einer Ontologie mittels der SPARQL-Abfragesprache abzufragen. Durch einen konfigurierbaren Reasoner erlaubt Protégé das Ziehen von Schlüssen. Eine detaillierte Beschreibung findet sich unter~\autoref{sec:komponenten_protege}.
 
@@ -154,15 +148,13 @@ Um auch ausserhalb der grafischen Darstellung eine konstante Modellierung zu erh
 
 \subsubsection{Vorarbeit für die Modellierung der Ontologie}
 \label{sub:modellierung_der_ontologie_vorarbeit}
-Ursprünglich wurde versucht ein Modell der (Logik-) Programmiersprache Prolog zu erstellen. Da die Autoren über ein Basiswissen der objektorientierten Programmiersprachen verfügen, wurde UML als Mittel zur Modellierung verwendet. Es zeigte sich rasch, dass es nicht genügt nur Klassen zu definieren; denn eine Ontologie bildet direkte Beziehungen nur zwischen Individuen ab. Die Ontologie muss daher immer über Individuen (Instanzen der Klassen) verfügen.
+Ursprünglich wurde versucht ein Modell des Erlernens der Programmierung anhand der (Logik-) Programmiersprache Prolog zu erstellen. Da die Autoren über ein Basiswissen der objektorientierten Programmiersprachen verfügen, wurde UML als Mittel zur Modellierung verwendet. Es zeigte sich rasch, dass es nicht genügt nur Klassen zu definieren; denn eine Ontologie bildet direkte Beziehungen nur zwischen Individuen ab. Die Ontologie muss daher immer über Individuen (Instanzen der Klassen) verfügen.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.3}[0.3]{\includegraphics{bilder/formel_baum.png}}}
 \caption{Vereinfachte Darstellung von Logik, rein mittels Klassen.\label{fig:prolog_logik_baum}\protect\footnotemark}
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
-
-\newpage
 
 Angesichts dieser Erkenntnis wurde die Modellierung mit Individuen erweitert. Dies ermöglicht die Verwendung von Relationen zwischen Individuen, was richtungsweisend war.
 
@@ -172,7 +164,7 @@ Angesichts dieser Erkenntnis wurde die Modellierung mit Individuen erweitert. Di
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Aufgrund der erstellten, bisherige Ontologie konnten konkrete Fragen nicht beantwortet werden. Es zeigten sich Unvollständigkeiten in der Modellierung. Zum Beispiel waren umständlichen Abfragen nötig, um einfache Fakten zu erhalten. Details hierzu finden sich im Anhang unter~\ref{chap:anh_beispiele}.
+Aufgrund der bisherig erstellten Ontologie konnten konkrete Fragen nicht beantwortet werden. Es zeigten sich Unvollständigkeiten in der Modellierung. Zum Beispiel waren umständlichen Abfragen nötig um einfache Fakten zu erhalten. Details hierzu finden sich im Anhang unter~\ref{chap:anh_beispiele}.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.6}[0.6]{\includegraphics{bilder/sparql_beispiel.png}}}
@@ -181,13 +173,12 @@ Aufgrund der erstellten, bisherige Ontologie konnten konkrete Fragen nicht beant
 \footnotetext{Eigene Darstellung mittels Stanford Protégé und Google Docs.}
 
 Bei den genannten Unvollständigkeiten handelte es sich nicht um Fehler: Die Modellierung drohte ins Uferlose zu entgleiten, da der Detaillierungsgrad der Modellierung nicht abgegrenzt war. Damit zeigte sich: Eine zu feine Granularität kann die Modellierung ins Uferlose führen.\\
-Das Ziel der Arbeit war jedoch die Schaffung eines einfachen Systemes und dadurch Erfahrungen mit semantischen Datenbanken und Expertensystemen zu sammeln.
+Das Ziel der Arbeit war jedoch die Schaffung eines einfachen Systemes um dadurch Erfahrungen mit semantischen Datenbanken und Expertensystemen zu sammeln.
 
 Herr Prof.\ Dr.\ Eckerle empfahl bei der Problembesprechung Inhalte des Buches \textit{Künstliche Intelligenz} von \textit{U. Lämmel} und \textit{J. Cleeve}~\cite{laemmel} als einschränkende Richtlinie zur Modellierung zu verwenden.\\
-Das bedeutet Beschränkung der Autoren ausschliesslich auf die Programmiersprache Prolog und deren Kernkonzepte.
+Das bedeutet Beschränkung der Wissensdomäne ausschliesslich auf die Programmiersprache Prolog und deren Kernkonzepte.
 
-Damit konnte eine wesentlich bessere Modellierung mit Klassen, Relationen und Individuen\\
-der Ontologie von Prolog erzielt werden.
+Damit konnte eine wesentlich bessere Modellierung mit Klassen, Relationen und Individuen der Ontologie von Prolog erzielt werden.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.15}[0.15]{\includegraphics{bilder/prolog_baum.png}}}
@@ -197,7 +188,7 @@ der Ontologie von Prolog erzielt werden.
 
 Die verbesserte Modellierung bedeutete jedoch keinen Mehrwert in Form von Inferenz. In mehreren Gesprächen bemängelte Herr Prof.\ Dr.\ Eckerle das Fehlen von Regeln in der Ontologie. Um von der objektorientierten Denkweise loszukommen und die Anwendung besser zu verstehen, wurde versucht eine Modellierung der Ontologie direkt in Prolog vorzunehmen. Durch die Struktur von Prolog war die Definition und Anwendung von Regeln einfacher zu verstehen. In Prolog zeigte sich rasch, dass eine Abfrage nach Fakten (ohne Regeln) keinen Mehrwert bringt.
 
-Nach mehreren erfolglosen Versuchen, wurden keine Regeln für die Ontologie gefunden. Daraufhin versuchten die Autoren am Beispiel eines Familienstammbaumes eine neue Ontologie mit geeigneten Regeln aufzubauen. In diesem ``klassischen'' Beispiel~\cite[S. 152]{laemmel} wurde der Mehrwert der Wissensmodellierung mittels Ontologien sogleich ersichtlich.
+Nach mehreren erfolglosen Versuchen wurden keine Regeln für die Ontologie gefunden. Daraufhin versuchten die Autoren am Beispiel eines Familienstammbaumes eine neue Ontologie mit geeigneten Regeln aufzubauen. In diesem ``klassischen'' Beispiel~\cite[S. 152]{laemmel} wurde der Mehrwert der Wissensmodellierung mittels Ontologien sogleich ersichtlich.
 
 \begin{figure}[H]
 \centering \rotatebox{0}{\scalebox{0.15}[0.15]{\includegraphics{bilder/familien_netz.png}}}
@@ -205,17 +196,17 @@ Nach mehreren erfolglosen Versuchen, wurden keine Regeln für die Ontologie gefu
 \end{figure}
 \footnotetext{Eigene Darstellung mittels yEd.}
 
-Trotz dieser Erfahrung gelang es nicht, Regeln für die eigentliche Ontologie zu finden. Die Abbildung von Prolog in einer Ontologie ist zwar möglich, jedoch nur in lexikalischer Form. Dies macht den Mehrwert der Wissensmodellierung mittels Ontologien zu Nichte.
+Trotz dieser Erfahrung gelang es nicht, Regeln für die eigentliche Ontologie zu finden. Die Abbildung von Prolog in einer Ontologie ist zwar möglich, jedoch nur in lexikalischer Form. Dies macht den Mehrwert der Wissensmodellierung mittels Ontologien zunichte.
 
-Prolog verwendet Unifikation auf Anfragen und setzt dabei Regeln mit Fakten gleich. Bei der Unifikation wird das Konzept Substitution benützt, welches Variablen durch Variablen und/oder Atome substituiert. Die Abbildung der genannten Konzepte in der Modellierung erfolgte hauptsächlich in Form von Fakten (Klassen und Individuen). Zusätzlich konnten einige wenige (komplexe) Regeln gefunden werden.Diese Regeln führen jedoch nicht zu einem Mehrwert.
+Prolog verwendet Unifikation auf Anfragen und setzt dabei Regeln mit Fakten gleich. Bei der Unifikation wird das Konzept Substitution benützt, welches Variablen durch Variablen und/oder Atome substituiert. Die Abbildung der genannten Konzepte in der Modellierung erfolgte hauptsächlich in Form von Fakten (Klassen und Individuen). Zusätzlich konnten einige wenige (komplexe) Regeln gefunden werden. Diese Regeln führen jedoch nicht zu einem Mehrwert.
 
 Das mit diesen Regeln abgebildete Wissen kann auf eine einfachere und intuitivere Weise mittels Fakten abgebildet werden.
 
-Aufgrund obiger Analyse kamen die Autoren zum Schluss, dass sich die gewählte Wissensdomäne (Prolog) nicht für eine Ontologie eignet. Der Mehrwert der Wissensmodellierung mittels einer Ontologie entsteht in diesem Falle nicht.
+Aufgrund obiger Analyse kamen die Autoren zum Schluss, dass sich die gewählte Wissensdomäne (das Erlernen der Programmierung anhand von Prolog) nicht für eine Ontologie eignet. Der Mehrwert der Wissensmodellierung mittels einer Ontologie entsteht in diesem Falle nicht.
 
 Für die Wissensmodellierung bzw. Expertensysteme eignen sich besser Wissensdomänen, die aufgrund der Ontologie Inferenz und damit Schlussfolgerungen zulassen. Die ursprünglich gewählte Wissensdomäne befindet sich auf einer zu hohen Abstraktionsebene. Daher ist dort der konkrete Nutzen, in Form von Inferenz, nicht gegeben.
 
-Expertensystem finden entsprechend ihrem Namen dort Anwendung, wo ein Fachexperte erforderlich ist. Durch sein Fachwissen kann der Fachexperte Schlüsse ziehen und damit zusätzliches Wissen beitragen.
+Expertensysteme finden entsprechend ihrem Namen dort Anwendung, wo ein Fachexperte erforderlich ist. Durch sein Fachwissen kann der Fachexperte Schlüsse ziehen und damit zusätzliches Wissen beitragen.
 
 Aufgrund der oben ausgeführten Erfahrungen versuchten die Autoren eine neue, geeignete Wissensdomäne zu finden. So wurden zum Beispiel die Planung von Hochzeiten und medizinische sowie pharmazeutische Themengebiete in Betracht gezogen, mangels (Fach-) Wissen aber wieder fallen gelassen.
 
@@ -231,7 +222,7 @@ Als definitive Wissensdomäne wählten die Autoren die Planung von Reisen. Diese
 \label{sub:modellierung_der_ontologie_tatsaechliche}
 Das heisst, die Modellierung musste neu aufgebaut werden, dabei konnten aber Erkenntnissen und Erfahrungen aus den Vorversuchen verwendet werden.
 
-Die Autoren entschieden sich zunächst Beispiele zu definieren und erst danach die Modellierung der Ontologie vorzunehmen. Auf den Beispielen basierend wurde die Ontologie erzeugt und stetig erweitert. 
+Die Autoren entschieden sich zunächst Beispiele zu definieren und erst danach die Modellierung der Ontologie vorzunehmen. Auf den Beispielen basierend wurde die Ontologie erzeugt und stetig erweitert.
 
 Zur Veranschaulichung ein konkretes Beispiel:
 
@@ -293,11 +284,11 @@ Die gesamte Ontologie wird im~\autoref{sec:loesung_modellierung} genauer erläut
 
 \subsection{Tutorialdokument}
 \label{subsec:dokumentation_wissensmodellierung}
-Gleichzeitig mit der Modellierung der Ontologie entstand ein Tutorial. Das Tutorial zeigt, wie ein Knowledge-Engineer vorgeht um eine Problemdomäne systematisch zu modellieren und formalisieren. Das Tutorial findet sich im Anhang unter~\ref{chap:tutorial}. Da dieses  Tutorial im Gegensatz zu herkömmlichen Tutorials einen grossen Theorieanteil enthält, wurde es nach drei Aspekte aufgeteilt, als da sind:
+Gleichzeitig mit der Modellierung der Ontologie entstand ein Tutorial. Das Tutorial zeigt, wie ein Knowledge-Engineer vorgehen kann um eine Problemdomäne systematisch zu modellieren und formalisieren. Das Tutorial findet sich im Anhang unter~\ref{chap:tutorial}. Da dieses  Tutorial, im Gegensatz zu herkömmlichen Tutorials, einen grossen Theorieanteil enthält, wurde es nach drei Aspekte aufgeteilt, als da sind:
 \begin{itemize}
-    \item Theoretisches Hintergrundwissen zur Wissensmodellierung:
+    \item Theoretisches Hintergrundwissen zur Wissensmodellierung;
 
-        Es wird zum Beispiel erläutert was Expertensysteme sind, wie sie grafisch dargestellt werden können und welche Schreibweisen respektive Sprachen verwendet werden um eine Ontologie abzubilden und darauf Abfragen zu stellen.
+        es wird zum Beispiel erläutert was Expertensysteme sind, wie sie grafisch dargestellt werden können und welche Schreibweisen respektive Sprachen verwendet werden um eine Ontologie abzubilden und darauf Abfragen zu stellen.
 
     \item Praktische Hinweise zu den jeweiligen Thematiken
 

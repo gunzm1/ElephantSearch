@@ -3,7 +3,7 @@
 Ein Expertensystem besteht aus drei Komponenten, wie im~\hyperref[chap:tutorial]{Tutorial} unter Kapitel 2 beschrieben.\\
 Die Komponenten sind:
 \begin{itemize}
-    \item Wissensdatenbank: Enthält die Fakten des Problembereiches in formaler Sprache
+    \item Wissensdatenbank: Enthält die Fakten und Regeln des Problembereiches in formaler Sprache
     \item Inferenz-Maschine: Verarbeitungsmechanismus zum automatischen Ziehen von Schlüssen
     \item Benutzerschnittstelle
 \end{itemize}
@@ -61,7 +61,7 @@ Schlussfolgerungen werden in allen Ansichten direkt zur Laufzeit des Reasoners b
 Bei Stardog handelt es sich um eine Graphdatenbank mit Unterstüztung des RDF-Graphenmodelles. Sie bietet den Import und Export von Ontologien in diversen Format an und die Möglichkeit Informationen einer Ontologie mittels SPARQL abzufragen. Des Weiteren unterstützt Stardog die Sprache OWL sowie SWRL-Regeln.\\
 Pellet, in Stardog enthalten, bildet eine zentrale Komponente für die Schlussfolgerungen.
 
-Stardog bietet viele Kommunikationsschnittstellen, so z.B. HTTP und SNARL.\\
+Stardog bietet viele Kommunikationsschnittstellen, so zum Beispiel HTTP.\\
 Programmierschnittstellen sind für zahlreiche Sprachen, so beispielsweise Java, JavaScript oder Python vorhanden.
 
 Stardog unterscheidet drei Versionen der Lizenzierung: Community, Developer und Enterprise. Die Versionen unterscheiden sich durch maximale Anzahl der verwaltbaren Datenbanken und der möglichen Tripel pro Datenbank, Anzahl gleichzeitiger Verbindungen und durch Anzahl Benutzer und Rollen. Je nach gewählter Lizenzierung leistet der Hersteller eine Kundenbetreuung.
@@ -87,7 +87,6 @@ Angesichts der Funktionsstörung und mangelnder HTTP-Schnittstelle, wurde die On
 Dafür musste in Stardog eine neue Datenbank erstellt werden. In diese wurde die mittels Protégé vorbereitete Ontologie im RDF/XML-Format eingespielt.
 
 Stardog bietet bei der Verwendung des Reasoners mehr Möglichkeiten als die anderen Werkzeuge (wie zum Beispiel Protégé). Schlussfolgerungen werden mittels einer Kombination von RDFS-, QL-, RL- und EL-Axiomen sowie zusätzlich SWRL-Regeln gezogen. Details finden sich unter der Webseite~\href{http://docs.stardog.com/\#_reasoning_levels}{docs.stardog.com}\footnote{\url{http://docs.stardog.com/\#_reasoning_levels}}.
-
 
 Durch die Kombination der Werkzeuge Protégé und Stardog konnte eine zuverlässige Modellierung und Verwendung der Ontologie erreicht werden.
 
@@ -115,7 +114,7 @@ Folgende Komponenten wurden zur Umsetzung der Benutzeroberfläche gewählt:
 \label{ssubsec:komponenten:gui:komponenten:vagrant}
 Bei Vagrant handelt es sich um ein Werkzeug zur Erstellung von vollständigen Entwicklungsumgebungen basierend auf Virtualisierung (vgl.~\cite{vagrant}). Details dazu finden sich unter der Webseite~\href{http://www.vagrantup.com/about.html}{vagrantup.com}\footnote{\url{http://www.vagrantup.com/about.html}}.
 
-In der vorliegend Arbeit wurde Vagrant zur Bereitstellung einer (virtuellen) Entwicklungsumgebung genutzt. Dabei wird die eigentliche Anwendung von der Entwicklungsumgebung getrennt. Dadurch kann die Entwicklungsumgebung jederzeit mittels weniger Befehle wieder neu aufgebaut werden.
+In der vorliegenden Arbeit wurde Vagrant zur Bereitstellung einer (virtuellen) Entwicklungsumgebung genutzt. Dabei wird die eigentliche Anwendung von der Entwicklungsumgebung getrennt. Dadurch kann die Entwicklungsumgebung jederzeit mittels weniger Befehle wieder neu aufgebaut werden.
 
 \subsubsection{nginx}
 \label{ssubsec:komponenten:gui:komponenten:nginx}
@@ -155,8 +154,8 @@ das \textit{Modell} \textit{Objektrelation} den \textit{ObjectProperties} der On
 \hangindent=1.5cm \textit{Welcome}-Route ist der Einstieg der Applikation. Von der \textit{Welcome}-Route aus werden die \textit{Routen} \textit{Step1}, \textit{Step2} und \textit{Step3} nacheinander in Form eines Schritt-für-Schritt-Assistenten durchlaufen.\\
 In Schritt 1 wird die Art der Ausflüge gewählt.\\
 In Schritt 2 werden die \textit{Dateneigenschaften} sowie die \textit{Objektrelationen} pro zuvor gewählter Art der Ausflüge gewählt.\\
-Schritt 3 gibt alle Instanzen zurück, welche den gewählten Kriterien entsprechen.\\
-\\
+Schritt 3 gibt alle Instanzen zurück, welche den gewählten Kriterien entsprechen.
+
 Da in Schritt 1 nur bestimmte Individuen der Ontologie angezeigt werden sollen, wurden in der Ontologie diese Individuen mit der \textit{Dateneigenschaft} ``reise'' gekennzeichnet. Dadurch beschränkt sich die Abfrage von Schritt 1 nur auf diese Individuen.
 
 Die \textit{Ansichten} kombinieren die Gestaltung (das Layout) der Seite mit der Ansicht der aktuellen Route.
