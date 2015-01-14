@@ -177,23 +177,39 @@
           });
         }.observes('routeName')
       });
-
+      /**
+       * Model representing a dataProperty.
+       *
+       * @extends DS.Model
+       */
       App.DataPropertyModel = DS.Model.extend({
         propertyName: DS.attr('string'),
         isSelected: DS.attr('boolean')
       });
-
+      /**
+       * Model representing a todo.
+       *
+       * @extends DS.Model
+       */
       App.ObjectAssociationModel = DS.Model.extend({
         propertyName: DS.attr('string'),
         isSelected: DS.attr('boolean'),
         objectProperties: DS.hasMany('ObjectProperty')
       });
-
+      /**
+       * Model representing a ObjectProperty.
+       *
+       * @extends DS.Model
+       */
       App.ObjectPropertyModel = DS.Model.extend({
         propertyName: DS.attr('string'),
         isSelected: DS.attr('boolean')
       });
-
+      /**
+       * Routing todo.
+       *
+       * 
+       */
       App.Router.map(function() {
         this.route('welcome');
         this.route('about');
@@ -204,14 +220,22 @@
         this.resource('reiseModels');
         this.resource('reiseModel', { path: ' /reiseModel/:routeName' });
       });
-
+      /**
+       * Route for the index page.
+       *
+       * @extends Ember.Route
+       */
       App.IndexRoute = Ember.Route.extend({
         beforeModel: function() {
           this.transitionTo('welcome');
         }
       });
 
-
+      /**
+       * Route for the welcome page.
+       *
+       * @extends Ember.Route
+       */
       App.WelcomeRoute = Ember.Route.extend({
         afterModel: function() {
           $(document).attr('title', 'Traveling OWL - Welcome!');
@@ -222,7 +246,11 @@
           }
         }
       });
-
+      /**
+       * Route for the about page.
+       *
+       * @extends Ember.Route
+       */
       App.AboutRoute = Ember.Route.extend({
         afterModel: function() {
           $(document).attr('title', 'Traveling OWL - About');
@@ -240,7 +268,13 @@
           console.log("Setting up controllu");
         }
       });
-
+      /**
+       * Route for the step 1 in the wizard.
+       * todo
+       * @extends Ember.Route
+       * 
+       * show the routeelement "reise"              
+       */
       App.Step1Route = Ember.Route.extend({
         model: function () {
           var self = this;
@@ -289,7 +323,13 @@
           },
         }
       });
-
+      /**
+       * Route for the step 2 in the wizard.
+       * todo
+       * @extends Ember.Route
+       * 
+       * filters all possible Propertys             
+       */
       App.Step2Route = Ember.Route.extend({
         model: function () {
           return this.store.filter('reiseModel', function(travel) {
@@ -307,7 +347,13 @@
           }
         }
       });
-
+      /**
+       * Route for the step 3 in the wizard.
+       * todo
+       * @extends Ember.Route
+       * 
+       * build the sparql query        
+       */
       App.Step3Route = Ember.Route.extend({
         model: function () {
           var self = this;

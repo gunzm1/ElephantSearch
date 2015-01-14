@@ -1,7 +1,16 @@
+% In den Anhang fügen Sie ein:
+%  * Details des Projektpans, falls vorhanden
+%  * Resultate und Zwischenresultate in Funktion der Projektiterationen
+%  * Pflichtenheft / Anforderungsspezifikation (Stand Ende dritter Woche)
+%  * Angaben zum Projektrepository
+%  * Sitzungsprotokolle, falls vorhanden
+%  * Weiterführende Erläuterungen zu den verwendeten Technologien, falls nötig
+%  * Benutzerhandbuch, falls vorhanden und sinnvoll, es hier aufzulisten
+%  * Installations- und Betriebsdokument, falls vorhanden und sinnvoll, es hier aufzulisten
+% Unterlassen Sie das Anfügen von Listings.
 
+\appendix 
 \begin{titlepage}
-
-
     \clearpage
     \vspace*{\fill}
     \begin{center}
@@ -14,31 +23,20 @@
     \end{center}
     \vfill % equivalent to \vspace{\fill}
     \clearpage
-
-
 \end{titlepage}
 
 \newpage 
 
-% In den Anhang fügen Sie ein:
-%  * Details des Projektpans, falls vorhanden
-%  * Resultate und Zwischenresultate in Funktion der Projektiterationen
-%  * Pflichtenheft / Anforderungsspezifikation (Stand Ende dritter Woche)
-%  * Angaben zum Projektrepository
-%  * Sitzungsprotokolle, falls vorhanden
-%  * Weiterführende Erläuterungen zu den verwendeten Technologien, falls nötig
-%  * Benutzerhandbuch, falls vorhanden und sinnvoll, es hier aufzulisten
-%  * Installations- und Betriebsdokument, falls vorhanden und sinnvoll, es hier aufzulisten
-% Unterlassen Sie das Anfügen von Listings.
-
-\appendix
-
 \includepdfset{pagecommand={\thispagestyle{headings}}}
-\includepdf[pages=-, addtotoc={1,chapter,0,Anforderungsdokument,chap:anf},scale=0.9]{anhang/anforderungen.pdf}
-\includepdf[pages=-, addtotoc={1,chapter,0,Tutorial Wissensmodellierung,chap:tutorial},scale=0.9]{anhang/Tutorial.pdf}
-%\input{../Tutorial/template}
+\includepdf[pages=-, addtotoc={1,chapter,0,Anforderungsdokument,chap:anf},scale=0.95]{anhang/anforderungen.pdf}
+\newpage
+\includepdf[pages=-, addtotoc={1,chapter,0,Tutorial Wissensmodellierung,chap:tutorial},scale=0.95]{anhang/Tutorial.pdf}
+\newpage
 \input{anhang/schnipsel}
+\newpage
 \input{anhang/modellierung}
+\newpage
 \input{anhang/installationshandbuch}
-\includepdf[pages=-, addtotoc={1,chapter,0,Arbeitsjournal ,chap:arbeitsjournal},scale=0.9]{anhang/Journal.pdf}
-% \includepdf[pages=-, addtotoc={1,chapter,0,Dokumentation Projekt 2,chap:proj2},scale=0.9]{anhang/DokumentationProjekt2.pdf}
+\newpage
+\includepdf[pages=-, addtotoc={1,chapter,0,Arbeitsjournal ,chap:arbeitsjournal},scale=0.95]{anhang/Journal.pdf}
+\newpage
