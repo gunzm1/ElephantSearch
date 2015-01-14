@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#"
+     xml:base="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#gender -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#gender">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>female</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>male</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Ancestor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Ancestor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Father -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Father">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Mother -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Mother">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Parent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#doris -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#doris">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender rdf:datatype="&xsd;string">female</gender>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#hans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#hans -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#hans">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender rdf:datatype="&xsd;string">male</gender>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#lisa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#lisa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#lisa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender>female</gender>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#luca"/>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#tea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#luca -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#luca">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender>male</gender>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#madita -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#madita">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender>female</gender>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#lisa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#max -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#max">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender>male</gender>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#luca"/>
+        <isParent rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#tea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#tea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#tea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+        <gender>female</gender>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl#f">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#x">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#a">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#c">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#m">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#c"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#c"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Ancestor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isAncestor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Mother"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#m"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#m"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
+                                        <swrl:argument2>female</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#gender"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#m"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#m"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Father"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#f"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#isParent"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#f"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
+                                        <swrl:argument2>male</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#gender"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#f"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/mira/ontologies/2014/9/FamilyOnto#Person"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#f"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Traveling OWL</title>
+        <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
+        <script type="text/javascript" src="js/blacklist.json"></script>
+
+        <script type="text/x-handlebars">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            {{#link-to "index" classNames="navbar-brand"}}
+                                OWL Reiseplaner
+                            {{/link-to}}
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                {{#link-to "welcome" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Start</a>{{/link-to}}
+                                {{#link-to "about" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>&Uuml;ber</a>{{/link-to}}
+                                {{#link-to "contact" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>Impressum</a>{{/link-to}}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <section class="main-content">
+                    {{#if errors}}
+                        {{view "error"}}
+                    {{/if}}
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="loading">
+            <div class="loading-pane">
+                <div class="loading-message">
+                    <h2>Bitte warten..</h2>
+                    <p>...Daten werden geladen...</p>
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </script>
+
+
+        <script type="text/x-handlebars" data-template-name="welcome">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>OWL Reiseplaner<h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>
+                        Wie w&auml;re es mit einem actionreichen aber familienfreundlichen Ausflug kombiniert mit einem preiswerten aber dennoch speziellen Essen in einem Restaurant in der Region Solothurn?
+                    </p>
+                    <p>
+                        <button class="btn btn-primary btn-lg" {{action "step1" "538"}}>Jetzt loslegen!</button>
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="about">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>&Uuml;ber..</h2>
+                    <p>
+                        <img src="images/owl.png" height="100px" alt="Owl">
+                    </p>
+                    <p>
+                        Bei dieser Webapplikation handelt es sich um einen Prototypen einer Benutzerschnittstelle,
+                        welcher im Rahmen der Bachelor-Thesis von Mira G&uuml;nzburger und Sven Osterwalder 
+                        zwischen September 2014 bis Januar 2015 entstanden ist.
+                    </p>
+                    <p>
+                        Der Status der Applikation entspricht in keinster Weise einer fertigen Applikation,
+                        das Auftreten von Fehlern ist m&ouml;glich.
+                    </p>
+                    <p> 
+                        Die Applikation bietet eine benutzerfreundliche Reiseplanung unter Verwendung
+                        einer semantischen Datenbank. Die Applikation erm&ouml;glicht das Planen einer
+                        Reise mit Hilfe eines Assistenten. Der Benutzer kann die gew&uuml;nschten Reisekriterien
+                        Schritt f&uuml;r Schritt ausw&auml;hlen. Er erh&auml;lt dann eine Auswahl an
+                        Reiseobjekten, welche seinen Kritierien entsprechen.
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="contact">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <h2>Impressum</h2>
+                    <p>
+                        Bei dieser Webapplikation handelt es sich um einen Prototypen einer Benutzerschnittstelle,
+                        welcher im Rahmen der Bachelor-Thesis von Mira G&uuml;nzburger und Sven Osterwalder 
+                        zwischen September 2014 bis Januar 2015 entstanden ist.
+                    </p>
+                    <p>
+                        &copy; 2014 - 2015, Mira G&uuml;nzburger und Sven Osterwalder
+                    </p>
+                    <h3>Kontakt</h3>
+                    <p>
+                        <a href="mailto:gunzm1@bfh.ch?Subject=Elephant%20Search" target="_top">Mira G&uuml;nzburger</a>
+                    </p>
+                    <p>
+                        <a href="mailto:ostes2@bfh.ch?Subject=Elephant%20Search" target="_top">Sven Osterwalder</a>
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="steps">
+            <div class="row">
+                <div class="col-md-12 column">
+                    {{outlet}}
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step1">
+                <h2>Schritt 1</h2>
+                <p>Lass uns die Plannung beginnen...</p>
+                <div id="routeElements">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ausflugsm&ouml;glichkeiten</h3>
+                        </div>
+                        <div class="panel-body">
+                        {{#each item in model itemController="reiseModel"}}
+                            <p>
+                                {{input type="checkbox" name=item.model.routeName checked=item.model.isSelected class="toggle"}}
+                                <label>{{item.model.routeName}}</label>
+                            </p>
+                        {{/each}}
+                    </div>
+                </div>
+                <p>
+                    <button class="btn btn-primary btn-md" {{action "step2" on="click"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+                </p>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step2">
+            <h2>Schritt 2</h2>
+
+            {{#if model}}
+            <p>Welche Kriterien soll dein Ausflug erfüllen?</p>
+            {{#each travel in model}}
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" {{bind-attr href="#route.value.modelName"}} aria-expanded="true" aria-{{bind-attr controls="route.value.modelName"}}>
+                          {{travel.routeName}}
+                        </a>
+                      </h4>
+                    </div>
+                    <div {{bind-attr id="travel.routeName"}} class="panel-collapse collapse in" role="tabpanel" {{bind-attr aria-labelledby="travel.routeName"}}>
+                      <div class="panel-body">
+                        {{#if travel.dataProperties}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Eigenschaften</h3>
+                            </div>
+                            <div class="panel-body">
+                                {{#each dataProperty in travel.dataProperties}}
+                                    <div class="input-group">
+                                        {{input type="checkbox" name=dataProperty.propertyName checked=dataProperty.isSelected class="toggle"}}
+                                        &nbsp;
+                                        <label {{bind-attr for="dataProperty.propertyName"}}>
+                                            {{dataProperty.propertyName}}
+                                        </label>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{#if travel.objectAssociations}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Relationen</h3>
+                            </div>
+                            <div class="panel-body">
+                                {{#each objectAssociation in travel.objectAssociations}}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{objectAssociation.propertyName}}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        {{#each prop in objectAssociation.objectProperties}}
+                                            <div class="input-group">
+                                                {{input type="checkbox" name=prop.propertyName checked=prop.isSelected class="toggle"}}
+                                                &nbsp;
+                                                <label {{bind-attr for="prop.propertyName"}}>
+                                                    {{prop.propertyName}}
+                                                </label>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+            {{/each}}
+            {{else}}
+                {{render "error"}}
+            {{/if}}
+            <p>
+                <button class="btn btn-primary btn-md" {{action "step1"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary btn-md" {{action "step3"}}><i class="glyphicon glyphicon-chevron-right"></i></button>
+            </p>
+
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="step3">
+            <h2>Schritt 3</h2>
+            <p>Ergebnis: </p>
+            <div id="routeElements">
+                {{#if model}}
+                {{#each travelType in model}}
+                <h3>{{travelType.type}}</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Link</th>
+                            <th>Ort</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each item in travelType.data}}
+                            <tr>
+                                <td width=30%>{{item.travel.value}}</td>
+                                <td width=20%>
+                                    <a target="_blank" href="{{unbound item.url.value}}">
+                                        {{item.url.value}}
+                                    </a>
+                                </td>
+                                <td width=30%>{{item.location.value}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/each}}
+                {{else}}
+                    {{render "error"}}
+                {{/if}}
+                <button class="btn btn-primary btn-md" {{action "step2"}}><i class="glyphicon glyphicon-chevron-left"></i></button>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="error">
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Fehler:</span>
+                Es ist ein Fehler aufgetreten:
+                <ul>
+                {{#each error in model.errors}}
+                    <li>{{error.message}}</li>
+                {{/each}}
+                </ul>
+            </div>
+        </script>
+
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY untitled-ontology-23 "http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#"
+     xml:base="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:untitled-ontology-23="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#manages -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-23;manages"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#supervises -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-23;supervises">
+        <rdfs:domain rdf:resource="&untitled-ontology-23;Manager"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#projectID -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-23;projectID">
+        <rdfs:domain rdf:resource="&untitled-ontology-23;Project"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Employee -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Employee"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Manager -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Manager">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-23;Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Project -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;Project"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#ProjectManager -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;ProjectManager">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-23;Manager"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#ResearchProject -->
+
+    <owl:Class rdf:about="&untitled-ontology-23;ResearchProject">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-23;Project"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Alice -->
+
+    <owl:Thing rdf:about="&untitled-ontology-23;Alice">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <manages rdf:resource="&untitled-ontology-23;ProjektX"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#Bob -->
+
+    <owl:Thing rdf:about="&untitled-ontology-23;Bob">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/mira/ontologies/2014/9/untitled-ontology-23#ProjektX -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-23;ProjektX">
+        <rdf:type rdf:resource="&untitled-ontology-23;ResearchProject"/>
+        <projectID>123-45-6789</projectID>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl#x">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&owl;Thing"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:classPredicate>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&untitled-ontology-23;manages"/>
+                                        <owl:onClass rdf:resource="&untitled-ontology-23;Project"/>
+                                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                                    </owl:Restriction>
+                                </swrl:classPredicate>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&untitled-ontology-23;ProjectManager"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
