@@ -1,36 +1,42 @@
-starter-kit
-===========
+Traveling-OWL
+=============
 
-A starter kit for Ember
+This application provides a lightweight and intuitive way
+to plan excursions. It is built upon Ember.js and handelbars.
+As backend it uses a semantic database based on Stardog.
 
-Your Ember.js project is almost ready! Here's how to get started:
+It was developed within the scope of the bachelor-thesis
+of Mira Günzburger (gunzm1@bfh.ch) and Sven Osterwalder
+(ostes2@bfh.ch).
 
-- Start writing your app in `js/app.js`.
+Installation notes
+==================
 
-- Describe your application HTML in `index.html`.
+If you actually plan to use this application on your 
+(web-) server, you may want to install bower first to be
+able to install the needed libraries.
+You may then install them within the main directory:
 
-- During development, you can link to `js/libs/ember-*.js` to get the
-  unminified version of Ember.js.
+`bower install`
 
-- Add CSS to `css/style.css`.
+and you should be good to go. If you have any questions,
+feel free to contact us.
 
-- Open `index.html` in your browser.
+Configuration
+=============
+Find the configuration under js/config.js. You may want
+to change the following attributes (please do not touch
+the other ones :)):
+* appName
+* sparql:endpoint
+* sparql:database
+* sparql:user
+* sparql:password
 
-Tests
-=====
-
-This starter kit comes with an integration test sample, written for QUnit runner. 
-
-You can run the tests by opening the `index.html?test` page in your browser.
-
-The test is located in the `tests/tests.js` file. You can see how such an 
-integration test should be written, using QUnit assertions and ember-testing helpers.
-
-For more information about ember-testing package see [ember-testing](http://emberjs.com/guides/testing/integration/).
-
-For more information about the QUnit testing framework, see [QUnit](http://qunitjs.com/).
 
 Contact
-====
+=======
 
-[www.emberjs.com](http://www.emberjs.com)
+[elephantsearch.bfh.ch](http://elephantsearch.bfh.ch)
+[Mira Günzburger](gunzm1@bfh.ch)
+[Sven Osterwalder](ostes2@bfh.ch)

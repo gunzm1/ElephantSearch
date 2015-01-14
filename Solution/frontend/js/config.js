@@ -1,4 +1,18 @@
+/**
+ * @fileoverview Traveling-OWL application configuration file.
+ * 
+ * Contains configuration values for the traveling-OWL application.
+ *
+ * @author gunzm1@bfh.ch (Mira Günzburger)
+ * @author ostes2@bfh.ch (Sven Osterwalder)
+ */
+var constants = {
+  'DEBUG': 'debug',
+  'PRODUCTION': 'production'
+}
+
 define({
+  constants: constants,
   appName:        'traveling-owl',
   sparql: {
       'endpoint': 'http://elephantsearch.bfh.ch:5820/',
@@ -34,5 +48,6 @@ define({
     "stardog": {
       deps: ["lodash"]
     }
-  }
+  },
+  environment: constants.PRODUCTION
 });
