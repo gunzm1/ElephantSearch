@@ -129,10 +129,6 @@
 \setcounter{tocdepth}{3}
 %---------------------------------------------------------------------------
 
-% Cross-reference package
-%---------------------------------------------------------------------------
-\usepackage{xr}                                                         % provides references to other, external documents
-\externaldocument[THESIS-]{../Thesis/template}
 %---------------------------------------------------------------------------
 % Set up page dimension
 %---------------------------------------------------------------------------
@@ -284,30 +280,30 @@
 \include{kapitel/swrl}
 \include{kapitel/sparql}
 \include{kapitel/schlusswort}
+%%---------------------------------------------------------------------------
+%
+ %%Glossary
 %---------------------------------------------------------------------------
-
- %Glossary
----------------------------------------------------------------------------
 \cleardoublepage{}
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Glossar}
 \renewcommand{\glossaryname}{Glossar}
 \glsaddall{}
 \printglossary{}
-%---------------------------------------------------------------------------
-
-% Bibliography
-%---------------------------------------------------------------------------
+%%---------------------------------------------------------------------------
+%
+%% Bibliography
+%%---------------------------------------------------------------------------
 %\cleardoublepage
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{unsrtnat}
 \bibliography{datenbanken/bibliography}{}
-%---------------------------------------------------------------------------
-
-% Listings
-%---------------------------------------------------------------------------
-%\cleardoublepage
+%%---------------------------------------------------------------------------
+%
+%% Listings
+%%---------------------------------------------------------------------------
+%%\cleardoublepage
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
@@ -315,7 +311,7 @@
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \listoftables
-%\cleardoublepage
+\cleardoublepage
 \phantomsection{}
 \addcontentsline{toc}{chapter}{Auflistungsverzeichnis}
 \lstlistoflistings{}
@@ -323,11 +319,11 @@
 
 % Index
 %---------------------------------------------------------------------------
-%\cleardoublepage
-%\phantomsection{}
-%\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
-%\renewcommand{\indexname}{Stichwortverzeichnis}
-%\printindex
+\cleardoublepage
+\phantomsection{}
+\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
+\renewcommand{\indexname}{Stichwortverzeichnis}
+\printindex
 %---------------------------------------------------------------------------
 
 % Attachment:
