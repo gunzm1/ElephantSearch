@@ -78,6 +78,7 @@
       var appName = config.appName || "App";
       var dataPropertyBlackList = blacklist.dataProperty;
       var objectPropertyBlackList = blacklist.objectProperty;
+      var subClassOfBlackList = blacklist.subClassOf;
 
       /**
        * Initialization of application
@@ -105,6 +106,7 @@
         isSelected: DS.attr('boolean'),
         dataProperties: DS.hasMany('DataProperty'),
         objectAssociations: DS.hasMany('ObjectAssociation'),
+        subClasses: DS.hasMany('SubClass'),
         /**
          * Fetches data property relevant objects
          * when the 'routeName' attribute of the
@@ -201,7 +203,49 @@
 
             });
           });
-        }.observes('routeName')
+        }.observes('routeName'),
+        /**
+         * Fetches objects which are subClass of
+         * the travel object.
+         * Gets triggered when the 'routeName' attribute 
+         * of the travel object has changed its value.
+         *
+         * TODO: GIbt noch nix aus, obwohl ich der meinung bin, dass es sich bis am schluss richtig verhaltet
+         * @function
+         */
+        subClassOfUpdate: function() {
+          if (DEBUG_MODE) console.log('subClassOfUpdate got triggered..');
+          var self = this;
+          var filter = "";
+
+          subClassOfBlackList.forEach(function(item){
+              filter += ' filter(!regex(str(?subClassOf), "' + item + '", "i")) ';
+          });
+
+          var queryString = '\
+            select distinct \
+              (strafter(str(?subClassOf), "#") AS ?property) \
+            where { \
+              ?subClassOf rdfs:subClassOf :' + this.get('routeName') + '. \
+              ' + filter + ' \
+            }';
+            console.log('subClassquery: ' + queryString);
+          performQuery(this.get('routeName'), queryString, 'subClass').then(function (subClassSets) {
+            subClassSets.data.forEach(function(prop) {
+              var id = prop.property.value;
+              console.log('id: ' + id)              
+              var subClass = self.store.getById('subClass', id);
+              console.log('subClass: ' + subClass);
+              if (!subClass) {
+                subClass = self.store.createRecord('subClass',{
+                  id: prop.property.value,
+                  subClassName: prop.property.value,
+                });           
+                self.get('subClasses').pushObject(subClass);
+              }
+            });
+          });
+        }.observes('routeName')       
       });
 
       /**
@@ -213,7 +257,15 @@
         propertyName: DS.attr('string'),
         isSelected: DS.attr('boolean')
       });
-
+      /**
+       * Model representing a data property.
+       *
+       * @extends DS.Model
+       */
+      App.SubClassModel = DS.Model.extend({
+        subClassName: DS.attr('string'),
+        isSelected: DS.attr('boolean')
+      });
       /**
        * Model representing a relation
        * to a travel model object.
@@ -421,6 +473,13 @@
                   ';
                 }
               });
+              travel.get('subClasses').forEach(function(dataProperty) {
+                if (dataProperty.get('isSelected')) {
+                  queryString += ' \
+                    ?obj a :' + dataProperty.get('subClassName') + '. \
+                  ';
+                }
+              });              
 
               travel.get('objectAssociations').forEach(function(objectAssoc) {
                 if (DEBUG_MODE) console.log(objectAssoc);

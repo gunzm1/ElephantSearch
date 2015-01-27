@@ -205,6 +205,24 @@
                             </div>
                         </div>
                         {{/if}}
+                        {{#if travel.subClasses}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Typen</h3>
+                            </div>
+                            <div class="panel-body">
+                                {{#each subClass in travel.subClasses}}
+                                    <div class="input-group">
+                                        {{input type="checkbox" name=subClass.subClassName checked=subClass.isSelected class="toggle"}}
+                                        &nbsp;
+                                        <label {{bind-attr for="subClass.subClassName"}}>
+                                            {{subClass.subClassName}}
+                                        </label>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        {{/if}}                      
                       </div>
                     </div>
                   </div>

@@ -6,5 +6,10 @@ blacklist = {
 	 "objectProperty": [
 	 	"gleicherOrt",
 	 	"gleicheRegion"
+	 ],
+	 "subClassOf": [
+	 	"Nothing",
+	 	"Restaurant",
+	 	"Ausflug"
 	 ]
 };
