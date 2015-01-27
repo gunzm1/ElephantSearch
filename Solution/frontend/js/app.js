@@ -190,6 +190,7 @@
 
                 objectPropertySet.data.forEach(function(prop) {
                   var objectProperty = self.store.createRecord('ObjectProperty', {
+
                     propertyName: prop.property.value
                   });
                   objectAssociation.get('objectProperties').pushObject(objectProperty);
@@ -450,6 +451,7 @@
               });
 
               queryString += '}';
+              console.log("Step3 query: ", queryString.replace('\t', '').replace(/\s+/g, ' ').trim());
               if (DEBUG_MODE) console.log("Step3 query: ", queryString.replace('\t', '').replace(/\s+/g, ' ').trim());
               travelQueries.push(performQuery('travels', queryString, travel.get('routeName')));
             });
