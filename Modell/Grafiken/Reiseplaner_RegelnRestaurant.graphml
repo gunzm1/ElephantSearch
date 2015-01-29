@@ -126,10 +126,10 @@ küche(?r,"für hohe Ansprüche")<y:LabelModel>
         <node id="n0::n4">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.relationship">
-              <y:Geometry height="63.600000000000136" width="208.0390625" x="309.8479465350165" y="795.0"/>
+              <y:Geometry height="93.60000000000014" width="274.431640625" x="243.4553684100165" y="780.0"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="177.419921875" x="15.3095703125" y="7.748242187500068">durchschnittspreis(?r, ?preis),
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="177.419921875" x="48.505859375" y="22.748242187500068">durchschnittspreis(?r, ?preis),
 greaterOrEqualThan(?preis, 20),
 lessOrEqualThan(?preis, 30)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
